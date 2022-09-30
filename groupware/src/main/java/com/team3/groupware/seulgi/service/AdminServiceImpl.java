@@ -12,7 +12,7 @@ import java.util.Map;
 public class AdminServiceImpl implements AdminService{
 
     @Autowired
-    private AdminDAO adminDAO;
+    private AdminDAO adminDAO; 
 
     @Override
     public List<EmployeeVO> personnelCardSearch(Map<String, Object> map) {

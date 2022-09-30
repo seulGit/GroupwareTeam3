@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public class LoginDAOImpl implements  LoginDAO{
 
     @Autowired
-    SqlSessionTemplate sqlSessionTemplate;
+    SqlSessionTemplate sqlSessionTemplate; 
 
     @Override
     public EmployeeVO login_check(EmployeeVO vo) {

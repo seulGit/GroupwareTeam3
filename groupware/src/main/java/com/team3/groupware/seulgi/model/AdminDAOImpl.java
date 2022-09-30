@@ -16,7 +16,7 @@ public class AdminDAOImpl implements AdminDAO{
 
     @Override
     public List<EmployeeVO> personnelCardSearch(Map<String, Object> map) {
-        return sqlSessionTemplate.selectList("admin.personnelCardSearch", map);
+        return sqlSessionTemplate.selectList("admin.personnelCardSearch", map); 
 
     }
 

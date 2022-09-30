@@ -13,7 +13,6 @@ zip_btn.addEventListener('click', function () {
     }).open();
 });
 
-
 //인사기록카드
 
 let detail_name = document.querySelector('#detail_name');

@@ -24,7 +24,7 @@ public class EmployeeVO {
 	// message select용 
 	private String dept_name;  		 // 부서명
 
-	// 로그인 히스토리 insert/select 용
+	// 로그인 히스토리 insert/select 용 
 	private Date recent_datetime;    // 로그인히스토리
 
 	public int getEmp_num() {

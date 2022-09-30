@@ -24,7 +24,6 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
-
     //인사기록카드
     //인사기록카드 페이지 view
     @GetMapping ("/admin/admin_personnelCard")

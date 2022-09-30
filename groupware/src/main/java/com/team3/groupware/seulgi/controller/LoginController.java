@@ -24,6 +24,7 @@ public class LoginController {
 
     @RequestMapping(value="/login_check", method= RequestMethod.POST)
     public ModelAndView loginPost(EmployeeVO vo, HttpSession session, ModelAndView mv) {
+        
         EmployeeVO emp_info = loginDao.login_check(vo);
 
         //로그인 정보가 DB와 일치하는지 확인

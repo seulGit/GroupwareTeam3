@@ -14,7 +14,6 @@ zip_btn.addEventListener('click', function () {
 });
 
 
-
 //사원등록
 $(function () {
     $('.btn_register').click(function () {

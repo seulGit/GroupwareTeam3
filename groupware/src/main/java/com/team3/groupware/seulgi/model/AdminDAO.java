@@ -18,4 +18,5 @@ public interface AdminDAO {
     void initPW(Map<String, Object> map);
 
     void insert(Map<String, Object> map);
+    
 }

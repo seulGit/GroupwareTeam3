@@ -2,7 +2,7 @@
 <!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
 
-    <!-- 사원정보 검색조회 쿼리문 -->
+    <!-- 사원정보 검색조회 쿼리문 --> 
     <select id="personnelCardSearch" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
         select emp_num, auth_code, emp_name, emp_pw, emp_email, emp_desk_num, emp_phonenum, emp_address, emp_address2, emp_birth, emp_gender, join_date, leave_date, emp_active, dept_name, position_grade, d.dept_code
         from employee e join department d on e.dept_code=d.dept_code

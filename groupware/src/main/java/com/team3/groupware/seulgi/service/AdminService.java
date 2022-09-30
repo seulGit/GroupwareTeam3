@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface AdminService {
+    
     List<EmployeeVO> personnelCardSearch(Map<String, Object> map);
 
     void modify(Map<String, Object> map);
