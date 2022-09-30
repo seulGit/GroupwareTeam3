@@ -77,9 +77,10 @@
 		</div>
 
 	<!-- 모달 창 -->
-	<script>
+	<script> 
+	// script 사용 이유 : js파일에서는 string으로 인식되어 jsp파일에서 작성해야 함 
 		let emp_num=${sessionScope.emp_num};
-	</script>
+	</script>  
 	<div class="todo_modal_back">
 		<div id="todo_modal" class="tdo_modal">
 			<div id="create_todo">Create my Todo</div>
