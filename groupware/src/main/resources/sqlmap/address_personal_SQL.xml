@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="address_personal">
+
+
+   <!-- 전체 사원리스트 불러오기 -->
+	<select id="findListAll" resultType="com.team3.groupware.common.model.EmployeeVO">
+		select emp_name, position_name, dept_name, emp_no, fk_dept_no
+		from emp_table
+		order by emp_no desc;
+	</select>
+   
+   <!-- 해당 부서 사원리스트 불러오기 -->
+   <select id="findList" parameterType="HashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
+		select E.emp_name as emp_name, E.position_grade as position_grade, D.dept_name as dept_name, 
+		E.emp_num as emp_num, E.dept_code as dept_code
+		from employee E left join department D
+		on E.dept_code = D.dept_code
+		<if test="dept_code != null">
+		where E.dept_code = #{dept_code} <!-- 부서와 jsp 해당 클래스의 value 값 비교 -->
+		</if>
+		order by emp_num desc;
+   </select>
+   
+   <insert id="address_personal_add_category">
+  		insert into my_address_category 
+  		(my_address_category_subject) value ('#{searchCategory}');
+   </insert>
+   
+   <!-- 
+   <select id="address_personal_search_category" parameterType="hashMap" resultType="hashMap">  
+   		select my_address_category_subject 
+   		from my_address_category
+   		where my_address_category_subject like ('#{searchCategory}');
+   		
+   </select>
+   -->
+  
+  
+
+
+  
+</mapper>
