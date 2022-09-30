@@ -28,6 +28,12 @@
 // ====== 조직도에서 팀이름 클릭 했을때 ====== //
 window.onload = function(){
 
+	let messageReceiver = document.querySelector("#message_receiver");
+	
+	var arrNum = [];
+	let arrNumJoin;	
+	let arrSet;
+
     // ====== 보내기 버튼 클릭 이벤트 ====== // 
     $("#writeSubmit").click(function(){
 		// ====== 유효성 검사 ====== //
@@ -159,11 +165,9 @@ window.onload = function(){
     function writeAddressChkBox() {
     	const chkBox = document.querySelectorAll(".chkbox"); // 체크박스 생성
     	const checkAll = document.querySelector("#checkAll"); // 전체 체크박스 생성
-    	//체크박스 전체 선택 / 해제
-    	var arrNum = [];
-    	
-    	checkAll.addEventListener('click', function(){    		
-    		console.log(chkBox);
+    	//체크박스 전체 선택 / 해제    	
+    	checkAll.addEventListener('click', function(){
+    		
     	    if(checkAll.checked==true){
         	    for(let i=0; i<chkBox.length; i++){
             	chkBox[i].checked = true;
@@ -172,24 +176,8 @@ window.onload = function(){
         	    for(let i=0; i<chkBox.length; i++){
             	chkBox[i].checked = false;
         	    console.log("체크 제거");
-        	    arrNum = [];
         		}
         	}
-    		// 쪽지 주소록에서 확인 버튼 누를 시 받는 사람으로 관련 내용 in
-        	$("#write_address_selectCheck").click(function () {
-    	    	let messageReceiver = document.querySelector("#message_receiver");
-    	    	let arrNumJoin;
-        	    for(let i=0; i<chkBox.length; i++){
-        	    	if(chkBox[i].checked==true){
-            	    let innerEmpnum = chkBox[i].parentNode.parentNode.childNodes[4].innerHTML;
-                	console.log(innerEmpnum);
-                	arrNum.push(innerEmpnum);
-                	arrNumJoin = arrNum.join(", ");
-        	    	}
-            	}
-    	    	messageReceiver.value = arrNumJoin;
-        	    $(".message_modal").css("display", "none");		// 확인 버튼 클릭 시 모달 삭제
-        	});
     	});
     	//체크박스 하나 해제 시 전체선택 체크박스 해제
     	for(let i=0; i<chkBox.length; i++){
@@ -202,9 +190,23 @@ window.onload = function(){
         		}
       		});
     	}; // 체크박스 전체 선택 / 해제 기능 끝    
-
-
-    	// 2
+		// 쪽지 주소록에서 확인 버튼 누를 시 받는 사람으로 관련 내용 in
+    	$("#write_address_selectCheck").click(function () {
+    	    for(let i=0; i<chkBox.length; i++){
+    	    	if(chkBox[i].checked==true){
+        	    	let innerEmpnum = chkBox[i].parentNode.parentNode.childNodes[4].innerHTML;
+            		console.log(innerEmpnum);
+            		arrNum.push(innerEmpnum);
+    	    	}
+        	}
+    	    arrSet = Array.from(new Set(arrNum));
+    	    arrNumJoin = arrSet.join(", ");
+	    	messageReceiver.value = arrNumJoin;
+    	    $(".message_modal").css("display", "none");		// 확인 버튼 클릭 시 모달 삭제
+    	});
+    	$("#writeSubmit").click(function () {
+    	    arrNum = [];
+    	});
 	}
 };
 
