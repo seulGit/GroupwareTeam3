@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+
+    <!-- 사원정보 검색조회 쿼리문 --> 
+    <select id="personnelCardSearch" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
+        select emp_num, auth_code, emp_name, emp_pw, emp_email, emp_desk_num, emp_phonenum, emp_address, emp_address2, emp_birth, emp_gender, join_date, leave_date, emp_active, dept_name, position_grade, d.dept_code
+        from employee e join department d on e.dept_code=d.dept_code
+        where
+        <choose>
+            <when test="emp_name!=null and emp_name!=''">
+                emp_name like CONCAT('%',#{emp_name},'%') and
+            </when>
+            <otherwise>
+                 emp_name like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="dept_name!=null and dept_name!=''">
+                dept_name like CONCAT('%',#{dept_name},'%') and
+            </when>
+            <otherwise>
+                dept_name like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="emp_num!=null and emp_num!=''">
+                emp_num like CONCAT('%',#{emp_num},'%') and
+            </when>
+            <otherwise>
+                emp_num like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="join_date!=null and join_date!=''">
+                join_date like CONCAT('%',#{join_date},'%') and
+            </when>
+            <otherwise>
+                join_date like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="emp_phonenum!=null and emp_phonenum!=''">
+                emp_phonenum like CONCAT('%',#{emp_phonenum},'%') and
+            </when>
+            <otherwise>
+                emp_phonenum like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="emp_email!=null and emp_email!=''">
+                emp_email like CONCAT('%',#{emp_email},'%')
+            </when>
+            <otherwise>
+                emp_email like CONCAT('%','','%')
+            </otherwise>
+        </choose>
+        ;
+    </select>
+
+    <!-- 사원정보 수정 -->
+    <update id="personnelCardModify" parameterType="hashMap">
+        UPDATE employee
+        SET dept_code = #{dept_code},
+            emp_gender = #{emp_gender},
+            emp_birth = #{emp_birth},
+            position_grade = #{position_grade},
+            emp_desk_num = #{emp_desk_num},
+            emp_phonenum = #{emp_phonenum},
+            emp_email = #{emp_email},
+            emp_address = #{emp_address},
+            emp_address2 = #{emp_address2},
+            emp_active = #{emp_active},
+            join_date = #{join_date},
+            leave_date = #{leave_date}
+        WHERE emp_num = #{emp_num};
+    </update>
+
+    <!-- 사원정보 수정 후 목록 새로고침되는 쿼리문 -->
+    <select id="personnelCardSearch2" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
+        select emp_num, auth_code, emp_name, emp_pw, emp_email, emp_desk_num, emp_phonenum, emp_address, emp_address2, emp_birth, emp_gender, join_date, leave_date, emp_active, dept_name, position_grade, d.dept_code
+        from employee e join department d on e.dept_code=d.dept_code
+        where
+        <choose>
+            <when test="emp_name!=null and emp_name!=''">
+                emp_name like CONCAT('%',#{s_emp_name},'%') and
+            </when>
+            <otherwise>
+                emp_name like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="dept_name!=null and dept_name!=''">
+                dept_name like CONCAT('%',#{s_dept_name},'%') and
+            </when>
+            <otherwise>
+                dept_name like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="emp_num!=null and emp_num!=''">
+                emp_num like CONCAT('%',#{s_emp_num},'%') and
+            </when>
+            <otherwise>
+                emp_num like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="join_date!=null and join_date!=''">
+                join_date like CONCAT('%',#{s_join_date},'%') and
+            </when>
+            <otherwise>
+                join_date like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="emp_phonenum!=null and emp_phonenum!=''">
+                emp_phonenum like CONCAT('%',#{s_emp_phonenum},'%') and
+            </when>
+            <otherwise>
+                emp_phonenum like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="emp_email!=null and emp_email!=''">
+                emp_email like CONCAT('%',#{s_emp_email},'%')
+            </when>
+            <otherwise>
+                emp_email like CONCAT('%','','%')
+            </otherwise>
+        </choose>
+        ;
+    </select>
+
+    <!-- 사원정보 삭제 -->
+    <delete id="personnelCardDelete" parameterType="hashMap">
+        delete from employee where emp_num=#{emp_num};
+    </delete>
+
+    <!-- 비밀번호 초기화 -->
+    <update id="personnelCardInitPW" parameterType="hashMap">
+        UPDATE employee
+        SET emp_pw = #{emp_pw}
+        WHERE emp_num = #{emp_num};
+    </update>
+
+    
+    <!-- 사원등록 -->
+    <insert id="personnelCardRegister" parameterType="hashMap">
+        insert into employee(emp_num, auth_code, emp_name, emp_pw, emp_email, emp_desk_num, emp_phonenum, emp_address, emp_birth, emp_gender, join_date, emp_active, dept_code, position_grade, emp_address2)
+        values (#{emp_num}, #{auth_code}, #{emp_name}, #{emp_pw}, #{emp_email}, #{emp_desk_num}, #{emp_phonenum}, #{emp_address}, #{emp_birth}, #{emp_gender}, #{join_date}, #{emp_active}, #{dept_code}, #{position_grade}, #{emp_address2});
+    </insert>
+</mapper>

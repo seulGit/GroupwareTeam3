@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+         
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <%@ include file="/WEB-INF/views/intro.jsp" %>
-<div id="layoutSidenav_content" class="admin_contents_section">
+<div id="layoutSidenav_content">
     <div id="home_content_container">
         <div class="home_content homebox1">
             <div class="home_personal_info">

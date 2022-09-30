@@ -1,0 +1,157 @@
+/* 
+=============================
+22/08/18 노현
+전사 주소록 기본 css 1차작성
+=============================
+*/
+/* 전사주소록 타이틀 */
+*
+{
+    /* border: 1px solid royalblue; */
+    font-family: 'BBTreeGR';
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BBTreeGR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff');
+   }
+   
+.address_all_title_box {
+    height: 80px;
+    padding: 15px;
+    border-bottom: 1px solid gray;
+    display: flex;
+
+}
+
+.address_all_title {
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.address_all_next {
+    padding: 10px;
+    color: gray;
+    padding-top: 23px;
+}
+
+/* 주소록 검색 */
+.address_all_search {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+.address_all_search > span > .xi-search {
+	cursor:pointer;
+}
+
+/* EXCEL 내보내기 */
+.address_all_excel_sendout {
+    margin-left: 40px;
+}
+
+/* 자음별 검색 */
+.address_all_search_consonant {
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.address_all_search_consonant > a {
+	cursor:pointer;
+}
+
+/* a링크 색 밑줄 제거 */
+.address_all_search_consonant > a:link , a:visited , a:hover , a:active{
+    text-decoration: none;
+    color: black;
+}
+.address_all_excel_sendout > a:link , a:visited , a:hover , a:active{
+    text-decoration: none;
+    color: black;
+}
+.address_all_page_num > a:link , a:visited , a:hover , a:active{
+    text-decoration: none;
+    color: black;
+}
+.address_all_table > tbody > tr > td > a:link , a:visited , a:hover , a:active{
+    text-decoration: none;
+    color: black;
+}
+.address_all_list_foreach> td > a:link , a:visited , a:hover , a:active{
+    text-decoration: none;
+    color: black;
+}
+
+/* 필드설정 */
+.address_all_field_set {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 테이블 */
+.address_all_table_title {
+    background-color: rgb(13,110,253);
+    color: white;
+    /* border-top: 1px solid black;
+    border-bottom: 1px solid black; */
+}
+
+.address_all_table > tbody > tr > td {
+    padding: 10px 0;
+    width:200px;
+}
+
+
+.address_all_table > tbody > tr > td:first-child {
+    padding-left: 15px;
+    
+}
+.address_all_list_foreach > td {
+    padding: 10px 0;
+    width:200px;
+}
+.address_all_list_foreach > td:first-child {
+    padding-left: 15px;
+}
+
+/* 하단 페이지 넘버 */
+.address_all_page_num_box{
+    padding-top: 25px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.address_all_page_num{
+    padding:  3px;
+    margin:3px; 
+    text-align: center;
+}
+.address_all_page_num a{
+    padding: 5px 8px 4px 8px;
+    margin: 2px; 
+    border: #ccc 1px solid;
+    color: #999;
+    text-decoration: none;
+}
+.address_all_page_num a:hover{
+    border:#999 1px solid;
+    color: #666;
+}
+.address_all_page_num a:active{
+    border: #999 1px solid;
+    color: #666;
+}
+.address_all_page_num .address_all_current{
+    border: #117bff 1px solid;
+    padding:5px 8px 4px 8px;
+    font-weight: bold;
+    margin: 2px;
+    color: #036cb4;
+}
+.address_all_page_num .address_all_disabled{
+    padding:5px 8px 4px 8px;
+    margin: 2px;    
+}
