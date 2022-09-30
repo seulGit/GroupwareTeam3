@@ -18,8 +18,8 @@ public class CalendarDAO {
         return this.sqlSessionTemplate.insert("calendar_event.event_insert", map);
     }
 
-    public List<Map<String, Object>> selectList() {
-        return this.sqlSessionTemplate.selectList("calendar_event.event_select_list");
+    public List<Map<String, Object>> selectList(Map<String, Object> emp_num) {
+        return this.sqlSessionTemplate.selectList("calendar_event.event_select_list", emp_num);
     }
 
     public int delete(Map<String, Object> map) {

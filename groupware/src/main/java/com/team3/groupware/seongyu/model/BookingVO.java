@@ -2,8 +2,8 @@ package com.team3.groupware.seongyu.model;
 
 public class BookingVO {
     private int booking_num;
-    private String meetingroom_num;
-    private String fixtures_num;
+    private int meetingroom_num;
+    private int fixtures_num;
     private int emp_num;
     private String booking_attendees;
     private String booking_start_date;
@@ -20,19 +20,19 @@ public class BookingVO {
         this.booking_num = booking_num;
     }
 
-    public String getMeetingroom_num() {
+    public int getMeetingroom_num() {
         return meetingroom_num;
     }
 
-    public void setMeetingroom_num(String meetingroom_num) {
+    public void setMeetingroom_num(int meetingroom_num) {
         this.meetingroom_num = meetingroom_num;
     }
 
-    public String getFixtures_num() {
+    public int getFixtures_num() {
         return fixtures_num;
     }
 
-    public void setFixtures_num(String fixtures_num) {
+    public void setFixtures_num(int fixtures_num) {
         this.fixtures_num = fixtures_num;
     }
 

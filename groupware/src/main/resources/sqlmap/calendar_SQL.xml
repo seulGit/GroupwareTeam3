@@ -7,7 +7,7 @@
 			insert into calendar
     		(calendar_start_date, calendar_end_date, calendar_title, calendar_memo, emp_num, calendar_color)
     		values
-    		(#{calendar_start_date}, #{calendar_end_date}, #{calendar_title}, #{calendar_memo}, 990810, #{calendar_color})
+    		(#{calendar_start_date}, #{calendar_end_date}, #{calendar_title}, #{calendar_memo}, #{emp_num}, #{calendar_color})
 		]]>
 	</insert>
 	<select id="event_select_list" parameterType="hashMap" resultType="hashMap">
@@ -23,7 +23,7 @@
 			from
 			    calendar
 			where
-			    emp_num = 990810;
+			    emp_num = #{emp_num};
 		]]>
 
 	</select>
@@ -31,7 +31,7 @@
 		<![CDATA[
 			DELETE
 			FROM
-			    groupware.calendar
+			    calendar
 			WHERE
 			    calendar_num = #{calendar_num};
 		]]>
@@ -39,7 +39,7 @@
 	<update id="event_date_change" parameterType="hashMap">
 		<![CDATA[
 			UPDATE
-			    groupware.calendar t
+			    calendar t
 			SET
 			    t.calendar_start_date = #{calendar_start_date},
 			    t.calendar_end_date = #{calendar_end_date}
@@ -51,7 +51,7 @@
 	<update id="event_change" parameterType="hashMap">
 		<![CDATA[
 		UPDATE
-			groupware.calendar t
+			calendar t
 		SET
 		    t.calendar_memo = #{calendar_memo},
 		    t.calendar_title = #{calendar_title},

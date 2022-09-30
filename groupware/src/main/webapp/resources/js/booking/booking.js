@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    let emp_num_value = {
+        emp_num: document.querySelector("#session_emp_num").value
+    }
     $(function () {
         var request = $.ajax({
             url: "/bookingList",
@@ -338,6 +341,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         console.log(obj)
 
+                        let booking_event_meetingroom_code = parseInt(booking_event_meetingroom.value.slice(12));
+                        let booking_event_fixtures_code = parseInt(booking_event_fixtures.value.slice(9));
+
                         calendar.addEvent({
                             title: booking_event_title.value,
                             start: booking_start_date.value,
@@ -345,8 +351,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             extendedProps: {
                                 content: booking_memo.value,
                                 attendees: attendees_emp_code_list,
-                                meetingroom: booking_event_meetingroom.value,
-                                fixtures: booking_event_fixtures.value
+                                meetingroom: booking_event_meetingroom_code,
+                                fixtures: booking_event_fixtures_code
                             }
                         });
                         $.ajax({
@@ -359,8 +365,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 "booking_end_date": booking_end_date.value,
                                 "booking_memo": booking_memo.value,
                                 "booking_attendees": attendees_emp_code_list,
-                                "meetingroom_num": booking_event_meetingroom.value,
-                                "fixtures_num": booking_event_fixtures.value
+                                "meetingroom_num": booking_event_meetingroom_code,
+                                "fixtures_num": booking_event_fixtures_code,
+                                "emp_num": document.querySelector("#session_emp_num").value
                             }
                         })
                         booking_modal.style.display = "none";

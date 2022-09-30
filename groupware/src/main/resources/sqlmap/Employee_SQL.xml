@@ -8,7 +8,6 @@
 			SELECT
 			    emp_num,
 			    auth_code,
-			    auth_code,
 			    emp_name,
 			    emp_pw,
 			    emp_email,
@@ -19,8 +18,8 @@
 			    emp_gender,
 			    join_date,
 			    leave_date,
-			    emp_auth,
-			    dept_num,
+			    emp_active,
+			    dept_code,
 			    position_grade
 			FROM
 			    employee

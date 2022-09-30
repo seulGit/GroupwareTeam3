@@ -27,6 +27,7 @@
 
 <!-- 220818 성선규 추가 -->
 <div id="layoutSidenav_content" class="calendar_main_section">
+    <input type="hidden" value="${sessionScope.emp_num}" id="emp_num">
     <div id='calendar'></div>
     <div class="event_add_container">
         <div class="arrow_arrow">
