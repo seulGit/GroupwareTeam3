@@ -1,0 +1,381 @@
+@font-face {
+    font-family: 'BBTreeGR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.content_box{  
+    height: 80px;
+    width: 100%;
+    font-size: 2rem;
+    font-family: 'BBTreeGR';
+    padding: 15px;
+    border-bottom: 1px solid gray;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-width: 850px;
+    }
+.EDMS_new_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+     margin-left: 10%;
+    margin-right: 10%;
+    min-width: 850px;
+}
+       
+/* 결재선지정 테이블 */
+.basic_setting{
+    font-weight: bold;
+    font-family: 'BBTreeGR';
+    padding: 15px;
+    margin: 35px 0 20px;
+}
+.table_box_fir{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.basic_setting table tr td{
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid rgb(224, 222, 222);
+}
+.table_bg{
+    background-color: rgb(202, 199, 199);
+}
+#type_select{
+     border: 0;
+}
+#type_select:focus{
+      outline: none;
+}
+.table_box_sec{
+    display: flex;
+    flex-direction: row;
+}
+.table_size{
+    width: 20% !important;
+}
+#EDMS_money_table_size{
+    width: 85%;
+    text-align: right;
+}
+.approval_reset{
+    display: flex;
+    justify-content: end;
+    margin-right: 15%;
+    margin-top: 1%;
+}
+#approver_reset_btn{
+    font-family: 'BBTreeGR';
+    font-weight: bold;
+    font-size: 0.9rem;
+    height: 30px;
+    border-radius: 15px;
+    background-color: white;
+    color: dimgray;
+    border: 2px solid dimgray;
+    cursor: pointer;
+    display: none;
+}
+#btn_bg_first,
+#btn_bg_second{
+    font-family: 'BBTreeGR';
+    font-weight: bold;
+    font-size: 0.9rem;
+    height: 30px;
+    margin: auto;
+    border-radius: 15px;
+    background-color: white;
+    color: dimgray;
+    border: 2px solid dimgray;
+    cursor: pointer;
+}
+#approver_reset_btn:hover,
+#btn_bg_first:hover,
+#btn_bg_second:hover{
+    background-color:rgb(13, 110, 253);
+    border: 2px solid rgb(13, 110, 253);
+    color: white;
+    transition: 0.3s;
+}
+#approval_info{
+    margin-top : 30px;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 145%;
+    height: 200px;
+}
+
+/* 문서 결재 확인 */
+.Approval_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.Approval_container > div{
+    width: 50%;
+    height: 100%;
+}
+
+/* 상세입력 테이블 */
+.docu_input_box{
+    font-weight: bold;
+    font-family: 'BBTreeGR';
+    padding: 15px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.docu_input_icon{
+    font-size: 1.5rem;
+    display:flex;
+    justify-content: right;
+    margin-right: 5%;
+}
+.docu_input_icon i{
+    margin-left: 10px;
+}
+.docu_input_icon i:hover{
+        color:rgb(13, 110, 253);
+        transition: 0.3s;
+        cursor: pointer;
+}
+.input_table{
+    width: 90%;
+    border-collapse: collapse;
+}
+.input_table_size{
+    height: 100px;
+}
+.input_table_size > td:nth-child(1){
+    width: 20%;
+    font-size: 2rem;
+}
+.table_box_thr{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    margin-top : 10px;
+}
+.input_table tr td{
+    border: 2px solid black;
+    height: 35px;
+}
+.input_table input[type=text]{
+    width: 100%;
+    float: left;
+    height: 100%;
+    border: none;
+    font-size: 1.2rem;
+}
+.input_table input[type=text]:focus{
+    outline: none;
+}
+.EDMS_new_impor_position div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+/* 220924 15:50 성선규 추가 */
+#EDMS_new_impor{
+    display: none;
+}
+.EDMS_new_impor_switch {
+    width: 50px;
+    margin-left: 10px;
+    height: 25px;
+    display: block;
+    position: relative;
+    border-radius: 2rem;
+    background-color: #fff;
+    box-shadow: 0 0 1rem 3px rgba(0 0 0 / 15%);
+    cursor: pointer;
+    border: 1px solid red;
+  }
+  
+  .EDMS_new_impor_switch .EDMS_new_impor_btn {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top:50%;
+    left: -9px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: #f03d3d;
+  }
+  
+  /* 체크박스가 체크되면 변경 이벤트 */
+  #EDMS_new_impor:checked ~ .EDMS_new_impor_switch {
+    background: #f03d3d;
+  }
+  
+  #EDMS_new_impor:checked ~ .EDMS_new_impor_switch .EDMS_new_impor_btn {
+    left: calc(100% - 30px);
+    background: #fff;
+  }
+  
+  .EDMS_new_impor_switch, .EDMS_new_impor_btn {
+    transition: all 0.2s ease-in;
+  }
+
+.EDMS_new_impor_btn{
+    margin-left: 10px;
+    width: 70px;
+    height: 25px;
+    border: 1px solid red;
+    border-radius: 10px;
+}
+
+.EDMS_new_api{
+    margin-top : 5px;
+    border: 2px solid black;
+    height: 50%;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+/* 결재자의견작성란 */
+.EDMS_result_write{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.EDMS_result_write div:nth-child(1){
+    margin-top : 20px;
+    width: 90%;
+}
+#EDMS_result{
+    width: 90%;
+    margin-top : 10px;
+    border: 2px solid black;
+}
+
+/* 상신/취소 버튼 */
+.EDMS_btn {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.EDMS_input_btn{
+    margin : 20px 10px 50px;
+    border-radius: 30px;
+    width: 80px;
+    height: 35px;
+    font-family: 'BBTreeGR';
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 2px solid black;
+    background-color: white;
+}
+.EDMS_approval:hover{
+    background-color: rgb(13, 110, 253);
+    color: white;
+    border: 2px solid rgb(13, 110, 253);
+}
+.EDMS_cancel:hover{
+    background-color: gray;
+    color: white;
+    border: 2px solid gray;
+}
+.ck.ck-editor {
+    min-width: 100%;
+}
+.ck-editor__editable {
+    min-height: 300px;
+}
+
+/* 결재자 선택 모달 */
+.approver_modal{
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: -56px;
+    right: 0;
+    z-index: 99999;
+}
+.approver_container{
+    background-color: rgb(234, 234, 237);
+    width: 25%;
+    height: 50%;
+    position: absolute;
+    top: 25%;
+    left: 37.5%;
+    border-radius: 7px;
+    box-shadow: 0 5px 15px 3px rgba(128, 128, 128, 0.3);
+}
+.approver_box{
+    margin: 4% 4%;
+    width: 92%;
+    height: 92%;
+}
+.approver_box table{
+    width: 100%;
+}
+.approver_box div:nth-child(1) table{
+    width: 98.5%;
+}
+.approver_emp_list{
+    height: 96%;
+    overflow-y: scroll;
+}
+.approver_box table tr td{
+    text-align: center;
+}
+.approver_box table tr td:nth-child(1){
+    width: 25%;
+}
+.approver_box table tr td:nth-child(2){
+    width: 22%;
+    border-left: 1px solid rgba(128, 128, 128, 0.3);
+    border-right: 1px solid rgba(128, 128, 128, 0.3);
+}
+.approver_box table tr td:nth-child(3){
+    width: 23%;
+    border-right: 1px solid rgba(128, 128, 128, 0.3);
+}
+.approver_box table tr td:nth-child(4){
+    width: 25%;
+}
+.approver_emp_list_table tr{
+    height: 40px;
+    user-select: none;
+}
+.approver_emp_list_table tr:hover{
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}
+
+.approver_emp_list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.approver_emp_list::-webkit-scrollbar-thumb {
+    height: 30%;
+    background: rgb(172, 172, 172);
+    border-radius: 10px;
+}
+
+.approver_emp_list::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, .1);
+}

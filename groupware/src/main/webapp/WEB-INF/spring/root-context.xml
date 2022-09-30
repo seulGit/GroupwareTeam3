@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- for mysql -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<!-- value의 입력 형식은 jdbc:mysql://localhost:포트번호/연결할 DB명 -->
+		<property name="url" value="jdbc:mysql://localhost:3306/groupwareteam3?serverTimezone=UTC&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:/sqlmap/**/*_SQL.xml" />
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>	
+	
+	<!-- 09.26 메일 보내기 -->
+    <bean id="mailSender"
+    	class="org.springframework.mail.javamail.JavaMailSenderImpl">
+      	<property name="host" value="smtp.gmail.com" />
+      	<property name="port" value="587" />
+      	<property name="username" value="gspst06@gmail.com" />
+      	<property name="password" value="nbzmgbosyykuatfs" />
+      	<property name="javaMailProperties">
+        <props>
+            <prop key="mail.transport.protocol">smtp</prop>
+            <prop key="mail.smtp.auth">true</prop>
+            <prop key="mail.smtp.starttls.enable">true</prop>
+            <prop key="mail.debug">true</prop>
+            <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+         </props>
+      </property>
+   </bean>
+	
+</beans>
