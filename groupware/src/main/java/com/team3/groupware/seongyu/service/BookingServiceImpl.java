@@ -3,6 +3,8 @@ package com.team3.groupware.seongyu.service;
 import com.team3.groupware.common.model.EmployeeVO;
 import com.team3.groupware.seongyu.model.BookingDAO;
 import com.team3.groupware.seongyu.model.BookingVO;
+import com.team3.groupware.seongyu.model.fixtureVO;
+import com.team3.groupware.seongyu.model.meetingroomVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +45,15 @@ public class BookingServiceImpl implements BookingServce{
     @Override
     public int booking_event_change(Map<String, Object> map) {
         return bookingDAO.booking_event_change(map);
+    }
+
+    @Override
+    public List<meetingroomVO> meetingroom_list() {
+        return bookingDAO.meetingroom_list();
+    }
+
+    @Override
+    public List<fixtureVO> fixture_list() {
+        return bookingDAO.fixture_list();
     }
 }

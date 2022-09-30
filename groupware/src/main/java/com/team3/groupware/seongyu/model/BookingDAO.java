@@ -37,4 +37,12 @@ public class BookingDAO {
     public int booking_event_change(Map<String, Object> map) {
         return sqlSessionTemplate.update("booking.booking_update", map);
     }
+
+    public List<meetingroomVO> meetingroom_list() {
+        return sqlSessionTemplate.selectList("booking.meetingroom_list");
+    }
+
+    public List<fixtureVO> fixture_list() {
+        return sqlSessionTemplate.selectList("booking.fixture_list");
+    }
 }

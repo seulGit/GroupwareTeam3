@@ -30,6 +30,7 @@
 
 <!-- 220818 성선규 추가 -->
 <div id="layoutSidenav_content" class="calendar_main_section">
+    <input type="hidden" value="${sessionScope.emp_num}" id="session_emp_num">
     <div id='calendar'></div>
     <div class="booking_modal">
         <div class="booking_event_container">
@@ -59,23 +60,19 @@
                     <!-- 회의실선택 -->
                     <div class="booking_event_meetingroom">
                         <select name="meetingroom_num" id="booking_event_meetingroom">
-                            <option value="null">회의실 선택</option>
-                            <option value="meetingroom_1">1번 회의실</option>
-                            <option value="meetingroom_2">2번 회의실</option>
-                            <option value="meetingroom_3">3번 회의실</option>
-                            <option value="meetingroom_4">4번 회의실</option>
-                            <option value="meetingroom_5">5번 회의실</option>
+                            <option value="0">회의실 선택</option>
+                            <c:forEach var="room" items="${meetingroom}">
+                                <option value="meetingroom_${room.meetingroom_num}">${room.meetingroom_name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <!-- 비품 선택 -->
                     <div class="booking_event_fixtures">
                         <select name="fixtures_num" id="booking_event_fixtures">
-                            <option value="null">비품 선택</option>
-                            <option value="fixtures_1">1번 비품</option>
-                            <option value="fixtures_2">2번 비품</option>
-                            <option value="fixtures_3">3번 비품</option>
-                            <option value="fixtures_4">4번 비품</option>
-                            <option value="fixtures_5">5번 비품</option>
+                            <option value="0">비품 선택</option>
+                            <c:forEach var="ft" items="${fixture}">
+                                <option value="fixtures_${ft.fixtures_num}">${ft.fixtures_name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>

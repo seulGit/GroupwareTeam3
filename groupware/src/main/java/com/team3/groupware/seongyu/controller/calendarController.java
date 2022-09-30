@@ -29,8 +29,10 @@ public class calendarController {
 
 	@RequestMapping(value = "calendarList", method = RequestMethod.GET)
 	@ResponseBody
-	public JSONArray calendarList() {
-		List<Map<String, Object>> list = this.CalendarService.selectList();
+	public JSONArray calendarList(@RequestParam Map<String, Object> emp_num) {
+		System.out.println("calendarList");
+		List<Map<String, Object>> list = this.CalendarService.selectList(emp_num);
+		System.out.println("calendarListttttt");
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 

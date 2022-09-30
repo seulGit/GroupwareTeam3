@@ -2,6 +2,8 @@ package com.team3.groupware.seongyu.controller;
 
 import com.team3.groupware.common.model.EmployeeVO;
 import com.team3.groupware.seongyu.model.BookingVO;
+import com.team3.groupware.seongyu.model.fixtureVO;
+import com.team3.groupware.seongyu.model.meetingroomVO;
 import com.team3.groupware.seongyu.service.BookingServce;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -27,8 +29,13 @@ public class BookingController {
     public ModelAndView booking_view(){
         ModelAndView mv = new ModelAndView();
         List<EmployeeVO> empList = bookingServce.emp_num_name_select();
-        System.out.println(empList);
+        List<meetingroomVO> meetingroom = bookingServce.meetingroom_list();
+        List<fixtureVO> fixture = bookingServce.fixture_list();
+
+
         mv.addObject("emp_info", empList);
+        mv.addObject("meetingroom", meetingroom);
+        mv.addObject("fixture", fixture);
         mv.setViewName("../views/seongyu/booking/booking");
         System.out.println(mv);
         return mv;

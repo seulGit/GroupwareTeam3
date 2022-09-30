@@ -1,10 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const emp_num = document.querySelector("#emp_num");
     $(function () {
         var request = $.ajax({
             url: "/calendarList",
             method: "get",
+            data: {
+                "emp_num" : parseInt(emp_num.value)
+            },
             contentType: "application/json; charset=utf-8",
             dataType: "JSON",
+            success: function(data){
+                for(let i = 0; i < data.length; i++){
+                    console.log(data[i])
+                }
+            },
             error: function (data) {
                 console.log("에러");
             }
@@ -250,6 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         obj.end = month_calendar_end_datetime.value;
                         obj.backgroundColor = event_background_color.value;
                         obj.extendedProps = obj_content;
+                        obj.emp_num = emp_num.value;
 
                         // 사용자가 이벤트 추가 시 바로 화면을 볼수 있도록
                         calendar.addEvent({
@@ -265,14 +275,15 @@ document.addEventListener('DOMContentLoaded', function () {
                             method: "POST",
                             dataType: "text",
                             data: {
+                                "emp_num": obj.emp_num,
                                 "calendar_title": obj.title,
                                 "calendar_start_date": obj.start,
                                 "calendar_end_date": obj.end,
                                 "calendar_color": obj.backgroundColor,
                                 "calendar_memo": obj.extendedProps.contant
                             },
-                            success: function (){
-                                window.location.reload();
+                            success: function (data){
+                                // window.location.reload();
                             }
                         });
                         event_add_container.style.display = "none";
