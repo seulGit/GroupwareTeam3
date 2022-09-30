@@ -7,12 +7,17 @@
     <select id="login_check" resultType="com.team3.groupware.common.model.EmployeeVO">
 
         select
-            emp_num, auth_code
+            emp_num, auth_code, emp_name
         from
             employee
         where
             emp_num = ${emp_num} and emp_pw = '${emp_pw}';
 
     </select>
+
+    <insert id="saveLog">
+        insert into login_history(emp_num, recent_datetime)
+        values (#{emp_num}, now());
+    </insert>
 
 </mapper>

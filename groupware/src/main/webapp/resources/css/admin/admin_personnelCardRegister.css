@@ -2,20 +2,7 @@
     border: 1px solid red;
 } */
 
-/* jsp include 시 상단이 잘려서 추가 */
-.admin_contents_section{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    min-width: 0;
-    flex-grow: 1;
-    min-height: calc(100vh - 56px);
-    /* margin-left: -225px; */
-    padding-left: 225px;
-    top: 56px;
-}
-
+/* <인사기록카드> 타이틀 부분 시작 */
 .content_box{
     height: 80px;
     width: 100%;
@@ -26,16 +13,18 @@
     display: flex;
     align-items: center;
 }
+/* <인사기록카드> 타이틀 부분 끝 */
 
+/* 본문 컨테이너 세팅 */
 .admin_personnel_container {
     width: 100%;
     height: 750px;
     display: flex;
 }
-
+/* 조회/등록 사이드바 부분 시작 */
 .admin_personnel_sidebar {
     width: 10%;
-    height: 750px;
+    height: 805px;
     background-color: rgba(128, 128, 128, 0.171);
 }
 
@@ -51,225 +40,107 @@
     text-decoration: none;
     color: black;
 }
+/* 조회/등록 사이드바 부분 끝 */
 
-
+/* 본문 부분 시작 */
 .admin_personnel_body {
-    width: 90%;
+    width: 80%;
     height: 750px;
 }
 
-/* 검색 시작*/
-.admin_personnel_body .search {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid gray;
-}
-
-.admin_personnel_body .search span {
-    margin: 0 5px 0 5px;
-    font-size: .8rem;
-}
-
-.admin_personnel_body .search select,input {
-    width: 100px;
-    margin-right: 10px;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid gray;
-    font-size: .5rem;
-    cursor: default;
-}
-
-.admin_personnel_body .search input:focus {
-    background-color: rgba(0, 0, 0, 0.061);
-}
-
-.admin_personnel_body .search i{
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 50%;
-    background-color: rgba(128, 128, 128, 0.18);
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bolder;
-}
-
-.admin_personnel_body .office_map_btn {
-    width: 80px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.125);
-}
-.admin_personnel_body .office_map_btn a{
-    text-decoration: none;
-    color: black;
-}
-/* 검색 끝 */
-
-
-/* 검색결과 목록/상세내용 구분 탭 시작 */
-.admin_personnel_body .tap {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    line-height: 50px;
-    margin-left: 10px;
-}
-
-.admin_personnel_body .tap .tap_result {
-    width: 30%;
-}
-.admin_personnel_body .tap .tap_details {
-    width: 70%;
-}
-/* 검색결과 목록/상세내용 구분 탭 끝 */
-
-/* 검색결과 목록 시작 */
-.admin_personnel_body .result {
-    display: flex;
-}
-
-.admin_personnel_body .result .list {
-    width: 30%;
-    height: 650px;
-    padding: 5px;
-}
-
-.admin_personnel_body .result .details {
-    width: 70%;
-    height: 650px;
-}
-
-.admin_personnel_body .list table {
-    width: 100%;
-    font-size: 3px;
-
-}
-
-.admin_personnel_body .list table tr:first-child{
-    background-color: rgba(128, 128, 128, 0.111);
-    height: 20px;
-    font-size: 5px;
-}
-
-.admin_personnel_body .list table tr:not(:first-child) {
-    height: 25px;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.081);
-    cursor: pointer;
-}
-/* 검색결과목록 끝 */
-
+/* 본문 내 좌측 우측 분할컨테이너 세팅 */
 .admin_personnel_body .details {
     width: 100%;
     height: 800px;
     display: flex;
     border-left: 1px solid rgba(128, 128, 128, 0.236);
+    padding-left: 10px;
 }
 
+/* 본문 내 좌측 부분 시작 */
 .admin_personnel_body .details .details_left {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10px;
-}
-
-.admin_personnel_body .details .details_left .img_box{
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-    background-color: gray;
-}
-
-.admin_personnel_body .details .details_left .modify_box{
-    width: 200px;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 5px;
-}
-
-.admin_personnel_body .details .details_left .modify_box input{
-    width: 200px;
-}
-
-
-.admin_personnel_body .details .details_left .modify_box button{
-    width: 50px;
-    height: 20px;
-    font-size: 10px;
-}
-
-.admin_personnel_body .details .details_right {
-    width: 80%;
-    height: 700px;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    /*padding-top: 10px;*/
+    width: 50%;
+    height: 650px;
     position: relative;
 }
 
-.admin_personnel_body .details .box {
-    width: 80%;
+/* 상세내용-주소 시작 */
+.admin_personnel_body .details .details_address {
+    width: 70%;
+    height: 150px;
+    display: flex;
+    margin: 10px;
+    text-align: left;
+    align-items: center;
+}
+.admin_personnel_body .details .details_address .address_body{
+    display: flex;
+    flex-direction: column;
+}
+
+.admin_personnel_body .details .details_address .address_body .zip_btn,
+.admin_personnel_body .details .details_right .details_initPW button {
+    width: 60px;
+    height: 30px;
+    margin: 0;
+    font-size: 13px;
+}
+.admin_personnel_body .details .details_address .address_body input{
+    /* width: 300px; */
+    height: 30px;
+}
+/* 상세내용-주소 끝 */
+/* 본문 내 좌측 부분 끝 */
+
+/* 본문 내 우측 부분 시작 */
+.admin_personnel_body .details .details_right {
+    width: 50%;
+    height: 650px;
+    position: relative;
+}
+
+.admin_personnel_body .details .box:not(.details_address) {
+    width: 70%;
     height: 30px;
     display: flex;
     margin: 10px;
+    text-align: left;
+    align-items: center;
 }
 
 .admin_personnel_body .details .box div {
-    width: 100px;
-    line-height: 30px;
-    margin-right: 10px;
+    width: 80px;
+    margin-right: 2px;
+    font-size: .8rem;
 }
 
 .admin_personnel_body .details .box input {
-    width: 300px;
-}
-
-/* .admin_personnel_body .details .details_title {
-    width: 30%;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.admin_personnel_body .details .details_title span {
-    width: 100px;
-    text-align: center;
-    border-bottom: 2px solid navy;
-}
-
-.admin_personnel_body .details .details_details {
-    width: 70%;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.admin_personnel_body .details input {
-    width: 500px;
+    width: 250px;
+    height: 25px;
+    font-size: .8rem;
     border: none;
-    background-color: rgba(128, 128, 128, 0.147);
-    border-radius: 3px;
-} */
+    outline: none;
+    border-bottom: 1px solid gray;
+    font-size: 1rem;
+    cursor: default;
+}
+/* 본문 내 우측 부분 끝 */
 
+
+/* 등록/취소 버튼 부분 시작 */
 .admin_personnel_body .details_btn {
-    width: 40%;
+    width: 60%;
     height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     bottom: 0;
-    margin-bottom: 30px;
+    margin-bottom: 55px;
 }
 
 .admin_personnel_body .details button{
@@ -284,5 +155,5 @@
 .admin_personnel_body .details .btn_cancel{
     color: red;
 }
-
-
+/* 등록/취소 버튼 부분 끝 */
+/* 본문 부분 끝 */

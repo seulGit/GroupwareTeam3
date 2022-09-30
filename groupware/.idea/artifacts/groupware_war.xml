@@ -1,14 +1,14 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="groupware_team3:war">
+  <artifact type="war" name="groupware:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <properties id="maven-jee-properties">
       <options>
-        <module>groupware_team3</module>
+        <module>groupware</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="archive" name="groupware-1.0.0-BUILD-SNAPSHOT.war">
-      <element id="artifact" artifact-name="groupware_team3:war exploded" />
+      <element id="artifact" artifact-name="groupware:war exploded" />
     </root>
   </artifact>
 </component>

@@ -12,16 +12,20 @@ public class EmployeeVO {
 	private String emp_desk_num;  	// 회사전화번호
 	private String emp_phonenum;  	// 휴대폰번호
 	private String emp_address; 	// 주소
+	private String emp_address2;	// 상세주소
 	private String emp_birth; 		// 생년월일
 	private String emp_gender; 		// 성별
 	private Date join_date;  		// 입사일
 	private Date leave_date;  		// 퇴사일
-	private boolean emp_active;
+	private int emp_active;
 	private String dept_code;  		// 부서번호
 	private String position_grade;  // 직급이름
 	
 	// message select용 
 	private String dept_name;  		 // 부서명
+
+	// 로그인 히스토리 insert/select 용
+	private Date recent_datetime;    // 로그인히스토리
 
 	public int getEmp_num() {
 		return emp_num;
@@ -87,6 +91,14 @@ public class EmployeeVO {
 		this.emp_address = emp_address;
 	}
 
+	public String getEmp_address2() {
+		return emp_address2;
+	}
+
+	public void setEmp_address2(String emp_address2) {
+		this.emp_address2 = emp_address2;
+	}
+
 	public String getEmp_birth() {
 		return emp_birth;
 	}
@@ -119,11 +131,11 @@ public class EmployeeVO {
 		this.leave_date = leave_date;
 	}
 
-	public boolean isEmp_active() {
+	public int getEmp_active() {
 		return emp_active;
 	}
 
-	public void setEmp_active(boolean emp_active) {
+	public void setEmp_active(int emp_active) {
 		this.emp_active = emp_active;
 	}
 
@@ -151,13 +163,35 @@ public class EmployeeVO {
 		this.dept_name = dept_name;
 	}
 
+	public Date getRecent_datetime() {
+		return recent_datetime;
+	}
+
+	public void setRecent_datetime(Date recent_datetime) {
+		this.recent_datetime = recent_datetime;
+	}
+
 	@Override
 	public String toString() {
-		return "EmployeeVO [emp_num=" + emp_num + ", auth_code=" + auth_code + ", emp_name=" + emp_name + ", emp_pw="
-				+ emp_pw + ", emp_email=" + emp_email + ", emp_desk_num=" + emp_desk_num + ", emp_phonenum="
-				+ emp_phonenum + ", emp_address=" + emp_address + ", emp_birth=" + emp_birth + ", emp_gender="
-				+ emp_gender + ", join_date=" + join_date + ", leave_date=" + leave_date + ", emp_active=" + emp_active
-				+ ", dept_code=" + dept_code + ", position_grade=" + position_grade + ", dept_name=" + dept_name + "]";
+		return "EmployeeVO{" +
+				"emp_num=" + emp_num +
+				", auth_code='" + auth_code + '\'' +
+				", emp_name='" + emp_name + '\'' +
+				", emp_pw='" + emp_pw + '\'' +
+				", emp_email='" + emp_email + '\'' +
+				", emp_desk_num='" + emp_desk_num + '\'' +
+				", emp_phonenum='" + emp_phonenum + '\'' +
+				", emp_address='" + emp_address + '\'' +
+				", emp_address2='" + emp_address2 + '\'' +
+				", emp_birth='" + emp_birth + '\'' +
+				", emp_gender='" + emp_gender + '\'' +
+				", join_date=" + join_date +
+				", leave_date=" + leave_date +
+				", emp_active=" + emp_active +
+				", dept_code='" + dept_code + '\'' +
+				", position_grade='" + position_grade + '\'' +
+				", dept_name='" + dept_name + '\'' +
+				", recent_datetime=" + recent_datetime +
+				'}';
 	}
-	
 }
