@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Controller
 public class BookingController {
-
+ 
     @Autowired
     BookingServce bookingServce;
 
