@@ -21,7 +21,7 @@
 <script type="text/javascript" charset="utf-8"
 	src="../resources/api/smarteditor/libs/smarteditor/js/service/HuskyEZCreator.js"></script>
 
-</head>
+</head> 
 
 <script>
 <!-- 220902 smart editor -->
