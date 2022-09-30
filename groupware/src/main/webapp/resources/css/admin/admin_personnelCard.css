@@ -2,20 +2,6 @@
     border: 1px solid red;
 } */
 
-/* jsp include 시 상단이 잘려서 추가 */
-.admin_contents_section{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    min-width: 0;
-    flex-grow: 1;
-    min-height: calc(100vh - 56px);
-    /* margin-left: -225px; */
-    padding-left: 225px;
-    top: 56px;
-}
-
 .content_box{
     height: 80px;
     width: 100%;
@@ -123,10 +109,10 @@
 }
 
 .admin_personnel_body .tap .tap_result {
-    width: 30%;
+    width: 40%;
 }
 .admin_personnel_body .tap .tap_details {
-    width: 70%;
+    width: 60%;
 }
 /* 검색결과 목록/상세내용 구분 탭 끝 */
 
@@ -136,33 +122,67 @@
 }
 
 .admin_personnel_body .result .list {
-    width: 30%;
+    width: 40%;
     height: 650px;
     padding: 5px;
 }
 
 .admin_personnel_body .result .details {
-    width: 70%;
+    width: 60%;
     height: 650px;
 }
 
-.admin_personnel_body .list table {
+.admin_personnel_body .result .list table {
     width: 100%;
-    font-size: 3px;
-
 }
 
-.admin_personnel_body .list table tr:first-child{
+.admin_personnel_body .result .list table tr td:nth-child(1) {
+    width: 8%;
+}
+
+.admin_personnel_body .result .list table tr td:nth-child(2) {
+    width: 8%;
+}
+
+.admin_personnel_body .result .list table tr td:nth-child(3) {
+    width: 15%;
+}
+
+.admin_personnel_body .result .list table tr td:nth-child(4) {
+    width: 15%;
+}
+
+.admin_personnel_body .result .list table tr td:nth-child(5) {
+    width: 18%;
+}
+
+.admin_personnel_body .result .list table tr td:nth-child(6) {
+    width: 18%;
+}
+
+.admin_personnel_body .result .list table tr td:nth-child(7) {
+    width: 18%;
+}
+
+.admin_personnel_body .result .list table:not(.result_table) tr{
     background-color: rgba(128, 128, 128, 0.111);
     height: 20px;
-    font-size: 5px;
 }
 
-.admin_personnel_body .list table tr:not(:first-child) {
+.admin_personnel_body .result .list table td {
+    font-size: 10px;
+    text-align: center;
+}
+
+/* 검색결과목록 중 첫 행 별도 스타일 지정(thead랑 스타일이 같아지는 문제) */
+.admin_personnel_body .result .list .result_table tr {
+    background: none;
     height: 25px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.081);
     cursor: pointer;
 }
+
+
 /* 검색결과목록 끝 */
 
 /* 상세내용 시작 */
@@ -172,48 +192,23 @@
     height: 800px;
     display: flex;
     border-left: 1px solid rgba(128, 128, 128, 0.236);
+    padding-left: 10px;
 }
 
 .admin_personnel_body .details .details_left {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10px;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    /*padding-top: 10px;*/
+    width: 50%;
+    height: 700px;
+    position: relative;
 }
-
-.admin_personnel_body .details .details_left .img_box{
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-    background-color: gray;
-}
-
-.admin_personnel_body .details .details_left .modify_box{
-    width: 200px;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 5px;
-}
-
-.admin_personnel_body .details .details_left .modify_box input{
-    width: 200px;
-}
-
-
-.admin_personnel_body .details .details_left .modify_box button{
-    width: 50px;
-    height: 20px;
-    font-size: 10px;
-}
-
 
 
 /* 우측 상세정보 부분 */
 .admin_personnel_body .details .details_right {
-    width: 100%;
+    width: 50%;
     height: 700px;
     position: relative;
 }
@@ -228,14 +223,16 @@
 }
 
 .admin_personnel_body .details .box div {
-    width: 100px;
-    margin-right: 10px;
+    width: 80px;
+    margin-right: 2px;
+    font-size: .8rem;
 }
 
 .admin_personnel_body .details .box input {
-    width: 300px;
+    width: 250px;
     height: 25px;
-    font-size: 1rem;
+    font-size: .8rem;
+
 }
 
 /* 상세내용-주소 시작 */
@@ -248,7 +245,8 @@
     flex-direction: column;
 }
 
-.admin_personnel_body .details .details_address .address_body .zip_btn{
+.admin_personnel_body .details .details_address .address_body .zip_btn,
+.admin_personnel_body .details .details_right .details_initPW button {
     width: 60px;
     height: 30px;
     margin: 0;
@@ -259,13 +257,12 @@
     height: 30px;
 }
 
-
 /* 상세내용-주소 끝 */
 /* 상세내용 끝 */
 
 /* 하단 수정 삭제 버튼 시작*/
 .admin_personnel_body .details_btn {
-    width: 80%;
+    width: 45%;
     height: 100px;
     display: flex;
     justify-content: center;

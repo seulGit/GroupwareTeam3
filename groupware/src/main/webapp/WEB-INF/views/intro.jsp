@@ -1,10 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
+        <c:if test="${sessionScope.auth_code == 'normal'}">
         <a class="navbar-brand ps-3" href="../main">JaeHee</a>
+        </c:if>
+        <c:if test="${sessionScope.auth_code == 'admin'}">
+        <a class="navbar-brand ps-3" href="../main_admin">JaeHee</a>
+        </c:if>
         <!-- Sidebar Toggle-->
         <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button> -->
@@ -118,7 +124,7 @@
                         <div class="collapse" id="collapse_calendar" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../calendar">캘린더</a>
+                                <a class="nav-link" href="../calendar/calendar_calendar.html">캘린더</a>
                                 <a class="nav-link" href="../calendar/calendar_mycalendar.html">내 캘린더 관리</a>
                             </nav>
                         </div>
@@ -194,6 +200,4 @@
                 </div>
             </nav>
         </div>
-    
-    
-    
+        

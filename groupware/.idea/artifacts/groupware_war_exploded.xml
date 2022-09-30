@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="groupware_team3:war exploded">
+  <artifact type="exploded-war" name="groupware:war exploded">
     <output-path>$PROJECT_DIR$/target/groupware-1.0.0-BUILD-SNAPSHOT</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>groupware_team3</module>
+        <module>groupware</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="groupware_team3" />
+          <element id="module-output" name="groupware" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.2.16.RELEASE" />
@@ -39,6 +39,9 @@
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.2.1.Final" />
           <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.1.0" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator-annotation-processor:5.2.4.Final" />
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.6" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:5.2.16.RELEASE" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.4" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:2.0.4" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.2.16.RELEASE" />
@@ -55,7 +58,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/groupware-1.0.0-BUILD-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="groupware_team3/web/Web" />
+      <element id="javaee-facet-resources" facet="groupware/web/Web" />
     </root>
   </artifact>
 </component>

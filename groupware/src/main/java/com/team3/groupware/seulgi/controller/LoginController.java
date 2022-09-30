@@ -16,6 +16,7 @@ public class LoginController {
     @Autowired
     LoginDAO loginDao;
 
+
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String login() {
         return "login";
@@ -23,20 +24,20 @@ public class LoginController {
 
     @RequestMapping(value="/login_check", method= RequestMethod.POST)
     public ModelAndView loginPost(EmployeeVO vo, HttpSession session, ModelAndView mv) {
-        System.out.println("컨트롤러 실행");
+        
         EmployeeVO emp_info = loginDao.login_check(vo);
-//        System.out.println(emp_info.getAuth_code());
-//        System.out.println(session);
-//        System.out.println(mv);
-
 
         //로그인 정보가 DB와 일치하는지 확인
         if(emp_info != null) { //일치할 시}
             session.setAttribute("emp_num", emp_info.getEmp_num());
             session.setAttribute("auth_code", emp_info.getAuth_code()); //권한별 사이드메뉴바 항목 구분을 위해 auth_code 받아놓음
+            session.setAttribute("emp_name", emp_info.getEmp_name());
+            session.setAttribute("recent_datetime", emp_info.getRecent_datetime());
             mv.addObject("emp_num", emp_info.getEmp_num());
             mv.addObject("auth_code", emp_info.getAuth_code());
             mv.addObject("message", "success");
+
+            loginDao.saveLog(vo);
 
             //권한 확인(일반 Or 관리자)
             if(emp_info.getAuth_code().equals("normal")) {
@@ -51,7 +52,6 @@ public class LoginController {
         else if(emp_info == null){ //불일치할 시
             mv.addObject("message", "error");
             mv.setViewName("/login");
-            System.out.println(mv);
         }
         return mv;
     }
