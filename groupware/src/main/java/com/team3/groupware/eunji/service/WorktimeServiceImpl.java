@@ -45,9 +45,16 @@ public class WorktimeServiceImpl implements WorktimeService {
 	}
 
 	@Override
-	public Map<String, Object> select_worktime_new_name(EmployeeVO employeeVo) {
+	public Map<String, Object> select_worktime_new_name(int emp_num) {
 		// TODO Auto-generated method stub
-		return worktimeDao.select_worktime_new_name(employeeVo);
+		return worktimeDao.select_worktime_new_name(emp_num);
+	}
+
+	// 검색
+	@Override
+	public List<EmployeeVO> deptListSearch(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return worktimeDao.deptListSearch(map);
 	}
 
 

@@ -18,7 +18,10 @@ public interface WorktimeDAO {
 	// ajax dao
 	List<EmployeeVO> dept_name_list(Map<String, Object> map);
 
-	Map<String, Object> select_worktime_new_name(EmployeeVO employeeVo);
+	Map<String, Object> select_worktime_new_name(int emp_num);
+
+	// 검색
+	List<EmployeeVO> deptListSearch(Map<String, Object> map);
 
 	
 

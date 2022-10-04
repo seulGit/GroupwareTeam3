@@ -32,4 +32,14 @@ public class AddressAllDAO {
 		// TODO Auto-generated method stub
 		return this.sqlSessionTemplate.selectList("address_all.address_search",keyword);
 	}
+
+	public List<AddressAllVO> excelList(AddressAllVO excelDown) {
+		// TODO Auto-generated method stub
+		return this.sqlSessionTemplate.selectList("address_all.address_all_excel",excelDown);
+	}
+
+	public List<Map<String, Object>> selectList_info(Map<String, Object> AllInfo) {
+		// TODO Auto-generated method stub
+		return this.sqlSessionTemplate.selectList("address_all.address_all_info",AllInfo);
+	}
 }

@@ -23,16 +23,13 @@ public class calendarController {
 
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	public ModelAndView view() {
-		System.out.println("===============================페이지 로드 성공===============================");
 		return new ModelAndView("../views/seongyu/calendar/calendar");
 	}
 
 	@RequestMapping(value = "calendarList", method = RequestMethod.GET)
 	@ResponseBody
 	public JSONArray calendarList(@RequestParam Map<String, Object> emp_num) {
-		System.out.println("calendarList");
 		List<Map<String, Object>> list = this.CalendarService.selectList(emp_num);
-		System.out.println("calendarListttttt");
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
@@ -51,9 +48,7 @@ public class calendarController {
 			map.put("extendedProps", extendedProps);
 
 			jsonObj = new JSONObject(map);
-			System.out.println("===============================jsonObj" + i + "번째==================================");
 			jsonArr.add(jsonObj);
-			System.out.println(jsonObj);
 		}
 		return jsonArr;
 	}
@@ -63,10 +58,6 @@ public class calendarController {
 	public ModelAndView calendarAdd(@RequestParam Map<String, Object> param){
 
 		ModelAndView mav = new ModelAndView();
-
-		System.out.println("======================================이벤트 추가======================================");
-		System.out.println(param);
-		System.out.println("======================================이벤트 추가======================================");
 
 		this.CalendarService.insert(param);
 
@@ -78,9 +69,6 @@ public class calendarController {
 	@ResponseBody
 	public ModelAndView calendarRemove(@RequestParam Map<String, Object> map){
 		ModelAndView mv = new ModelAndView();
-		System.out.println("======================================이벤트 삭제======================================");
-		System.out.println(map);
-		System.out.println("======================================이벤트 삭제======================================");
 
 		this.CalendarService.delete(map);
 		mv.setViewName("redirect:/calendarList");
@@ -92,10 +80,6 @@ public class calendarController {
 	public ModelAndView calendarDateChange (@RequestParam Map<String, Object> map){
 		ModelAndView mv = new ModelAndView();
 
-		System.out.println("======================================이벤트 일시 변경======================================");
-		System.out.println(map);
-		System.out.println("======================================이벤트 일시 변경======================================");
-		
 		this.CalendarService.calendarDateChange(map);
 
 		mv.setViewName("redirect:/calendarList");
@@ -105,10 +89,6 @@ public class calendarController {
 	@RequestMapping(value = "/calendarChange", method = RequestMethod.POST)
 	public ModelAndView calendarChange (@RequestParam Map<String, Object> map){
 		ModelAndView mv = new ModelAndView();
-
-		System.out.println("======================================이벤트 내용 수정======================================");
-		System.out.println(map);
-		System.out.println("======================================이벤트 내용 수정======================================");
 
 		this.CalendarService.calendarChange(map);
 

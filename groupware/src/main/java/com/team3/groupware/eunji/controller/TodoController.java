@@ -1,5 +1,6 @@
 package com.team3.groupware.eunji.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.team3.groupware.eunji.model.TodoVO;
 import com.team3.groupware.eunji.service.TodoService;
@@ -26,13 +29,11 @@ public class TodoController {
 		
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
-		System.out.println(session);
 		// 형변환
 		int emp_num = 0;
 		
 		if(session.getAttribute("emp_num") != null) {
 			String change = String.valueOf(session.getAttribute("emp_num"));
-			System.out.println(change);
 			emp_num = Integer.parseInt(change);
 		}
 		
@@ -47,22 +48,30 @@ public class TodoController {
 	public ModelAndView todoList(@RequestBody Map<String,Object> map) {
 
 		todoService.todo_insert(map);
-		System.out.println(map.get("todo_num"));
 		ModelAndView mv = new ModelAndView();
 
 		// 새롭게 생성된 todo 가져오기
 		mv.addObject("data", todoService.todo_board_New(map));
+		System.out.println( todoService.todo_board_New(map));
 		mv.setViewName("/eunji/todo/todo_write");
-		System.out.println(mv);
 		return mv;
 	}
 	
 	// todo 삭제
 	@PostMapping("/todo_delete")
-	public String todoDelete(TodoVO todoVo) {
-		
-		todoService.todo_delete(todoVo);
-		return "redirect:/todo";
+	public ModelAndView todoDelete(TodoVO todoVo) {
+		ModelAndView mv = new ModelAndView();
+		Map<String,Object> todoDelMap = todoService.todo_delete(todoVo);
+		mv.setViewName("redirect:/todo");
+		mv.addObject("todoDelMap", todoDelMap);
+		return mv;
 	}
 	
+	   // todo 수정
+	   @PostMapping("/todo_modify")
+	   @ResponseBody
+	   // 수정 삭제같은 리턴이 필요없을 경우 responsebody를 사용해서 응답받을 수 있음
+	   public void todoModify(@RequestBody Map<String,Object> map) {
+		   todoService.todo_modify(map);
+	   }
 }

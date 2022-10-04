@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.team3.groupware.eunji.model.TodoDAO;
 import com.team3.groupware.eunji.model.TodoVO;
@@ -31,16 +32,25 @@ public class TodoServiceImpl implements TodoService {
 	// todo 만들기
 	@Override
 	public TodoVO todo_board_New(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return todoDao.todo_board_NEW(map);
 	}
-
+	
 	// todo 삭제
 	@Override
-	public void todo_delete(TodoVO todoVo) {
-		this.todoDao.todo_delete(todoVo);
+	public Map<String, Object> todo_delete(TodoVO todoVo) {
+		return this.todoDao.todo_delete(todoVo);
 		
 	}
+
+	// todo 수정
+	@Override
+	public void todo_modify(Map<String, Object> map) {
+		this.todoDao.todo_modify(map);
+	}
+
+
+
+
 
 
 	

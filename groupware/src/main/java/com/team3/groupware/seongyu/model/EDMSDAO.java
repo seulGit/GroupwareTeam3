@@ -14,6 +14,6 @@ public class EDMSDAO {
     SqlSessionTemplate sqlSessionTemplate;
 
     public List<EmployeeVO> select_emp_list() {
-        return sqlSessionTemplate.selectList("employee.select_list");
+        return sqlSessionTemplate.selectList("employee.select_emp_dept");
     }
 }

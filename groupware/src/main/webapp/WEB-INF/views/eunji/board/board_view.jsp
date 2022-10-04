@@ -11,11 +11,10 @@
     <title>JaeHee Group</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../../resources/css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../resources/css/board/board.css">
+    <link rel="stylesheet" href="../../resources/css/board/board_view.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="sb-nav-fixed">
 <!-- 상단/왼쪽 메뉴 include -->
 <%@ include file="/WEB-INF/views/intro.jsp" %>
 
@@ -25,48 +24,43 @@
             </div>
             <div id="board_write_container">                
                 <div class="board_write_insert_info">
-                    <table>
+                    <table class="board_write_table">
                         <tr>
                             <td class="board_td1">카테고리</td>
-                            <td class="board_td2"><select name="" id="board_select">
-                                <option value="">공지사항</option>
-                                <option value="" selected>일반게시판</option>
-                                <option value="">자료실</option>
+                            <td class="board_td2"><select name="board_category_num" id="board_select">
+                                <option value="500">공지사항</option>
+                                <option value="600" selected>일반게시판</option>
+                                <option value="700">자료실</option>
                             </select></td>
                         </tr>
                         <tr>
                             <td class="board_td1">글번호</td>
-                            <td class="board_td2"><input type="text" id="" name="" value="71"></td>
+                            <td class="board_td2">${detailMap.board_num}</td>
                         </tr>
                         <tr>
-                            <td class="board_td1">제목<span><input type="checkbox" id="important" checked>중요!</span></td>
-                            <td class="board_td2"><input type="text" id="" name="" value="금일 구로도에서 번개모임 "></td>
+                            <td class="board_td1">제목<span><input type="checkbox" id="important">중요!</span></td>
+                            <td class="board_td2"><input type="text" name="board_title" value="${detailMap.board_title}"></td>
                         </tr>
                         <tr>
                             <td class="board_td1">작성자</td>
-                            <td class="board_td2"><input type="text" value="이은지" disabled ></td>
+                            <td class="board_td2"><input type="text" name="emp_name" value="${detailMap.emp_name}" disabled ></td>
                         </tr>
                         <tr>
                             <td class="board_td1">작성일</td>
-                            <td class="board_td2"><input type="text" value="2022-08-01 11:46:02" disabled ></td>
-                        </tr>
-                        
-                        <tr>
-                            <td class="board_td1 board_tdtitle " colspan="2">내용</td>
-                        </tr>
-                        <tr>
-                            <td class="board_txt" colspan="2">콘치즈닭 양념닭 맛있어요</td>
-                        </tr>
-                        <tr>
-                            <td class="board_td1">첨부파일</td>
-                            <td class="board_td2"><input type="text" value="KakaoTalk_20220818_205906674.png"></td>
+                            <td class="board_td2"><input type="text" name="board_write_date" value="${detailMap.board_write_date}" disabled ></td>
                         </tr>
                     </table>
+                    
+                    <!-- ckeditor -->
+                 <div class="board_write_editor">
+                    <textarea id="ckeditor" name="board_contents">${detailMap.board_contents}</textarea>
+                </div>
+                    
                 </div>
                 <div class="board_bottom_btn">
-                    <button>수정하기</button>
-                    <button>삭제하기</button>
-                    <button>목록보기</button>                  
+                    <button type="submit" class="board_btn board_submit_btn">수정하기</button>
+                    <button class="board_btn board_cancel_btn">삭제하기</button>
+                    <a href="/board_normal"><input type="button" class="board_btn board_list_btn" value="목록보기"></a>                  
                 </div>
                 <!-- 댓글 -->
                 <div id="board_form_commentinfo">
@@ -86,9 +80,13 @@
             </div>
         </div>
     </div>
+
+    <script src = "resources/api/ckeditor4_full/ckeditor.js"></script>
+    <script src="../../resources/js/board/board.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <script src="../../resource/js/board/board.js"></script>
+     
+    
 </body>
 
 </html>

@@ -164,15 +164,17 @@
 			 <!-- 모달 창  -->
         <div id="worktime_modal_back"></div>
         <div id="worktime_modal">
-            <div id="worktime_modal_search">
-                <select name="type" id="dept_type_select">
-                    <option value="dept_name_position">사원명+팀원</option>
-                    <option value="dept_name">사원명</option>
-                    <option value="dept_position">팀원</option>
-                </select>
-                <input id="dept_search_input" type="text">
-                <button id="dept_search_btn">검색</button>
-            </div>
+            
+            	<div id="worktime_modal_search">
+	                <select name="type_option" id="dept_type_select">
+	                    <option value="all">전체</option>
+	                    <option value="emp_name">사원이름</option>
+	                    <option value="dept_name">부서명</option>
+	                </select>
+	                <input type="text" placeholder="검색 키워드를 입력하세요" id="dept_search_input" name="keyword" value="${keyword}">
+	                <input type="button" id="dept_search_btn" value="검색">
+            	</div>
+            
             <div id="worktime_modal_flex">
                 <div id="worktime_modal_dept_name">
                         <ul>

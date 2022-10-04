@@ -1,6 +1,7 @@
 package com.team3.groupware.seongyu.controller;
 
 import com.team3.groupware.common.model.EmployeeVO;
+import com.team3.groupware.common.service.DepartmentService;
 import com.team3.groupware.seongyu.service.EDMSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,9 @@ public class EDMSController {
 
     @Autowired
     EDMSService edmsService;
+
+    @Autowired
+    DepartmentService departmentService;
 
     @RequestMapping("/new")
     public ModelAndView EDMS_new(){
@@ -48,5 +52,10 @@ public class EDMSController {
         mv.setViewName("/seongyu/EDMS/certificate");
         return mv;
     }
+
+//    @PostMapping("general_add")
+//    public ModelAndView general_add(@RequestParam ){
+//
+//    }
 
 }

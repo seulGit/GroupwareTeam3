@@ -84,12 +84,12 @@
                         <div class="collapse" id="collapseEDMS" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../EDMS/EDMS_home">전자결재홈</a>
-                                <a class="nav-link" href="../EDMS/EDMS_new">새결재진행</a>
-                                <a class="nav-link" href="../EDMS/EDMS_Temporary_box">임시보관함</a>
-                                <a class="nav-link" href="../EDMS/EDMS_wait">결재대기중</a>
-                                <a class="nav-link" href="../EDMS/EDMS_ing">진행중문서</a>
-                                <a class="nav-link" href="../EDMS/EDMS_end">완료문서</a>
+                                <a class="nav-link" href="../EDMS/home">전자결재홈</a>
+                                <a class="nav-link" href="../EDMS/new">새결재진행</a>
+                                <a class="nav-link" href="../EDMS/Temporary_box">임시보관함</a>
+                                <a class="nav-link" href="../EDMS/wait">결재대기중</a>
+                                <a class="nav-link" href="../EDMS/ing">진행중문서</a>
+                                <a class="nav-link" href="../EDMS/end">완료문서</a>
                             </nav>
                         </div>
 
@@ -103,44 +103,26 @@
                         <div class="collapse" id="collapse_worktime" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../worktime/worktime_home">근태관리홈</a>
-                                <a class="nav-link" href="../worktime/worktime_new">연차신청하기</a>
-                                <a class="nav-link" href="../worktime/worktime_wait">승인대기중</a>
-                                <a class="nav-link" href="../worktime/worktime_ing">진행중문서</a>
-                                <a class="nav-link" href="../worktime/worktime_end">완료문서</a>
-                                <a class="nav-link" href="../worktime/worktime_view">출퇴근현황</a>
+                                <a class="nav-link" href="/worktime">근태관리홈</a>
+                                <a class="nav-link" href="/worktime_new">연차신청하기</a>
+                                <a class="nav-link" href="/worktime_wait">승인대기중</a>
+                                <a class="nav-link" href="/worktime_ing">진행중문서</a>
+                                <a class="nav-link" href="/worktime_end">완료문서</a>
+                                <a class="nav-link" href="/worktime_view">출퇴근현황</a>
                             </nav>
                         </div>
-                        <a class="nav-link" href="../todo/todo">
+                        <a class="nav-link" href="/todo">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             	ToDo+
                         </a>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapse_calendar" aria-expanded="false" aria-controls="collapse_calendar">
+                        <a class="nav-link collapsed" href="/calendar" >
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            	일정
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                              	 일정
                         </a>
-                        <div class="collapse" id="collapse_calendar" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../calendar/calendar_calendar.html">캘린더</a>
-                                <a class="nav-link" href="../calendar/calendar_mycalendar.html">내 캘린더 관리</a>
-                            </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapse_booking" aria-expanded="false" aria-controls="collapse_booking">
+                    	<a class="nav-link collapsed" href="/booking">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            	예약
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           	    예약
                         </a>
-                        <div class="collapse" id="collapse_booking" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../booking/booking_new">예약하기</a>
-                                <a class="nav-link" href="../booking/booking_view">나의 예약 목록 </a>
-                            </nav>
-                        </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapse_board" aria-expanded="false" aria-controls="collapse_board">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -150,9 +132,10 @@
                         <div class="collapse" id="collapse_board" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../board/board_notice">공지게시판</a>
-                                <a class="nav-link" href="../board/board_normal">일반게시판</a>
-                                <a class="nav-link" href="../board/board_docu">자료실</a>
+                            	<a class="nav-link" href="/board_write">게시글작성</a>
+                                <a class="nav-link" href="/board_notice">공지게시판</a>
+                                <a class="nav-link" href="/board_normal">일반게시판</a>
+                                <a class="nav-link" href="/board_docu">자료실</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -164,8 +147,8 @@
                         <div class="collapse" id="collaps_address" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../address/address_all">전사 주소록</a>
-                                <a class="nav-link" href="../address/address_personal">개인 주소록</a>
+                                <a class="nav-link" href="/address_all">전사 주소록</a>
+                                <a class="nav-link" href="/address_personal">개인 주소록</a>
                             </nav>
                         </div>
                         <a class="nav-link" href="../office_map/office_map">
@@ -183,13 +166,13 @@
                         <c class="collapse" id="collapseEDMS" aria-labelledby="headingOne"
                              data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="">전자결재관리</a>
-                                <a class="nav-link" href="">근태관리</a>
-                                <a class="nav-link" href="">예약관리</a>
-                                <a class="nav-link" href="">게시글관리</a>
-                                <a class="nav-link" href="../admin/admin_personnelCard">인사기록카드</a>
-                                <a class="nav-link" href="">접속내역확인</a>
-                                <a class="nav-link" href="">권한관리</a>
+                                <a class="nav-link" href="/admin/admin_EDMS">전자결재관리</a>
+                                <a class="nav-link" href="/admin/admin_worktime">근태관리</a>
+                                <a class="nav-link" href="/admin/admin_booking">예약관리</a>
+                                <a class="nav-link" href="/admin/admin_board">게시글관리</a>
+                                <a class="nav-link" href="/admin/admin_personnelCard">인사기록카드</a>
+                                <a class="nav-link" href="/admin/admin_loginHistory">접속내역확인</a>
+                                <a class="nav-link" href="/admin/admin_authority">권한관리</a>
                             </nav>
                             </c:if>
                     </div>

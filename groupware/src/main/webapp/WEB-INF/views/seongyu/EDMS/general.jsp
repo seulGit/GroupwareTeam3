@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="utf-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<form lang="en">
 
 <head>
     <meta charset="utf-8"/>
@@ -48,12 +48,12 @@
             <tr>
                 <td>제목</td>
                 <td colspan="4">
-                    <input type="text" class="EDMS_title" maxlength="39" placeholder="제목을 입력해주세요">
+                    <input name="approval_request_docu_title" type="text" class="EDMS_title" maxlength="39" placeholder="제목을 입력해주세요">
                 </td>
                 <td class="EDMS_new_impor_position">
                     <div>
                         긴급
-                        <input type="checkbox" name="EDMS_new_impor" id="EDMS_new_impor">
+                        <input type="checkbox" name="EDMS_docu_urgent" id="EDMS_new_impor">
                         <label for="EDMS_new_impor" class="EDMS_new_impor_switch">
                             <span class="EDMS_new_impor_btn"></span>
                         </label>
@@ -63,7 +63,7 @@
         </table>
     </div>
     <div class="EDMS_new_api">
-        <textarea name="editor" id="editor"></textarea>
+        <textarea name="approval_request_docu_contents" id="editor"></textarea>
     </div>
     <div class="EDMS_result_write">
         <div>최종결재자 의견</div>
@@ -74,5 +74,4 @@
         <input type="button" value="취소" class="EDMS_input_btn EDMS_cancel">
     </div>
 </div>
-
-<script src="<c:url value="/resources/api/ckeditor5-35.1.0-aymulr9ct11c/build/ckeditor.js"/>"></script>
+</form>
