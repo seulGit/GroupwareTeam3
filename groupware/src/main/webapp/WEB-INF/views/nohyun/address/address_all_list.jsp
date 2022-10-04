@@ -29,8 +29,8 @@
 <!-- ÃÊ¼º Æû -->
 <c:forEach var="row" items="${data}">
 	<tr class="address_all_list_foreach">
-		<td><i class="xi-user-o"></i><a
-			href="../address/address_all_info.html">${row.emp_name}</a></td>
+		<td><i class="xi-user-o"></i>
+		<a href="/address_all_info?emp_num=${row.emp_num}">${row.emp_name}</a></td>
 		<td>${row.position_grade}</td>
 		<td>${row.emp_phonenum}</td>
 		<td>${row.emp_email}</td>
