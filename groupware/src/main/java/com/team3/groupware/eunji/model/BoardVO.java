@@ -2,11 +2,16 @@ package com.team3.groupware.eunji.model;
 
 import java.util.Date;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 public class BoardVO {
 
 	// board(게시판) 테이블
 	private int  board_num; 		 	  // 게시판 번호
+	@NotNull
 	private String board_title;      	  // 게시판 제목
+	@NotNull
 	private String board_contents;   	  // 게시판 내용
 	private Date board_write_date;   	  // 작성일
 	private int board_view_count;    	  // 조회수
@@ -20,7 +25,7 @@ public class BoardVO {
 	
 	// board_comment(게시판 댓글) 테이블
 	private int comment_num;              // 댓글번호
-	private int emp_num;                  // 사원번호  key연결 안되있는데 erd클라우드 확인 필요!!
+	private int emp_num;                  // 사원번호 
 	private Date comment_date;            // 작성일
 	private String comment_contents;      // 내용
 	private boolean comment_fix_check;    // 수정하기

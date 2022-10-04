@@ -27,8 +27,16 @@ order by T.todo_num desc;
 </select>
 
 <!-- todo 삭제 -->
-<delete id="todo_delete">
+<delete id="todo_delete" parameterType="hashMap">
 	delete from todo 
 	where todo_num = #{todo_num};
 </delete>
+
+<!-- todo 수정 -->
+<update id="todo_modify" parameterType="hashMap" >
+	update todo 
+	set todo_title = #{todo_title}, todo_contents = #{todo_contents}
+	where todo_num = #{todo_num};
+</update>
+
 </mapper>

@@ -10,19 +10,27 @@
    //8. 댓글 수정기능
    220928 ~ 이은지
    ck에디터 추가
+   221004 게시판 유효성 검사
  * */
 
 // ck editor
   CKEDITOR.replace('ckeditor', {
 	  // 너비설정
 	  width: '1505',
-	  height: '459',
+	  height: '459'
   });
-
+  
+  
 const inputBar = document.querySelector("#board_comment_input");
 const rootDiv = document.querySelector("#board_comments_con");
 const btn = document.querySelector("#board_comment_submit");
 const mainCommentCount = document.querySelector('#comment_count'); //맨위 댓글 숫자 세는거.
+
+// 게시판 글 쓰기 
+let board_select = document.querySelector("#board_select");	   		// 게시판 선택
+let board_title = document.querySelector("#board_title");	   		// 게시판 제목
+let board_text = document.querySelector("#ckeditor"); 		   		// 게시판 내용
+let board_submit_btn = document.querySelector(".board_submit_btn"); // 게시판 작성 완료 버튼
 
 //글로벌로 뺏음. 값을 저장하기 위해서.
 let idOrVoteCountList=[];
@@ -248,9 +256,6 @@ function modifyComments(event){
 
 }
 
-
-
-
 //버튼만들기+입력값 전달
 function pressBtn(){ 
 
@@ -265,4 +270,16 @@ function pressBtn(){
    }
 }
 
-//btn.onclick = pressBtn;
+
+
+board_submit_btn.addEventListener("click", function(e){
+	if(board_select.value == null || board_select.value == ""){
+		alert("게시판  카테고리를 선택해주세요");
+		 e.preventDefault();
+	}else if(board_title.value == null || board_title.value == ""){
+		alert("게시판 제목을 입력해주세요");
+		 e.preventDefault();
+	} else {
+		alert("게시글이 작성되었습니다");
+	}
+});

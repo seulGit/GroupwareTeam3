@@ -3,15 +3,14 @@
 <mapper namespace="note">
 
 	<!-- 첨부파일 없는 쪽지쓰기 -->
-	<insert id="sendNote" parameterType="com.team3.groupware.common.model.EmployeeVO"
-		useGeneratedKeys="true" keyProperty="message_num">
-		insert into message
-		(message_receiver, message_title, message_sender, message_contents, message_datetime,
-		emp_num)
+	<insert id="sendNote" parameterType="com.team3.groupware.jeongchi.model.MessageVO" useGeneratedKeys="true" keyProperty="message_num">
+		insert into message(message_important, message_receiver, message_receiver2, 
+		message_title, message_sender, message_sender2, message_contents, message_datetime, 
+		message_read, message_type, message_delete_check, emp_num)
 		values
-		(#{message_receiver}, #{message_title}, #{message_sender}, #{message_contents}, now(),
-		22000001);
-	</insert>
+		(#{message_important}, #{message_receiver}, #{message_receiver2}, #{message_title}, #{message_sender}, #{message_sender2}, 
+		#{message_contents}, now(), 0, "일반", 0, #{emp_num});
+   </insert>
 
 	<!-- 전체 사원리스트 불러오기 -->
 	<select id="findListAll" resultType="com.team3.groupware.common.model.EmployeeVO">
@@ -54,5 +53,58 @@
 		</choose>
 		order by emp_num desc;
 	</select>
+	
+	<!-- 보낸 쪽지함 시작 -->
+	<!-- 보낸 쪽지함 전체 리스트 불러오기 -->
+	<!-- 단순 불러오기	
+	<select id="sendMessageList" resultType="com.team3.groupware.jeongchi.model.MessageVO">
+		select message_receiver2, message_receiver, message_title, message_datetime,
+		message_read, message_type
+		from message
+		order by message_datetime desc;
+	</select>  -->
+	<select id="count" resultType="int">
+		select count(*) from message;
+	</select>
+	<!-- 페이징처리용 불러오기 -->
+	<select id="sendMessageList" parameterType="hashMap" resultType="com.team3.groupware.jeongchi.model.MessageVO">
+		<include refid="paging_header" />
+		select message_receiver2, message_receiver, message_title, message_datetime,
+		message_read, message_type
+		from message
+		where message_sender2 = #{emp_num}
+		order by message_datetime desc, message_receiver2 desc
+		<include refid="paging_footer" />
+	</select>
+	<!-- 보낸 쪽지함 끝 -->
+
+	<!-- 받은 쪽지함 시작 -->
+	<!-- 페이징처리용 불러오기 -->
+	<select id="receiveMessageList" parameterType="hashMap" resultType="com.team3.groupware.jeongchi.model.MessageVO">
+		<include refid="paging_header" />
+		select message_sender2, message_sender, message_title, message_datetime,
+		message_read, message_type
+		from message 
+		where message_receiver2 = 22000001
+		order by message_datetime desc, message_sender2 desc
+		<include refid="paging_footer" />
+	</select>
+
+
+
+
+	<sql id="paging_header"> <!-- 메인 쿼리 헤더 -->
+		select *
+		from(
+		select @ROWNUM:=@ROWNUM+1 as rn, A.*
+		from(
+	</sql>
+
+	<sql id="paging_footer"> <!-- 메인 쿼리 푸터 -->
+		) A
+		where (@ROWNUM:=0)=0) rn
+		where rn between #{start} and #{end}
+	</sql>
+	
 </mapper>
 

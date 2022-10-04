@@ -25,24 +25,8 @@
    <!-- 전사주소록 사원리스트 불러오기 -->
    <select id="address_all_list" parameterType="hashMap" resultType="hashMap">  
  
-	select  
-	e.emp_name,  
-	e.position_grade,  
-	e.emp_phonenum,  
-	e.emp_email,  
-	d.dept_name,
-	e.emp_desk_num,
-	e.emp_address
-	  
-	from  
-	employee e join department d
-    on e.dept_code = d.dept_code;
-
-</select>  
-  <!-- 전사주소록 사원리스트 초성검색 -->
-<select id="address_chosung_list" parameterType="hashMap" resultType="hashMap">  
- <![CDATA[  
-	select  
+	select distinct
+	e.emp_num,
 	e.emp_name,  
 	e.position_grade,  
 	e.emp_phonenum,  
@@ -54,14 +38,35 @@
 	from  
 	employee e join department d
     on e.dept_code = d.dept_code
-    WHERE (e.emp_name >= #{first_consonant} AND e.emp_name < #{second_consonant} );
+    where auth_code='normal';
+
+</select>  
+  <!-- 전사주소록 사원리스트 초성검색 -->
+<select id="address_chosung_list" parameterType="hashMap" resultType="hashMap">  
+ <![CDATA[  
+	select distinct
+	e.emp_num,
+	e.emp_name,  
+	e.position_grade,  
+	e.emp_phonenum,  
+	e.emp_email,  
+	d.dept_name,
+	e.emp_desk_num,
+	e.emp_address
+	  
+	from  
+	employee e join department d
+    on e.dept_code = d.dept_code
+    WHERE (e.emp_name >= #{first_consonant} AND e.emp_name < #{second_consonant} )
+    and auth_code='normal';
     
 ]]>
 </select>  
  	<!-- 전사주소록 사원리스트 초성검색중 전체부분 -->
 <select id="address_whole_list" parameterType="hashMap" resultType="hashMap">  
  <![CDATA[  
-	select  
+	select distinct
+	e.emp_num,
 	e.emp_name,  
 	e.position_grade,  
 	e.emp_phonenum,  
@@ -73,7 +78,8 @@
 	from  
 	employee e join department d
     on e.dept_code = d.dept_code
-    WHERE (e.emp_name >= #{first_consonant} AND e.emp_name < #{second_consonant} );
+    WHERE (e.emp_name >= #{first_consonant} AND e.emp_name < #{second_consonant} )
+    and auth_code='normal';
     
 ]]>
 </select>
@@ -81,7 +87,8 @@
 	
 <select id="address_search" parameterType="hashMap" resultType="hashMap">  
  
-	select  
+	select distinct
+	e.emp_num,
 	e.emp_name,  
 	e.position_grade,  
 	e.emp_phonenum,  
@@ -95,8 +102,47 @@
     on e.dept_code = d.dept_code
     where 
     e.emp_name
-	like CONCAT('%',#{keyword},'%');
+	like CONCAT('%',#{keyword},'%')
+	and auth_code='normal';
 
 </select>  
+
+   <!-- 전사주소록 엑셀사원리스트 불러오기 -->
+   <select id="address_all_excel" parameterType="hashMap" resultType="com.team3.groupware.nohyun.model.AddressAllVO">  
+ 
+	select distinct
+	e.emp_name,  
+	e.position_grade,  
+	e.emp_phonenum,  
+	e.emp_email,  
+	d.dept_name,
+	e.emp_desk_num,
+	e.emp_address
+	  
+	from  
+	employee e join department d
+    on e.dept_code = d.dept_code;
+
+</select> 
+   <!-- 전사주소록 리스트상세 불러오기 -->
+   <select id="address_all_info" parameterType="hashMap" resultType="com.team3.groupware.nohyun.model.AddressAllVO">  
+ 
+	select distinct
+	e.emp_num,
+	e.emp_name,  
+	e.position_grade,  
+	e.emp_phonenum,  
+	e.emp_email,  
+	d.dept_name,
+	e.emp_desk_num,
+	e.emp_address
+	  
+	from  
+	employee e join department d
+    on e.dept_code = d.dept_code
+    where e.emp_num=#{emp_num};
+
+</select> 
+
   
 </mapper>

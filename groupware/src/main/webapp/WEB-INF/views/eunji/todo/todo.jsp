@@ -59,17 +59,25 @@
 					<!-- todo 생성 -->
 					
 					<c:forEach var="todo" items="${todoMapList}">
-					<form action="/todo" method="post"><input type="hidden" name="todo_emp_num" value="${emp_num}">
 					<div class="my_borad_box">
 						<div class="my_content_box" id="my_board_modal">
-							<p class="todo_title" id="todo_title">${todo.todo_title}</p>
+						<form action="/todo" method="post">
+							<input type="hidden" name="todo_emp_num" value="${emp_num}">
+								<p class="todo_title" id="todo_title">${todo.todo_title}</p>
+								<p class="my_borad_box_font todo_contents" id="todo_contents">${todo.todo_contents}</p>
+						</form>
+						<form action="/todo_favorite" method="post">
 							<i class="xi-star-o" title="즐겨찾기"></i>
+							<input type="hidden" name="todo_num" id="todoFavo" value="${todo.todo_num}">
+						</form>
+						<form action="/todo_delete" method="post">
 							<i class="xi-close-min" title="삭제"></i>
-							<input type="hidden" name="todo_num" value="${todo.todo_num}">
-							<p class="my_borad_box_font todo_contents" id="todo_contents">${todo.todo_contents}</p>
+							<!-- name은 항상 컬럼명과 일치시키기 -->
+							<input type="hidden" name="todo_num" id="todoDelete" class="todoDelete" value="${todo.todo_num}">
+						</form>
 						</div>
 					</div>
-					</form>
+					
 					</c:forEach>	
 				</div>
 			</div>
@@ -80,6 +88,7 @@
 	<script> 
 	// script 사용 이유 : js파일에서는 string으로 인식되어 jsp파일에서 작성해야 함 
 		let emp_num=${sessionScope.emp_num};
+		//let todo_num=${todo_num};
 	</script>  
 	<div class="todo_modal_back">
 		<div id="todo_modal" class="tdo_modal">
@@ -91,11 +100,14 @@
 				rows="10"></textarea>
 			<br>
 			<div class="todo_btn_center">
+				<input type="button" value="수정" class="todo_btn todo_modify">
 				<input type="button" value="저장" class="todo_btn todo_save">
 				<input type="button" value="취소" class="todo_btn todo_cancel">
 			</div>
 		</div>
 	</div>
+	
+	
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

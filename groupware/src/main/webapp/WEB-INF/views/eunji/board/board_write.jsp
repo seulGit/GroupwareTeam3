@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="../../resources/css/board/board_write.css"> 
 </head>
 
-<body class="sb-nav-fixed">
 <!-- 상단/왼쪽 메뉴 include -->
 <%@ include file="/WEB-INF/views/intro.jsp" %>
 
@@ -26,7 +25,7 @@
 
             <!-- 전체 감싸는 container -->
             <div id="board_write_container">
-                <form>
+                <form action="/board_write" method="post">
               
                 <!-- 게시글작성 테이블 -->
                 <div class="board_write_insert_info">
@@ -35,35 +34,38 @@
                             <tr>
                                 <td class="board_td1">카테고리</td>
                                 <td class="board_td2">
-                                		<select name="" id="board_select">
-                                        <option value="">공지사항</option>
-                                        <option value="">일반게시판</option>
-                                        <option value="">자료실</option>
-                                    </select></td>
+                                		<select name="board_category_num" id="board_select">
+                                		<option value="">게시판선택</option>
+                                        <option value="500">공지사항</option>
+                                        <option value="600">일반게시판</option>
+                                        <option value="700">자료실</option>
+                                    	</select>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="board_td1">제목<span><input type="checkbox" id="important">중요!</span></td>
-                                <td class="board_td2"><input type="text" id="board_title" name="" placeholder="제목을 입력하세요"></td>
+                                <td class="board_td2"><input type="text" id="board_title" name="board_title" placeholder="제목을 입력하세요"></td>
                             </tr>
                             <tr>
                                 <td class="board_td1">작성자</td>
-                                <td class="board_td2">${board_normal.emp_name}</td>
+                                <td class="board_td2">${emp_name}
+                                <input type="hidden" name="emp_num" value="${sessionScope.emp_num}"></td>
                             </tr>
                             <tr>
-                                <td class="board_td1">첨부파일</td>
-                                <td class="board_td2"><input type="file" value="파일선택"></td>
+                            	<td class="board_td1">첨부파일</td>
+                            	<td class="board_td2"><input type="file" name="board_file_route"></td>
                             </tr>
                         </table>
                 </div>
 
                 <!-- 에디터 추가  -->
                 <div class="board_write_editor">
-                    <div id="ckeditor" name="ckeditor"></div>
+                    <textarea id="ckeditor" name="board_contents"></textarea>
                 </div>
 
                 <!-- 버튼 -->
                 <div class="board_bottom_btn">
-                    <button class="board_btn board_submit_btn">작성 완료</button>
+                    <button type="submit" class="board_btn board_submit_btn">작성 완료</button>
                     <button class="board_btn board_cancel_btn">취소</button>
                 </div>
                 </form>

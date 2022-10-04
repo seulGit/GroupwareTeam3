@@ -20,6 +20,7 @@ let todo_modal = document.querySelectorAll(".todo_modal");	// 모달
 let todo_add = document.querySelector(".todo_add");			// create todo 버튼
 let todo_save = document.querySelector(".todo_save"); 		// 모달 창의 저장버튼
 let todo_cancel = document.querySelector(".todo_cancel");   // 모달 창의 취소버튼
+let todo_modify = document.querySelector(".todo_modify"); 	// 모달 창의 수정버튼
 
 // 빈 값 확인
 let todo_title = document.querySelector("#todo_modal_title");  // todo 제목
@@ -41,6 +42,10 @@ todo_add.addEventListener("click", function(){
 // 취소버튼 클릭 시 모달 창 사라지기
 todo_cancel.addEventListener("click", function(){
      todo_back.style.display="none";
+     todo_save.style.display='block';
+		todo_modify.style.display="none";
+		todo_title.value='';
+		todo_text.value='';
 });
 
 // 저장 버튼 클릭 시 내용이 없을 경우 alert창 뜨기
@@ -73,14 +78,17 @@ star[i].addEventListener("click", function(){
   }
 });
 }
+// input hidden
+let todoDelete = document.querySelectorAll(".todoDelete");
 
 // x 아이콘 클릭 시 삭제할 것인지 물어보기
-for(i=0; i<x_icon.length; i++){
+for(let i=0; i<x_icon.length; i++){
 	x_icon[i].addEventListener("click", function(){
 		if(confirm("삭제하겠습니까?") == true){
-			console.dir(this);
-		this.nextElementSibling.submit();
-		// X 아이콘 클릭 시 수정모달창도 함께 나와 상위 이벤트 전파 방지
+			
+		this.parentNode.submit();
+	
+			// X 아이콘 클릭 시 수정모달창도 함께 나와 상위 이벤트 전파 방지
 		 event.stopImmediatePropagation();
 		} else{
 	     event.stopImmediatePropagation();
@@ -88,10 +96,11 @@ for(i=0; i<x_icon.length; i++){
 		});
 }
 
+
 // 저장 버튼 클릭 후 ajax를 이용해 todo 생성
 let my_board = document.querySelector(".my_board_box_list");
 todo_save.addEventListener("click", function(){
-	console.log(emp_num);
+
 	let todo_board = {
 			todo_title : todo_title.value,
 			todo_contents : todo_text.value,
@@ -110,6 +119,8 @@ todo_save.addEventListener("click", function(){
 			todo_back.style.display="none";
 			todo_title.value='';
 			todo_text.value='';
+			// ajax로 todo 생성 후 js가 잘 되지 않아 새로고침하였음
+			location.reload();
 		},
 		error : function(data){
 			// 코드 수정 후 새로고침 후 무한로딩 걸려서 방지하는 코드 추가
@@ -123,47 +134,52 @@ todo_save.addEventListener("click", function(){
 });
 
 
+let todo_num = 0;
 //todo 클릭 시 수정 모달 창이 생기며 input값 가져옴
-//let todo_title_2 = document.querySelector("#todo_title");
-//let todo_contents_2 = document.querySelector("#todo_contents");
-//function input_value_change(){
-//    let input_value_title = todo_title_2.value;
-//    let input_value_contents = todo_contents_2.value;
-//    return console.log(input_value_title), console.log(input_value_contents);
-//		}
-//	
-//
-//
-//	for(let i=0; i<my_board_modal.length; i++){
-//	my_board_modal[i].addEventListener("click", function(input){
-//		todo_back.style.display="block";	
-//		input_value_change();		
-//	});
-//	}
-//
-//for(let i=0; i<my_board_modal.length; i++){
-//my_board_modal[i].addEventListener("click", function(){
-//		let emp_num ="${employeeVo.emp_num}";
-//		let todo_title_2 = document.querySelctor("#todo_title");
-//		let todo_contents_2 = document.querySelctor("#todo_contents");
-//		$.ajax({
-//			type:"POST",
-//			url:"/todo_update"+emp_num,
-//			headers: {"Content-Type" : "application/json;charset=utf-8"},
-//			data : JSON.stringify({
-//					todo_title_2:todo_title,
-//					todo_contents2_2:todo_contents
-//			}),
-//			dataType: "text",
-//			success : function(result){
-//				if(result == "success"){
-//					alert("수정되었습니다.");
-//				}
-//			},
-//			error: function(){
-//				console.log(error);
-//			}
-//		});
-//	});
-//}
+	for(let i=0; i<my_board_modal.length; i++){
+	my_board_modal[i].addEventListener("click", function(input){
+		todo_back.style.display="block";
+		// 모달 클릭 시 버튼이 수정버튼으로 변경
+		todo_save.style.display='none';
+		todo_modify.style.display="block";
+		todo_title.value=this.children[0].children[1].textContent;
+		todo_text.value=this.children[0].children[2].textContent;
+		todo_num = this.children[2].children[1].value;
+	});
+	}
+	
+		
+// 수정 버튼 클릭 시 ajax로 수정된 내용으로 변경됨 
+	todo_modify.addEventListener("click", function(){
+		let todo_board = {
+				todo_title : todo_title.value,
+				todo_contents : todo_text.value,
+				emp_num : emp_num,
+				todo_num : todo_num
+		};
+		console.log(todo_board);
+		$.ajax({
+			type : "POST",
+			url : "/todo_modify",
+			dataType : "text",
+			contentType : "application/json",
+			data : JSON.stringify(todo_board),
+			success : function(data){
+				alert("todo가 수정되었습니다.")
+				todo_back.style.display="none";
+				todo_title.value='';
+				todo_text.value='';
+				// ajax로 todo 생성 후 js가 잘 되지 않아 새로고침하였음
+				location.reload();
+				todo_modify_num.parentNode.submit();
+			},
+			error : function(data){
+				// 코드 수정 후 새로고침 후 무한로딩 걸려서 방지하는 코드 추가
+				if(data.readyState == 0 || data.status==0){
+					return;
+				}			
+			}
+		});
+	});
+	
 
