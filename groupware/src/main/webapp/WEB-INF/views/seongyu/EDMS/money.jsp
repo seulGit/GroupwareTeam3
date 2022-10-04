@@ -34,12 +34,12 @@
     <div class="table_box_thr">
         <table class="input_table">
             <tr class="input_table_size">
-                <td colspan="4">비용품의서</td>
-                <td colspan="2">
-                    <div class="Approval_container">
-                        <div></div>
-                        <div></div>
-                    </div>
+                <td>비용품의서</td>
+                <td colspan="5">
+<%--                    <div class="Approval_container">--%>
+<%--                        <div></div>--%>
+<%--                        <div></div>--%>
+<%--                    </div>--%>
                 </td>
             </tr>
             <tr>

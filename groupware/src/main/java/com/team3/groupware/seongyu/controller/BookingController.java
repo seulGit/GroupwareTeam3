@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Controller
 public class BookingController {
- 
+
     @Autowired
     BookingServce bookingServce;
 
@@ -37,7 +37,6 @@ public class BookingController {
         mv.addObject("meetingroom", meetingroom);
         mv.addObject("fixture", fixture);
         mv.setViewName("../views/seongyu/booking/booking");
-        System.out.println(mv);
         return mv;
     }
 
@@ -65,9 +64,7 @@ public class BookingController {
             map.put("extendedProps", extendedProps);
 
             jsonObj = new JSONObject(map);
-            System.out.println("===============================jsonObj" + (i + 1) + "번째==================================");
             jsonArr.add(jsonObj);
-            System.out.println(jsonObj);
         }
         return jsonArr;
     }
@@ -77,10 +74,6 @@ public class BookingController {
     public ModelAndView booking_insert(@RequestParam Map<String, Object> param){
 
         ModelAndView mav = new ModelAndView();
-
-        System.out.println("======================================이벤트 추가======================================");
-        System.out.println(param);
-        System.out.println("======================================이벤트 추가======================================");
 
         this.bookingServce.insert(param);
 
@@ -92,9 +85,6 @@ public class BookingController {
     @ResponseBody
     public ModelAndView bookingRemove(@RequestParam Map<String, Object> map){
         ModelAndView mv = new ModelAndView();
-        System.out.println("======================================이벤트 삭제======================================");
-        System.out.println(map);
-        System.out.println("======================================이벤트 삭제======================================");
 
         this.bookingServce.delete(map);
         mv.setViewName("redirect:/bookingList");
@@ -106,9 +96,6 @@ public class BookingController {
     public ModelAndView bookingDateChange(@RequestParam Map<String, Object> map){
         ModelAndView mv = new ModelAndView();
 
-        System.out.println("=============================== 이벤트 일시 수정 ===============================");
-        System.out.println(map);
-        System.out.println("=============================== 이벤트 일시 수정 ===============================");
 
         this.bookingServce.bookingDateChange(map);
         mv.setViewName("redirect:/bookingList");
@@ -119,10 +106,6 @@ public class BookingController {
     @ResponseBody
     public ModelAndView booking_event_change(@RequestParam Map<String, Object> map){
         ModelAndView mv = new ModelAndView();
-
-        System.out.println("=============================== 이벤트 정보 수정 ===============================");
-        System.out.println(map);
-        System.out.println("=============================== 이벤트 정보 수정 ===============================");
 
         this.bookingServce.booking_event_change(map);
         mv.setViewName("redirect:/bookingList");

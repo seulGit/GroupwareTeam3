@@ -28,8 +28,8 @@
     <div class="table_box_thr">
         <table class="input_table">
             <tr class="input_table_size">
-                <td colspan="4">증명서신청</td>
-                <td colspan="2">
+                <td>증명서신청</td>
+                <td colspan="5">
                     <div class="Approval_container">
                         <div></div>
                         <div></div>
