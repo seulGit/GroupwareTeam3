@@ -1,6 +1,5 @@
-/*
-220928 이은지
-
+/*이은지
+221004 detail 페이지 디자인
 */
 
 @font-face {
@@ -26,7 +25,7 @@
 }
 
 /* 아이콘 마진 */
-.fa-pen-to-square {
+.fa-chalkboard-user {
     margin-right: 5px;
 }
 
@@ -38,17 +37,15 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0 5% 0 5%;
+    padding: 0 5%;
 }
 
-#board_write_container>form {
-    width: 100%;
-}
 
 /* 테이블 감싸는 class */
 .board_write_insert_info {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -61,13 +58,11 @@
     border: 2px solid black;
     height: 40px;
 }
+
+/* select */
 #board_select{
     height: 25px;
 }
-.board_td1 span{
-    float: right;
-    padding-right: 5px;
-  }
 .board_td1{
     background-color: rgb(13, 110, 253);
     padding-left: 10px;
@@ -79,15 +74,15 @@
 .board_td2{
     padding-left: 5px;
 }
-#board_title{
-    width: 98%;
-    height: 25px;
-}
+
+/* 제목 옆의 중요 표시 */
+.board_td1 span{
+    float: right;
+    padding-right: 5px;
+  }
 #important{
     accent-color: red;
 }
-
-
 
 /* 에디터 감싸는 class */
 .board_write_editor {
@@ -95,12 +90,10 @@
     width: 100%;
     height: 600px;
     border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 10px;
 }
 
-/* 게시글 저장 취소 버튼 */
+/* 게시글 수정 취소 목록 버튼 */
 .board_bottom_btn {
     text-align: center;
     margin: 30px;
@@ -130,4 +123,14 @@
     background-color: gray;
     color: white;
     border: 2px solid gray;
+}
+.board_list_btn:hover{
+	background-color: gray;
+	color: white;
+	border: 2px solid gray;
+	cursor: pointer;
+}
+
+.board_form_commentinfo{
+	margin: 30px 0;
 }

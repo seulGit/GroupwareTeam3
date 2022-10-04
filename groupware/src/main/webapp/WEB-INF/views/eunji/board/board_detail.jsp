@@ -11,7 +11,7 @@
     <title>JaeHee Group</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../../resources/css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../resources/css/board/board_view.css">
+    <link rel="stylesheet" href="../../resources/css/board/board_detail.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
@@ -27,11 +27,7 @@
                     <table class="board_write_table">
                         <tr>
                             <td class="board_td1">카테고리</td>
-                            <td class="board_td2"><select name="board_category_num" id="board_select">
-                                <option value="500">공지사항</option>
-                                <option value="600" selected>일반게시판</option>
-                                <option value="700">자료실</option>
-                            </select></td>
+                            <td class="board_td2">${detailMap.board_category_subject}</td>
                         </tr>
                         <tr>
                             <td class="board_td1">글번호</td>
@@ -39,21 +35,21 @@
                         </tr>
                         <tr>
                             <td class="board_td1">제목<span><input type="checkbox" id="important">중요!</span></td>
-                            <td class="board_td2"><input type="text" name="board_title" value="${detailMap.board_title}"></td>
+                            <td class="board_td2">${detailMap.board_title}</td>
                         </tr>
                         <tr>
                             <td class="board_td1">작성자</td>
-                            <td class="board_td2"><input type="text" name="emp_name" value="${detailMap.emp_name}" disabled ></td>
+                            <td class="board_td2">${detailMap.emp_name}</td>
                         </tr>
                         <tr>
                             <td class="board_td1">작성일</td>
-                            <td class="board_td2"><input type="text" name="board_write_date" value="${detailMap.board_write_date}" disabled ></td>
+                            <td class="board_td2">${detailMap.board_write_date}</td>
                         </tr>
                     </table>
                     
                     <!-- ckeditor -->
                  <div class="board_write_editor">
-                    <textarea id="ckeditor" name="board_contents">${detailMap.board_contents}</textarea>
+                    ${detailMap.board_contents}
                 </div>
                     
                 </div>

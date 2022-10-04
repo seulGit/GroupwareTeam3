@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8" />
@@ -15,7 +16,6 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="sb-nav-fixed">
 <!-- 상단/왼쪽 메뉴 include -->
 <%@ include file="/WEB-INF/views/intro.jsp" %>
 
@@ -30,7 +30,7 @@
                     <table class="board_table">
                         <tr class="table_bg">
                             <td>글번호</td>
-                            <td>제목</td>
+                            <td class="board_title_size">제목</td>
                             <td>작성자</td>
                             <td>작성일</td>
                             <td>조회수</td>
@@ -38,13 +38,15 @@
                         <c:forEach var="board_normal" items="${boardNormalList}">
                         <tr class="board_table_hover">
                             <td>${board_normal.board_num}</td>
-                            <td class="table_title_left">${board_normal.board_title}</td>
+                            <td class="table_title_center"><a href="/board_detail?board_num=${board_normal.board_num}">${board_normal.board_title}</a></td>
                             <td>${board_normal.emp_name}</td>
-                            <td>${board_normal.board_write_date}</td>
-                            <td>${board_normal.board_count}</td>
+                             <fmt:parseDate value="${board_normal.board_write_date}" pattern="yyyy-MM-dd'T'HH:mm" var="board_normal_date" type="both" />
+                            <td><fmt:formatDate value="${board_normal_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
+                            <td>${board_normal.board_view_count}</td>
                         </tr> 
                         </c:forEach>                  
                     </table>
+                    
                     <!-- 페이징 영역 -->
                     <div class="board_list_number">
                         <div>
@@ -74,7 +76,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>   
     <script src="../../resources/js/board/board.js"></script>
-    <script src = "resources/api/ckeditor4_full/ckeditor.js"></script>
 </body>
 
 </html>

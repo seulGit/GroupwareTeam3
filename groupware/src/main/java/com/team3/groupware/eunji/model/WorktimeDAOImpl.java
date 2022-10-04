@@ -1,5 +1,6 @@
 package com.team3.groupware.eunji.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,9 +43,15 @@ public class WorktimeDAOImpl implements WorktimeDAO {
 	}
 
 	@Override
-	public Map<String, Object> select_worktime_new_name(EmployeeVO employeeVo) {
+	public Map<String, Object> select_worktime_new_name(int emp_num) {
 		// TODO Auto-generated method stub
-		return session.selectOne("worktime.worktime_emp_dept_name", employeeVo);
+		return session.selectOne("worktime.worktime_emp_dept_name", emp_num);
+	}
+
+	// 검색
+	@Override
+	public List<EmployeeVO> deptListSearch(Map<String, Object> map) {
+		return session.selectList("worktime.list_dept", map);
 	}
 
 

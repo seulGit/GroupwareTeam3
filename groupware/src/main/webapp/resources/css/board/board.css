@@ -87,11 +87,12 @@
     color: white;
     text-align: center;
 }
-.table_title_left{
-    text-align: left !important;
-    padding-left: 20px !important;
+.table_title_center{
+    text-align: center !important;
 }
-
+.board_title_size{
+	width: 40%;
+}
 /* 게시글 저장 취소 버튼 */
 .board_bottom_btn{
   text-align: center;
@@ -168,12 +169,16 @@
 #board_search_select{
   width: 90px;
   height: 27px;
+  font-size: 1rem;
+  font-family: 'BBTreeGR';
+  text-align : center;
 }
 #board_search_select:focus{
   outline: none;
 }
 #board_search_input{
   width:320px;
+  height: 23px;
 }
 #board_search_input:focus{
   outline: none;

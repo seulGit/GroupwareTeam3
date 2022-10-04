@@ -156,6 +156,13 @@
     background-color: rgba(0, 0, 0, 0.4);
     display: none;
 }
+#create_todo{
+	font-size: 1.2rem;
+	font-family:  'BBTreeGR';
+	font-weight: bold;
+	color: rgb(13, 110, 253);
+	margin-bottom:10px;
+}
 #todo_modal{
   width: 400px;
   height: 340px;
@@ -173,25 +180,37 @@
 .todo_btn_center{
     text-align: center;
     margin: 10px;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
 }
 #todo_modal_text{
     font-size: 1rem;
     font-family: 'BBTreeGR';
     /* testarea 사이즈 고정 */
     resize: none;
+    margin-top: 5px;
+}
+#create_todo_title{
+	margin-bottom: 5px;
 }
 
-/* 모달 창 저장/취소 버튼 */
+/* 모달 창 저장/수정/취소 버튼 */
 .todo_btn{
     border-radius: 15px;
     padding: 3px 10px;
+    margin: 5px;
     font-size: 1rem;
     font-family: 'BBTreeGR';
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
 }
-.todo_save:hover{
+.todo_modify{
+	display:none;
+}
+.todo_save:hover,.todo_modify:hover{
     background-color: rgb(13, 110, 253);
     color: white;
     border: 2px solid rgb(13, 110, 253);
@@ -201,3 +220,4 @@
     color: white;
     border: 2px solid gray;
 }
+

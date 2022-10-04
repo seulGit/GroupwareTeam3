@@ -55,6 +55,10 @@ let modal_submit_btn = document.querySelector(".modal_submit_btn");		// 모달 �
 let type_select = document.querySelector("#type_select"); 				// 휴가계종류																			// 선택
 let table_box_thr = document.querySelector(".table_box_thr");			// ajax가 생길 공간
 
+// 부서명 선택 모달 창의 검색 버튼
+let dept_search_btn = document.querySelector("#dept_search_btn");		// 검색버튼
+let dept_search_input = document.querySelector("#dept_search_input");	// input box
+let dept_type_select = document.querySelector("#dept_type_select");		// 검색 옵션
 
 // 서류 작성
 // 상신 버튼 클릭 시 빈 값 체크
@@ -111,7 +115,7 @@ worktime_close_btn.addEventListener("click", function(){
 document.body.classList.remove("stop_scroll");
 
 
-// 팀명 클릭 시 ajax
+// 부서명 클릭 시 ajax
 // dept 정보 불러옴
 for(let i=0; i<worktime_dept_btn.length; i++){
 	worktime_dept_btn[i].addEventListener("click",function(){
@@ -134,6 +138,31 @@ for(let i=0; i<worktime_dept_btn.length; i++){
 	      });
 	})
 }
+
+
+// 부서명 검색
+dept_search_btn.addEventListener("click",function(){
+	let keyword = dept_search_input.value;
+	let dept_type_search_option = dept_type_select.value;
+	let dept_keyword = {
+			keyword : keyword,
+			search_option : dept_type_search_option
+	      };
+	$.ajax({
+         type : "POST",
+         url : "/worktime_deptSearch",
+         dataType : "text",
+         contentType : "application/json",
+         data : JSON.stringify(dept_keyword),
+         success : function(data) {
+        	 $(worktime_deptList).html(data);
+         },
+         error : function(data) {
+            console.log(data);
+         }
+      });
+})
+
 
 // 중간결재자 버튼 누르면 모달 중간결재자 박스 안에 이름 나옴
 middle_btn.addEventListener("click", function(){	

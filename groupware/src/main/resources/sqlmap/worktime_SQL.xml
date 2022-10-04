@@ -2,20 +2,13 @@
 <!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="worktime">
 
+
+<!-- worktime 메인 페이지  -->
 <!-- 출퇴근시간 입력 -->
 <insert id="worktime_view_insert" parameterType="com.team3.groupware.eunji.model.WorktimeVO">
 	insert into worktime (emp_num, workdate, worktime_go, worktime_out, worktime_hours)
 	values (#{emp_num}, now(), #{worktime_go}, #{worktime_out}, #{worktime_hours});
 </insert>
-
-<!-- 출퇴근시간 보이기 -->
-<select id="worktime_view_select" resultType="com.team3.groupware.eunji.model.WorktimeVO">
-	select W.workdate, W.worktime_go, W.worktime_out, W.worktime_hours
-	from worktime W join employee E
-	on W.emp_num = E.emp_num
- 	where E.emp_num = #{emp_num}
- 	order by W.workdate desc;
-</select>
 
 <!-- 나의 연차 보이기 -->
 <select id="worktime_vacation_days" parameterType="com.team3.groupware.eunji.model.WorktimeVO" resultType="HashMap">
@@ -27,19 +20,63 @@
 	where E.emp_num = #{emp_num};
 </select>
 
-<!-- 부서 정보 출력하기 -->
-<select id="worktime_dept_info" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
-select E.emp_name, E.position_grade, D.dept_name, E.emp_num
-from employee E join department D
-on E.dept_code = D.dept_code where D.dept_name = #{dept_name};
+
+
+<!-- =============================================================================================== -->
+<!-- worktime 출퇴근현황 페이지 -->
+<!-- 출퇴근시간 보이기 -->
+<select id="worktime_view_select" resultType="com.team3.groupware.eunji.model.WorktimeVO">
+	select W.workdate, W.worktime_go, W.worktime_out, W.worktime_hours
+	from worktime W join employee E
+	on W.emp_num = E.emp_num
+ 	where E.emp_num = #{emp_num}
+ 	order by W.workdate desc;
 </select>
 
-<!-- 부서 이름 출력하기 -->
-<select id="worktime_emp_dept_name" parameterType="com.team3.groupware.common.model.EmployeeVO" resultType="HashMap">
-select E.emp_name, D.dept_name
-from employee E join department D 
-on E.dept_code = D.dept_code
-where E.emp_name = #{emp_name};
+
+
+<!-- ================================================================================================ -->
+<!-- worktime 휴가계 작성 페이지 -->
+<!-- 조직도 버튼 모달 창에 부서 정보 출력하기 -->
+<select id="worktime_dept_info" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
+	select E.emp_name, E.position_grade, D.dept_name, E.emp_num
+	from employee E join department D
+	on E.dept_code = D.dept_code where D.dept_name = #{dept_name};
 </select>
+
+<!-- 조직도 검색 모달 창의 검색 -->
+<select id="list_dept" parameterType="hashMap"
+	resultType="com.team3.groupware.common.model.EmployeeVO">
+	select E.emp_name, E.position_grade, D.dept_name, E.emp_num
+	from employee E join department D
+	on E.dept_code = D.dept_code
+
+
+	<if test="search_option == 'all' ">
+		where emp_name like CONCAT('%',#{keyword},'%')
+		or dept_name like CONCAT('%',#{keyword},'%')
+
+	</if>
+	<if test="search_option == 'emp_name'">
+		where emp_name like CONCAT('%',#{keyword},'%')
+	</if>
+
+	<if test="search_option == 'dept_name'">
+		where dept_name like CONCAT('%',#{keyword},'%')
+	</if>
+
+	order by emp_name desc, emp_num desc
+</select>
+
+<!-- 휴가계 폼에 부서 이름 출력하기 -->
+<select id="worktime_emp_dept_name" parameterType="com.team3.groupware.common.model.EmployeeVO" resultType="HashMap">
+	select E.emp_name, E.emp_num, D.dept_name
+	from employee E join department D 
+	on E.dept_code = D.dept_code
+	where E.emp_num = #{emp_num};
+</select>
+
+	
+
 
 </mapper>
