@@ -12,8 +12,9 @@ import java.util.Map;
 public class AdminServiceImpl implements AdminService{
 
     @Autowired
-    private AdminDAO adminDAO; 
+    private AdminDAO adminDAO;
 
+    //===========================================================인사기록카드
     @Override
     public List<EmployeeVO> personnelCardSearch(Map<String, Object> map) {
         return adminDAO.personnelCardSearch(map);
@@ -42,5 +43,16 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public void insert(Map<String, Object> map) {
         adminDAO.insert(map);
+    }
+
+    //===========================================================접속내역조회
+    @Override
+    public List<EmployeeVO> loginHistorySearch(Map<String, Object> map) {
+        return adminDAO.loginHistorySearch(map);
+    }
+
+    @Override
+    public List<EmployeeVO> authoritySearch(Map<String, Object> map) {
+        return adminDAO.authoritySearch(map);
     }
 }

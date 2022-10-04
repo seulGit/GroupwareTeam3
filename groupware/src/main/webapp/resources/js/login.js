@@ -62,3 +62,4 @@ submit_btn.addEventListener("click", function () { //접속 버튼 클릭 시
         window.localStorage.removeItem("user_id"); //로컬스토리지 user_id의 값들을 제거한다 .
     }
 });
+

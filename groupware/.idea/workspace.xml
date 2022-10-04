@@ -10,109 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9f39f76-9cdd-4054-b886-97a144ff9ff5" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMS_approvalVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMS_approval_requestVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMS_certificateVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMS_docuVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMS_expenseVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/kr/co/util/FileUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sqlmap/department_SQL.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/context-common.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/LICENSE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/ckeditor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/ckeditor.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/af.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ast.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/az.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/bg.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/bn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/bs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ca.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/cs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/da.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/de-ch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/de.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/el.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/en-au.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/en-gb.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/en.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/eo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/es.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/et.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/eu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/fa.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/fi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/fr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/gl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/gu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/he.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/hi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/hr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/hu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/id.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/it.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ja.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/jv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/kk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/km.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/kn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ku.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/lt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/lv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ms.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/nb.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ne.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/nl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/no.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/oc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/pl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/pt-br.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/pt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ru.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/si.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/sk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/sl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/sq.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/sr-latn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/sr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/sv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/th.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/tk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/tr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/tt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ug.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/uk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/ur.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/uz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/vi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/zh-cn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/translations/zh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/sample/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/sample/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/src/ckeditor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/groupware_war_exploded.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi/admin/admin_authority.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi/admin/admin_authority_searchList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi/admin/admin_loginHistory.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi/admin/admin_loginHistory_searchList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/admin/admin_authority.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/admin/admin_loginHistory.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin/admin_authority.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin/admin_loginHistory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.project" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/groupware.iml" beforeDir="false" afterPath="$PROJECT_DIR$/groupware.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/EDMSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/EDMSController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/calendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/calendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/CalendarDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/CalendarDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMSDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMSDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlmap/Employee_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlmap/Employee_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_new.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_new.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_new.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/certificate.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/certificate.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/general.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/general.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/money.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/money.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/EDMS/EDMS_new.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/EDMS/EDMS_new.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/EDMS/EDMS_new.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/EDMS/EDMS_new.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/model/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/model/AdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/model/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/model/AdminDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/service/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/service/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlmap/admin_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlmap/admin_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main_admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main_admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,19 +68,17 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Groupware_Team3/groupware/src/main/webapp/WEB-INF/views/seongyu"
+    "last_opened_file_path": "/Users/oseulki/Desktop/groupware_team3/groupware/src/main/webapp/WEB-INF/views/seulgi",
+    "spring.configuration.checksum": "8d0feaa163a8a67b44683c4ef63a019f"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Groupware_Team3\groupware\src\main\webapp\WEB-INF\views\seongyu" />
-      <recent name="C:\Groupware_Team3\groupware\src\main\webapp\WEB-INF\spring" />
-      <recent name="C:\Groupware_Team3\groupware\src\main\webapp\resources\js\EDMS" />
-      <recent name="C:\Groupware_Team3\groupware\src\main\webapp\resources\css\EDMS" />
-      <recent name="C:\Groupware_Team3\groupware\src\main\webapp\resources\css" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="kr.co.util" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/js" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/css" />
+      <recent name="$PROJECT_DIR$/src/main/resources/sqlmap" />
     </key>
   </component>
   <component name="RunManager">
@@ -264,7 +179,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664518828875</updated>
-      <workItem from="1664518830755" duration="8753000" />
+      <workItem from="1664518830755" duration="5162000" />
+      <workItem from="1664526041464" duration="499000" />
+      <workItem from="1664877678845" duration="502000" />
     </task>
     <servers />
   </component>
