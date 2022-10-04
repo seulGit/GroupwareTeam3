@@ -26,6 +26,36 @@
 		]]>
 	</select>
 
+	<!--	221003 18:00 성선규 추가	-->
+	<!--	사원 + 부서 조회	-->
+	<select id="select_emp_dept" resultType="com.team3.groupware.common.model.EmployeeVO">
+		<![CDATA[
+		select
+		    emp_num,
+		    auth_code,
+		    emp_name,
+		    emp_pw,
+		    emp_email,
+		    emp_desk_num,
+		    emp_phonenum,
+		    emp_address,
+		    emp_birth,
+		    emp_gender,
+		    join_date,
+		    leave_date,
+		    emp_active,
+		    d.dept_code,
+		    position_grade,
+		    emp_address2,
+		    dept_name
+		from
+			employee join department d
+				on d.dept_code = employee.dept_code
+		where
+		    auth_code = 'normal';
+		]]>
+	</select>
+
 	<!--	220922 18:00 성선규 추가	-->
 	<!--	사원번호 및 사원 이름 조회	-->
 	<select id="select_list_num_name" resultType="com.team3.groupware.common.model.EmployeeVO">

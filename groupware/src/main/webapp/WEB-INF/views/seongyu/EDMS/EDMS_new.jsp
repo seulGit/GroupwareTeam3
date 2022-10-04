@@ -27,6 +27,7 @@
     </div>
 
     <!-- 기본 설정 -->
+    <form name="EDMS_docu" type="POST">
     <div class="EDMS_new_container">
         <div class="basic_setting">
             <p>기본설정</p>
@@ -36,7 +37,7 @@
                         <tr>
                             <td class="table_bg">문서종류</td>
                             <td>
-                                <select name="type" id="type_select">
+                                <select id="type_select" name="EDMS_docu_category">
                                     <option value="choice">구분선택</option>
                                     <option value="general">일반품의서</option>
                                     <option value="money">비용품의서</option>
@@ -53,6 +54,7 @@
                             <td class="table_bg">기안작성자</td>
                             <td>
                                 <c:out value="${sessionScope.emp_name}">${sessionScope.emp_name}</c:out>
+                                <input type="hidden" value="${sessionScope.emp_num}" class="create_user_emp_num" name="emp_num">
                             </td>
                         </tr>
                     </table>
@@ -67,8 +69,10 @@
                 <table id="approval_info">
                     <tr>
                         <td class="table_bg table_size">구분</td>
-                        <td class="table_bg">중간결재자</td>
-                        <td class="table_bg">최종결재자</td>
+                        <td class="table_bg">중간결재자
+                            <input type="hidden" name="EDMS_approval_emp_1" id="EDMS_approval_emp_1"></td>
+                        <td class="table_bg">최종결재자
+                            <input type="hidden" name="EDMS_approval_emp_2" id="EDMS_approval_emp_2"></td>
                     </tr>
                     <tr>
                         <td class="table_bg table_size">이름</td>
@@ -77,8 +81,12 @@
                     </tr>
                     <tr>
                         <td class="table_bg table_size">부서</td>
-                        <td id="first_approver_dept"><input type="button" value="중간결재자 선택" id="btn_bg_first"></td>
-                        <td id="second_approver_dept"><input type="button" value="최종결재자 선택" id="btn_bg_second"></td>
+                        <td id="first_approver_dept">
+                            <input type="button" value="중간결재자 선택" id="btn_bg_first">
+                        </td>
+                        <td id="second_approver_dept">
+                            <input type="button" value="최종결재자 선택" id="btn_bg_second">
+                        </td>
                     </tr>
                     <tr>
                         <td class="table_bg table_size">직급</td>
@@ -112,7 +120,7 @@
                     <table class="approver_emp_list_table">
                         <c:forEach var="info" items="${emp_info}">
                             <tr>
-                                <td>${info.dept_code}</td>
+                                <td>${info.dept_name}</td>
                                 <td>${info.position_grade}</td>
                                 <td>${info.emp_name}</td>
                                 <td class="emp_num">${info.emp_num}</td>
@@ -134,6 +142,6 @@
 <!-- <script src="../../../../resources/js/EDMS/EDMS_new.js"></script> -->
 <%--<script src="../js/scripts.js"></script>--%>
 <script src="<c:url value="/resources/js/EDMS/EDMS_new.js"/>"></script>
-<script src="<c:url value="/resources/api/ckeditor5-35.1.0-aymulr9ct11c/build/ckeditor.js"/>"></script>
+<script src="<c:url value="/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/ckeditor.js"/>"></script>
 </body>
 </html>

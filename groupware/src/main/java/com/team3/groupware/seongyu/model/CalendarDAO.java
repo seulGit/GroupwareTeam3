@@ -14,7 +14,6 @@ public class CalendarDAO {
     SqlSessionTemplate sqlSessionTemplate;
 
     public int insert(Map<String, Object> map){
-        System.out.println("DAO 진입 성공");
         return this.sqlSessionTemplate.insert("calendar_event.event_insert", map);
     }
 
