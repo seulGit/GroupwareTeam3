@@ -83,13 +83,13 @@
 
 #message_write_container .message_write_textarea {
     margin-top: 15px;
-    height: 50%;
+    margin-bottom: 15px;
     min-height: 400px;
     display: flex;
 }
 
 /* 텍스트 에어리어 영역 설정 */
-#message_write_container>.message_write_textarea>#contentsBox{
+#message_write_container>.message_write_textarea>#message_contents{
     border:0;
 }
 
