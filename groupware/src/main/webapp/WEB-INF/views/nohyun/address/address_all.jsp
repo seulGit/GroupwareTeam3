@@ -35,7 +35,7 @@
 		</div>
 
 		<div class="address_all_excel_sendout">
-			<a href="">EXCEL로 내보내기</a>
+			<a href="<c:url value='/address_all/excelDown' />">EXCEL로 내보내기</a>
 		</div>
 
 		<div class="address_all_search_consonant">
@@ -66,11 +66,12 @@
 				<td>주소</td>
 			</tr>
 			</table>
+			
 		<table class="address_all_list">
 			<c:forEach var="row" items="${data}">
 					<tr class="address_all_list_foreach">
-						<td><i class="xi-user-o"></i><a
-							href="../address/address_all_info.html">${row.emp_name}</a></td>
+						<td><i class="xi-user-o"></i>
+						<a href="/address_all_info?emp_num=${row.emp_num}">${row.emp_name}</a></td>
 						<td>${row.position_grade}</td>
 						<td>${row.emp_phonenum}</td>
 						<td>${row.emp_email}</td>

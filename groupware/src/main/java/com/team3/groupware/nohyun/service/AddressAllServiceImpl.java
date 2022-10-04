@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team3.groupware.nohyun.model.AddressAllDAO;
+import com.team3.groupware.nohyun.model.AddressAllVO;
 
 @Service
 public class AddressAllServiceImpl implements AddressAllService{
@@ -36,6 +37,18 @@ public class AddressAllServiceImpl implements AddressAllService{
 	public List<Map<String, Object>> keyword_search(Map<String, Object> keyword) {
 		// TODO Auto-generated method stub
 		return this.addressAllDao.selectList_search(keyword);
+	}
+
+	@Override
+	public List<AddressAllVO> excelList(AddressAllVO excelDown) {
+		// TODO Auto-generated method stub
+		return addressAllDao.excelList(excelDown);
+	}
+
+	@Override
+	public List<Map<String, Object>> addressInfo(Map<String, Object> AllInfo) {
+		// TODO Auto-generated method stub
+		return this.addressAllDao.selectList_info(AllInfo);
 	}
 
 }
