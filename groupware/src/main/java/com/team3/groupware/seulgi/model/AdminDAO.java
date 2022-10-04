@@ -7,6 +7,7 @@ import java.util.Map;
 
 public interface AdminDAO {
 
+    //===========================================================인사기록카드
     List<EmployeeVO> personnelCardSearch(Map<String, Object> map);
 
     void modify(Map<String, Object> map);
@@ -18,5 +19,9 @@ public interface AdminDAO {
     void initPW(Map<String, Object> map);
 
     void insert(Map<String, Object> map);
-    
+
+    //===========================================================접속내역조회
+    List<EmployeeVO> loginHistorySearch(Map<String, Object> map);
+
+    List<EmployeeVO> authoritySearch(Map<String, Object> map);
 }

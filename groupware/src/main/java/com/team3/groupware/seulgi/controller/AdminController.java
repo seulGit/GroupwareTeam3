@@ -1,9 +1,6 @@
 package com.team3.groupware.seulgi.controller;
 
-import com.team3.groupware.common.model.EmployeeDAO;
-import com.team3.groupware.common.model.EmployeeVO;
 import com.team3.groupware.common.service.EmployeeService;
-import com.team3.groupware.seulgi.model.LoginDAO;
 import com.team3.groupware.seulgi.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -24,7 +19,7 @@ public class AdminController {
     @Autowired
     AdminService adminService;
 
-    //인사기록카드
+    //===========================================================인사기록카드
     //인사기록카드 페이지 view
     @GetMapping ("/admin/admin_personnelCard")
     public ModelAndView personnelCard() {
@@ -66,6 +61,7 @@ public class AdminController {
     }
 
     //사원정보 등록
+    //사원정보 등록페이지 출력
     @GetMapping ("/admin/admin_personnelCardRegister")
     public ModelAndView personnelCardRegister() {
         ModelAndView mv = new ModelAndView();
@@ -73,6 +69,7 @@ public class AdminController {
         return mv;
     }
 
+    //사원정보 등록
     @PostMapping("/admin/admin_personnelCardRegister")
     @ResponseBody
     public void personnelCardRegister(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Map<String, Object> map) {
@@ -93,6 +90,53 @@ public class AdminController {
         return mv;
     }
 
+
+
+
+    //===========================================================접속내역조회
+    //접속내역조회 페이지 출력
+    @GetMapping("/admin/admin_loginHistory")
+    public ModelAndView loginHistory() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/seulgi/admin/admin_loginHistory");
+        return mv;
+    }
+
+    //접속내역조회 검색
+    @PostMapping("/admin/admin_loginHistory/search")
+    public ModelAndView loginHistorySearch(@RequestBody Map<String, Object> map) {
+
+        ModelAndView mv = new ModelAndView();
+
+        mv.addObject("data", adminService.loginHistorySearch(map));
+        mv.setViewName("/seulgi/admin/admin_loginHistory_searchList");
+
+        return mv;
+    }
+
+
+
+
+    //===========================================================권한관리
+    //권한관리 페이지 출력
+    @GetMapping("/admin/admin_authority")
+    public ModelAndView authority() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/seulgi/admin/admin_authority");
+        return mv;
+    }
+
+    //권한 검색
+    @PostMapping("/admin/admin_authority/search")
+    public ModelAndView authoritySearch(@RequestBody Map<String, Object> map) {
+
+        ModelAndView mv = new ModelAndView();
+
+        mv.addObject("data", adminService.authoritySearch(map));
+        mv.setViewName("/seulgi/admin/admin_authority_searchList");
+
+        return mv;
+    }
 
 
 }

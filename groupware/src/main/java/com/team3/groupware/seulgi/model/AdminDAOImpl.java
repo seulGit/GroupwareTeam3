@@ -16,8 +16,7 @@ public class AdminDAOImpl implements AdminDAO{
 
     @Override
     public List<EmployeeVO> personnelCardSearch(Map<String, Object> map) {
-        return sqlSessionTemplate.selectList("admin.personnelCardSearch", map); 
-
+        return sqlSessionTemplate.selectList("admin.personnelCardSearch", map);
     }
 
     @Override
@@ -43,5 +42,15 @@ public class AdminDAOImpl implements AdminDAO{
     @Override
     public void insert(Map<String, Object> map) {
         sqlSessionTemplate.insert("admin.personnelCardRegister", map);
+    }
+
+    @Override
+    public List<EmployeeVO> loginHistorySearch(Map<String, Object> map) {
+        return sqlSessionTemplate.selectList("admin.loginHistorySearch", map);
+    }
+
+    @Override
+    public List<EmployeeVO> authoritySearch(Map<String, Object> map) {
+        return sqlSessionTemplate.selectList("admin.authoritySearch", map);
     }
 }

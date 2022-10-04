@@ -23,16 +23,19 @@ public class LoginController {
     }
 
     @RequestMapping(value="/login_check", method= RequestMethod.POST)
-    public ModelAndView loginPost(EmployeeVO vo, HttpSession session, ModelAndView mv) {
+    public ModelAndView loginPost(EmployeeVO vo, HttpSession session, ModelAndView mv) throws Exception {
         
         EmployeeVO emp_info = loginDao.login_check(vo);
 
         //로그인 정보가 DB와 일치하는지 확인
         if(emp_info != null) { //일치할 시}
+
             session.setAttribute("emp_num", emp_info.getEmp_num());
             session.setAttribute("auth_code", emp_info.getAuth_code()); //권한별 사이드메뉴바 항목 구분을 위해 auth_code 받아놓음
             session.setAttribute("emp_name", emp_info.getEmp_name());
             session.setAttribute("recent_datetime", emp_info.getRecent_datetime());
+            session.setAttribute("dept_code", emp_info.getDept_code());
+            session.setAttribute("dept_name", emp_info.getDept_name());
             mv.addObject("emp_num", emp_info.getEmp_num());
             mv.addObject("auth_code", emp_info.getAuth_code());
             mv.addObject("message", "success");
@@ -55,5 +58,8 @@ public class LoginController {
         }
         return mv;
     }
+
+
+
 
 }

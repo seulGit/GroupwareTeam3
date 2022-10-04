@@ -1,0 +1,117 @@
+/* div {
+    border: 1px solid red;
+} */
+
+
+.content_box{
+    height: 80px;
+    width: 100%;
+    font-size: 2rem;
+    padding: 15px;
+    border-bottom: 1px solid gray;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.admin_login_history {
+    width: 100%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin_login_history .search {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+
+
+
+
+.admin_login_history .office_map_btn {
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.125);
+}
+.admin_login_history .office_map_btn a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.admin_login_history .search span {
+    margin: 0 5px 0 5px;
+    font-size: .8rem;
+}
+
+.admin_login_history .search select,input {
+    width: 100px;
+    margin-right: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid gray;
+    font-size: .5rem;
+    cursor: default;
+}
+
+.admin_login_history .search input:focus {
+    background-color: rgba(0, 0, 0, 0.061);
+}
+
+.admin_login_history .search i{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: rgba(128, 128, 128, 0.18);
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+
+.admin_login_history .history_list {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.admin_login_history .history_list, table,.result_table {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+}
+
+.admin_login_history .history_list table thead td{
+    background-color: rgba(128, 128, 128, 0.18);
+    border: 1px solid rgba(128, 128, 128, 0.456);
+    height: 30px;
+}
+
+.admin_login_history .history_list table td:nth-child(1) {
+    width: 10%;
+}
+
+.admin_login_history .history_list table td:nth-child(2),td:nth-child(3) {
+    width: 20%;
+}
+
+.admin_login_history .history_list table td:nth-child(4) {
+    width: 50%;
+}
+
+.admin_login_history .history_list .result_table tr,td{
+    border: 1px solid rgba(128, 128, 128, 0.456);
+}

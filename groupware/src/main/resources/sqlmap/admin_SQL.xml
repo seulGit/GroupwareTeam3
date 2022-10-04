@@ -2,6 +2,7 @@
 <!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin">
 
+    <!-- =================================인사기록카드 -->
     <!-- 사원정보 검색조회 쿼리문 --> 
     <select id="personnelCardSearch" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
         select emp_num, auth_code, emp_name, emp_pw, emp_email, emp_desk_num, emp_phonenum, emp_address, emp_address2, emp_birth, emp_gender, join_date, leave_date, emp_active, dept_name, position_grade, d.dept_code
@@ -55,7 +56,7 @@
                 emp_email like CONCAT('%','','%')
             </otherwise>
         </choose>
-        ;
+        order by emp_num asc;
     </select>
 
     <!-- 사원정보 수정 -->
@@ -150,4 +151,77 @@
         insert into employee(emp_num, auth_code, emp_name, emp_pw, emp_email, emp_desk_num, emp_phonenum, emp_address, emp_birth, emp_gender, join_date, emp_active, dept_code, position_grade, emp_address2)
         values (#{emp_num}, #{auth_code}, #{emp_name}, #{emp_pw}, #{emp_email}, #{emp_desk_num}, #{emp_phonenum}, #{emp_address}, #{emp_birth}, #{emp_gender}, #{join_date}, #{emp_active}, #{dept_code}, #{position_grade}, #{emp_address2});
     </insert>
+
+
+
+
+    <!-- =================================접속내역조회 -->
+    <select id="loginHistorySearch" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
+        select e.emp_num, e.emp_name, l.recent_datetime
+        from employee e join login_history l on e.emp_num=l.emp_num
+        where
+        <choose>
+            <when test="emp_num!=null and emp_num!=''">
+                e.emp_num like CONCAT('%',#{emp_num},'%') and
+            </when>
+            <otherwise>
+                e.emp_num like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="emp_name!=null and emp_name!=''">
+                emp_name like CONCAT('%',#{emp_name},'%')
+            </when>
+            <otherwise>
+                emp_name like CONCAT('%','','%')
+            </otherwise>
+        </choose>
+                <if test="start_date != null and start_date != ''">
+                    <choose>
+                        <when test="end_date != null and end_date != ''">
+                            and l.recent_datetime between DATE('${start_date}') and DATE('${end_date}')
+                        </when>
+                        <otherwise>
+                            and l.recent_datetime like CONCAT('%', '${start_date}', '%')
+                        </otherwise>
+                    </choose>
+                </if>
+        ;
+    </select>
+
+
+
+
+
+    <!-- =================================권한조회 -->
+    <select id="authoritySearch" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
+        select emp_num, auth_code, emp_name, emp_active, d.dept_name, d.dept_code
+        from employee e join department d on e.dept_code=d.dept_code
+        where
+        <choose>
+            <when test="emp_num!=null and emp_num!=''">
+                e.emp_num like CONCAT('%',#{emp_num},'%') and
+            </when>
+            <otherwise>
+                e.emp_num like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="emp_name!=null and emp_name!=''">
+                e.emp_name like CONCAT('%',#{emp_name},'%') and
+            </when>
+            <otherwise>
+                e.emp_name like CONCAT('%','','%') and
+            </otherwise>
+        </choose>
+        <choose>
+            <when test="dept_name!=null and dept_name!=''">
+                d.dept_name like CONCAT('%',#{dept_name},'%')
+            </when>
+            <otherwise>
+                d.dept_name like CONCAT('%','','%')
+            </otherwise>
+        </choose>
+
+    </select>
 </mapper>
