@@ -7,10 +7,16 @@ import com.team3.groupware.common.model.EmployeeVO;
 
 public interface MessageDAO {
 
-	void write(MessageVO messageVo);
-
-	List<EmployeeVO> writeAddressSearch(String search_option, String keyword);
+//	void write(MessageVO messageVo);
 
 	List<EmployeeVO> writeAddressSearch(Map<String, Object> addSearchMap, String search_option, String keyword);
+
+	int sendMessage(MessageVO messageVO);
+
+	List<MessageVO> sendMessageList(int start, int end, MessageVO messageVO, int emp_num);
+
+	int count(MessageVO messageVO);
+
+	List<MessageVO> receiveMessageList(int start, int end, MessageVO messageVO, int emp_num);
 
 }

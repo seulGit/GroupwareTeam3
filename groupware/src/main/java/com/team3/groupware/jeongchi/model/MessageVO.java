@@ -10,13 +10,15 @@ public class MessageVO {
 
 	private int message_num;            // 편지번호
 
-	private int message_important;      // 중요편지
+	private Boolean message_important;      // 중요편지
 	@NotNull
 	@Pattern(regexp="/^[가-힣]*$/", message="한글만 입력가능합니다")
 	private String message_sender;      // 보낸사람
+	private int message_sender2;      // 보낸사람 코드
 	@NotNull
 	@Pattern(regexp="/^[가-힣]*$/", message="한글만 입력가능합니다")
 	private String message_receiver;    // 받는사람
+	private int message_receiver2;    // 받는사람 코드
 	@NotNull
 	private String message_title;       // 쪽지 제목
 	private String message_contents;    // 쪽지 내용
@@ -56,10 +58,10 @@ public class MessageVO {
 	public void setMessage_num(int message_num) {
 		this.message_num = message_num;
 	}
-	public int getMessage_important() {
+	public Boolean getMessage_important() {
 		return message_important;
 	}
-	public void setMessage_important(int message_important) {
+	public void setMessage_important(Boolean message_important) {
 		this.message_important = message_important;
 	}
 	public String getMessage_sender() {
@@ -68,11 +70,23 @@ public class MessageVO {
 	public void setMessage_sender(String message_sender) {
 		this.message_sender = message_sender;
 	}
+	public int getMessage_sender2() {
+		return message_sender2;
+	}
+	public void setMessage_sender2(int message_sender2) {
+		this.message_sender2 = message_sender2;
+	}
 	public String getMessage_receiver() {
 		return message_receiver;
 	}
 	public void setMessage_receiver(String message_receiver) {
 		this.message_receiver = message_receiver;
+	}
+	public int getMessage_receiver2() {
+		return message_receiver2;
+	}
+	public void setMessage_receiver2(int message_receiver2) {
+		this.message_receiver2 = message_receiver2;
 	}
 	public String getMessage_title() {
 		return message_title;
@@ -130,12 +144,12 @@ public class MessageVO {
 	}
 	@Override
 	public String toString() {
-		return "NoteVO [message_num=" + message_num + ", message_important=" + message_important + ", message_sender="
-				+ message_sender + ", message_receiver=" + message_receiver + ", message_title=" + message_title
+		return "MessageVO [message_num=" + message_num + ", message_important=" + message_important
+				+ ", message_sender=" + message_sender + ", message_sender2=" + message_sender2 + ", message_receiver="
+				+ message_receiver + ", message_receiver2=" + message_receiver2 + ", message_title=" + message_title
 				+ ", message_contents=" + message_contents + ", message_datetime=" + message_datetime
 				+ ", message_file_route=" + message_file_route + ", message_read=" + message_read + ", message_type="
 				+ message_type + ", message_delete_check=" + message_delete_check + ", emp_num=" + emp_num
 				+ ", message_reserved_datetime=" + message_reserved_datetime + "]";
 	}
-
 }

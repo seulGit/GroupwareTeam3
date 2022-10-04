@@ -28,59 +28,17 @@
 // ====== 조직도에서 팀이름 클릭 했을때 ====== //
 window.onload = function(){
 
-	let messageReceiver = document.querySelector("#message_receiver");
-	
-	var arrNum = [];
-	let arrNumJoin;	
-	let arrSet;
+	let messageReceiver = document.querySelector("#message_receiver2"); // 체크박스 생성
 
-    // ====== 보내기 버튼 클릭 이벤트 ====== // 
-    $("#writeSubmit").click(function(){
-		// ====== 유효성 검사 ====== //
-	    // 받는사람
-	    let receiver = $("#message_receiver").val().trim();
-	    if(receiver == "") {
-	    	alert("받는사람을 선택해주세요!");
-	    	return false;
-	    }
-	    
-	    // 제목
-	    let subject = $("#message_title").val().trim();
-	    if(subject == "") {
-	    	alert("제목을 입력해주세요!");
-	    	return false;
-	    }	    
-	    
-	    // 작성자
-	    let writer = $("#message_sender").val().trim();
-	    if(writer == "") {
-	    	alert("작성자를 입력해주세요!");
-	    	return false;
-	    }	    
-	    
-	    // 작성내용(SmartEditor 유효성 검사)
-	    	
+	var arrNum = [];
+	var arrSendInfo = [];
+	let arrNumJoin;	
+	let arrSet = [];
+	let SendEmpInfoObject = new Object();
+	let sendEmpNum;
+	let sendEmpName;
 	
-		if(document.getElementById("message_contents").value == null){
-			alert("내용을 입력해주세요!");
-			return false;
-		};
-	    oEditors.getById["message_contents"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
-		$("#form1").submit();
-		return;
-	    
-	    // 중요! 체크박스가 선택되어있는지 아닌지 확인하자
-//	    let note_important = 0;
-	    
-	//  if($("input[name=important]").prop("checked")) {
-	 //   	// 중요 체크박스가 체크되어 있으면 
-	 //   	note_importantVal = 1;
-	  //  }
-    	
-    });
-	
-	// 팀명 클릭 시 ajax 
-	
+	// 팀명 클릭 시 ajax
 	$(".dept_ajax").each(function (){
 	$(this).click(function () {
 		
@@ -118,9 +76,9 @@ window.onload = function(){
     	console.log(keyword);
     	console.log(params);
         $.ajax({
-        	type: "POST",
+        	type: "POST",						// 보낼거야
             url : "/message/writeAddressSearch",	
-            data : params,						// {"dept_code" : dept_code} << 과 같은 형식의 데이터를
+            data : params,						// params 안의 내용과 같은 형식의 데이터를
 			dataType : "json",
             success : function(data){
 
@@ -134,7 +92,7 @@ window.onload = function(){
         });
 
 	});	
-	// ====== 주소록 모달창 내에서 사원 검색하는 버튼 클릭(사원명 또는 부서 검색) ====== // 
+	// ====== 주소록 모달창 내에서 사원 검색하는 버튼 클릭(사원명 또는 부서 검색) 끝 ====== // 
 	/* 	220920 김정치 주소 테이블 시작  */
 	function writeAddressTable(data) {
         var output =
@@ -160,14 +118,13 @@ window.onload = function(){
           $("table").addClass("dept_right");
           }
 	}
-	
+	/* 	220920 김정치 주소 테이블 시작 끝  */
     /* 	220920 김정치   체크박스 전체 선택 / 해제 기능  */
     function writeAddressChkBox() {
-    	const chkBox = document.querySelectorAll(".chkbox"); // 체크박스 생성
-    	const checkAll = document.querySelector("#checkAll"); // 전체 체크박스 생성
+    	let chkBox = document.querySelectorAll(".chkbox"); // 체크박스 생성
+    	let checkAll = document.querySelector("#checkAll"); // 전체 체크박스 생성    	
     	//체크박스 전체 선택 / 해제    	
     	checkAll.addEventListener('click', function(){
-    		
     	    if(checkAll.checked==true){
         	    for(let i=0; i<chkBox.length; i++){
             	chkBox[i].checked = true;
@@ -190,24 +147,107 @@ window.onload = function(){
         		}
       		});
     	}; // 체크박스 전체 선택 / 해제 기능 끝    
+    	
 		// 쪽지 주소록에서 확인 버튼 누를 시 받는 사람으로 관련 내용 in
     	$("#write_address_selectCheck").click(function () {
     	    for(let i=0; i<chkBox.length; i++){
     	    	if(chkBox[i].checked==true){
-        	    	let innerEmpnum = chkBox[i].parentNode.parentNode.childNodes[4].innerHTML;
-            		console.log(innerEmpnum);
-            		arrNum.push(innerEmpnum);
+    	    		let sendEmpNum = chkBox[i].parentNode.parentNode.childNodes[4].innerHTML;   // empNum 값 가져오기
+    	    		let sendEmpName = chkBox[i].parentNode.parentNode.childNodes[3].innerHTML;  // empName 값 가져오기
+    	    		SendEmpInfoObject[sendEmpNum] = sendEmpName;								// empNum : empName 객체화 시켜서 SendEmpInfoObject에 담기
+            		console.log(SendEmpInfoObject);
+            		arrNum = Object.keys(SendEmpInfoObject);
+            		arrSet = Object.values(SendEmpInfoObject);// 객체의 키값만 가져오기
+            		console.log(arrNum);
     	    	}
-        	}
-    	    arrSet = Array.from(new Set(arrNum));
-    	    arrNumJoin = arrSet.join(", ");
+        	}    	    
+    		console.log(SendEmpInfoObject);
+    	    arrNumJoin = arrNum.join(", ");					// 조인으로 문자화 하기
 	    	messageReceiver.value = arrNumJoin;
     	    $(".message_modal").css("display", "none");		// 확인 버튼 클릭 시 모달 삭제
     	});
-    	$("#writeSubmit").click(function () {
-    	    arrNum = [];
-    	});
 	}
+	
+    // ====== 보내기 버튼 클릭 이벤트 ====== // 
+    $("#writeSubmit").click(function(){
+		// ====== 유효성 검사 ====== //
+	    // 받는사람
+	    let receiver = $("#message_receiver2").val().trim();
+	    if(receiver == "") {
+	    	alert("받는사람을 선택해주세요!");
+	    	return false;
+	    }
+	    
+	    // 제목
+	    let subject = $("#message_title").val().trim();
+	    if(subject == "") {
+	    	alert("제목을 입력해주세요!");
+	    	return false;
+	    }	    
+	    
+	    // 작성자
+	    let writer = $("#message_sender").val().trim();
+	    if(writer == "") {
+	    	alert("작성자를 입력해주세요!");
+	    	return false;
+	    }   	
+
+	    
+	    // 중요! 체크박스가 선택되어있는지 아닌지 확인하자
+		//	    let note_important = 0;
+	    
+		//  if($("input[name=important]").prop("checked")) {
+		//   	// 중요 체크박스가 체크되어 있으면 
+	 	//   	note_importantVal = 1;
+	  	//  }
+		
+		// 보내기 버튼 눌렀을 때 DB테이블록 내용 전송
+		
+	    let message_title = $("#message_title").val();
+	    let message_sender2 = "${sessionScope.emp_num}";						// 보내는 사람코드에 로그인 코드 적용
+	    let message_sender = "${sessionScope.emp_name}";						// 보내는 사람에 로그인 이름 적용
+	    oEditors.getById["message_contents"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
+	    let message_contents = $("#message_contents").val();					// textarea의 value에 적용됩니다.
+	    let message_important = document.querySelector('#important').checked;
+	    let emp_num = "${sessionScope.emp_num}";
+   
+	    console.log(message_title);
+	    console.log(message_sender2);
+	    console.log(message_sender);
+	    console.log(message_contents);
+	    console.log(message_important);
+	    console.log(emp_num);
+	    
+	    for(let i=0; i<arrNum.length; i++){
+	    	let message_receiver2 = arrNum[i];
+	    	let message_receiver = arrSet[i];
+		    let messageData={ 
+		    		"message_receiver2" : message_receiver2,
+		    		"message_receiver" : message_receiver,
+	    			"message_title" : message_title, 
+	    			"message_sender2" : message_sender2,
+	    			"message_sender" : message_sender,
+	    			"message_contents" : message_contents,
+	    			"emp_num" : emp_num,
+	    			"message_important" : message_important};
+		    console.log(messageData);
+	    	$.ajax({
+	        	type: "POST",
+	            url : "/message/sendMessage",
+	            data : messageData,					
+				dataType : "json",
+	            success : function(data){
+	            	alert("메세지 전송을 완료 하였습니다.");
+	            },
+		        error: function(request, status, error){
+				    alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+		        	//console.log(error);
+				}
+	    	});	    
+	    };
+
+	    // arrNum = [];    	
+    });
 };
 
 </script>
@@ -216,37 +256,35 @@ window.onload = function(){
 <div id="layoutSidenav_content">
 	<div class="content_box">쪽지쓰기</div>
 	<div id="message_write_container">
-		<form id="form1" name="form1" action="/send" method="POST">
-			<div class="top_btn">
-				<button class="write_div_btn" id="writeSubmit" value="보내기">보내기</button>
-				<div class="write_div_btn">임시저장</div>
-				<div class="write_div_btn" id="writeReset">다시쓰기</div>
-			</div>
-			<div class="message_write_insert_info">
-				<table>
-					<tr>
-						<td class="message_td1">받는사람</td>
-						<td class="message_td2"><input type="text" name="message_receiver" id="message_receiver" value=""></td>
-						<td class="message_td3"><div class="write_div_btn message_btn-open-popup">주소록</div></td>
-					</tr>
-					<tr>
-						<td class="message_td1">제목 <span><input type="checkbox" name="important" id="important">중요!</span></td>
-						<td class="message_td2"><input type="text" name="message_title" id="message_title" value=""></td>
-					</tr>
-					<tr>
-						<td class="message_td1">작성자</td>
-						<td class="message_td2"><input type="text" name="message_sender" id="message_sender" value=""></td>
-					</tr>
-					<tr>
-						<td class="message_td1">첨부파일</td>
-						<td class="message_td2"><input type="file" name="message_file_route" id="message_file_route" value=""></td>
-					</tr>
-				</table>
-			</div>
-			<div class="message_write_textarea">
-				<textarea name="message_contents" id="message_contents" rows="1" cols="1" style="width: 100%;"></textarea>
-			</div>
-		</form>
+		<div class="top_btn">
+			<button class="write_div_btn" id="writeSubmit" value="보내기">보내기</button>				
+			<div class="write_div_btn">임시저장</div>
+			<div class="write_div_btn" id="writeReset">다시쓰기</div>
+		</div>
+		<div class="message_write_insert_info">
+			<table>
+				<tr>
+					<td class="message_td1">받는사람</td>
+					<td class="message_td2"><input type="text" name="message_receiver2" id="message_receiver2" value=""></td>
+					<td class="message_td3"><div class="write_div_btn message_btn-open-popup">주소록</div></td>
+				</tr>
+				<tr>
+					<td class="message_td1">제목 <span><input type="checkbox" name="important" id="important">중요!</span></td>
+					<td class="message_td2"><input type="text" name="message_title" id="message_title" value=""></td>
+				</tr>
+				<tr>
+					<td class="message_td1">작성자</td>					
+					<td class="message_td2"><input type="text" name="message_sender" id="message_sender" value="${sessionScope.emp_name}"></td>
+				</tr>
+				<tr>
+					<td class="message_td1">첨부파일</td>
+					<td class="message_td2"><input type="file" name="message_file_route" id="message_file_route" value=""></td>
+				</tr>
+			</table>
+		</div>
+		<div class="message_write_textarea">
+			<textarea name="message_contents" id="message_contents" rows="1" cols="1" style="width: 100%;"></textarea>
+		</div>
 		<div class="bottom_btn">
 			<button>예약발송</button>
 		</div>
