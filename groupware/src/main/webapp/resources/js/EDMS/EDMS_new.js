@@ -23,34 +23,35 @@ function draft_ajax(docu_category) {
             drafting_date.append(date.slice(0, 10));
 
             const EDMS_approval = document.querySelector(".EDMS_approval");
-            // EDMS_approval.addEventListener("click", function () {
-            //
-            //     document.EDMS_docu.action = docu_category + "_add";
-            //     document.EDMS_docu.submit();
-            // })
-
-
             EDMS_approval.addEventListener("click", function () {
-                // 문서 제목
-                const EDMS_title = document.querySelector(".EDMS_title");
-                // 긴급 버튼
-                const EDMS_new_impor = document.querySelector("#EDMS_new_impor");
-                let importent;
-                console.log(editor.getData());
-                console.log(document.querySelector(".create_user_emp_num").value);
-                console.log(document.querySelector("#first_approver_name").textContent);
-                console.log(document.querySelector("#second_approver_name").textContent);
-                console.log(document.querySelector(".drafting_date").textContent);
-                console.log(document.querySelector(".EDMS_title").value);
-                console.log(EDMS_new_impor);
 
-                if(EDMS_new_impor.checked == true){
-                    importent = 1;
-                } else{
-                    importent = 0;
-                }
-
+                document.EDMS_docu.action = docu_category + "_add";
+                document.EDMS_docu.method = "post";
+                document.EDMS_docu.submit();
             })
+
+
+            // EDMS_approval.addEventListener("click", function () {
+            //     // 문서 제목
+            //     const EDMS_title = document.querySelector(".EDMS_title");
+            //     // 긴급 버튼
+            //     const EDMS_new_impor = document.querySelector("#EDMS_new_impor");
+            //     let importent;
+            //     console.log(editor.getData());
+            //     console.log(document.querySelector(".create_user_emp_num").value);
+            //     console.log(document.querySelector("#first_approver_name").textContent);
+            //     console.log(document.querySelector("#second_approver_name").textContent);
+            //     console.log(document.querySelector(".drafting_date").textContent);
+            //     console.log(document.querySelector(".EDMS_title").value);
+            //     console.log(EDMS_new_impor);
+            //
+            //     if(EDMS_new_impor.checked == true){
+            //         importent = 1;
+            //     } else{
+            //         importent = 0;
+            //     }
+            //
+            // })
         }
     })
 }
@@ -107,13 +108,12 @@ btn_bg_second.addEventListener("click", function () {
 
 // 결재자 리셋 버튼 클릭 시 결재자 정보 삭제 및 결재자 선택 버튼 띄우기
 approver_reset_btn.addEventListener("click", function (e) {
-    console.dir(first_approver_dept);
     first_approver_name.textContent = null;
-    first_approver_dept.childNodes[1].remove();
+    first_approver_dept.lastChild.remove();
     first_approver_position.textContent = null;
 
     second_approver_name.textContent = null;
-    second_approver_dept.childNodes[1].remove();
+    second_approver_dept.lastChild.remove();
     second_approver_position.textContent = null;
 
     btn_bg_first.style.display = "block";
