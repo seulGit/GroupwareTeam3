@@ -65,8 +65,8 @@
 
                 <!-- 버튼 -->
                 <div class="board_bottom_btn">
-                    <button type="submit" class="board_btn board_submit_btn">작성 완료</button>
-                    <button class="board_btn board_cancel_btn">취소</button>
+                    <input type="submit" class="board_btn board_submit_btn" value="작성 완료">
+                    <input type="button" class="board_btn board_cancel_btn" value="취소">
                 </div>
                 </form>
             </div>
@@ -75,7 +75,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src = "resources/api/ckeditor4_full/ckeditor.js"></script>
-    <script src="../../resources/js/board/board.js"></script>
+    <script src="../../resources/js/board/board_write.js"></script>
      
     
 </body>
