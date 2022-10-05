@@ -20,4 +20,6 @@ public interface MessageService {
 
 	List<MessageVO> receiveMessageList(int start, int end, MessageVO messageVO, int emp_num);
 
+	List<MessageVO> importantMessageList(int start, int end, MessageVO messageVO, int emp_num);
+
 }

@@ -12,14 +12,6 @@
 		#{message_contents}, now(), 0, "일반", 0, #{emp_num});
    </insert>
 
-	<!-- 전체 사원리스트 불러오기 -->
-	<select id="findListAll" resultType="com.team3.groupware.common.model.EmployeeVO">
-		select emp_name, position_name, dept_name, emp_no,
-		fk_dept_no
-		from emp_table
-		order by emp_no desc;
-	</select>
-
 	<!-- 해당 부서 사원리스트 불러오기 -->
 	<select id="findList" parameterType="HashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
 		select emp_name, position_grade, dept_name, emp_num, E.dept_code as dept_code
@@ -30,6 +22,7 @@
 		</if>
 		order by emp_num desc;
 	</select>
+	<!-- 검색하여 사원리스트 불러오기 -->
 	<select id="addFindList" resultType="com.team3.groupware.common.model.EmployeeVO">
 		select emp_name, position_grade, dept_name, emp_num, E.dept_code as dept_code
 		from employee E left join department D 
@@ -85,12 +78,23 @@
 		select message_sender2, message_sender, message_title, message_datetime,
 		message_read, message_type
 		from message 
-		where message_receiver2 = 22000001
+		where message_receiver2 = #{emp_num}
 		order by message_datetime desc, message_sender2 desc
 		<include refid="paging_footer" />
 	</select>
-
-
+	
+	<!-- 중요 쪽지함 시작 -->
+	<!-- 페이징처리용 불러오기 -->
+	<select id="importantMessageList" parameterType="hashMap" resultType="com.team3.groupware.jeongchi.model.MessageVO">
+		<include refid="paging_header" />
+		select message_sender2, message_sender, message_title, message_datetime,
+		message_read, message_type
+		from message 
+		where message_receiver2 = #{emp_num}
+		and message_important = 1
+		order by message_datetime desc, message_sender2 desc
+		<include refid="paging_footer" />
+	</select>
 
 
 	<sql id="paging_header"> <!-- 메인 쿼리 헤더 -->
