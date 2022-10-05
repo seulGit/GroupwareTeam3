@@ -57,10 +57,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/js/admin" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/css/admin" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
       <recent name="$PROJECT_DIR$/src/main/webapp/resources/js" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/resources/css" />
-      <recent name="$PROJECT_DIR$/src/main/resources/sqlmap" />
     </key>
   </component>
   <component name="RunManager">
@@ -165,6 +165,7 @@
       <workItem from="1664526041464" duration="499000" />
       <workItem from="1664877678845" duration="1109000" />
       <workItem from="1664879179238" duration="370000" />
+      <workItem from="1664955525702" duration="711000" />
     </task>
     <servers />
   </component>
