@@ -19,10 +19,10 @@
     <tr class="search_list_contents">
         <td><input type="checkbox" class="check_btn"></td>
 
-        <c:if test="${row.emp_active}==1">
+        <c:if test="${row.emp_active eq 1}">
             <td>활성</td>
         </c:if>
-        <c:if test="${row.emp_active}==0">
+        <c:if test="${row.emp_active eq 0}">
             <td>비활성</td>
         </c:if>
 
@@ -30,7 +30,6 @@
         <td>${row.auth_code}</td>
         <td>${row.emp_name}</td>
         <td>${row.dept_name}</td>
-        <td><input type="checkbox" class="all_check_btn_2"></td>
         <td><input type="checkbox" class="check_btn_2 authority_EDMS"></td>
         <td><input type="checkbox" class="check_btn_2 authority_worktime"></td>
         <td><input type="checkbox" class="check_btn_2 authority_booking"></td>

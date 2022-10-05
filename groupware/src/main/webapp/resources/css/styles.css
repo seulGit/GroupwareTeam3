@@ -780,3 +780,127 @@ body {
       overflow-x: auto;
   }
 }
+
+/* 
+=============================
+22/10/05 노현
+조직도 css 
+=============================
+*/
+/* 조직도 */
+.office_map_sidenav{
+    border: 1px solid lightslategray;
+    background-color: lightslategray;
+    width: 250px;
+    height: 400px;
+    margin-top: 425px;
+    margin-left: 225px;
+    overflow-x: auto;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 10100;
+   
+    display: none;
+}
+
+.office_map_sidenav_box{
+    /* padding: 10px; */
+}
+
+.office_map_group{
+    font-size: 22px;
+    /* padding: 3px 10px; */
+    font-weight: bold;
+}
+.office_map_ceo{
+    /* padding-left: 15px;
+    padding: 8px 0px; */
+}
+/* 각 팀별  */
+.office_map_group_employee{
+    
+    /* padding-left: 15px; */
+    /* padding: 15px; */
+    font-weight: bold;
+}
+
+.office_map_strategic_planning_team{
+    /* padding: 8px 40px; */
+}
+.office_map_strategic_planning_team > div{
+    /* padding: 3px 0px; */
+}
+.office_map_management_support_team{
+    /* padding: 8px 40px; */
+}
+.office_map_management_support_team > div{
+    /* padding: 3px 0px; */
+}
+.office_map_hr_team{
+    /* padding: 8px 40px; */
+}
+.office_map_hr_team > div{
+    /* padding: 3px 0px; */
+}
+.office_map_sales_team{
+    /* padding: 8px 40px; */
+}
+.office_map_sales_team >div{
+    /* padding: 3px 0px; */
+}
+.office_map_marketing_team{
+    /* padding: 8px 40px; */
+}
+.office_map_marketing_team > div{
+    /* padding: 3px 0px; */
+}
+.office_map_it_team{
+    /* padding: 8px 40px; */
+}
+.office_map_it_team > div{
+    /* padding: 3px 0px; */
+}
+
+
+.office_map_group:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_ceo:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_strategic_planning:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_management_support:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_hr:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_sales:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_marketing:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_it:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_strategic_planning_team > div:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_management_support_team > div:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_hr_team > div:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_sales_team >div:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_marketing_team >div:hover{
+    background-color:  rgb(13,110,253);
+}
+.office_map_it_team>div:hover{
+    background-color:  rgb(13,110,253);
+}

@@ -31,6 +31,7 @@ let board_select = document.querySelector("#board_select");	   		// 게시판 �
 let board_title = document.querySelector("#board_title");	   		// 게시판 제목
 let board_text = document.querySelector("#ckeditor"); 		   		// 게시판 내용
 let board_submit_btn = document.querySelector(".board_submit_btn"); // 게시판 작성 완료 버튼
+let delete_btn = document.querySelector(".delete_btn"); 		// 게시판 삭제 취소 버튼
 
 //글로벌로 뺏음. 값을 저장하기 위해서.
 let idOrVoteCountList=[];
@@ -271,7 +272,7 @@ function pressBtn(){
 }
 
 
-
+// 게시판 유효성 검사
 board_submit_btn.addEventListener("click", function(e){
 	if(board_select.value == null || board_select.value == ""){
 		alert("게시판  카테고리를 선택해주세요");
@@ -281,5 +282,15 @@ board_submit_btn.addEventListener("click", function(e){
 		 e.preventDefault();
 	} else {
 		alert("게시글이 작성되었습니다");
+	}
+});
+
+// 게시글 삭제 버튼 클릭 시
+delete_btn.
+
+// 게시글 작성 시 취소 버튼 클릭했을 때 
+board_cancel_btn.addEventListener("click", function(){
+	if(confirm("작성 취소하시겠습니까?")==true){
+		 location.href="/board_normal";
 	}
 });
