@@ -32,7 +32,7 @@
 	</select>
 	<select id="addFindList" resultType="com.team3.groupware.common.model.EmployeeVO">
 		select emp_name, position_grade, dept_name, emp_num, E.dept_code as dept_code
-		from employee E left join department D 
+		from employee E left join department D  
 		on E.dept_code = D.dept_code
 		where 
 		<choose>
