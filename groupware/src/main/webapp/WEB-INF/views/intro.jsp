@@ -184,3 +184,51 @@
             </nav>
         </div>
         
+         <div class="office_map_sidenav">
+                
+                    <div class="office_map_sidenav_box">
+                        <div class="office_map_group"><i class="xi-angle-right-min"></i>JH그룹</div>
+                        <div class="office_map_group_employee">
+                            <div>
+                            <div class="office_map_ceo">김정치 사장</div>
+                        </div>
+                            <div class="office_map_strategic_planning"><i class="xi-angle-right-min"></i>전략기획팀</div>
+                            <div class="office_map_strategic_planning_team">
+                                
+                                <div>뭐시기</div>                 
+                            </div>
+
+                            <div class="office_map_management_support"><i class="xi-angle-right-min"></i>경영지원팀</div>
+                            <div class="office_map_management_support_team">
+                                <div>뭐시기</div>
+                                
+                            </div>
+
+                            <div class="office_map_hr"><i class="xi-angle-right-min"></i>인사팀</div>
+                            <div class="office_map_hr_team">
+                                <div>뭐시기</div>
+                               
+                            </div>
+
+                            <div class="office_map_sales"><i class="xi-angle-right-min"></i>영업팀</div>
+                            <div class="office_map_sales_team">
+                                <div>뭐시기</div>
+                                
+                            </div>
+
+                            <div class="office_map_marketing"><i class="xi-angle-right-min"></i>마케팅팀</div>
+                            <div class="office_map_marketing_team">
+                                <div>뭐시기</div>
+                                
+                            </div>
+
+                            <div class="office_map_it"><i class="xi-angle-right-min"></i>IT팀</div>
+                            <div class="office_map_it_team">
+                                <div>뭐시기</div>
+                            </div>
+
+                        </div>
+                    </div>
+                
+            </div>
+        
