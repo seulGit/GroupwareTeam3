@@ -36,6 +36,7 @@ $(function () {
 
 
 
+// 체크박스 기능
 const all_check_btn = document.querySelector('.all_check_btn'); //최상단 체크박스
 
 //최상단체크박스(전체선택) 체크&체크해제시 전체목록 체크&체크해제 기능

@@ -68,7 +68,6 @@
                 <td>권한명</td>
                 <td>사용자명</td>
                 <td>사용부서명</td>
-                <td>전체</td>
                 <td>전자결재관리</td>
                 <td>근태관리</td>
                 <td>예약관리</td>
@@ -77,9 +76,31 @@
                 <td>접속내역확인</td>
                 <td>권한관리</td>
                 </thead>
-                <table class="result_table">
+            </table>
 
-                </table>
+            <table class="result_table">
+                <%--                    <tr class="search_list_contents">--%>
+                <%--                        <td><input type="checkbox" class="check_btn"></td>--%>
+
+                <%--                        <c:if test="${row.emp_active}==1">--%>
+                <%--                            <td>활성</td>--%>
+                <%--                        </c:if>--%>
+                <%--                        <c:if test="${row.emp_active}==0">--%>
+                <%--                            <td>비활성</td>--%>
+                <%--                        </c:if>--%>
+
+                <%--                        <td>${row.emp_num}</td>--%>
+                <%--                        <td>${row.auth_code}</td>--%>
+                <%--                        <td>${row.emp_name}</td>--%>
+                <%--                        <td>${row.dept_name}</td>--%>
+                <%--                        <td><input type="checkbox" class="check_btn_2 authority_EDMS"></td>--%>
+                <%--                        <td><input type="checkbox" class="check_btn_2 authority_worktime"></td>--%>
+                <%--                        <td><input type="checkbox" class="check_btn_2 authority_booking"></td>--%>
+                <%--                        <td><input type="checkbox" class="check_btn_2 authority_board"></td>--%>
+                <%--                        <td><input type="checkbox" class="check_btn_2 authority_personnelCard"></td>--%>
+                <%--                        <td><input type="checkbox" class="check_btn_2 authority_loginHistory"></td>--%>
+                <%--                        <td><input type="checkbox" class="check_btn_2 authority_authority"></td>--%>
+                <%--                    </tr>--%>
             </table>
         </div>
         <div class="details_btn">
@@ -89,10 +110,10 @@
     </div>
 </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            crossorigin="anonymous"></script>
-    <%--<script src="../resources/js/admin/admin_personnelCard.js"></script>--%>
-    <script src="<c:url value="/resources/js/admin/admin_authority.js"/>"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+<%--<script src="../resources/js/admin/admin_personnelCard.js"></script>--%>
+<script src="<c:url value="/resources/js/admin/admin_authority.js"/>"></script>
 
-    </body>
+</body>
 </html>

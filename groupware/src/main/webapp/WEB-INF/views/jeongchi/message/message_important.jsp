@@ -20,7 +20,7 @@
 </head>
 <script>
 function list(page) {
-	location.href = "message_receive?curPage=" + page;
+	location.href = "message_important?curPage=" + page;
 }
 window.onload = function(){
 /* 	220920 김정치   체크박스 전체 선택 / 해제 기능  */
@@ -80,7 +80,7 @@ window.onload = function(){
 </script>
 <%@ include file="/WEB-INF/views/intro.jsp" %>
 <div id="layoutSidenav_content">
-	<div class="content_box">받은 쪽지</div>
+	<div class="content_box">중요 쪽지</div>
 	<div id="message_send_container">
 		<div class="message_send_table_position">
 			<button>
@@ -101,7 +101,7 @@ window.onload = function(){
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="row" items="${messageMap.receiveMessageList}">
+				<c:forEach var="row" items="${messageMap.importantMessageList}">
 				<tr class="message_send_table_hover">
 					<td><input type="checkbox" class="chkbox2"></td>
 					<td><i class="xi-star"></i></td>

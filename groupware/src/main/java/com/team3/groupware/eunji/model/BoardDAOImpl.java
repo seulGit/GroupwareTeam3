@@ -28,10 +28,16 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
-	// 게시판 디테일 페이지
+	// 게시판 디테일 페이지에서 데이터 불러오기
 	@Override
 	public Map<String, Object> board_detail(Map<String, Object> map) {
 		return session.selectOne("board.board_detail", map);
+	}
+
+	// 게시글 수정
+	@Override
+	public void board_modify(BoardVO boardVo) {
+		this.session.update("board.board_modify", boardVo);
 	}
 
 

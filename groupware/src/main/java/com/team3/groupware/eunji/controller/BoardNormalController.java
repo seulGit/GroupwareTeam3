@@ -39,7 +39,7 @@ public class BoardNormalController {
 			List<BoardVO> boardNormalList = boardService.board_selectList(boardVo);
 			mv.addObject("boardNormalList", boardNormalList);
 		}
-		mv.setViewName("/eunji/board/board_normal");
+		mv.setViewName("/eunji/board/board_normalList");
 		return mv;
 	}
 	
@@ -81,10 +81,35 @@ public class BoardNormalController {
 	public ModelAndView board_view(@RequestParam Map<String,Object> map) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/eunji/board/board_detail");
-		System.out.println(boardService.board_detail(map));
 		mv.addObject("detailMap", boardService.board_detail(map));
 		return mv;
 	}
+	
+	// 게시물 디테일 페이지에서 수정 버튼 클릭 시 데이터 가져오기
+	@GetMapping("/board_modify")
+	public ModelAndView board_modify(@RequestParam Map<String, Object> map) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(map);
+		 Map<String, Object> detailMap = boardService.board_detail(map);
+		mv.addObject("detailMap", detailMap);
+		mv.setViewName("/eunji/board/board_modify");
+		return mv;
+	}
+	
+	// 게시물 디테일 페이지에서 수정 
+	@PostMapping("/board_modify")
+	public ModelAndView board_modify(BoardVO boardVo) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("vo:"+boardVo);
+		boardService.board_modify(boardVo);
+		int board_num = boardVo.getBoard_num();
+		mv.setViewName("redirect:/board_detail?board_num=" + board_num);
+		System.out.println("num:"+board_num);
+		return mv;
+	}
+	
+	
+	// 게시글 삭제
 		
 	}
 

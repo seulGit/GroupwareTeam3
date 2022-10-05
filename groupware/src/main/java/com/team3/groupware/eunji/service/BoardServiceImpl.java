@@ -35,6 +35,12 @@ public class BoardServiceImpl implements BoardService {
 	public Map<String, Object> board_detail(Map<String, Object> map) {
 		return boardDao.board_detail(map);
 	}
+
+	// 게시글 수정
+	@Override
+	public void board_modify(BoardVO boardVo) {
+		this.boardDao.board_modify(boardVo);
+	}
 	
 
 
