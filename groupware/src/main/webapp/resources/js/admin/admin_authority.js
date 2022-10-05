@@ -47,37 +47,28 @@ $(function () {
 
 //첫번째 체크박스 기능 (목록 선택)
 
-const all_check_btn = document.querySelector('.all_check_btn'); //최상단 체크박스
-let check_btn = document.querySelectorAll('.check_btn'); //목록 내 체크박스들 
 
+const all_check_btn = document.querySelector('.all_check_btn'); //최상단 체크박스
 
 //최상단체크박스(전체선택) 체크&체크해제시 전체목록 체크&체크해제 기능
-all_check_btn.addEventListener('click', function () { //최상단 체크박스 클릭 시(체크되면)
-    if (all_check_btn.checked != "") { //최상단 체크박스가 체크되어있는 경우
+all_check_btn.addEventListener('click', function () { //최상단 체크박스
+    let check_btn = document.querySelectorAll('.check_btn'); //목록 내 체크박스들
+
+    // 클릭 시(체크되면)
+    if (all_check_btn.checked != true) { //최상단 체크박스가 체크되어있는 경우
         for (let i = 0; i < check_btn.length; i++) { //for문(목록 내 체크박스들이 복수이기때문에)
-            check_btn[i].checked = true; //목록 내 체크박스들이 모두 체크된다
+            check_btn[i].checked = false; //목록 내 체크박스들이 모두 체크 해제된다
         }
     } else { //최상단 체크박스가 체크해제되어있는 경우
         for (let i = 0; i < check_btn.length; i++) {
-            check_btn[i].checked = false; //목록 내 체크박스들이 모두 체크 해제된다 
+            check_btn[i].checked = true; //목록 내 체크박스들이 모두 체크된다
         }
     }
 });
 
 
-//두번째 체크박스 기능 (목록 내 권한 선택)
-const all_check_btn_2 = document.querySelector('.all_check_btn_2'); //목록 내 권한 전체 체크박스 
-let check_btn_2 = document.querySelectorAll('.check_btn_2'); //목록 내 권한 별 체크박스들 
-
-//목록 내 권한 전체 체크박스(전체선택) 체크&체크해제시   목록 내 권한 별 체크박스들  체크&체크해제 기능
-all_check_btn_2.addEventListener('click', function () { //목록 내 권한 전체 체크박스 클릭 시(체크되면)
-    if (all_check_btn_2.checked != "") { //목록 내 권한 전체 체크박스가 체크되어있는 경우
-        for (let i = 0; i < check_btn_2.length; i++) { //for문(목록 내 권한 별 체크박스들이 복수이기때문에)
-            check_btn_2[i].checked = true; //목록 내 권한 별 체크박스들이 모두 체크된다
-        }
-    } else { //목록 내 권한 전체 체크박스가 체크해제되어있는 경우
-        for (let i = 0; i < check_btn_2.length; i++) {
-            check_btn_2[i].checked = false; //목록 내 권한 별 체크박스들이 모두 체크 해제된다
-        }
-    }
-});
+//수정버튼클릭
+//로컬스토리지에 id에 해당하는 체크여부 저장되고
+//search_list_contents[i] 에 있는 checkbox[0]이 눌려있으면
+//해당하는 id로 접속시
+//intro jsp 에 관리자메뉴-전자결재관리 display none
