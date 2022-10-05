@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface EDMSService {
 
-    List<EmployeeVO> selct_emp_list();
+    List<EmployeeVO> selct_emp_list(EmployeeVO employeeVO);
 }

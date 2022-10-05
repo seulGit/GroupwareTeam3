@@ -13,7 +13,7 @@ public class EDMSDAO {
     @Autowired
     SqlSessionTemplate sqlSessionTemplate;
 
-    public List<EmployeeVO> select_emp_list() {
-        return sqlSessionTemplate.selectList("employee.select_emp_dept");
+    public List<EmployeeVO> select_emp_list(EmployeeVO employeeVO) {
+        return sqlSessionTemplate.selectList("employee.select_emp_dept", employeeVO);
     }
 }

@@ -60,7 +60,7 @@
                     <!-- 회의실선택 -->
                     <div class="booking_event_meetingroom">
                         <select name="meetingroom_num" id="booking_event_meetingroom">
-                            <option value="0">회의실 선택</option>
+                            <option value="null">회의실 선택</option>
                             <c:forEach var="room" items="${meetingroom}">
                                 <option value="meetingroom_${room.meetingroom_num}">${room.meetingroom_name}</option>
                             </c:forEach>
@@ -69,7 +69,7 @@
                     <!-- 비품 선택 -->
                     <div class="booking_event_fixtures">
                         <select name="fixtures_num" id="booking_event_fixtures">
-                            <option value="0">비품 선택</option>
+                            <option value="null">비품 선택</option>
                             <c:forEach var="ft" items="${fixture}">
                                 <option value="fixtures_${ft.fixtures_num}">${ft.fixtures_name}</option>
                             </c:forEach>
