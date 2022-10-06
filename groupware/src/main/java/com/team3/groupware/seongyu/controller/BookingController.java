@@ -71,44 +71,53 @@ public class BookingController {
 
     @RequestMapping(value = "/booking_add", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView booking_insert(@RequestParam Map<String, Object> param){
+    public String booking_insert(@RequestParam Map<String, Object> param){
 
-        ModelAndView mav = new ModelAndView();
+        BookingVO check = bookingServce.booking_add_check(param);
 
-        this.bookingServce.insert(param);
+        if(check == null){
+            this.bookingServce.insert(param);
+            return "success";
+        } else {
+            return "error";
+        }
 
-        mav.setViewName("redirect:/bookingList");
-        return mav;
     }
 
     @RequestMapping(value = "/booking_delete", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView bookingRemove(@RequestParam Map<String, Object> map){
-        ModelAndView mv = new ModelAndView();
+    public String bookingRemove(@RequestParam Map<String, Object> map){
 
-        this.bookingServce.delete(map);
-        mv.setViewName("redirect:/bookingList");
-        return mv;
+        int remove = this.bookingServce.delete(map);
+
+        if (remove == 1){
+            return "success";
+        } else {
+            return "error";
+        }
     }
 
     @RequestMapping(value = "/bookingDateChange", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView bookingDateChange(@RequestParam Map<String, Object> map){
-        ModelAndView mv = new ModelAndView();
-
-
-        this.bookingServce.bookingDateChange(map);
-        mv.setViewName("redirect:/bookingList");
-        return mv;
+    public String bookingDateChange(@RequestParam Map<String, Object> map){
+        int date_update = this.bookingServce.bookingDateChange(map);
+        if(date_update == 1){
+            return "success";
+        } else{
+            return "error";
+        }
     }
 
     @RequestMapping(value = "/booking_event_change", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView booking_event_change(@RequestParam Map<String, Object> map){
-        ModelAndView mv = new ModelAndView();
+    public String booking_event_change(@RequestParam Map<String, Object> map){
 
-        this.bookingServce.booking_event_change(map);
-        mv.setViewName("redirect:/bookingList");
-        return mv;
+        int event_update = this.bookingServce.booking_event_change(map);
+
+        if(event_update == 1){
+            return "success";
+        } else{
+            return "error";
+        }
     }
 }

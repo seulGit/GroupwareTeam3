@@ -53,8 +53,6 @@
 				on d.dept_code = employee.dept_code
 		where
 		    auth_code = 'normal'
-		and
-		    emp_num != ${emp_num};
 		]]>
 	</select>
 
@@ -67,6 +65,8 @@
 			    emp_name
 			FROM
 			    employee
+			where
+			    auth_code = 'normal'
 		]]>
 	</select>
 </mapper>

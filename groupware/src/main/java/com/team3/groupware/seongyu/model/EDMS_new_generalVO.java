@@ -9,17 +9,17 @@ public class EDMS_new_generalVO {
     private int EDMS_docu_num; // 문서번호
 
     //    EDMS_docu
-    private String EDMS_docu_category;
-    private int emp_num;
-    private Date EDMS_docu_date;
-    private int EDMS_docu_urgent;
-    private String EDMS_docu_file_route;
-    private int EDMS_docu_temp;
-    private int EDMS_docu_cancel;
+    private String EDMS_docu_category; // 문서 종류
+    private int emp_num; // 작성자 사원번호
+    private Date EDMS_docu_date; // 작성일자
+    private boolean EDMS_docu_urgent; // 긴급여부
+    private String EDMS_docu_file_route; // 첨부파일 루트
+    private int EDMS_docu_temp; // 임시보관 여부
+    private int EDMS_docu_cancel; // 취소여부
 
     //      EDMS_approval
-    private String EDMS_approval_emp_1;
-    private String EDMS_approval_emp_2;
+    private String EDMS_approval_emp_1; // 첫번째 결재자 사원번호
+    private String EDMS_approval_emp_2; // 두번째 결재자 사원번호
 
     public String getApproval_request_docu_title() {
         return approval_request_docu_title;
@@ -69,11 +69,11 @@ public class EDMS_new_generalVO {
         this.EDMS_docu_date = EDMS_docu_date;
     }
 
-    public int getEDMS_docu_urgent() {
+    public boolean getEDMS_docu_urgent() {
         return EDMS_docu_urgent;
     }
 
-    public void setEDMS_docu_urgent(int EDMS_docu_urgent) {
+    public void setEDMS_docu_urgent(boolean EDMS_docu_urgent) {
         this.EDMS_docu_urgent = EDMS_docu_urgent;
     }
 

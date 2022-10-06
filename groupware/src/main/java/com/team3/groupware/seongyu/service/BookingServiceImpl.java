@@ -56,4 +56,9 @@ public class BookingServiceImpl implements BookingServce{
     public List<fixtureVO> fixture_list() {
         return bookingDAO.fixture_list();
     }
+
+    @Override
+    public BookingVO booking_add_check(Map<String, Object> param) {
+        return bookingDAO.booking_add_check(param);
+    }
 }
