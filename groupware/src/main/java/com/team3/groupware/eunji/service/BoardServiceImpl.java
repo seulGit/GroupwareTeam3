@@ -60,6 +60,28 @@ public class BoardServiceImpl implements BoardService {
 	public int board_view_plus(int board_num) {
 		return boardDao.board_view_plus(board_num);
 	}
+
+	// 댓글 입력
+	@Override
+	public void board_comment_insert(Map<String, Object> comment) {
+		this.boardDao.board_comment_insert(comment);
+		
+	}
+
+	// 댓글 보이기
+	@Override
+	public List<Map<String, Object>> board_comment_select(int board_num) {
+		return boardDao.board_comment_select(board_num);
+	}
+
+	// 댓글 삭제
+	@Override
+	public void comment_delete(Map<String, Object> map) {
+		this.boardDao.comment_delete(map);
+		
+	}
+
+
 	
 
 

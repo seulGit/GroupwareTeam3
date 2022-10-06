@@ -41,7 +41,8 @@
 <select id="worktime_dept_info" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
 	select E.emp_name, E.position_grade, D.dept_name, E.emp_num
 	from employee E join department D
-	on E.dept_code = D.dept_code where D.dept_name = #{dept_name};
+	on E.dept_code = D.dept_code where D.dept_name = #{dept_name}
+	and auth_code='normal';
 </select>
 
 <!-- 조직도 검색 모달 창의 검색 -->
@@ -50,7 +51,6 @@
 	select E.emp_name, E.position_grade, D.dept_name, E.emp_num
 	from employee E join department D
 	on E.dept_code = D.dept_code
-
 
 	<if test="search_option == 'all' ">
 		where emp_name like CONCAT('%',#{keyword},'%')
@@ -64,7 +64,8 @@
 	<if test="search_option == 'dept_name'">
 		where dept_name like CONCAT('%',#{keyword},'%')
 	</if>
-
+	
+	and auth_code ='normal'
 	order by emp_name desc, emp_num desc
 </select>
 
