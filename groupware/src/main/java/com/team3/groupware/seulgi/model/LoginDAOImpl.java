@@ -13,8 +13,7 @@ public class LoginDAOImpl implements  LoginDAO{
 
     @Override
     public EmployeeVO login_check(EmployeeVO vo) {
-        EmployeeVO ll = sqlSessionTemplate.selectOne("login.login_check", vo);
-        return ll;
+        return sqlSessionTemplate.selectOne("login.login_check", vo);
     }
 
     @Override

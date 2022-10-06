@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -53,10 +55,11 @@ public class AdminController {
         adminService.modify(map);
         adminService.personnelCardSearch(map);
 
+        System.out.println(map);
         ModelAndView mv = new ModelAndView();
         mv.addObject("data", adminService.personnelCardSearch2(map));
         mv.setViewName("/seulgi/admin/admin_personnelCard_searchList");
-
+        System.out.println(adminService.personnelCardSearch2(map));
         return mv;
     }
 
@@ -139,6 +142,44 @@ public class AdminController {
 
         System.out.println(adminService.authoritySearch(map));
 
+        return mv;
+    }
+
+    //권한 수정
+    @PostMapping("/admin/admin_authority/modify")
+    @ResponseBody
+    public void adminAuthorityModify(HttpServletRequest request){
+        String[] authority_array = request.getParameterValues("authority_array");
+        Map<String,Object> map = new HashMap<>();
+        map.put("emp_num",Integer.parseInt(authority_array[0]));
+        map.put("authority_EDMS",Integer.parseInt(authority_array[1]));
+        map.put("authority_worktime",Integer.parseInt(authority_array[2]));
+        map.put("authority_booking",Integer.parseInt(authority_array[3]));
+        map.put("authority_board",Integer.parseInt(authority_array[4]));
+        map.put("authority_personnelCard",Integer.parseInt(authority_array[5]));
+        map.put("authority_loginHistory",Integer.parseInt(authority_array[6]));
+        map.put("authority_authority",Integer.parseInt(authority_array[7]));
+        adminService.adminAuthorityModify(map);
+    }
+
+
+    //===========================================================근태관리
+    //근태관리 페이지 출력(출퇴근시간관리)
+    @GetMapping ("/admin/admin_worktime")
+    public ModelAndView worktime() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/seulgi/admin/admin_worktime");
+        return mv;
+    }
+
+
+
+
+    //근태관리 페이지 출력(연차일수관리)
+    @GetMapping ("/admin/admin_worktimeVacation")
+    public ModelAndView worktimeVacation() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/seulgi/admin/admin_worktimeVacation");
         return mv;
     }
 
