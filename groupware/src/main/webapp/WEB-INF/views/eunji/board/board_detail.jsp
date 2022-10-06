@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,14 +26,30 @@
             </div>
             <div id="board_write_container">                
                 <div class="board_write_insert_info">
-                    <table class="board_write_table">
+                      
+                     <div class="board_bottom_btn">
+                	 <!-- 게시글 작성자 외에 다른 사람이 수정/삭제하지 못함 -->
+                	 <c:if test="${emp_name eq detailMap.emp_name}">
+                	 <form action="/board_modify" method="get">
+                    		<input type="submit" class="board_btn board_submit_btn" value="수정">
+                    			<input type="hidden" name="board_num" value="${detailMap.board_num}">
+                    		</form>
+                    		<form action="/board_delete" method="post">
+                    		<input type="submit" class="board_btn delete_btn" value="삭제">
+                    		<input type="hidden" name="board_num" value="${detailMap.board_num}">
+                    		</form>
+                    </c:if>
+                    </div>
+                
+                    <table class="board_write_table board_write_top">
                         <tr>
                             <td class="board_td1">카테고리</td>
                             <td class="board_td2">${detailMap.board_category_subject}</td>
                         </tr>
                         <tr>
                             <td class="board_td1">글번호</td>
-                            <td class="board_td2">${detailMap.board_num}</td>
+                            <td class="board_td2">${detailMap.board_num}
+                            	<input type="hidden" name="board_num" value="${detailMap.board_num}"></td>
                         </tr>
                         <tr>
                             <td class="board_td1">제목<span><input type="checkbox" id="important">중요!</span></td>
@@ -43,7 +61,12 @@
                         </tr>
                         <tr>
                             <td class="board_td1">작성일</td>
-                            <td class="board_td2">${detailMap.board_write_date}</td>
+                             <fmt:parseDate value="${detailMap.board_write_date}" pattern="yyyy-MM-dd'T'HH:mm" var="board_normal_date" type="both" />
+                            <td class="board_td2"><fmt:formatDate value="${board_normal_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
+                        </tr>
+                        <tr>
+                        	<td class="board_td1">첨부파일</td>
+                        	<td class="board_te2">${detailMap.board_file_route}</td>
                         </tr>
                     </table>
                     
@@ -51,12 +74,12 @@
                  <div class="board_write_editor">
                     ${detailMap.board_contents}
                 </div>
+          
+                <!-- 버튼 -->
+                	 <div class="board_bottom_btn">
+                    	<a href="/board_normal"><input type="button" class="board_btn board_list_btn" value="목록보기"></a>                  
+                	</div>
                     
-                </div>
-                <div class="board_bottom_btn">
-                    <button type="submit" class="board_btn board_submit_btn">수정하기</button>
-                    <button class="board_btn board_cancel_btn">삭제하기</button>
-                    <a href="/board_normal"><input type="button" class="board_btn board_list_btn" value="목록보기"></a>                  
                 </div>
                 <!-- 댓글 -->
                 <div id="board_form_commentinfo">

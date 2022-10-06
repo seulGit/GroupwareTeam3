@@ -101,7 +101,7 @@
         </div>
 
         <div class="EDMS_docu"></div>
-
+    </form>
     </div>
     <div class="approver_modal">
         <div class="approver_container">

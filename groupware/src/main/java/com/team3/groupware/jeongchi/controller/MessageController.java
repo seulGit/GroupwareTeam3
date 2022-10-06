@@ -170,7 +170,36 @@ public class MessageController {
 		messageMap2.put("count", count);
 		messageMap2.put("page_info", page_info);
 		System.out.println(messageMap2.toString());
-		mv.addObject("messageMap2", messageMap2);
+		mv.addObject("messageMap", messageMap2);
+		//mv.addObject("list", list);
+		return mv;
+	}
+	@GetMapping("/message/message_important")
+	public ModelAndView importantMessageList(
+			@RequestParam(defaultValue = "1") int curPage,
+			MessageVO messageVO, HttpServletRequest request) {	
+		
+		HttpSession session = request.getSession();
+		String change = String.valueOf(session.getAttribute("emp_num"));
+		int emp_num = Integer.parseInt(change);
+		
+		int count = messageService.count(messageVO);
+		System.out.println(count);
+		
+		PageUtil page_info = new PageUtil(count, curPage);
+		int start = page_info.getPageBegin();
+		int end = page_info.getPageEnd();
+		
+		List<MessageVO> importantMessageList = messageService.importantMessageList(start, end, messageVO, emp_num);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/jeongchi/message/message_important");
+		Map<String, Object> messageMap3 = new HashMap<>();
+		
+		messageMap3.put("importantMessageList", importantMessageList);
+		messageMap3.put("count", count);
+		messageMap3.put("page_info", page_info);
+		System.out.println(messageMap3.toString());
+		mv.addObject("messageMap", messageMap3);
 		//mv.addObject("list", list);
 		return mv;
 	}

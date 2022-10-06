@@ -194,9 +194,11 @@
 
 
     <!-- =================================권한조회 -->
-    <select id="authoritySearch" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
-        select emp_num, auth_code, emp_name, emp_active, d.dept_name, d.dept_code
-        from employee e join department d on e.dept_code=d.dept_code
+    <select id="authoritySearch" parameterType="hashMap" resultType="hashMap">
+        select e.emp_num, e.auth_code, e.emp_name, e.emp_active,
+               d.dept_name, d.dept_code, aa.authority_EDMS,
+               aa.authority_worktime, aa.authority_booking, aa.authority_board, aa.authority_personnelCard, aa.authority_loginHistory, aa.authority_authority
+        from employee e join department d on e.dept_code=d.dept_code join admin_authority aa on e.emp_num = aa.emp_num
         where
         <choose>
             <when test="emp_num!=null and emp_num!=''">
@@ -216,12 +218,12 @@
         </choose>
         <choose>
             <when test="dept_name!=null and dept_name!=''">
-                d.dept_name like CONCAT('%',#{dept_name},'%')
+                d.dept_name like CONCAT('%',#{dept_name},'%') and
             </when>
             <otherwise>
-                d.dept_name like CONCAT('%','','%')
+                d.dept_name like CONCAT('%','','%') and
             </otherwise>
         </choose>
-
+        auth_code = 'admin';
     </select>
 </mapper>

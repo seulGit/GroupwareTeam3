@@ -30,12 +30,22 @@
 <!-- 디테일 페이지 보기 -->
 <select id="board_detail" parameterType="hashMap" resultType="hashMap">
 	select B.board_num, B2.board_category_subject, B.board_title,
-	B.board_contents, E.emp_name, B.board_write_date
+	B.board_contents, E.emp_name, B.board_write_date, B.board_file_route
 	from board B join employee E 
 	on B.emp_num = E.emp_num
 	join board_category B2
 	on B.board_category_num = B2.board_category_num
 	where B.board_num = #{board_num};
 </select>
+
+<!-- 게시글 수정하기 -->
+<update id="board_modify">
+	update board set 
+	board_title=#{board_title}, 
+	board_contents=#{board_contents}
+	where board_num=#{board_num};
+</update>
+
+<!-- 게시글 삭제하기 -->
 
 </mapper>

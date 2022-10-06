@@ -10,8 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9f39f76-9cdd-4054-b886-97a144ff9ff5" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi/admin/admin_authority.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi/admin/admin_authority_searchList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi/admin/admin_loginHistory.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi/admin/admin_loginHistory_searchList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/admin/admin_authority.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/admin/admin_loginHistory.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin/admin_authority.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin/admin_loginHistory.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.project" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/model/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/model/AdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/model/AdminDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/model/AdminDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/service/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/service/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlmap/admin_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlmap/admin_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main_admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main_admin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,16 +62,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/oseulki/Desktop/groupware_team3/groupware/src/main/webapp/WEB-INF/views/seulgi&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;8d0feaa163a8a67b44683c4ef63a019f&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/oseulki/Desktop/groupware_team3/groupware/src/main/webapp/WEB-INF/views/seulgi",
+    "spring.configuration.checksum": "8d0feaa163a8a67b44683c4ef63a019f"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi" />
@@ -163,9 +181,13 @@
       <updated>1664518828875</updated>
       <workItem from="1664518830755" duration="5162000" />
       <workItem from="1664526041464" duration="499000" />
+<<<<<<< HEAD
       <workItem from="1664877678845" duration="1109000" />
       <workItem from="1664879179238" duration="370000" />
       <workItem from="1664955525702" duration="711000" />
+=======
+      <workItem from="1664877678845" duration="502000" />
+>>>>>>> 04b1f72706645a559237b342eeb8dd87e26cb873
     </task>
     <servers />
   </component>

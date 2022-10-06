@@ -14,7 +14,7 @@ public class EDMSServiceImpl implements EDMSService{
     EDMSDAO edmsdao;
 
     @Override
-    public List<EmployeeVO> selct_emp_list() {
-        return edmsdao.select_emp_list();
+    public List<EmployeeVO> selct_emp_list(EmployeeVO employeeVO) {
+        return edmsdao.select_emp_list(employeeVO);
     }
 }

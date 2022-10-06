@@ -74,4 +74,3 @@
         <input type="button" value="취소" class="EDMS_input_btn EDMS_cancel">
     </div>
 </div>
-</form>

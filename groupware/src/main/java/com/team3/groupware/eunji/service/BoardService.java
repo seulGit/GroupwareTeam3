@@ -13,6 +13,8 @@ public interface BoardService {
 
 	Map<String,Object> board_detail(Map<String, Object> map);
 
+	void board_modify(BoardVO boardVo);
+
 
 
 }

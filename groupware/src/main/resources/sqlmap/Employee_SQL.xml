@@ -28,7 +28,7 @@
 
 	<!--	221003 18:00 성선규 추가	-->
 	<!--	사원 + 부서 조회	-->
-	<select id="select_emp_dept" resultType="com.team3.groupware.common.model.EmployeeVO">
+	<select id="select_emp_dept" parameterType="com.team3.groupware.common.model.EmployeeVO" resultType="com.team3.groupware.common.model.EmployeeVO">
 		<![CDATA[
 		select
 		    emp_num,
@@ -52,7 +52,9 @@
 			employee join department d
 				on d.dept_code = employee.dept_code
 		where
-		    auth_code = 'normal';
+		    auth_code = 'normal'
+		and
+		    emp_num != ${emp_num};
 		]]>
 	</select>
 

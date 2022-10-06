@@ -56,5 +56,11 @@ public class MessageServiceImpl implements MessageService {
 		return messageDao.receiveMessageList(start, end, messageVO, emp_num);
 	}
 	
+	@Override
+	public List<MessageVO> importantMessageList(int start, int end, MessageVO messageVO, int emp_num) {
+		// TODO Auto-generated method stub
+		return messageDao.importantMessageList(start, end, messageVO, emp_num);
+	}
+	
 
 }

@@ -2,9 +2,11 @@ package com.team3.groupware.seongyu.controller;
 
 import com.team3.groupware.common.model.EmployeeVO;
 import com.team3.groupware.common.service.DepartmentService;
+import com.team3.groupware.seongyu.model.EDMS_new_generalVO;
 import com.team3.groupware.seongyu.service.EDMSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,9 +24,9 @@ public class EDMSController {
     DepartmentService departmentService;
 
     @RequestMapping("/new")
-    public ModelAndView EDMS_new(){
+    public ModelAndView EDMS_new(EmployeeVO employeeVO){
         ModelAndView mv = new ModelAndView();
-        List<EmployeeVO> vo = edmsService.selct_emp_list();
+        List<EmployeeVO> vo = edmsService.selct_emp_list(employeeVO);
 
         mv.addObject("emp_info", vo);
         mv.setViewName("/seongyu/EDMS/EDMS_new");
@@ -53,9 +55,21 @@ public class EDMSController {
         return mv;
     }
 
-//    @PostMapping("general_add")
-//    public ModelAndView general_add(@RequestParam ){
-//
-//    }
+    @RequestMapping("general_add")
+    public ModelAndView general_add(EDMS_new_generalVO edms_new_generalVO){
+        System.out.println(edms_new_generalVO.toString());
+        return new ModelAndView("redirect:/home");
+    }
+
+
+
+
+
+    @GetMapping("/home")
+    public ModelAndView EDMS_home_view(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/seongyu/EDMS/EDMS_home");
+        return mv;
+    }
 
 }

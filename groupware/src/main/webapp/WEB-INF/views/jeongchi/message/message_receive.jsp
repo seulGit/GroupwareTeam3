@@ -101,30 +101,30 @@ window.onload = function(){
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="row1" items="${messageMap2.receiveMessageList}">
+				<c:forEach var="row" items="${messageMap.receiveMessageList}">
 				<tr class="message_send_table_hover">
 					<td><input type="checkbox" class="chkbox2"></td>
 					<td><i class="xi-star"></i></td>
 					<td><i class="xi-attachment"></i></td>
-					<td>${row1.message_sender2}</td>
-					<td>${row1.message_sender}</td>
-					<td>${row1.message_title}</td>
-					<td>${row1.message_datetime}</td>
-					<td>${row1.message_read}</td>
-					<td>${row1.message_type}</td>
+					<td>${row.message_sender2}</td>
+					<td>${row.message_sender}</td>
+					<td>${row.message_title}</td>
+					<td>${row.message_datetime}</td>
+					<td>${row.message_read}</td>
+					<td>${row.message_type}</td>
 				</tr>
 				</c:forEach>
 				<tr class="message_send_list_number">
             	<td colspan="9" align="center" class="message_send_list_n_menu">
-               	<c:if test="${messageMap2.page_info.curBlock > 1 }">
+               	<c:if test="${messageMap.page_info.curBlock > 1 }">
                 	<a href="javascript:list('1')">[처음]</a>
                 </c:if>
-                <c:if test="${messageMap2.page_info.curBlock > 1 }">
-                    <a href="javascript:list('${messageMap2.page_info.prevPage }')"><span class="message_send_disabled">< 이전</span></a>
+                <c:if test="${messageMap.page_info.curBlock > 1 }">
+                    <a href="javascript:list('${messageMap.page_info.prevPage }')"><span class="message_send_disabled">< 이전</span></a>
                 </c:if>
-                <c:forEach var="num" begin="${messageMap2.page_info.blockBegin}" end="${messageMap2.page_info.blockEnd}">
+                <c:forEach var="num" begin="${messageMap.page_info.blockBegin}" end="${messageMap.page_info.blockEnd}">
                    <c:choose>
-                      <c:when test="${num==messageMap2.page_info.curPage}">
+                      <c:when test="${num==messageMap.page_info.curPage}">
                          <span style="color:red">${num}</span>
                       </c:when>
                       <c:otherwise>
@@ -132,11 +132,11 @@ window.onload = function(){
                       </c:otherwise>
                    </c:choose>
                 </c:forEach>
-                <c:if test="${messageMap2.page_info.curBlock <= messageMap2.page_info.totBlock}">
-                   <a class="message_send_disabled" href="javascript:list('${messageMap2.page_info.nextPage }')">[다음]</a>
+                <c:if test="${messageMap.page_info.curBlock <= messageMap.page_info.totBlock}">
+                   <a class="message_send_disabled" href="javascript:list('${messageMap.page_info.nextPage }')">[다음]</a>
                 </c:if>
-                <c:if test="${messageMap2.page_info.curPage <= messageMap2.page_info.totPage}">
-                   <a href="javascript:list('${messageMap2.page_info.totPage }')">[끝]</a>
+                <c:if test="${messageMap.page_info.curPage <= messageMap.page_info.totPage}">
+                   <a href="javascript:list('${messageMap.page_info.totPage }')">[끝]</a>
                 </c:if>
                 </td>
             	</tr>

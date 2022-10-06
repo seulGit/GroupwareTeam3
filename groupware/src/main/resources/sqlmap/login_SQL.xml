@@ -10,7 +10,7 @@
         from
             employee
         where
-            emp_num = ${emp_num} and emp_pw = '${emp_pw}';
+            emp_num = ${emp_num} and BINARY emp_pw = '${emp_pw}';
 
     </select>
 

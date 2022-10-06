@@ -1,22 +1,9 @@
 package com.team3.groupware.seongyu.model;
 
-import java.util.Date;
-
 public class EDMS_approval_requestVO {
     private String approval_request_docu_title; // 제목
     private String approval_request_docu_contents; // 내용
     private int EDMS_docu_num; // 문서번호
-
-//    EDMS_docu
-    private String EDMS_docu_category;
-    private int emp_num;
-    private Date EDMS_docu_date;
-    private int EDMS_docu_urgent;
-    private String EDMS_docu_file_route;
-    private int EDMS_docu_temp;
-    private int EDMS_docu_cancel;
-
-//    EDMS_approval
 
 
     public String getApproval_request_docu_title() {

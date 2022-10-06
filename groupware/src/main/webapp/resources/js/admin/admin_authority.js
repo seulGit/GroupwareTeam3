@@ -6,11 +6,27 @@ $(function () {
         let search_name = document.querySelector("#search_name").value;
         let search_department = document.querySelector("#search_department").value;
 
+        let authority_EDMS = document.querySelector(".authority_EDMS");
+        let authority_worktime = document.querySelector(".authority_worktime");
+        let authority_booking = document.querySelector(".authority_booking");
+        let authority_board = document.querySelector(".authority_board");
+        let authority_personnelCard = document.querySelector(".authority_personnelCard");
+        let authority_loginHistory = document.querySelector(".authority_loginHistory");
+        let authority_authority = document.querySelector(".authority_authority");
+
+
         //검색 부분
         let search_details = {
             emp_name: search_name,
             emp_num: search_num,
-            dept_name: search_department
+            dept_name: search_department,
+            // authority_EDMS: authority_EDMS,
+            // authority_worktime: authority_worktime,
+            // authority_booking: authority_booking,
+            // authority_board: authority_board,
+            // authority_personnelCard: authority_personnelCard,
+            // authority_loginHistory: authority_loginHistory,
+            // authority_authority: authority_authority
         };
 
         console.log(search_details);
@@ -23,6 +39,19 @@ $(function () {
             data: JSON.stringify(search_details),
             success: function (data) {
                 $('.result_table').html(data);
+
+                // let search_list_contents = document.querySelectorAll('.search_list_contents');
+
+                //
+                // console.log(authority_EDMS.value);
+                //
+                // for (let i = 0; i < search_list_contents.length; i++) {
+                //     if(search_list_contents[i].document.querySelector(".authority_EDMS").value == '1'){
+                //         search_list_contents[i].children[6].checked = true;
+                //     }
+                // }
+
+
             },
             error: function (error) {
                 alert("오류가 발생했습니다. 페이지를 새로고침해주세요")
@@ -31,18 +60,6 @@ $(function () {
         });
     })
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //첫번째 체크박스 기능 (목록 선택)

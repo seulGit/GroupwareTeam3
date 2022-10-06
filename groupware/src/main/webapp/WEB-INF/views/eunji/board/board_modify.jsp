@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
     <title>JaeHee Group</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../../resources/css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../resources/css/board/board_view.css">
+    <link rel="stylesheet" href="../../resources/css/board/board_detail.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
@@ -22,7 +23,9 @@
             <div class="content_box">
                 <i class="fa-solid fa-chalkboard-user"></i>게시글보기
             </div>
-            <div id="board_write_container">                
+             
+             <form action="/board_modify" method="post"> 
+            <div id="board_write_container">               
                 <div class="board_write_insert_info">
                     <table class="board_write_table">
                         <tr>
@@ -39,31 +42,39 @@
                         </tr>
                         <tr>
                             <td class="board_td1">제목<span><input type="checkbox" id="important">중요!</span></td>
-                            <td class="board_td2"><input type="text" name="board_title" value="${detailMap.board_title}"></td>
+                            <td class="board_td2"><input type="text" name="board_title" value="${detailMap.board_title}" class="board_title"></td>
                         </tr>
                         <tr>
                             <td class="board_td1">작성자</td>
-                            <td class="board_td2"><input type="text" name="emp_name" value="${detailMap.emp_name}" disabled ></td>
+                            <td class="board_td2">${detailMap.emp_name}</td>
                         </tr>
                         <tr>
                             <td class="board_td1">작성일</td>
-                            <td class="board_td2"><input type="text" name="board_write_date" value="${detailMap.board_write_date}" disabled ></td>
+                             <fmt:parseDate value="${detailMap.board_write_date}" pattern="yyyy-MM-dd'T'HH:mm" var="board_normal_date" type="both" />
+                            <td class="board_td2"><fmt:formatDate value="${board_normal_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
+                        </tr>
+                        <tr>
+                        	<td class="board_td1">첨부파일</td>
+                        	<td class="board_td2"><input type="file" name="board_file_route" value="${detailMap.board_file_route}"></td>
                         </tr>
                     </table>
                     
                     <!-- ckeditor -->
-                 <div class="board_write_editor">
+                 <div class="board_editor_box">
                     <textarea id="ckeditor" name="board_contents">${detailMap.board_contents}</textarea>
                 </div>
-                    
-                </div>
+                
+                <!-- 버튼 -->
                 <div class="board_bottom_btn">
-                    <button type="submit" class="board_btn board_submit_btn">수정하기</button>
-                    <button class="board_btn board_cancel_btn">삭제하기</button>
-                    <a href="/board_normal"><input type="button" class="board_btn board_list_btn" value="목록보기"></a>                  
+                    <input type="submit" class="board_btn board_submit_btn" value="수정 완료">
+                    <input type="button" class="board_btn board_cancel_btn" value="취소">
+                    <input type="hidden" name="board_num" value="${detailMap.board_num}">
                 </div>
+                
+                </div>
+               
                 <!-- 댓글 -->
-                <div id="board_form_commentinfo">
+<!--                 <div id="board_form_commentinfo">
                     <div id="board_comment_count">
                         <h2><i class="fa-solid fa-comments"></i>댓글
                             [<span id="comment_count" >0</span>]</h2>
@@ -71,18 +82,19 @@
                     <button id="board_comment_submit">등록</button>
                     </div>
                     
-                
                     <div id=board_comments_con>
             
                     </div>
-                </div>  
+                </div> -->  
                          
             </div>
+             </form>
         </div>
     </div>
 
+
     <script src = "resources/api/ckeditor4_full/ckeditor.js"></script>
-    <script src="../../resources/js/board/board.js"></script>
+    <script src="../../resources/js/board/board_write.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
      
