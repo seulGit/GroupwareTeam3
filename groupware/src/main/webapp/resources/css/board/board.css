@@ -34,7 +34,7 @@
 .board_con{
     font-family: 'BBTreeGR';
     font-weight: bold;
-    margin: 50px 20px 20px;
+    margin: 20px 20px 20px;
 }
 
 /* 게시글 작성 버튼 */
@@ -160,11 +160,9 @@
     padding:5px 8px 4px 8px;
     margin: 2px;    
 }
-
+/* 검색 */
 .board_search{
-  text-align: center;
-  margin-top: 30px;
-  height:50px; 
+  margin: 20px 0 0 30px;
 }
 #board_search_select{
   width: 90px;
@@ -172,16 +170,36 @@
   font-size: 1rem;
   font-family: 'BBTreeGR';
   text-align : center;
+  font-weight: bold;
 }
 #board_search_select:focus{
   outline: none;
 }
 #board_search_input{
   width:320px;
-  height: 23px;
+  height: 26px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'BBTreeGR';
 }
 #board_search_input:focus{
   outline: none;
+}
+#board_search_btn{
+	border: 2px solid black;
+	border-radius: 15px;
+	width: 60px;
+	padding: 3px;
+	font-size: 1rem;
+	font-weight: bold;
+  	font-family: 'BBTreeGR';
+  	text-align : center;
+  	background-color: white;
+  	cursor: pointer;
+}
+#board_search_btn:hover{
+	color:RGB(13, 110, 253);
+	border: 2px solid RGB(13, 110, 253); 
 }
 
 /* 게시판글쓰기 및 view */
@@ -261,83 +279,6 @@
   padding: 10px;
 }
 
-/* 댓글달기 */
-/* .footerText{
-  border: 1px solid blue;
-  margin-top: 30px;
-} */
-
-#board_form_commentinfo{
-  /* border: 1px solid blue; */
-  margin: 15px auto;
-  width: 60%;
- 
-}
-
-#board_comment_count{
-  margin: 5px;
-  padding: 5px 70px;
-}
-
-
-#board_comment_input{
-  width: 90%;
-  height: 30px;
-}
-#board_comment_input:focus{
-  outline: none;
-}
-#board_comment_submit{
-  background-color: RGB(13, 110, 253);
-  width: 9%;
-  height: 30px;
-  font-size: 15px;
-  color:white;
-  border: none;
-}
-/* 
-#voteUp, #voteDown{
-  width: 50px;
-  height: 30px;
-  background-color: yellow; 
-  border: none;
-  margin: 0 5px; 
-} */
-#board_footer_comments{
-  margin-top: 10px;
-}
-
-.eachComment{ 
-   /* border: 1px solid blue;  */
-  width :80%; 
-  margin: 10px auto;  
-  padding: 0.5em; 
-  border-bottom: 1px solid #c1bcba;
-}
-.eachComment .name{
-  /* border: 1px solid blue; */
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 0;
-}
-.eachComment .spacer{
-  width: 600px;
-}
-.eachComment .modifyBtn, .deleteComment{
-  border: none;
-  background-color: white;
-  font-size: 0.8em;
-}
-.eachComment .time{
-  font-size: 12px;
-  color: gray;
-  font-style: oblique;
-  margin: 10px 0;    
-}
-.eachComment .voteDiv{
-  display: flex;
-  justify-content: flex-end;
-}
 
 
 .modal{    

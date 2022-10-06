@@ -21,6 +21,7 @@
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
+
 	</bean>		
 
 	<context:component-scan base-package="kr.co.util"/>
