@@ -38,29 +38,36 @@
             </tr>
             <tr>
                 <td>기안부서</td>
-                <td>마케팅</td>
+                <td>${sessionScope.dept_name}</td>
                 <td>기안일</td>
                 <td class="drafting_date"></td>
                 <td>부서번호</td>
-                <td>자동설정</td>
+                <td>${sessionScope.dept_code}</td>
             </tr>
             <tr>
                 <td>증명서종류</td>
-                <td><input type="text"></td>
+                <td>
+                    <input name="certificate_name" type="text">
+                </td>
                 <td>용도</td>
-                <td><input type="text"></td>
+                <td>
+                    <input name="certificate_purpose" type="text">
+                </td>
                 <td>제출처</td>
-                <td><input type="text"></td>
+                <td>
+                    <input name="certificate_submit_to" type="text">
+                </td>
             </tr>
             <tr>
                 <td>제목</td>
                 <td colspan="4">
-                    <input type="text" class="EDMS_title" maxlength="39" placeholder="제목을 입력해주세요">
+                    <input type="text" name="certificate_docu_title" class="EDMS_title" maxlength="39"
+                           placeholder="제목을 입력해주세요">
                 </td>
                 <td class="EDMS_new_impor_position">
                     <div>
                         긴급
-                        <input type="checkbox" name="EDMS_new_impor" id="EDMS_new_impor">
+                        <input type="checkbox" name="EDMS_docu_urgent" id="EDMS_new_impor">
                         <label for="EDMS_new_impor" class="EDMS_new_impor_switch">
                             <span class="EDMS_new_impor_btn"></span>
                         </label>
@@ -70,7 +77,7 @@
         </table>
     </div>
     <div class="EDMS_new_api">
-        <textarea name="text" id="editor"></textarea>
+        <textarea name="certificate_docu_contents" id="editor"></textarea>
     </div>
     <div class="EDMS_result_write">
         <div>최종결재자 의견</div>
@@ -81,4 +88,4 @@
         <input type="button" value="취소" class="EDMS_input_btn EDMS_cancel">
     </div>
 </div>
-<script src="<c:url value="/resources/api/ckeditor5-35.1.0-aymulr9ct11c/build/ckeditor.js"/>"></script>
+<script src="<c:url value="/resources/api/ckeditor5-35.1.0-cfi81gg98uxz/build/ckeditor.js"/>"></script>

@@ -39,11 +39,11 @@
             </tr>
             <tr>
                 <td>기안부서</td>
-                <td class="table_size">마케팅</td>
+                <td class="table_size">${sessionScope.dept_name}</td>
                 <td>기안일</td>
                 <td class="table_size drafting_date"></td>
                 <td>부서번호</td>
-                <td class="table_size">자동설정</td>
+                <td class="table_size">${sessionScope.dept_code}</td>
             </tr>
             <tr>
                 <td>제목</td>

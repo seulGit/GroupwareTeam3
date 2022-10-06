@@ -1,6 +1,6 @@
 package kr.co.util;
 
-import com.team3.groupware.seongyu.model.EDMS_docuVO;
+import com.team3.groupware.seongyu.model.EDMS_new_generalVO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -12,7 +12,7 @@ import java.util.*;
 public class FileUtils {
     private static final String filePath = "C:\\mp\\file\\";
 
-    public List<Map<String, Object>> parseInsertFileInfo(EDMS_docuVO edms_docuVO,
+    public List<Map<String, Object>> parseInsertFileInfo(EDMS_new_generalVO edms_new_generalVO,
                                                          MultipartHttpServletRequest mpRequest) throws Exception{
         Iterator<String> iterator = mpRequest.getFileNames();
 
@@ -24,7 +24,7 @@ public class FileUtils {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> listMap = null;
 
-        int edms_docu_num = edms_docuVO.getEDMS_docu_num();
+        int edms_docu_num = edms_new_generalVO.getEDMS_docu_num();
 
         File file = new File(filePath);
         if(file.exists() == false) {
@@ -37,13 +37,21 @@ public class FileUtils {
                 originalFileName = multipartFile.getOriginalFilename();
                 originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
                 storedFileName = getRandomString() + originalFileExtension;
-                
+
                 file = new File(filePath + storedFileName);
                 multipartFile.transferTo(file);
                 listMap = new HashMap<>();
                 listMap.put("EDMS_docu_num", edms_docu_num);
-                listMap.put("ORG_File_name", storedFileName);
+                System.out.println(edms_docu_num);
+
+                listMap.put("ORG_File_name", originalFileName);
+                System.out.println(originalFileName);
+
+                listMap.put("STORED_FILE_NAME", storedFileName);
+
                 listMap.put("File_size", multipartFile.getSize());
+                System.out.println(multipartFile.getSize());
+
                 list.add(listMap);
             }
         }
