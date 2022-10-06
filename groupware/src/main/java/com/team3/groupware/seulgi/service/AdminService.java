@@ -23,5 +23,5 @@ public interface AdminService {
     //===========================================================접속내역조회
     List<EmployeeVO> loginHistorySearch(Map<String, Object> map);
 
-    List<EmployeeVO> authoritySearch(Map<String, Object> map);
+    List<Map<String, Object>> authoritySearch(Map<String, Object> map);
 }

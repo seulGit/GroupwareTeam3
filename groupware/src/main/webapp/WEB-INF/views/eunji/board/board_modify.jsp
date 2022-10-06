@@ -14,7 +14,9 @@
     <link href="../../resources/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../resources/css/board/board_detail.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
 </head>
+
 
 <!-- 상단/왼쪽 메뉴 include -->
 <%@ include file="/WEB-INF/views/intro.jsp" %>
@@ -46,7 +48,7 @@
                         </tr>
                         <tr>
                             <td class="board_td1">작성자</td>
-                            <td class="board_td2">${detailMap.emp_name}</td>
+                            <td class="board_td2">${detailMap.dept_name} ${detailMap.emp_name}</td>
                         </tr>
                         <tr>
                             <td class="board_td1">작성일</td>
@@ -94,7 +96,8 @@
 
 
     <script src = "resources/api/ckeditor4_full/ckeditor.js"></script>
-    <script src="../../resources/js/board/board_write.js"></script>
+    <script src="../../resources/js/board/board_modify.js"></script>
+    <script src="<c:url value='resources/js/officemap.js'/>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
      

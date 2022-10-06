@@ -71,5 +71,20 @@ public class MessageDAOImpl implements MessageDAO {
 		map.put("end", end);
 		return SqlSessionTemplate.selectList("note.importantMessageList", map);
 	}
+	
+	@Override
+	public List<MessageVO> tempMessageList(int start, int end, MessageVO messageVO, int emp_num) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("emp_num", emp_num);
+		map.put("start", start);
+		map.put("end", end);
+		return SqlSessionTemplate.selectList("note.tempMessageList", map);
+	}
+
+	@Override
+	public Map<String, Object> message_detail(MessageVO messageVO) {
+		// TODO Auto-generated method stub
+		return SqlSessionTemplate.selectOne("note.message_detail", messageVO);
+	}
 
 }

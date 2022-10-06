@@ -14,6 +14,7 @@
     <link href="../../resources/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../resources/css/board/board.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <!-- 상단/왼쪽 메뉴 include -->
@@ -27,6 +28,7 @@
             </div>
             <div class="board_con">
                     <div class="board_table_position">
+                    <div class="board_container">
                     <table class="board_table">
                         <tr class="table_bg">
                             <td>글번호</td>
@@ -35,17 +37,22 @@
                             <td>작성일</td>
                             <td>조회수</td>
                         </tr>
+                        <form action="/board_detial" method="post">
                         <c:forEach var="board_normal" items="${boardNormalList}">
                         <tr class="board_table_hover">
                             <td>${board_normal.board_num}</td>
-                            <td class="table_title_center"><a href="/board_detail?board_num=${board_normal.board_num}">${board_normal.board_title}</a></td>
-                            <td>${board_normal.emp_name}</td>
+                            <td class="table_title_center">
+                            	<a href="/board_detail?board_num=${board_normal.board_num}" class="board_title_view_count">${board_normal.board_title}
+                            	 <input type="hidden" name="board_num"></a></td>
+                            <td>${board_normal.dept_name} ${board_normal.emp_name}</td>
                              <fmt:parseDate value="${board_normal.board_write_date}" pattern="yyyy-MM-dd'T'HH:mm" var="board_normal_date" type="both" />
                             <td><fmt:formatDate value="${board_normal_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
                             <td>${board_normal.board_view_count}</td>
                         </tr> 
-                        </c:forEach>                  
+                        </c:forEach> 
+                         </form>               
                     </table>
+                    </div>
                     
                     <!-- 페이징 영역 -->
                     <div class="board_list_number">
@@ -61,13 +68,13 @@
                     </div>
                     <!-- 검색 폼 영역 -->
                     <div class="board_search">
-                        <select id='board_search_select'>
-                            <option class="board_search_option" value='A'>제목+내용</option>
-                            <option class="board_search_option" value='T'>제목</option>
-                            <option class="board_search_option" value='C'>내용</option>
+                        <select id='board_search_select' name="board_type">
+                            <option class="board_search_option" value='board_all'>전체</option>
+                            <option class="board_search_option" value='board_title'>제목</option>
+                            <option class="board_search_option" value='emp_name'>작성자</option>
                         </select>
-                        <input id="board_search_input" type="text">
-                        <button id="board_search_btn">검색</button>
+                        <input type="text" id="board_search_input" placeholder="검색 키워드를 입력하세요" name="keyword" value="${keyword}">
+                        <input type="button" id="board_search_btn" value="검색">
                     </div>                  
                </div>
            </div>
@@ -75,7 +82,8 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>   
-    <script src="../../resources/js/board/board.js"></script>
+    <script src="../../resources/js/board/board_normalList.js"></script>
+    <script src="<c:url value='resources/js/officemap.js'/>"></script>
 </body>
 
 </html>

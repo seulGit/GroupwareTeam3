@@ -8,6 +8,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <c:if test="${empty data}">
@@ -30,13 +31,24 @@
         <td>${row.auth_code}</td>
         <td>${row.emp_name}</td>
         <td>${row.dept_name}</td>
-        <td><input type="checkbox" class="check_btn_2 authority_EDMS"></td>
-        <td><input type="checkbox" class="check_btn_2 authority_worktime"></td>
-        <td><input type="checkbox" class="check_btn_2 authority_booking"></td>
-        <td><input type="checkbox" class="check_btn_2 authority_board"></td>
-        <td><input type="checkbox" class="check_btn_2 authority_personnelCard"></td>
-        <td><input type="checkbox" class="check_btn_2 authority_loginHistory"></td>
-        <td><input type="checkbox" class="check_btn_2 authority_authority"></td>
+
+
+        <td><input type="checkbox" class="check_btn_2 authority_EDMS" name="authority_EDMS"
+            <c:out value="${row.authority_EDMS == 1 ? 'checked' : ''}"/>></td>
+        <td><input type="checkbox" class="check_btn_2 authority_worktime" name="authority_worktime"
+            <c:out value="${row.authority_worktime == 1 ? 'checked' : ''}"/>></td>
+        <td><input type="checkbox" class="check_btn_2 authority_booking" name="authority_booking"
+            <c:out value="${row.authority_booking == 1 ? 'checked' : ''}"/>></td>
+        <td><input type="checkbox" class="check_btn_2 authority_board" name="authority_board"
+            <c:out value="${row.authority_board == 1 ? 'checked' : ''}"/>></td>
+        <td><input type="checkbox" class="check_btn_2 authority_personnelCard" name="authority_personnelCard"
+            <c:out value="${row.authority_personnelCard == 1 ? 'checked' : ''}"/>></td>
+        <td><input type="checkbox" class="check_btn_2 authority_loginHistory" name="authority_loginHistory"
+            <c:out value="${row.authority_loginHistory == 1 ? 'checked' : ''}"/>></td>
+        <td><input type="checkbox" class="check_btn_2 authority_authority" name="authority_authority"
+            <c:out value="${row.authority_authority == 1 ? 'checked' : ''}"/>></td>
+
+
     </tr>
 </c:forEach>
 

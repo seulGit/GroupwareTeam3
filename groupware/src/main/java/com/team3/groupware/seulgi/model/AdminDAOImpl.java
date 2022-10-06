@@ -50,7 +50,9 @@ public class AdminDAOImpl implements AdminDAO{
     }
 
     @Override
-    public List<EmployeeVO> authoritySearch(Map<String, Object> map) {
+    public List<Map<String, Object>> authoritySearch(Map<String, Object> map) {
         return sqlSessionTemplate.selectList("admin.authoritySearch", map);
     }
+
+
 }

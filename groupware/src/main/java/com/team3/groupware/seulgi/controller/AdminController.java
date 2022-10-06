@@ -130,10 +130,14 @@ public class AdminController {
     @PostMapping("/admin/admin_authority/search")
     public ModelAndView authoritySearch(@RequestBody Map<String, Object> map) {
 
+        System.out.println(map);
+
         ModelAndView mv = new ModelAndView();
 
         mv.addObject("data", adminService.authoritySearch(map));
         mv.setViewName("/seulgi/admin/admin_authority_searchList");
+
+        System.out.println(adminService.authoritySearch(map));
 
         return mv;
     }

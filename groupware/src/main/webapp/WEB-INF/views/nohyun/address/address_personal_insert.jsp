@@ -42,6 +42,6 @@
                
 		
 	<script src="<c:url value='resources/js/address/address_personal.js'/>"></script>
-	<!-- <script src="../resources/js/scripts.js"></script> -->
+	<script src="<c:url value='resources/js/officemap.js'/>"></script>
 </body>
 </html>

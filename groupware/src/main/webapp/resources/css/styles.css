@@ -791,7 +791,7 @@ body {
 .office_map_sidenav{
     border: 1px solid lightslategray;
     background-color: lightslategray;
-    width: 250px;
+    width: 225px;
     height: 400px;
     margin-top: 425px;
     margin-left: 225px;
@@ -799,7 +799,6 @@ body {
     overflow-y: auto;
     position: absolute;
     z-index: 10100;
-   
     display: none;
 }
 
@@ -809,56 +808,87 @@ body {
 
 .office_map_group{
     font-size: 22px;
-    /* padding: 3px 10px; */
+    padding: 3px 10px;
     font-weight: bold;
+    cursor: pointer;
 }
 .office_map_ceo{
-    /* padding-left: 15px;
-    padding: 8px 0px; */
+    
+    padding: 3px 20px;
 }
 /* 각 팀별  */
 .office_map_group_employee{
-    
+    display: none;
     /* padding-left: 15px; */
     /* padding: 15px; */
     font-weight: bold;
 }
-
+.office_map_strategic_planning{
+    padding: 0px 30px ;
+    cursor: pointer;
+    
+}
 .office_map_strategic_planning_team{
-    /* padding: 8px 40px; */
+    padding: 2px 0px;
+    display: none;
 }
 .office_map_strategic_planning_team > div{
-    /* padding: 3px 0px; */
+    padding: 0px 70px;
+}
+.office_map_management_support{
+    padding: 0px 30px;
+    cursor: pointer;
 }
 .office_map_management_support_team{
-    /* padding: 8px 40px; */
+    padding: 2px 0px;
+    display: none;
 }
 .office_map_management_support_team > div{
-    /* padding: 3px 0px; */
+    padding: 0px 70px;
+}
+.office_map_hr{
+    padding: 0px 30px;
+    cursor: pointer;
 }
 .office_map_hr_team{
-    /* padding: 8px 40px; */
+    padding: 2px 0px;
+    display: none;
 }
 .office_map_hr_team > div{
-    /* padding: 3px 0px; */
+    padding: 0px 70px;
+}
+.office_map_sales{
+    padding: 0px 30px;
+    cursor: pointer;
 }
 .office_map_sales_team{
-    /* padding: 8px 40px; */
+    padding: 2px 0px;
+    display: none;
 }
 .office_map_sales_team >div{
-    /* padding: 3px 0px; */
+    padding: 0px 70px;
+}
+.office_map_marketing{
+    padding: 0px 30px;
+    cursor: pointer; 
 }
 .office_map_marketing_team{
-    /* padding: 8px 40px; */
+    padding: 2px 0px;
+    display: none;
 }
 .office_map_marketing_team > div{
-    /* padding: 3px 0px; */
+    padding: 0px 70px;
+}
+.office_map_it{
+    padding: 0px 30px;
+    cursor: pointer; 
 }
 .office_map_it_team{
-    /* padding: 8px 40px; */
+    padding: 2px 0px;
+    display: none;
 }
 .office_map_it_team > div{
-    /* padding: 3px 0px; */
+    padding: 0px 70px;
 }
 
 

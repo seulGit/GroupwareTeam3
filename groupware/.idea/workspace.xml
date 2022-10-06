@@ -81,6 +81,8 @@
       <recent name="C:\Groupware_Team3\groupware\src\main" />
       <recent name="C:\Groupware_Team3\groupware\src\main\java" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/js/admin" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/css/admin" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
       <recent name="$PROJECT_DIR$/src/main/webapp/resources/js" />
     </key>
@@ -185,7 +187,13 @@
       <updated>1664518828875</updated>
       <workItem from="1664518830755" duration="5162000" />
       <workItem from="1664526041464" duration="499000" />
+<<<<<<< HEAD
+      <workItem from="1664877678845" duration="1109000" />
+      <workItem from="1664879179238" duration="370000" />
+      <workItem from="1664955525702" duration="711000" />
+=======
       <workItem from="1664877678845" duration="502000" />
+>>>>>>> 04b1f72706645a559237b342eeb8dd87e26cb873
     </task>
     <servers />
   </component>

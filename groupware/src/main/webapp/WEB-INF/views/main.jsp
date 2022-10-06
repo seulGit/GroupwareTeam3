@@ -32,10 +32,10 @@
                         </div>
                     </div>
                     <div class="home_personal_insert_info">
-                        <button class="home_meg_write">쪽지쓰기</button>
-                        <button class="home_contact">연락처 추가</button>
-                        <button class="home_calendar">일정등록</button>
-                        <button class="home_board_write">게시글 작성</button>
+                        <a href="/message/write" class="home_meg_write">쪽지쓰기</a>
+                        <a href="/address_personal" class="home_contact">연락처 추가</a>
+                        <a href="/todo" class="home_calendar">일정등록</a>
+                        <a href="/board_write" class="home_board_write">게시글 작성</a>
                     </div>
                     <div class="home_worktime">
                         <h1 class="home_content_title">근태관리</h1>
@@ -226,6 +226,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="../resources/js/scripts.js?ver=1"></script>
+    <script src="<c:url value='resources/js/officemap.js'/>"></script>
 </body>
 
 </html>
