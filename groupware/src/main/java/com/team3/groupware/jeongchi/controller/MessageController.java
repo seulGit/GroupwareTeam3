@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -144,6 +146,8 @@ public class MessageController {
 		//mv.addObject("list", list);
 		return mv;
 	}
+//	================ message_send.jsp 끝  ============== //
+//	================ message_receive.jsp 시작  ============== //
 	
 	@GetMapping("/message/message_receive")
 	public ModelAndView receiveMessageList(
@@ -174,6 +178,10 @@ public class MessageController {
 		//mv.addObject("list", list);
 		return mv;
 	}
+	
+//	================ message_receive.jsp 끝  ============== //
+//	================ message_important.jsp 시작  ============== //
+	
 	@GetMapping("/message/message_important")
 	public ModelAndView importantMessageList(
 			@RequestParam(defaultValue = "1") int curPage,
@@ -203,6 +211,54 @@ public class MessageController {
 		//mv.addObject("list", list);
 		return mv;
 	}
+	
+//	================ message_important.jsp 끝  ============== //
+//	================ message_temp.jsp 시작  ============== //
+	
+	@GetMapping("/message/message_temp")
+	public ModelAndView tempMessageList(
+			@RequestParam(defaultValue = "1") int curPage,
+			MessageVO messageVO, HttpServletRequest request) {	
+		
+		HttpSession session = request.getSession();
+		String change = String.valueOf(session.getAttribute("emp_num"));
+		int emp_num = Integer.parseInt(change);
+		
+		int count = messageService.count(messageVO);
+		System.out.println(count);
+		
+		PageUtil page_info = new PageUtil(count, curPage);
+		int start = page_info.getPageBegin();
+		int end = page_info.getPageEnd();
+		
+		List<MessageVO> tempMessageList = messageService.tempMessageList(start, end, messageVO, emp_num);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/jeongchi/message/message_temp");
+		Map<String, Object> messageMap4 = new HashMap<>();
+		
+		messageMap4.put("tempMessageList", tempMessageList);
+		messageMap4.put("count", count);
+		messageMap4.put("page_info", page_info);
+		System.out.println(messageMap4.toString());
+		mv.addObject("messageMap", messageMap4);
+		//mv.addObject("list", list);
+		return mv;
+	}
+	
+//	================ message_temp.jsp 끝  ============== //
+//	================ message_detail.jsp 시작  ============== //
+	
+	@GetMapping("/message/message_detail")
+	public ModelAndView message_detail(MessageVO messageVO) {
+		Map<String, Object> messageDetailMap = messageService.message_detail(messageVO);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/jeongchi/message/message_detail");
+		mv.addObject("data", messageDetailMap);
+		return mv;
+	}
+	
+//	================ message_detail.jsp 끝  ============== //
+
 }
 
 

@@ -81,6 +81,15 @@
     cursor: pointer;
 }
 
+#message_write_container .write_div_btn a{
+	text-decoration: none;
+}
+
+#message_write_container .write_div_btn a:visited{
+	text-decoration: none;
+	color: white;
+}
+
 #message_write_container .message_write_textarea {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -127,7 +136,7 @@
     top: 50%;
     left: 50%;
     width: 470px;
-    height: 400px;
+    height: 300px;
     padding: 20px;
     background-color: rgb(255, 255, 255);
     border-radius: 7px;
@@ -142,6 +151,7 @@
     flex-direction: row;
     margin: 0;
     padding: 0;
+
 }
 .message_modal_body .dept{
     width: 26%;
@@ -188,14 +198,16 @@
 /* 220826 우측 사원 정보 */
 .message_modal_body #modal_personal_info{
     width: 74%;
-    height: auto;
     margin: 10px 10px 5px 5px;
     text-align: center;
+    height: 150px;
+    overflow: auto;
 }
 
 .message_modal_body .dept_right{
     width: 100%;
     text-align: center;
+
 }
 
 .message_modal_body .dept_right thead{

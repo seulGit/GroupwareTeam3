@@ -93,7 +93,11 @@
     flex-wrap: wrap;
 }
 
-#layoutSidenav_content .homebox1 .home_personal_insert_info button {
+#layoutSidenav_content .homebox1 .home_personal_insert_info a,
+#layoutSidenav_content .homebox1 .home_personal_insert_info a:active {
+	text-decoration: none;
+	color: black;
+	text-align: center;
     border-radius: 10px;
     border: 1px solid gray;
     width: 47%;
