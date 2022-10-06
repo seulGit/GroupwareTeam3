@@ -52,7 +52,10 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public List<EmployeeVO> authoritySearch(Map<String, Object> map) {
+    public List<Map<String, Object>> authoritySearch(Map<String, Object> map) {
         return adminDAO.authoritySearch(map);
     }
+
+
 }
+

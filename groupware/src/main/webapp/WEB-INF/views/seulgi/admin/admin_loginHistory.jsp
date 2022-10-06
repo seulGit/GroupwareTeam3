@@ -72,6 +72,6 @@
         crossorigin="anonymous"></script>
 <%--<script src="../resources/js/admin/admin_personnelCard.js"></script>--%>
 <script src="<c:url value="/resources/js/admin/admin_loginHistory.js"/>"></script>
-
+<script src="<c:url value='/resources/js/officemap.js'/>"></script>
 </body>
 </html>
