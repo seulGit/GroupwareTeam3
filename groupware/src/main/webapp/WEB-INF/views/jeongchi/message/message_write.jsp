@@ -29,6 +29,7 @@
 window.onload = function(){
 
 	let messageReceiver = document.querySelector("#message_receiver2"); // 체크박스 생성
+	let message_type = "일반";												// 타입설정
 
 	var arrNum = [];
 	var arrSendInfo = [];
@@ -170,6 +171,13 @@ window.onload = function(){
 	
     // ====== 보내기 버튼 클릭 이벤트 ====== // 
     $("#writeSubmit").click(function(){
+    	sendAjax();
+	});
+    $("#writeTemp").click(function(){
+    	message_type = $("#writeTemp").val();				// 타입설정
+    	sendAjax();
+	});
+	function sendAjax() {
 		// ====== 유효성 검사 ====== //
 	    // 받는사람
 	    let receiver = $("#message_receiver2").val().trim();
@@ -214,6 +222,7 @@ window.onload = function(){
 	    console.log(message_title);
 	    console.log(message_sender2);
 	    console.log(message_sender);
+	    console.log(message_type);
 	    console.log(message_contents);
 	    console.log(message_important);
 	    console.log(emp_num);
@@ -227,6 +236,7 @@ window.onload = function(){
 	    			"message_title" : message_title, 
 	    			"message_sender2" : message_sender2,
 	    			"message_sender" : message_sender,
+	    			"message_type" : message_type,
 	    			"message_contents" : message_contents,
 	    			"emp_num" : emp_num,
 	    			"message_important" : message_important};
@@ -237,7 +247,8 @@ window.onload = function(){
 	            data : messageData,					
 				dataType : "json",
 	            success : function(data){
-	            	alert("메세지 전송을 완료 하였습니다.");
+	            	window.location.reload();
+	            	
 	            },
 		        error: function(request, status, error){
 				    alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
@@ -245,9 +256,9 @@ window.onload = function(){
 				}
 	    	});	    
 	    };
-
+    	alert("메세지 전송을 완료 하였습니다.");
 	    // arrNum = [];    	
-    });
+    };
 };
 
 </script>
@@ -257,8 +268,8 @@ window.onload = function(){
 	<div class="content_box">쪽지쓰기</div>
 	<div id="message_write_container">
 		<div class="top_btn">
-			<button class="write_div_btn" id="writeSubmit" value="보내기">보내기</button>				
-			<div class="write_div_btn">임시저장</div>
+			<button class="write_div_btn" id="writeSubmit" value="일반">보내기</button>				
+			<button class="write_div_btn" id="writeTemp" value="임시">임시저장</button>
 			<div class="write_div_btn" id="writeReset">다시쓰기</div>
 		</div>
 		<div class="message_write_insert_info">
@@ -273,7 +284,7 @@ window.onload = function(){
 					<td class="message_td2"><input type="text" name="message_title" id="message_title" value=""></td>
 				</tr>
 				<tr>
-					<td class="message_td1">작성자</td>					
+					<td class="message_td1">작성자</td>
 					<td class="message_td2"><input type="text" name="message_sender" id="message_sender" value="${sessionScope.emp_name}"></td>
 				</tr>
 				<tr>
@@ -377,6 +388,7 @@ window.onload = function(){
 	crossorigin="anonymous"></script>
 <!--     <script src="../resources/js/message_jquery.js"></script> -->
 <script src="../resources/js/message/message_write.js?ver=1"></script>
+<script src="<c:url value='resources/js/officemap.js'/>"></script>
 
 <script>
 		var oEditors = [];
