@@ -28,6 +28,10 @@ public interface BoardService {
 	// 조회수 증가
 	int board_view_plus(int board_num);
 
+
+	// 공지게시글 리스트 불러오기 -정치-
+	List<BoardVO> board_selectNTList(BoardVO boardVo);
+
 	// 댓글 입력
 	void board_comment_insert(Map<String, Object> comment);
 
@@ -36,6 +40,7 @@ public interface BoardService {
 
 	// 댓글 삭제
 	void comment_delete(Map<String, Object> map);
+
 
 
 
