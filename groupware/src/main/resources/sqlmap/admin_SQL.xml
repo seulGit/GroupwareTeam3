@@ -193,7 +193,8 @@
 
 
 
-    <!-- =================================권한조회 -->
+    <!-- =================================권한관리 -->
+    <!-- 권한 조회 -->
     <select id="authoritySearch" parameterType="hashMap" resultType="hashMap">
         select e.emp_num, e.auth_code, e.emp_name, e.emp_active,
                d.dept_name, d.dept_code, aa.authority_EDMS,
@@ -226,4 +227,17 @@
         </choose>
         auth_code = 'admin';
     </select>
+
+    <!-- 권한 수정 -->
+    <update id="authorityModify" parameterType="hashMap">
+        UPDATE admin_authority
+        SET authority_EDMS = #{authority_EDMS},
+            authority_worktime = #{authority_worktime},
+            authority_booking = #{authority_booking},
+            authority_board = #{authority_board},
+            authority_personnelCard = #{authority_personnelCard},
+            authority_loginHistory = #{authority_loginHistory},
+            authority_authority = #{authority_authority}
+        WHERE emp_num = #{emp_num};
+    </update>
 </mapper>

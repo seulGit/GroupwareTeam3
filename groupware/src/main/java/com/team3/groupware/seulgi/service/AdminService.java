@@ -24,4 +24,6 @@ public interface AdminService {
     List<EmployeeVO> loginHistorySearch(Map<String, Object> map);
 
     List<Map<String, Object>> authoritySearch(Map<String, Object> map);
+
+    void adminAuthorityModify(Map<String, Object> map);
 }
