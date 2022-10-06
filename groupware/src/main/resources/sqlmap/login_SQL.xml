@@ -6,17 +6,28 @@
     <select id="login_check" resultType="com.team3.groupware.common.model.EmployeeVO">
 
         select
-            emp_num, auth_code, emp_name
+            e.emp_num, e.auth_code, e.emp_name, lh.recent_datetime, d. dept_code, d.dept_name, e.position_grade
         from
-            employee
+            employee e
+        join
+            department d on e.dept_code = d.dept_code
+        join
+            login_history lh on e.emp_num = lh.emp_num
         where
-            emp_num = ${emp_num} and BINARY emp_pw = '${emp_pw}';
-
+            e.emp_num = ${emp_num} and BINARY e.emp_pw = '${emp_pw}'
+        order by
+            lh.recent_datetime desc limit 1;
     </select>
 
     <insert id="saveLog">
         insert into login_history(emp_num, recent_datetime)
         values (#{emp_num}, now());
     </insert>
+
+    <select id="adminAuthorityInfo" resultType="com.team3.groupware.seulgi.model.AdminVO">
+        select authority_EDMS, authority_worktime, authority_booking, authority_board, authority_personnelCard, authority_loginHistory, authority_authority
+        from admin_authority
+        where emp_num = ${emp_num};
+    </select>
 
 </mapper>

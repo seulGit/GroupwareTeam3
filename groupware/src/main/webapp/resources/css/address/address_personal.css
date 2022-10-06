@@ -114,13 +114,20 @@ body {
 }
 
 .address_personal_table > tbody > tr > td {
-    width: 175px;
+    width: 200px;
     padding: 10px 0;
 }
 
 
 .address_personal_table > tbody > tr > td:first-child {
     padding-left: 15px;
+}
+.address_personal_list > tbody > tr > td:first-child{
+	padding-left:15px;
+}
+.address_personal_list > tbody > tr > td{
+	padding: 10px 0;
+	width:200px;
 }
 /* a링크 색 밑줄 제거 */
 .address_personal_search_consonant > a:link , a:visited , a:hover , a:active{

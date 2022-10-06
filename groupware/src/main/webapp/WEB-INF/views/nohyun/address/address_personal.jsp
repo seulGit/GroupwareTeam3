@@ -27,11 +27,8 @@
                 <div class="address_personal_category_container">
                     <div class="address_personal_category_list">
       				  
-      				  <c:forEach var="row" items="${categoryData}">
-      				  	
-                        <form class="address_personal_category_data"><a href="">${row.searchCategory}</a></form>
-                      </c:forEach>
-                      
+      					<form class="address_personal_category_data">현이의 주소록</form>
+  
                         <div class="address_personal_input_box">
                         <input type="text" placeholder="연락처 그룹 이름" class="address_personal_category_input"><i class="xi-check"></i></div>
                         <div class="address_personal_category_add">
@@ -104,18 +101,18 @@
                         </tr>
                         </table>
                         <table class="address_personal_list">
-                        <c:forEach var="row" items="${data}">
+                        
                         <tr>
-                            <td><i class="xi-user-o"></i><a href="../address/address_all_info.html">${row.emp_name}</a></td>
+                            <td><i class="xi-user-o"></i>노현</td>
                             <td>${row.position_grade}</td>
-                            <td>${row.emp_phonenum}</td>
-                            <td>${row.emp_email}</td>
+                            <td>010-3154-1115</td>
+                            <td>nice5@gmail.com</td>
                             <td>${row.dept_name}</td>
                             <td>${row.emp_desk_num}</td>
                             <td>${row.emp_address}</td>
 
                         </tr>
-                        </c:forEach>
+                       
                      
         
                     </table>

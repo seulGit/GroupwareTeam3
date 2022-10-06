@@ -226,7 +226,7 @@
                             <div class="office_map_it"><i class="xi-angle-right-min"></i>IT팀</div>
                             <div class="office_map_it_team">
                                 <div>김형준 팀장</div>
-                                <div>김형준 차장</div>
+                                <div>양광모 차장</div>
                             </div>
 
                         </div>

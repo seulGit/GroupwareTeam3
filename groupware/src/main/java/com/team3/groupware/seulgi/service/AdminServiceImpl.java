@@ -56,6 +56,11 @@ public class AdminServiceImpl implements AdminService{
         return adminDAO.authoritySearch(map);
     }
 
+    @Override
+    public void adminAuthorityModify(Map<String, Object> map) {
+        adminDAO.adminAuthorityModify(map);
+    }
+
 
 }
 

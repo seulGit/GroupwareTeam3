@@ -20,15 +20,15 @@
         <td><input type="checkbox" class="check_btn"></td>
         <td>${row.emp_num}</td>
         <td>${row.emp_name}</td>
-<%--        <c:set var="today" value="<%=new java.util.Date()%>"/>--%>
-<%--        <c:set var="timeZone" value="UTC-9"/>--%>
-<%--        <fmt:formatDate value="${today}" type="both" />--%>
-<%--        <fmt:timeZone value="${timeZone}">--%>
-<%--        <td><fmt:formatDate value="${row.recent_datetime}"--%>
-<%--                            pattern="yyyy-MM-dd HH:mm:ss" timeZone="${timeZone}" type="both"/></td>--%>
+        <c:set var="today" value="<%=new java.util.Date()%>"/>
+        <c:set var="timeZone" value="Asia/Seoul"/>
+        <fmt:formatDate value="${today}" type="both" />
+        <fmt:timeZone value="${timeZone}">
         <td><fmt:formatDate value="${row.recent_datetime}"
-                            pattern="yyyy-MM-dd HH:mm:ss"/></td>
-<%--        </fmt:timeZone>--%>
+                            pattern="yyyy-MM-dd HH:mm:ss" timeZone="${timeZone}" type="both"/></td>
+<%--        <td><fmt:formatDate value="${row.recent_datetime}"--%>
+<%--                            pattern="yyyy-MM-dd HH:mm:ss"/></td>--%>
+        </fmt:timeZone>
 <%--        <td><fmt:formatDate value="${row.start_date}"--%>
 <%--                            pattern="yyyy-MM-dd"/></td>--%>
 <%--        <td><fmt:formatDate value="${row.end_date}"--%>

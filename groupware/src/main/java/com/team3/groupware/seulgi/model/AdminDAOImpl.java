@@ -54,5 +54,15 @@ public class AdminDAOImpl implements AdminDAO{
         return sqlSessionTemplate.selectList("admin.authoritySearch", map);
     }
 
+    @Override
+    public void adminAuthorityModify(Map<String, Object> map) {
+        sqlSessionTemplate.update("admin.authorityModify",map);
+    }
+
+    @Override
+    public AdminVO authority_info(AdminVO vo) {
+        return sqlSessionTemplate.selectOne("login.adminAuthorityInfo", vo);
+    }
+
 
 }

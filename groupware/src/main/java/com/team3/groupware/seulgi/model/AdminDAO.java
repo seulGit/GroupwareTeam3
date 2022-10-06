@@ -24,4 +24,8 @@ public interface AdminDAO {
     List<EmployeeVO> loginHistorySearch(Map<String, Object> map);
 
     List<Map<String, Object>> authoritySearch(Map<String, Object> map);
+
+    void adminAuthorityModify(Map<String, Object> map);
+
+    AdminVO authority_info(AdminVO vo);
 }

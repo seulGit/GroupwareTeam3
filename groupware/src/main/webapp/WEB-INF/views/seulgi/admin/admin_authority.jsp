@@ -105,7 +105,6 @@
         </div>
         <div class="details_btn">
             <button class="btn_save">저장</button>
-            <button class="btn_delete">삭제</button>
         </div>
     </div>
 </div>

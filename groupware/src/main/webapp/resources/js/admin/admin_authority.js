@@ -1,5 +1,4 @@
 //권한조회
-
 $(function () {
     $('.xi-search').click(function () {
         let search_num = document.querySelector("#search_num").value;
@@ -40,6 +39,77 @@ $(function () {
             success: function (data) {
                 $('.result_table').html(data);
 
+
+                //배열과 객체 만들어서 담기
+                let search_list_contents = document.querySelectorAll('.search_list_contents');
+                console.log(search_list_contents);
+
+
+                let btn_modify = document.querySelector('.btn_save');
+
+                btn_modify.addEventListener('click', function(){
+
+                    for(let i=0; i<search_list_contents.length; i++) {
+                        let authority_array = [];
+                        let authority_EDMS = 0;
+                        let authority_worktime = 0;
+                        let authority_booking = 0;
+                        let authority_board = 0;
+                        let authority_personnelCard = 0;
+                        let authority_loginHistory = 0;
+                        let authority_authority = 0;
+                        let emp_num = search_list_contents[i].children[2].textContent;
+
+                        if(search_list_contents[i].children[6].children[0].checked) {
+                            authority_EDMS = 1;
+                        }
+                        if(search_list_contents[i].children[7].children[0].checked) {
+                            authority_worktime = 1;
+                        }
+                        if(search_list_contents[i].children[8].children[0].checked) {
+                            authority_booking = 1;
+                        }
+                        if(search_list_contents[i].children[9].children[0].checked) {
+                            authority_board = 1;
+                        }
+                        if(search_list_contents[i].children[10].children[0].checked) {
+                            authority_personnelCard = 1;
+                        }
+                        if(search_list_contents[i].children[11].children[0].checked) {
+                            authority_loginHistory = 1;
+                        }
+                        if(search_list_contents[i].children[12].children[0].checked) {
+                            authority_authority = 1;
+                        }
+
+                        authority_array.push(emp_num);
+                        authority_array.push(authority_EDMS);
+                        authority_array.push(authority_worktime);
+                        authority_array.push(authority_booking);
+                        authority_array.push(authority_board);
+                        authority_array.push(authority_personnelCard);
+                        authority_array.push(authority_loginHistory);
+                        authority_array.push(authority_authority);
+
+                        //배열넘길때 쓰는 형식
+                        $.ajax({
+                            type : "POST",
+                            traditional : true,
+                            url : "/admin/admin_authority/modify",
+                            async: false, //동기
+                            data: {authority_array:authority_array},
+                            success : function(data) {
+                            },
+                            error : function(data) {
+                                console.log(data);
+                            }
+                        });
+                    }
+                    alert("수정 완료");
+
+                })
+
+
                 // let search_list_contents = document.querySelectorAll('.search_list_contents');
 
                 //
@@ -50,7 +120,6 @@ $(function () {
                 //         search_list_contents[i].children[6].checked = true;
                 //     }
                 // }
-
 
             },
             error: function (error) {
@@ -89,3 +158,4 @@ all_check_btn.addEventListener('click', function () { //최상단 체크박스
 //search_list_contents[i] 에 있는 checkbox[0]이 눌려있으면
 //해당하는 id로 접속시
 //intro jsp 에 관리자메뉴-전자결재관리 display none
+
