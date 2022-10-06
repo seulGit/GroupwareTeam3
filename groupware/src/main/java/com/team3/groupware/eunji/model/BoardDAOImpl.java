@@ -40,6 +40,25 @@ public class BoardDAOImpl implements BoardDAO {
 		this.session.update("board.board_modify", boardVo);
 	}
 
+	// 게시글 삭제
+	@Override
+	public void board_delete(BoardVO boardVo) {
+		this.session.delete("board.board_delete", boardVo);
+		
+	}
+
+	// 게시글 검색
+	@Override
+	public List<Map<String, Object>> board_search(Map<String, Object> map) {
+		return session.selectList("board.board_search", map);
+	}
+
+	// 조회수 증가
+	@Override
+	public int board_view_plus(int board_num) {
+		return session.update("board.view_plus", board_num);
+	}
+
 
 
 }

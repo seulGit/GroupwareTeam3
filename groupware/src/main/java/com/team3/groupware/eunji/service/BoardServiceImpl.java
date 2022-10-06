@@ -41,6 +41,25 @@ public class BoardServiceImpl implements BoardService {
 	public void board_modify(BoardVO boardVo) {
 		this.boardDao.board_modify(boardVo);
 	}
+
+	// 게시글 삭제
+	@Override
+	public void board_delete(BoardVO boardVo) {
+		this.boardDao.board_delete(boardVo);
+		
+	}
+
+	// 게시글 검색
+	@Override
+	public List<Map<String, Object>> board_search(Map<String, Object> map) {
+		return boardDao.board_search(map);
+	}
+
+	// 조회수 증가
+	@Override
+	public int board_view_plus(int board_num) {
+		return boardDao.board_view_plus(board_num);
+	}
 	
 
 

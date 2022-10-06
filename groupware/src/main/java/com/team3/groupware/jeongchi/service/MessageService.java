@@ -22,4 +22,10 @@ public interface MessageService {
 
 	List<MessageVO> importantMessageList(int start, int end, MessageVO messageVO, int emp_num);
 
+	List<MessageVO> tempMessageList(int start, int end, MessageVO messageVO, int emp_num);
+	
+	Map<String, Object> message_detail(MessageVO messageVO);
+
+	
+
 }

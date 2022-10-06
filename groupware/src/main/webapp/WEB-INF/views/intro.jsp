@@ -70,8 +70,6 @@
                                 <a class="nav-link" href="../message/message_send">보낸쪽지함</a>
                                 <a class="nav-link" href="../message/message_important">중요쪽지함</a>
                                 <a class="nav-link" href="../message/message_temp">임시보관함</a>
-                                <a class="nav-link" href="../message/message_reserved">예약쪽지함</a>
-                                <a class="nav-link" href="../message/message_trash">휴지통</a>
                             </nav>
                         </div>
                         <c:if test="${sessionScope.auth_code eq 'normal'}">

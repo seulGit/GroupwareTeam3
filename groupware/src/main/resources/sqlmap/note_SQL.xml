@@ -9,7 +9,7 @@
 		message_read, message_type, message_delete_check, emp_num)
 		values
 		(#{message_important}, #{message_receiver}, #{message_receiver2}, #{message_title}, #{message_sender}, #{message_sender2}, 
-		#{message_contents}, now(), 0, "일반", 0, #{emp_num});
+		#{message_contents}, now(), 0, #{message_type}, 0, #{emp_num});
    </insert>
 
 	<!-- 해당 부서 사원리스트 불러오기 -->
@@ -62,10 +62,11 @@
 	<!-- 페이징처리용 불러오기 -->
 	<select id="sendMessageList" parameterType="hashMap" resultType="com.team3.groupware.jeongchi.model.MessageVO">
 		<include refid="paging_header" />
-		select message_receiver2, message_receiver, message_title, message_datetime,
+		select message_num, message_receiver2, message_receiver, message_title, message_datetime,
 		message_read, message_type
 		from message
 		where message_sender2 = #{emp_num}
+		and message_type = "일반"
 		order by message_datetime desc, message_receiver2 desc
 		<include refid="paging_footer" />
 	</select>
@@ -75,10 +76,11 @@
 	<!-- 페이징처리용 불러오기 -->
 	<select id="receiveMessageList" parameterType="hashMap" resultType="com.team3.groupware.jeongchi.model.MessageVO">
 		<include refid="paging_header" />
-		select message_sender2, message_sender, message_title, message_datetime,
+		select message_num, message_sender2, message_sender, message_title, message_datetime,
 		message_read, message_type
 		from message 
 		where message_receiver2 = #{emp_num}
+		and message_type = "일반"
 		order by message_datetime desc, message_sender2 desc
 		<include refid="paging_footer" />
 	</select>
@@ -87,7 +89,7 @@
 	<!-- 페이징처리용 불러오기 -->
 	<select id="importantMessageList" parameterType="hashMap" resultType="com.team3.groupware.jeongchi.model.MessageVO">
 		<include refid="paging_header" />
-		select message_sender2, message_sender, message_title, message_datetime,
+		select message_num, message_sender2, message_sender, message_title, message_datetime,
 		message_read, message_type
 		from message 
 		where message_receiver2 = #{emp_num}
@@ -95,7 +97,26 @@
 		order by message_datetime desc, message_sender2 desc
 		<include refid="paging_footer" />
 	</select>
-
+	
+	<!-- 임시보관함 시작 -->
+	<!-- 페이징처리용 불러오기 -->
+	<select id="tempMessageList" parameterType="hashMap" resultType="com.team3.groupware.jeongchi.model.MessageVO">
+		<include refid="paging_header" />
+		select message_num, message_sender2, message_sender, message_title, message_datetime,
+		message_read, message_type
+		from message 
+		where message_sender2 = #{emp_num}
+		and message_type = "임시"
+		order by message_datetime desc, message_sender2 desc
+		<include refid="paging_footer" />
+	</select>
+	
+	<!-- 디테일 페이지 불러오기 -->
+	<select id="message_detail" parameterType="hashMap" resultType="hashMap">
+		select message_num, message_title, message_sender, message_receiver, message_datetime, message_contents 
+		from message
+		where message_num = #{message_num};
+	</select>
 
 	<sql id="paging_header"> <!-- 메인 쿼리 헤더 -->
 		select *

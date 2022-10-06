@@ -19,9 +19,11 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <script>
+
 function list(page) {
 	location.href = "message_receive?curPage=" + page;
 }
+
 window.onload = function(){
 /* 	220920 김정치   체크박스 전체 선택 / 해제 기능  */
 	sendWriteAddressChkBox();
@@ -73,7 +75,6 @@ window.onload = function(){
 		    $(".message_modal").css("display", "none");		// 확인 버튼 클릭 시 모달 삭제
 		}); */
 	}
-
 }
 
 
@@ -108,7 +109,7 @@ window.onload = function(){
 					<td><i class="xi-attachment"></i></td>
 					<td>${row.message_sender2}</td>
 					<td>${row.message_sender}</td>
-					<td>${row.message_title}</td>
+					<td><a href="message_detail?message_num=${row.message_num}">${row.message_title}</a></td>
 					<td>${row.message_datetime}</td>
 					<td>${row.message_read}</td>
 					<td>${row.message_type}</td>
@@ -168,5 +169,6 @@ window.onload = function(){
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
+<script src="<c:url value='resources/js/officemap.js'/>"></script>
 </body>
 </html>
