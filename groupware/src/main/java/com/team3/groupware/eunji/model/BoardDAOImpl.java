@@ -59,6 +59,11 @@ public class BoardDAOImpl implements BoardDAO {
 		return session.update("board.view_plus", board_num);
 	}
 
-
+	// 공지게시판 리스트 불러오기 -정치-
+	@Override
+	public List<BoardVO> board_selectNTList(BoardVO boardVo) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.board_notice_selectList", boardVo);
+	}
 
 }

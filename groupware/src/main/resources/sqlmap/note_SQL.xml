@@ -19,6 +19,7 @@
 		on E.dept_code = D.dept_code
 		<if test="dept_code != null">
 			where E.dept_code = #{dept_code} <!-- 부서와 jsp 해당 클래스의 value 값 비교 -->
+			and E.auth_code = "normal"
 		</if>
 		order by emp_num desc;
 	</select>
@@ -30,9 +31,9 @@
 		where 
 		<choose>
 			<when test="search_option == 'all' " >
-				emp_name like CONCAT('%', #{keyword},'%') or
+				(emp_name like CONCAT('%', #{keyword},'%') or
 				emp_num like CONCAT('%', #{keyword},'%') or
-				dept_name like CONCAT('%', #{keyword},'%')
+				dept_name like CONCAT('%', #{keyword},'%'))
 			</when>
 			<when test="search_option == 'emp_name' " >
 				emp_name like CONCAT('%', #{keyword},'%')
@@ -44,6 +45,7 @@
 				emp_num
 			</otherwise>
 		</choose>
+		and E.auth_code = "normal"
 		order by emp_num desc;
 	</select>
 	

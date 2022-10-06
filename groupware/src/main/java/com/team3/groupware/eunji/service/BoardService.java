@@ -28,6 +28,9 @@ public interface BoardService {
 	// 조회수 증가
 	int board_view_plus(int board_num);
 
+	// 공지게시글 리스트 불러오기 -정치-
+	List<BoardVO> board_selectNTList(BoardVO boardVo);
+
 
 
 }

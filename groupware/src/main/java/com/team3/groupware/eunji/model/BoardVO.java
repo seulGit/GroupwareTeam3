@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class BoardVO {
 
 	// board(게시판) 테이블
@@ -13,6 +15,7 @@ public class BoardVO {
 	private String board_title;      	  // 게시판 제목
 	@NotNull
 	private String board_contents;   	  // 게시판 내용
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date board_write_date;   	  // 작성일
 	private int board_view_count;    	  // 조회수
 	private boolean board_fix_check; 	  // 수정하기
@@ -30,6 +33,9 @@ public class BoardVO {
 	private String comment_contents;      // 내용
 	private boolean comment_fix_check;    // 수정하기
 	private boolean comment_delete_check; // 삭제하기
+	
+	// 메인 게시판 셀렉용
+	private String emp_name;           	  // 사원이름
 	
 	
 	// getter, setter
@@ -130,6 +136,12 @@ public class BoardVO {
 		this.comment_delete_check = comment_delete_check;
 	}
 	
+	public String getEmp_name() {
+		return emp_name;
+	}
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
+	}
 	// board toString()
 	@Override
 	public String toString() {

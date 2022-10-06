@@ -24,6 +24,18 @@
 	order by B.board_num desc;
 </select>
 
+<!-- 공지게시판 -->
+<!-- 공지 게시판 글 보이기 -->
+<select id="board_notice_selectList" parameterType="com.team3.groupware.eunji.model.BoardVO" resultType="hashMap">
+	select B.board_num, B.board_title, E.emp_name, B.board_write_date, B.board_view_count, D.dept_name 
+	from board B join employee E 
+	on B.emp_num = E.emp_num
+	join department D 
+	on D.dept_code = E.dept_code
+	where B.board_category_num = 500
+	order by B.board_num desc;
+</select>
+
 
 
 <!-- ================================================================================================================================ -->
