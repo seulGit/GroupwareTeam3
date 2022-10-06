@@ -60,5 +60,34 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 
+	// 공지게시판 리스트 불러오기 -정치-
+	@Override
+	public List<BoardVO> board_selectNTList(BoardVO boardVo) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.board_notice_selectList", boardVo);
+	}
+
+	// 댓글 입력
+	@Override
+	public void board_comment_insert(Map<String, Object> comment) {
+		this.session.insert("board.board_comment_insert", comment);
+		
+	}
+
+	// 댓글 보이기
+	@Override
+	public List<Map<String, Object>> board_comment_select(int board_num) {
+		return session.selectList("board.board_comment_selectList", board_num);
+	}
+
+	// 댓글 삭제
+	@Override
+	public void comment_delete(Map<String, Object> map) {
+		this.session.delete("board.comment_delete", map);
+		
+	}
+
+
+
 
 }

@@ -22,7 +22,6 @@ import com.team3.groupware.common.model.EmployeeVO;
 import com.team3.groupware.common.model.PageUtil;
 import com.team3.groupware.common.service.EmployeeService;
 import com.team3.groupware.jeongchi.model.MessageVO;
-import com.team3.groupware.jeongchi.service.EmailService;
 import com.team3.groupware.jeongchi.service.MessageService;
 
 @RestController
@@ -34,8 +33,7 @@ public class MessageController {
 	@Autowired
 	EmployeeService empService;
 	
-	@Autowired
-	EmailService emailService;
+//	================ message_write.jsp 시작  ============== //
 	
 	@GetMapping("/message/write")
 	public ModelAndView write() {
@@ -43,48 +41,12 @@ public class MessageController {
 		mv.setViewName("/jeongchi/message/message_write");
 		return mv;
 	}
-	
-//  이메일 용
-//	@RequestMapping("/send")
-//	public ModelAndView send(MessageVO vo, Model model) {
-//		ModelAndView mv = new ModelAndView();
-//		try {
-//			emailService.sendMail(vo);
-//			model.addAttribute("message", "이메일이 발송되었습니다.");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			model.addAttribute("message", "이메일 발송 실패...");
-//		}
-//		mv.setViewName("/jeongchi/message/message_write");
-//		return mv;
-//	}
-	
+//	=== 메시지 insert ===	
 	@PostMapping("/message/sendMessage")
 	public int sendMessage(MessageVO messageVO) {
-		messageService.sendMessage(messageVO);
-		System.out.println(messageVO.toString());
-	
-		
+		messageService.sendMessage(messageVO);		
 		return 0;
 	}
-	
-// 보내기 버튼 눌렀을 때 DB에 저장  //
-//	@GetMapping("/message/write")
-//	public ModelAndView write() {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("/jeongchi/message/message_write");
-//		return mv;
-//	}
-	
-//	@PostMapping("/message/write")
-//	public ModelAndView write(MessageVO messageVo, HttpServletRequest request) {
-//		System.out.println(request.getParameter("contents"));
-//		System.out.println(noteVo);
-//		messageService.write(messageVo);
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("redirect:/message/write");
-//		return mv;
-//	}
 
 // === 쪽지함의 쪽지쓰기의 주소록에서 조직 클릭한 경우(ajax) === //
 	@GetMapping("/message/writeAddress")
@@ -100,6 +62,7 @@ public class MessageController {
 		return empList;
 	}
 
+//	=== 쪽지함의 쪽지쓰기의 주소록에서 검색한 경우(ajax) ===	
 	@PostMapping("/message/writeAddressSearch")
 	public List<EmployeeVO> writeAddressSearch(@RequestParam String search_option, 
 			@RequestParam(defaultValue = "" ) String keyword) {

@@ -26,6 +26,7 @@
 #layoutSidenav_content .homebox1 .home_personal_info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     border: 1px solid gray;
     border-radius: 10px;
     height: 35%;
@@ -57,13 +58,12 @@
     font-size: 25px;
     font-weight: bold;
     text-align: center;
-    margin: 0;
 }
 
 #layoutSidenav_content .homebox1 .home_personal_company {
     font-size: 15px;
     text-align: center;
-    margin: 0;
+    margin: 5px 0;
 }
 
 #layoutSidenav_content .homebox1 .home_EDMS_docu {
@@ -98,6 +98,7 @@
 	text-decoration: none;
 	color: black;
 	text-align: center;
+	line-height: 50px;
     border-radius: 10px;
     border: 1px solid gray;
     width: 47%;
@@ -137,11 +138,12 @@
 /* 탭메뉴 */
 #layoutSidenav_content .homebox2 .tabmenu {
     display: flex;
-    /* background-color: #fff0d6; */
-    /* margin: 20px auto; */
-    position: relative;
+    flex-direction: column;
     box-sizing: border-box;
     height: 100%;
+}
+#layoutSidenav_content .homebox2 .tabmenu div {
+    box-sizing: border-box;
 }
 
 #layoutSidenav_content .homebox2 .tabmenu_list {
@@ -150,7 +152,6 @@
 
 #layoutSidenav_content .homebox2 .tabmenu ul {
     padding: 0;
-    height: 600px;
     width: 100%;
 }
 
@@ -161,51 +162,35 @@
     text-align: center;
     color: #333;
     font-size: 1rem;
-}
-
-#layoutSidenav_content .homebox2 .tabmenu label {
-    display: block;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
+    height: 40px;
+    line-height: 40px;
     cursor: pointer;
-    border-radius: 10px 10px 0 0;
+    border-radius: 20px 20px 0 0;
+    background-color: white;
 }
 
-#layoutSidenav_content .homebox2 .tabmenu input {
-    /* radio input은 기능만 필요하므로
-     display: none 처리 */
-    display: none;
-}
-
-#layoutSidenav_content .homebox2 .tabCon {
-    display: none;
-    padding: 10px;
-    position: absolute;
-    left: 0;
-    top: 50px;
-    width: 100%;
-    height: 100%;
+#layoutSidenav_content .homebox2 .tabmenu #tab1 {
     background-color: #dadada;
 }
 
-#layoutSidenav_content .homebox2 .tabCon table {
+#mainBoardView a,
+#mainBoardView a:active,
+#mainBoardView a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+#layoutSidenav_content .homebox2 .dept_down {
     width: 100%;
-    border-top: 1px solid gray;
-    text-align: left;
-    margin-top: 15px;
+    text-align: center;
+    background-color: #dadada;
+    padding-bottom: 5px;
 }
 
-#layoutSidenav_content .homebox2 .tabCon table tr {
-    border-bottom: 1px solid gray;
-}
-
-#layoutSidenav_content .homebox2 .tabCon .home_board_title {
-    margin: 0 0 0 5px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
+#layoutSidenav_content .homebox2 .dept_down tr {
+	height: 30px; 
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 }
 
 #layoutSidenav_content .homebox2 .tabCon .home_board_info {

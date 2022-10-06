@@ -25,6 +25,19 @@ public interface BoardDAO {
 
 	// 조회수 증가
 	int board_view_plus(int board_num);
+	
+	// 공지게시판 리스트 불러오기  -김정치-
+	List<BoardVO> board_selectNTList(BoardVO boardVo);
+
+	// 댓글 입력
+	void board_comment_insert(Map<String, Object> comment);
+
+	// 댓글 보이기
+	List<Map<String, Object>> board_comment_select(int board_num);
+
+	// 댓글 삭제
+	void comment_delete(Map<String, Object> map);
+
 
 
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mainAjax">
+	<select id="mainBoardList" parameterType="HashMap" resultType="com.team3.groupware.eunji.model.BoardVO">
+		select B.board_title, E.emp_name, B.board_write_date, B.board_num
+		from board B left join employee E
+		on B.emp_num = E.emp_num
+		<choose>
+			<when test="board_category_num == 500">
+			where B.board_category_num = 500 <!-- 게시판별 구분 -->
+			</when>
+			<when test="board_category_num == 600">
+			where B.board_category_num = 600 <!-- 게시판별 구분 -->
+			</when>
+			<when test="board_category_num == 700">
+			where B.board_category_num = 700 <!-- 게시판별 구분 -->
+			</when>
+			<otherwise>
+			where 1=1 <!-- 게시판 전체 -->
+			</otherwise>	
+		</choose>
+		order by B.board_write_date desc limit 10;
+	</select>	
+</mapper>

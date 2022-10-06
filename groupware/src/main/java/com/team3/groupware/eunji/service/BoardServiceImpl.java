@@ -60,7 +60,34 @@ public class BoardServiceImpl implements BoardService {
 	public int board_view_plus(int board_num) {
 		return boardDao.board_view_plus(board_num);
 	}
-	
 
+	// 댓글 입력
+	@Override
+	public void board_comment_insert(Map<String, Object> comment) {
+		this.boardDao.board_comment_insert(comment);
+		
+	}
+
+	// 댓글 보이기
+	@Override
+	public List<Map<String, Object>> board_comment_select(int board_num) {
+		return boardDao.board_comment_select(board_num);
+	}
+
+	// 댓글 삭제
+	@Override
+	public void comment_delete(Map<String, Object> map) {
+		this.boardDao.comment_delete(map);
+		
+	}
+
+
+	
+	// 공지게시글 리스트 불러오기 -정치-
+	@Override
+	public List<BoardVO> board_selectNTList(BoardVO boardVo) {
+		// TODO Auto-generated method stub
+		return boardDao.board_selectNTList(boardVo);
+	}
 
 }

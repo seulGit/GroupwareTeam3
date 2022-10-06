@@ -74,20 +74,6 @@
                 </div>
                 
                 </div>
-               
-                <!-- 댓글 -->
-<!--                 <div id="board_form_commentinfo">
-                    <div id="board_comment_count">
-                        <h2><i class="fa-solid fa-comments"></i>댓글
-                            [<span id="comment_count" >0</span>]</h2>
-                            <input id="board_comment_input" placeholder="댓글을 입력해 주세요.">
-                    <button id="board_comment_submit">등록</button>
-                    </div>
-                    
-                    <div id=board_comments_con>
-            
-                    </div>
-                </div> -->  
                          
             </div>
              </form>

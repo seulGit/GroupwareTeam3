@@ -24,6 +24,18 @@
 	order by B.board_num desc;
 </select>
 
+<!-- 공지게시판 -->
+<!-- 공지 게시판 글 보이기 -->
+<select id="board_notice_selectList" parameterType="com.team3.groupware.eunji.model.BoardVO" resultType="hashMap">
+	select B.board_num, B.board_title, E.emp_name, B.board_write_date, B.board_view_count, D.dept_name 
+	from board B join employee E 
+	on B.emp_num = E.emp_num
+	join department D 
+	on D.dept_code = E.dept_code
+	where B.board_category_num = 500
+	order by B.board_num desc;
+</select>
+
 
 
 <!-- ================================================================================================================================ -->
@@ -90,7 +102,31 @@ resultType="hashMap">
 	update board 
 	set board_view_count = board_view_count + 1
 	where board_num=#{board_num};
-	
 </update>
 
+
+
+<!-- ================================================================================================================================ -->
+<!-- 댓글 -->
+<!-- 댓글 입력 -->
+<insert id="board_comment_insert" parameterType="hashMap">
+   	insert into board_comment
+    (board_num, emp_num, comment_date, comment_contents)
+    value (#{board_num},#{emp_num}, now(), #{comment_contents});
+</insert>
+<!-- 댓글 보이기 -->
+<select id="board_comment_selectList" resultType="hashMap" >
+	select E.emp_name, D.dept_name, B.comment_num,
+	B.board_num, B.comment_date,B.comment_contents, B.comment_fix_check, B.comment_delete_check
+    from board_comment B join employee E
+    on B.emp_num = E.emp_num
+    join department D 
+    on D.dept_code = E.dept_code
+    where B.board_num = #{board_num}
+    order by comment_num desc; 
+</select>
+<delete id="comment_delete">
+	delete from board_comment 
+	where comment_num =#{comment_num};
+</delete>
 </mapper>
