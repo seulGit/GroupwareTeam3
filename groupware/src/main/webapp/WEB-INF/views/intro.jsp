@@ -82,12 +82,12 @@
                         <div class="collapse" id="collapseEDMS" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../EDMS/home">전자결재홈</a>
+                                <a class="nav-link" href="../EDMS/home?emp_num=${sessionScope.emp_num}">전자결재홈</a>
                                 <a class="nav-link" href="../EDMS/new">새결재진행</a>
-                                <a class="nav-link" href="../EDMS/Temporary_box">임시보관함</a>
-                                <a class="nav-link" href="../EDMS/wait">결재대기중</a>
-                                <a class="nav-link" href="../EDMS/ing">진행중문서</a>
-                                <a class="nav-link" href="../EDMS/end">완료문서</a>
+                                <a class="nav-link" href="../EDMS/Temporary_box?emp_num=${sessionScope.emp_num}">임시보관함</a>
+                                <a class="nav-link" href="../EDMS/wait?emp_num=${sessionScope.emp_num}">결재대기중</a>
+                                <a class="nav-link" href="../EDMS/ing?emp_num=${sessionScope.emp_num}">진행중문서</a>
+                                <a class="nav-link" href="../EDMS/end?emp_num=${sessionScope.emp_num}">완료문서</a>
                             </nav>
                         </div>
 
@@ -181,9 +181,9 @@
                 </div>
             </nav>
         </div>
-        
+
          <div class="office_map_sidenav">
-                
+
                     <div class="office_map_sidenav_box">
                         <div class="office_map_group"><i class="xi-angle-right-min"></i>JH그룹</div>
                         <div class="office_map_group_employee">
@@ -192,35 +192,35 @@
                         </div>
                             <div class="office_map_strategic_planning"><i class="xi-angle-right-min"></i>전략기획팀</div>
                             <div class="office_map_strategic_planning_team">
-                                
+
                                 <div>백진주 부장</div>
-                                <div>박예솔 사원</div>                   
+                                <div>박예솔 사원</div>
                             </div>
 
                             <div class="office_map_management_support"><i class="xi-angle-right-min"></i>경영지원팀</div>
                             <div class="office_map_management_support_team">
                                 <div>오슬기 부장</div>
                                 <div>서승혁 대리</div>
-                                
+
                             </div>
 
                             <div class="office_map_hr"><i class="xi-angle-right-min"></i>인사팀</div>
                             <div class="office_map_hr_team">
                                 <div>이은지 부장</div>
                                 <div>이승재 인턴</div>
-                               
+
                             </div>
 
                             <div class="office_map_sales"><i class="xi-angle-right-min"></i>영업팀</div>
                             <div class="office_map_sales_team">
                                 <div>성선규 부장</div>
-                                
+
                             </div>
 
                             <div class="office_map_marketing"><i class="xi-angle-right-min"></i>마케팅팀</div>
                             <div class="office_map_marketing_team">
                                 <div>노현 부장</div>
-                                
+
                             </div>
 
                             <div class="office_map_it"><i class="xi-angle-right-min"></i>IT팀</div>
@@ -231,6 +231,6 @@
 
                         </div>
                     </div>
-                
+
             </div>
         

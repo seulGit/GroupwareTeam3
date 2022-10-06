@@ -2,14 +2,23 @@ package com.team3.groupware.seongyu.service;
 
 import com.team3.groupware.common.model.EmployeeVO;
 import com.team3.groupware.seongyu.model.EDMSDAO;
+import com.team3.groupware.seongyu.model.EDMS_new_certificateVO;
+import com.team3.groupware.seongyu.model.EDMS_new_expenseVO;
 import com.team3.groupware.seongyu.model.EDMS_new_generalVO;
+import kr.co.util.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EDMSServiceImpl implements EDMSService{
+
+    @Resource(name="fileUtils")
+    private FileUtils fileUtils;
 
     @Autowired
     EDMSDAO edmsdao;
@@ -20,7 +29,30 @@ public class EDMSServiceImpl implements EDMSService{
     }
 
     @Override
-    public int insert_general(EDMS_new_generalVO edms_new_generalVO) {
-        return edmsdao.insert_general(edms_new_generalVO);
+    public void insert_general(EDMS_new_generalVO edms_new_generalVO,
+                              MultipartHttpServletRequest mpRequest) throws Exception {
+        edmsdao.insert_general(edms_new_generalVO);
+
+        List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(edms_new_generalVO, mpRequest);
+        int size = list.size();
+        for(int i=0; i<size; i++){
+            System.out.println(list.get(i));
+            edmsdao.insertFile(list.get(i));
+        }
+    }
+
+    @Override
+    public int insert_expense(EDMS_new_expenseVO edms_new_expenseVO) {
+        return edmsdao.insert_expense(edms_new_expenseVO);
+    }
+
+    @Override
+    public int insert_certificate(EDMS_new_certificateVO edms_new_certificateVO) {
+        return edmsdao.insert_certificate(edms_new_certificateVO);
+    }
+
+    @Override
+    public List<Map<String, Object>> select_EDMS_docu_ing(Map<String, Object> map) {
+        return edmsdao.select_EDMS_docu_ing(map);
     }
 }

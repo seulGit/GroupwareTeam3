@@ -27,7 +27,7 @@
     </div>
 
     <!-- 기본 설정 -->
-    <form name="EDMS_docu" type="POST">
+    <form name="EDMS_docu" type="POST" enctype="multipart/form-data">
     <div class="EDMS_new_container">
         <div class="basic_setting">
             <p>기본설정</p>
@@ -99,6 +99,7 @@
                 <input type="button" value="결재선 초기화" id="approver_reset_btn">
             </div>
         </div>
+        <input type="file" name="file">
 
         <div class="EDMS_docu"></div>
     </form>

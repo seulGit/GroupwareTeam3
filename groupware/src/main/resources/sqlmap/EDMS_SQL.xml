@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="EDMS">
+
+
     <insert id="insert_docu" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO"
             useGeneratedKeys="true" keyProperty="EDMS_docu_num">
         INSERT INTO
@@ -8,7 +10,7 @@
                                       EDMS_docu_category,
                                       emp_num,
                                       EDMS_docu_urgent,
-                                      EDMS_docu_file_route,
+                                      file_no,
                                       EDMS_docu_temp,
                                       EDMS_docu_cancel
                                       )
@@ -21,18 +23,222 @@
                 #{EDMS_docu_cancel}
                 );
     </insert>
+
     <insert id="insert_approval" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
         INSERT INTO
             groupwareteam3.EDMS_approval (
                                           EDMS_approval_emp_1,
                                           EDMS_approval_emp_2,
-                                          EDMS_docu_num)
+                                          EDMS_docu_num
+                                          )
         VALUES (
                 #{EDMS_approval_emp_1},
                 #{EDMS_approval_emp_2},
-                1);
+                #{EDMS_docu_num});
     </insert>
-    <insert id="insert_general" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
 
+    <insert id="insert_general" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
+        INSERT INTO
+            groupwareteam3.EDMS_approval_request (
+                                                  approval_request_docu_title,
+                                                  approval_request_docu_contents,
+                                                  EDMS_docu_num
+                                                  )
+        VALUES (
+                #{approval_request_docu_title},
+                #{approval_request_docu_contents},
+                #{EDMS_docu_num});
     </insert>
+
+    <insert id="insert_certificate" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
+        INSERT INTO
+            groupwareteam3.EDMS_certificate (
+                                             certificate_docu_title,
+                                             certificate_docu_contents,
+                                             certificate_name,
+                                             certificate_purpose,
+                                             certificate_submit_to,
+                                             EDMS_docu_num
+                                             )
+        VALUES (
+                #{certificate_docu_title},
+                #{certificate_docu_contents},
+                #{certificate_name},
+                #{certificate_purpose},
+                #{certificate_submit_to},
+                #{EDMS_docu_num}
+                );
+    </insert>
+
+    <insert id="insert_expense" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
+        INSERT INTO
+            groupwareteam3.EDMS_expense (
+                                         expense_docu_title,
+                                         expense_docu_contents,
+                                         expense_purpose,
+                                         expense_total_expense,
+                                         expense_payment,
+                                         EDMS_docu_num
+                                         )
+        VALUES (
+                #{expense_docu_title},
+                #{expense_docu_contents},
+                #{expense_purpose},
+                #{expense_total_expense},
+                #{expense_payment},
+                #{EDMS_docu_num}
+                );
+    </insert>
+
+
+    <select id="select_EDMS_docu_ing" parameterType="hashmap" resultType="hashmap">
+        SELECT
+            EDMS_docu.EDMS_docu_num,
+            EDMS_docu.EDMS_docu_date,
+            CASE EDMS_docu.EDMS_docu_category
+                when 'general' then '일반품의서'
+                when 'money' then '비용품의서'
+                when 'certificate' then '증명서신청'
+                end as EDMS_docu_category,
+            e.emp_name,
+            approval_request_docu_title,
+            EDMS_docu.file_no,
+            EDMS_docu.EDMS_docu_urgent
+        FROM EDMS_docu JOIN (
+            SELECT
+                Ear.EDMS_docu_num,
+                approval_request_docu_title
+            FROM
+                EDMS_approval_request AS Ear
+            UNION
+            SELECT
+                Ee.EDMS_docu_num,
+                expense_docu_title
+            FROM
+                EDMS_expense AS Ee
+            UNION
+            SELECT
+                Ex.EDMS_docu_num,
+                certificate_docu_title
+            FROM
+                EDMS_certificate AS Ex) a ON EDMS_docu.EDMS_docu_num = a.EDMS_docu_num
+                       join employee e on EDMS_docu.emp_num = e.emp_num
+        WHERE
+            EDMS_docu.emp_num = #{emp_num}
+        ORDER BY
+            EDMS_docu_num DESC;
+    </select>
+
+
+
+<!--    <insert id="insert" parameterType="kr.co.vo.BoardVO" useGeneratedKeys="true" keyProperty="bno">-->
+<!--        <selectKey keyProperty="bno" resultType="int" order="BEFORE">-->
+<!--            SELECT MP_BOARD_SEQ.NEXTVAL FROM DUAL-->
+<!--        </selectKey>-->
+<!--        INSERT INTO MP_BOARD(    BNO-->
+<!--        , TITLE-->
+<!--        , CONTENT-->
+<!--        , WRITER  )-->
+<!--        VALUES(    #{bno}-->
+<!--        , #{title}-->
+<!--        , #{content}-->
+<!--        , #{writer}  )-->
+
+<!--    </insert>-->
+
+<!--    <select id="listPage" resultType="kr.co.vo.BoardVO" parameterType="kr.co.vo.SearchCriteria">-->
+<!--        SELECT  BNO,-->
+<!--        TITLE,-->
+<!--        CONTENT,-->
+<!--        WRITER,-->
+<!--        REGDATE-->
+<!--        FROM (-->
+<!--        SELECT BNO,-->
+<!--        TITLE,-->
+<!--        CONTENT,-->
+<!--        WRITER,-->
+<!--        REGDATE,-->
+<!--        ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM-->
+<!--        FROM MP_BOARD-->
+<!--        WHERE 1=1-->
+<!--        <include refid="search"></include>-->
+<!--        ) MP-->
+<!--        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}-->
+<!--        ORDER BY BNO DESC-->
+<!--    </select>-->
+
+<!--    <select id="listCount" parameterType="kr.co.vo.SearchCriteria" resultType="int">-->
+<!--        SELECT COUNT(BNO)-->
+<!--        FROM MP_BOARD-->
+<!--        WHERE 1=1-->
+<!--        <include refid="search"></include>-->
+<!--        AND BNO > 0-->
+<!--    </select>-->
+
+<!--    <sql id="search">-->
+<!--        <if test="searchType != null">-->
+<!--            <if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>-->
+<!--            <if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>-->
+<!--            <if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyword} || '%'</if>-->
+<!--            <if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%')</if>-->
+<!--        </if>-->
+<!--    </sql>-->
+
+<!--    <select id="read" parameterType="int" resultType="kr.co.vo.BoardVO">-->
+<!--        SELECT   BNO-->
+<!--             , TITLE-->
+<!--             , CONTENT-->
+<!--             , WRITER-->
+<!--             , REGDATE-->
+<!--        FROM MP_BOARD-->
+<!--        WHERE BNO = #{bno}-->
+<!--    </select>-->
+
+<!--    <update id="update" parameterType="kr.co.vo.BoardVO">-->
+<!--        UPDATE MP_BOARD-->
+<!--        SET TITLE    =   #{title},-->
+<!--            CONTENT  =   #{content}-->
+<!--        WHERE BNO = #{bno}-->
+<!--    </update>-->
+
+<!--    <delete id="delete" parameterType="int">-->
+<!--        DELETE-->
+<!--        FROM MP_BOARD-->
+<!--        WHERE BNO = #{bno}-->
+<!--    </delete>-->
+
+    <insert id="insertFile" parameterType="hashMap">
+        INSERT INTO
+            EDMS_file(
+                      EDMS_docu_num,
+                      ORG_FILE_NAME,
+                      STORED_FILE_NAME,
+                      FILE_SIZE
+                      )
+        VALUES(
+               #{EDMS_docu_num},
+               #{ORG_File_name},
+               #{STORED_FILE_NAME},
+               #{File_size}
+               )
+    </insert>
+    
+    <select id="select_file_no" parameterType="hashmap" resultType="hashmap">
+        SELECT
+            file_no,
+            EDMS_docu_num
+        FROM
+            EDMS_file
+        WHERE
+            EDMS_docu_num = #{EDMS_docu_num}
+    </select>
+    
+    <update id="update_file_no" parameterType="hashmap">
+        UPDATE
+            EDMS_docu t
+        SET
+            t.file_no = #{file_no}
+        WHERE
+            t.EDMS_docu_num = #{EDMS_docu_num};
+    </update>
 </mapper>

@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page language="java" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +12,8 @@
     <meta name="author" content="" />
     <title>JaeHee Group</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="/src/main/webapp/resources/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/src/main/webapp/resources/css/EDMS/EDMS_ing.css">
+    <link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet" />
+    <link rel="stylesheet" href="<c:url value="/resources/css/EDMS/EDMS_ing.css"/>">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -189,24 +192,43 @@
                             <td>긴급</td>
                             <td>첨부</td>
                         </tr>
-                        <tr class="EDMS_ing_table_hover">
-                            <td>20203086</td>
-                            <td>2021-12-10</td>
-                            <td>품의서</td>
-                            <td>김형준</td>
-                            <td>교통비 신청 2</td>
-                            <td></td>
-                            <td><i class="xi-paper"></i></td>
-                        </tr>
-                        <tr class="EDMS_ing_table_hover">
-                            <td>20203075</td>
-                            <td>2021-12-05</td>
-                            <td>품의서</td>
-                            <td>김형준</td>
-                            <td>교통비 신청 </td>
-                            <td><i class="xi-error"></i></td>
-                            <td></td>
-                        </tr>
+                        <c:forEach  var="list" items="${EDMS_list}">
+                            <tr class="EDMS_ing_table_hover">
+                                <td>${list.EDMS_docu_num}</td>
+                                <td>${fn:substring(list.EDMS_docu_date, 0, 10)}</td>
+                                <td>${list.EDMS_docu_category}</td>
+                                <td>${list.emp_name}</td>
+                                <td>${list.approval_request_docu_title}</td>
+                                <td>
+                                    <i class="
+                                    <c:out value="${list.EDMS_docu_urgent == 1 ? 'xi-error' : ''}"/>
+                                    "></i>
+                                </td>
+                                <td>
+                                    <i class="
+                                    <c:out value="${list.file_no != null ? 'xi-paper' : ''}"/>
+                                    "></i>
+                                </td>
+                            </tr>
+                        </c:forEach>
+<%--                        <tr class="EDMS_ing_table_hover">--%>
+<%--                            <td>20203086</td>--%>
+<%--                            <td>2021-12-10</td>--%>
+<%--                            <td>품의서</td>--%>
+<%--                            <td>김형준</td>--%>
+<%--                            <td>교통비 신청 2</td>--%>
+<%--                            <td></td>--%>
+<%--                            <td><i class="xi-paper"></i></td>--%>
+<%--                        </tr>--%>
+<%--                        <tr class="EDMS_ing_table_hover">--%>
+<%--                            <td>20203075</td>--%>
+<%--                            <td>2021-12-05</td>--%>
+<%--                            <td>품의서</td>--%>
+<%--                            <td>김형준</td>--%>
+<%--                            <td>교통비 신청 </td>--%>
+<%--                            <td><i class="xi-error"></i></td>--%>
+<%--                            <td></td>--%>
+<%--                        </tr>--%>
                         
                     </table>
                      
@@ -229,7 +251,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <script src="../js/scripts.js"></script>
 </body>
 
 </html>
