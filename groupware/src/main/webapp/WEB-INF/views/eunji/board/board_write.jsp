@@ -76,6 +76,7 @@
         crossorigin="anonymous"></script>
     <script src = "resources/api/ckeditor4_full/ckeditor.js"></script>
     <script src="../../resources/js/board/board_write.js"></script>
+    <script src="<c:url value='resources/js/officemap.js'/>"></script>
      
     
 </body>

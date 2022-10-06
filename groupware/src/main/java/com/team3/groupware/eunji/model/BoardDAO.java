@@ -17,6 +17,15 @@ public interface BoardDAO {
 	// 게시글 수정
 	void board_modify(BoardVO boardVo);
 
+	// 게시글 삭제
+	void board_delete(BoardVO boardVo);
+
+	// 게시글 검색
+	List<Map<String, Object>> board_search(Map<String, Object> map);
+
+	// 조회수 증가
+	int board_view_plus(int board_num);
+
 
 
 }

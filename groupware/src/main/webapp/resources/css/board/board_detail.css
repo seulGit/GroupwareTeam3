@@ -127,6 +127,7 @@
     width: 100px;
     height: 30px;
     margin: 10px 5px;
+    cursor: pointer;
 }
 
 .board_submit_btn:hover {
@@ -139,7 +140,6 @@
     background-color: gray;
     color: white;
     border: 2px solid gray;
-    cursor: pointer;
 }
 
 .board_form_commentinfo{

@@ -34,9 +34,10 @@
                     		<input type="submit" class="board_btn board_submit_btn" value="수정">
                     			<input type="hidden" name="board_num" value="${detailMap.board_num}">
                     		</form>
+                    		
                     		<form action="/board_delete" method="post">
-                    		<input type="submit" class="board_btn delete_btn" value="삭제">
-                    		<input type="hidden" name="board_num" value="${detailMap.board_num}">
+                    			<input type="button" class="board_btn delete_btn" value="삭제">
+                    			<input type="hidden" name="board_num" value="${detailMap.board_num}">
                     		</form>
                     </c:if>
                     </div>
@@ -57,7 +58,7 @@
                         </tr>
                         <tr>
                             <td class="board_td1">작성자</td>
-                            <td class="board_td2">${detailMap.emp_name}</td>
+                            <td class="board_td2">${detailMap.dept_name} ${detailMap.emp_name}</td>
                         </tr>
                         <tr>
                             <td class="board_td1">작성일</td>
@@ -77,7 +78,7 @@
           
                 <!-- 버튼 -->
                 	 <div class="board_bottom_btn">
-                    	<a href="/board_normal"><input type="button" class="board_btn board_list_btn" value="목록보기"></a>                  
+                    	<a href="/board_normal"><input type="button" class="board_btn board_list_btn" value="목록보기"></a>                
                 	</div>
                     
                 </div>
@@ -101,7 +102,8 @@
     </div>
 
     <script src = "resources/api/ckeditor4_full/ckeditor.js"></script>
-    <script src="../../resources/js/board/board.js"></script>
+    <script src="../../resources/js/board/board_detail.js"></script>
+    <script src="<c:url value='resources/js/officemap.js'/>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
      

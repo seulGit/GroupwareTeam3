@@ -224,6 +224,7 @@
         crossorigin="anonymous"></script>
         <script src="../../resources/js/worktime/worktime_new.js"></script>
  		<script src = "resources/api/ckeditor4_standard/ckeditor.js"></script>
+ 		<script src="<c:url value='resources/js/officemap.js'/>"></script>
 
 </body>
 

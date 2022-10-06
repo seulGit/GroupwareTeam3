@@ -14,7 +14,9 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team3.groupware.eunji.model.BoardVO;
@@ -33,6 +35,7 @@ public class BoardNormalController {
 		HttpSession session = request.getSession();
 		ModelAndView mv = new ModelAndView();
 		int emp_num = 0;
+		
 		
 		if(session.getAttribute("emp_num") != null) {
 			String change = String.valueOf(session.getAttribute("emp_num"));
@@ -66,6 +69,16 @@ public class BoardNormalController {
 		}
 	}
 	
+	// 게시글 검색
+	@PostMapping("/board_search")
+	public ModelAndView board_search(@RequestBody Map<String, Object> map) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("search",boardService.board_search(map));
+		mv.setViewName("/eunji/board/board_search");
+		System.out.println(mv);
+		return mv;
+	}
+	
 	// 게시물 작성 DB로 전송
 	@PostMapping("/board_write")
 	public ModelAndView board_new_write(@Valid BoardVO boardVo) {
@@ -78,10 +91,15 @@ public class BoardNormalController {
 	
 	// 게시물 디테일 페이지
 	@GetMapping("/board_detail")
-	public ModelAndView board_view(@RequestParam Map<String,Object> map) {
+	public ModelAndView board_view(@RequestParam Map<String,Object> map, BoardVO boardVo) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/eunji/board/board_detail");
 		mv.addObject("detailMap", boardService.board_detail(map));
+		
+		// 게시글 조회수 증가
+		int board_num = boardVo.getBoard_num();
+		boardService.board_view_plus(board_num);
+		
 		return mv;
 	}
 	
@@ -108,8 +126,16 @@ public class BoardNormalController {
 		return mv;
 	}
 	
-	
 	// 게시글 삭제
+		@PostMapping("/board_delete")
+		public ModelAndView board_delete(BoardVO boardVo) {
+			ModelAndView mv = new ModelAndView();
+			int board_num = boardVo.getBoard_num();
+			boardService.board_delete(boardVo);
+			mv.setViewName("redirect:/board_normal");
+			return mv;
+		}
+		
 		
 	}
 
