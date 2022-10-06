@@ -22,6 +22,7 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 
+
 	</bean>	
 	
 	   <!-- 09.26 메일 보내기 -->
@@ -41,6 +42,7 @@
          </props>
       </property>
    </bean>
+
 
 	<!-- 09.26 메일 보내기 -->
 	<bean id="mailSender"
