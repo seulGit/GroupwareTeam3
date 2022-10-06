@@ -7,13 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
             url: "/bookingList",
             method: "get",
             contentType: "application/json; charset=utf-8",
-            dataType: "JSON",
-            success: function (data) {
-                console.log(data)
-            },
-            error: function (data) {
-                console.log("에러");
-            }
+            dataType: "JSON"
         });
 
         var calendarEl = document.getElementById('calendar');
@@ -28,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     center: 'title',
                     right: 'listMonth,timeGridDay,timeGridWeek,dayGridMonth'
                 },
-                initialDate: '2022-09-12',
+                initialDate: '2022-10-12',
                 navLinks: true, // can click day/week names to navigate views
                 businessHours: true, // display business hours
                 editable: true,
@@ -50,22 +44,27 @@ document.addEventListener('DOMContentLoaded', function () {
                         data: {
                             "booking_num": info.event.id,
                             "booking_start_date": info.event.startStr.slice(0, -6),
-                            "booking_end_date": info.event.endStr.slice(0, -6)
+                            "booking_end_date": info.event.endStr.slice(0, -6),
+                            "emp_num": document.querySelector("#session_emp_num").value
                         },
-                        success: function () {
-
+                        success: function (success_check) {
+                            if(success_check == "success"){
+                                alert("예약 일시가 변경되었습니다")
+                            } else if(success_check == "error"){
+                                alert("예약자 본인만 수정이 가능합니다.")
+                            }
                         }
                     })
                 },
                 eventClick: function (info) {
 
                     if (info.event.extendedProps.meetingroom != null) {
-                        booking_event_meetingroom.value = info.event.extendedProps.meetingroom;
+                        booking_event_meetingroom.value = "meetingroom_" + info.event.extendedProps.meetingroom;
                         booking_event_fixtures_box.style.height = "0px";
                         booking_event_fixtures_box.style.opacity = "0";
                         booking_event_fixtures_box.style.visibility = "hidden";
                     } else if (info.event.extendedProps.fixtures != null) {
-                        booking_event_fixtures.value = info.event.extendedProps.fixtures;
+                        booking_event_fixtures.value = "fixtures_" + info.event.extendedProps.fixtures;
                         booking_event_meetingroom_box.style.height = "0px";
                         booking_event_meetingroom_box.style.opacity = "0";
                         booking_event_meetingroom_box.style.visibility = "hidden";
@@ -102,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     booking_memo.value = info.event.extendedProps.content;
 
                     const user_check_box = document.querySelectorAll("input[id *= user]");
-                    for (let i = 0; i< user_check_box.length; i++){
+                    for (let i = 0; i < user_check_box.length; i++) {
                         user_check_box[i].checked = false;
                     }
 
@@ -119,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             if (attendees[j] == user_check_box[i].id.slice(4)) {
                                 if (user_check_box[i].checked == false) {
                                     user_check_box[i].checked = true;
-                                    console.log(user_check_box[i].labels[0].innerHTML)
                                     // =============== 요소 만들기 ===============
                                     const attendees = document.createElement("div"); // 최상단 div 생성
                                     const attendees_name_box = document.createElement("div"); // 이름 div 생성
@@ -137,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
 
                     // 수정버튼 클릭 시
-                    booking_change_event.addEventListener("click", function(){
+                    booking_change_event.addEventListener("click", function () {
 
                         // 참석자 데이터를 숫자만 뽑아서 배열로 저장
                         let attendees_List = new Array;
@@ -153,28 +151,38 @@ document.addEventListener('DOMContentLoaded', function () {
                             attendees_emp_code_list += attendees_List[i];
                         }
 
-
-                        info.event.setProp("title", booking_title.value);
-                        info.event.setDates(booking_start_date.value, booking_end_date.value)
-                        info.event.setExtendedProp("content", booking_memo.value);
-                        info.event.setExtendedProp("meetingroom", booking_event_meetingroom.value);
-                        info.event.setExtendedProp("fixtures", booking_event_fixtures.value);
-                        info.event.setExtendedProp("attendees", attendees_emp_code_list);
-
+                        let booking_event_meetingroom_code = parseInt(booking_event_meetingroom.value.slice(12));
+                        let booking_event_fixtures_code = parseInt(booking_event_fixtures.value.slice(9));
 
                         $.ajax({
                             url: "/booking_event_change",
                             method: "POST",
                             dataType: "text",
                             data: {
-                                "booking_num" : info.event.id,
-                                "booking_title" : booking_title.value,
-                                "booking_start_date" : booking_start_date.value,
-                                "booking_end_date" : booking_end_date.value,
-                                "booking_memo" : booking_memo.value,
-                                "meetingroom_num" : booking_event_meetingroom.value,
-                                "fixtures_num" : booking_event_fixtures.value,
-                                "booking_attendees" : attendees_emp_code_list
+                                "booking_num": info.event.id,
+                                "booking_title": booking_title.value,
+                                "booking_start_date": booking_start_date.value,
+                                "booking_end_date": booking_end_date.value,
+                                "booking_memo": booking_memo.value,
+                                "meetingroom_num": booking_event_meetingroom_code,
+                                "fixtures_num": booking_event_fixtures_code,
+                                "booking_attendees": attendees_emp_code_list,
+                                "emp_num": document.querySelector("#session_emp_num").value
+                            },
+                            success: function(success_check){
+                                if(success_check == "success"){
+                                    alert("수정이 완료되었습니다.")
+                                    info.event.setProp("title", booking_title.value);
+                                    info.event.setDates(booking_start_date.value, booking_end_date.value)
+                                    info.event.setExtendedProp("content", booking_memo.value);
+                                    info.event.setExtendedProp("meetingroom", booking_event_meetingroom.value);
+                                    info.event.setExtendedProp("fixtures", booking_event_fixtures.value);
+                                    info.event.setExtendedProp("attendees", attendees_emp_code_list);
+                                    location.reload()
+                                } else if(success_check == "error"){
+                                    alert("예약자 본인만 수정이 가능합니다.")
+                                    location.reload()
+                                }
                             }
                         })
                         booking_modal.style.display = "none";
@@ -191,17 +199,31 @@ document.addEventListener('DOMContentLoaded', function () {
                             method: "POST",
                             dateType: "text",
                             data: {
-                                "booking_num": info.event.id
+                                "booking_num": info.event.id,
+                                "emp_num": document.querySelector("#session_emp_num").value
+                            },
+                            success: function(success_check){
+                                if(success_check == "success"){
+                                    alert("삭제가 완료되었습니다.");
+
+                                    // 이벤트 삭제
+                                    info.event.remove();
+
+                                    booking_modal.style.display = "none";
+                                    booking_event_datetime_container.childNodes[0].data = "";
+                                    booking_event_datetime_box.style.height = "0px";
+                                    booking_event_title.classList.remove("empty_booking_event_title_color");
+                                } else if(success_check == "error"){
+                                    alert("예약자 본인만 삭제가 가능합니다.")
+
+                                    booking_modal.style.display = "none";
+                                    booking_event_datetime_container.childNodes[0].data = "";
+                                    booking_event_datetime_box.style.height = "0px";
+                                    booking_event_title.classList.remove("empty_booking_event_title_color");
+                                }
                             }
                         })
 
-                        // 이벤트 삭제
-                        info.event.remove();
-
-                        booking_modal.style.display = "none";
-                        booking_event_datetime_container.childNodes[0].data = "";
-                        booking_event_datetime_box.style.height = "0px";
-                        booking_event_title.classList.remove("empty_booking_event_title_color");
                     })
 
                 },
@@ -305,6 +327,18 @@ document.addEventListener('DOMContentLoaded', function () {
                             return;
                         }
 
+                        booking_modal.addEventListener("click", function (event) {
+                            if (event.target.classList == "booking_modal") {
+                                booking_modal.style.display = "none";
+                                booking_event_datetime_container.childNodes[0].data = "";
+                                booking_event_datetime_box.style.height = "0px";
+                                booking_event_title.classList.remove("empty_booking_event_title_color");
+                                calendar.unselect();
+                                location.reload()
+                                return;
+                            }
+                        });
+
                         // 참석자 데이터를 숫자만 뽑아서 배열로 저장
                         let attendees_List = new Array;
                         for (let i = 0; i < user_check_box.length; i++) {
@@ -339,22 +373,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         obj.extendedProps = obj_meetingroom;
                         obj.extendedProps = obj_fixtures;
 
-                        console.log(obj)
-
                         let booking_event_meetingroom_code = parseInt(booking_event_meetingroom.value.slice(12));
                         let booking_event_fixtures_code = parseInt(booking_event_fixtures.value.slice(9));
 
-                        calendar.addEvent({
-                            title: booking_event_title.value,
-                            start: booking_start_date.value,
-                            end: booking_end_date.value,
-                            extendedProps: {
-                                content: booking_memo.value,
-                                attendees: attendees_emp_code_list,
-                                meetingroom: booking_event_meetingroom_code,
-                                fixtures: booking_event_fixtures_code
-                            }
-                        });
+                        let insert_check;
                         $.ajax({
                             url: "/booking_add",
                             method: "POST",
@@ -368,16 +390,41 @@ document.addEventListener('DOMContentLoaded', function () {
                                 "meetingroom_num": booking_event_meetingroom_code,
                                 "fixtures_num": booking_event_fixtures_code,
                                 "emp_num": document.querySelector("#session_emp_num").value
+                            },
+                            success: function (data) {
+                                if (data == "success") {
+                                    insert_check = data;
+                                    alert("예약이 완료되었습니다.");
+                                    calendar.addEvent({
+                                        title: booking_event_title.value,
+                                        start: booking_start_date.value,
+                                        end: booking_end_date.value,
+                                        extendedProps: {
+                                            content: booking_memo.value,
+                                            attendees: attendees_emp_code_list,
+                                            meetingroom: booking_event_meetingroom_code,
+                                            fixtures: booking_event_fixtures_code
+                                        }
+                                    });
+                                    booking_modal.style.display = "none";
+                                    booking_event_datetime_container.childNodes[0].data = "";
+                                    booking_event_datetime_box.style.height = "0px";
+                                    booking_event_title.classList.remove("empty_booking_event_title_color");
+                                    calendar.render();
+                                    calendar.unselect();
+                                    location.reload()
+                                    return;
+                                } else if (data == "error") {
+                                    insert_check = data;
+                                    alert("해당 시간에는 다른 이용자가 사용중입니다.");
+                                    calendar.unselect();
+                                    location.reload()
+                                    return;
+                                }
                             }
                         })
-                        booking_modal.style.display = "none";
-                        booking_event_datetime_container.childNodes[0].data = "";
-                        booking_event_datetime_box.style.height = "0px";
-                        booking_event_title.classList.remove("empty_booking_event_title_color");
-                        calendar.render();
+                        return;
                     })
-
-
                 },
                 events: data
                 // [{

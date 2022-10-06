@@ -16,6 +16,8 @@
                 booking_memo
             from
                 booking
+            WHERE
+                booking_active = 0;
         ]]>
     </select>
 
@@ -27,17 +29,22 @@
                 booking_start_date = #{booking_start_date},
                 booking_end_date = #{booking_end_date}
             WHERE
-                booking_num = #{booking_num};
+                booking_num = #{booking_num}
+            AND
+                emp_num = #{emp_num};
         ]]>
 	</update>
 
     <delete id="booking_delete" parameterType="hashMap">
 		<![CDATA[
-            DELETE
-            FROM
-                booking
+            UPDATE
+                groupwareteam3.booking t
+            SET
+                t.booking_active = 1
             WHERE
-                booking_num = #{booking_num};
+                t.booking_num = #{booking_num}
+            AND
+                t.emp_num = #{emp_num};
         ]]>
 	</delete>
 
@@ -76,7 +83,6 @@
     </insert>
 
     <update id="booking_update" parameterType="hashmap">
-        <![CDATA[
             UPDATE
                 booking
             SET
@@ -84,12 +90,17 @@
                 booking_start_date = #{booking_start_date},
                 booking_end_date = #{booking_end_date},
                 booking_memo = #{booking_memo},
+                    <if test='meetingroom_num != "NaN"'>
                 meetingroom_num = #{meetingroom_num},
+                    </if>
+                    <if test='fixtures_num != "NaN"'>
                 fixtures_num = #{fixtures_num},
+                    </if>
                 booking_attendees = #{booking_attendees}
             WHERE
                 booking_num = #{booking_num}
-        ]]>
+            AND
+                emp_num = #{emp_num}
     </update>
 
     <select id="meetingroom_list" resultType="com.team3.groupware.seongyu.model.meetingroomVO">
@@ -112,5 +123,23 @@
             FROM
                 fixtures;
         ]]>
+    </select>
+
+    <select id="booking_add_check" resultType="com.team3.groupware.seongyu.model.BookingVO">
+        SELECT
+            booking_num
+        FROM
+            booking
+        WHERE
+            <choose>
+                <when test="meetingroom_num != null || meetingroom_num != 'null'">
+                    <![CDATA[meetingroom_num = #{meetingroom_num}]]>
+                </when>
+                <when test="fixtures_num != null || fixtures_num != 'null'">
+                    <![CDATA[fixtures_num = #{fixtures_num}]]>
+                </when>
+            </choose>
+                <![CDATA[and
+                booking_start_date = #{booking_start_date}]]>
     </select>
 </mapper>

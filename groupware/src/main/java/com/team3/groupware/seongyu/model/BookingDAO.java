@@ -45,4 +45,8 @@ public class BookingDAO {
     public List<fixtureVO> fixture_list() {
         return sqlSessionTemplate.selectList("booking.fixture_list");
     }
+
+    public BookingVO booking_add_check(Map<String, Object> param) {
+        return sqlSessionTemplate.selectOne("booking.booking_add_check", param);
+    }
 }

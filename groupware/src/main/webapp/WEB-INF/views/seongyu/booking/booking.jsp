@@ -81,11 +81,7 @@
                     <div class="booking_attendees_list">
                         <div>
                             참석자및 사용자를 선택해주세요
-                            <!-- <div class="attendees user_1">
-                                <div>
-                                    <span>김사장</span>
-                                </div>
-                            </div> -->
+
                         </div>
                     </div>
                     <div class="booking_attendees_check">
@@ -95,30 +91,6 @@
                                 <label for="user${info.emp_num}">${info.emp_name}</label>
                             </div>
                         </c:forEach>
-<%--                                                <div>--%>
-<%--                                                    <input type="checkbox" name="user1" id="user1">--%>
-<%--                                                    <label for="user1">김사장</label>--%>
-<%--                                                </div>--%>
-<%--                                                <div>--%>
-<%--                                                    <input type="checkbox" name="user2" id="user2">--%>
-<%--                                                    <label for="user2">백이사</label>--%>
-<%--                                                </div>--%>
-<%--                                                <div>--%>
-<%--                                                    <input type="checkbox" name="user3" id="user3">--%>
-<%--                                                    <label for="user3">노부장</label>--%>
-<%--                                                </div>--%>
-<%--                                                <div>--%>
-<%--                                                    <input type="checkbox" name="user931005" id="user931005">--%>
-<%--                                                    <label for="user931005">오팀장</label>--%>
-<%--                                                </div>--%>
-<%--                                                <div>--%>
-<%--                                                    <input type="checkbox" name="user5" id="user5">--%>
-<%--                                                    <label for="user5">이과장</label>--%>
-<%--                                                </div>--%>
-<%--                                                <div>--%>
-<%--                                                    <input type="checkbox" name="user990810" id="user990810">--%>
-<%--                                                    <label for="user990810">성대리</label>--%>
-<%--                                                </div>--%>
                     </div>
                 </div>
                 <div class="booking_content_container">

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EDMS">
+    <insert id="insert_docu" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO"
+            useGeneratedKeys="true" keyProperty="EDMS_docu_num">
+        INSERT INTO
+            groupwareteam3.EDMS_docu (
+                                      EDMS_docu_category,
+                                      emp_num,
+                                      EDMS_docu_urgent,
+                                      EDMS_docu_file_route,
+                                      EDMS_docu_temp,
+                                      EDMS_docu_cancel
+                                      )
+        VALUES (
+                #{EDMS_docu_category},
+                #{emp_num},
+                #{EDMS_docu_urgent},
+                null,
+                #{EDMS_docu_temp},
+                #{EDMS_docu_cancel}
+                );
+    </insert>
+    <insert id="insert_approval" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
+        INSERT INTO
+            groupwareteam3.EDMS_approval (
+                                          EDMS_approval_emp_1,
+                                          EDMS_approval_emp_2,
+                                          EDMS_docu_num)
+        VALUES (
+                #{EDMS_approval_emp_1},
+                #{EDMS_approval_emp_2},
+                1);
+    </insert>
+    <insert id="insert_general" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
+
+    </insert>
+</mapper>

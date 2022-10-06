@@ -24,9 +24,9 @@ public class EDMSController {
     DepartmentService departmentService;
 
     @RequestMapping("/new")
-    public ModelAndView EDMS_new(EmployeeVO employeeVO){
+    public ModelAndView EDMS_new(){
         ModelAndView mv = new ModelAndView();
-        List<EmployeeVO> vo = edmsService.selct_emp_list(employeeVO);
+        List<EmployeeVO> vo = edmsService.selct_emp_list();
 
         mv.addObject("emp_info", vo);
         mv.setViewName("/seongyu/EDMS/EDMS_new");
@@ -58,6 +58,9 @@ public class EDMSController {
     @RequestMapping("general_add")
     public ModelAndView general_add(EDMS_new_generalVO edms_new_generalVO){
         System.out.println(edms_new_generalVO.toString());
+
+        int insert_general = this.edmsService.insert_general(edms_new_generalVO);
+
         return new ModelAndView("redirect:/home");
     }
 
