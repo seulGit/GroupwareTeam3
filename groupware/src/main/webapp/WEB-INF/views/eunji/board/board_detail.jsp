@@ -78,23 +78,42 @@
           
                 <!-- 버튼 -->
                 	 <div class="board_bottom_btn">
-                    	<a href="/board_normal"><input type="button" class="board_btn board_list_btn" value="목록보기"></a>                
+                    	<input type="button" class="board_btn board_list_btn" value="목록보기">                
                 	</div>
                     
                 </div>
                 <!-- 댓글 -->
                 <div id="board_form_commentinfo">
+                <form action="/board_comment" method="post">
                     <div id="board_comment_count">
-                        <h2><i class="fa-solid fa-comments"></i>댓글
-                            [<span id="comment_count" >0</span>]</h2>
-                            <input id="board_comment_input" placeholder="댓글을 입력해 주세요.">
-                    <button id="board_comment_submit">등록</button>
+                        <h2><i class="fa-solid fa-comments"></i>댓글</h2>
+                            <textarea name="comment_contents" id="board_comment_input" placeholder="댓글을 입력해 주세요."></textarea>
+                    	<button type="submit" id="board_comment_submit">등록</button>
+                    	<input type="hidden" name="emp_num" value="${emp_num}">
+                    	<input type="hidden" name="board_num" value="${detailMap.board_num}"> 
                     </div>
+                     </form>
                     
-                
+                	<!-- 댓글 생성 -->
+                	<c:forEach var="board_comment" items="${board_comment}">
                     <div id=board_comments_con>
-            
+            			<div class="board_comment_box">
+            				<div class="board_comment_name">${board_comment.dept_name} ${board_comment.emp_name}</div>
+            				<div class="board_comment_date">${board_comment.comment_date}</div>
+            				<div class="board_contents">${board_comment.comment_contents}</div>
+            				<c:if test="${emp_name eq board_comment.emp_name}"> 
+            					<div class="board_comment_btn_box">
+            						<form action="/comment_delete" method="post">
+            							<input type="submit" value="삭제" class="board_comment_btn comment_delete_btn">
+            							<input type="hidden" name="comment_num" value="${board_comment.comment_num}">
+            							<input type="hidden" name="board_num" value="${detailMap.board_num}">
+            						</form>
+            				</div>
+            				</c:if> 
+            			</div>
                     </div>
+                    </c:forEach>
+                    
                 </div>  
                          
             </div>

@@ -36,17 +36,17 @@ public class WorktimeController {
 		ModelAndView mv = new ModelAndView();
 		
 		int emp_num = 0;
-		
+		// 로그인 했을 경우
 		if(session.getAttribute("emp_num") != null) {
 			String change = String.valueOf(session.getAttribute("emp_num"));
-			System.out.println(change);
 			emp_num = Integer.parseInt(change);
+			
+			Map<String, Object> worktimeMap = worktimeService.select_vacation_days(emp_num);
+			mv.addObject("worktimeMap", worktimeMap);
+			mv.addObject("emp_num",session.getAttribute("emp_num"));
+			mv.setViewName("/eunji/worktime/worktime");
 		}
-		
-		Map<String, Object> worktimeMap = worktimeService.select_vacation_days(emp_num);
-		mv.addObject("worktimeMap", worktimeMap);
-		mv.addObject("emp_num",session.getAttribute("emp_num"));
-		mv.setViewName("/eunji/worktime/worktime");
+
 		return mv;
 	}
 	

@@ -26,9 +26,21 @@
                     <a href="/board_write">
                     <button class="board_write_btn">게시글 작성</button></a>
             </div>
-            <div class="board_con">
+            
+                     <!-- 검색 폼 영역 -->
+                    <div class="board_search">
+                        <select id='board_search_select' name="board_type">
+                            <option class="board_search_option" value='board_all'>전체</option>
+                            <option class="board_search_option" value='board_title'>제목</option>
+                            <option class="board_search_option" value='emp_name'>작성자</option>
+                        </select>
+                        <input type="text" id="board_search_input" placeholder="검색 키워드를 입력하세요" name="keyword" value="${keyword}">
+                        <input type="button" id="board_search_btn" value="검색">
+                    </div>
+                   <!-- 테이블과 페이징 감싸는 div -->
+            <div class="board_con"> 
                     <div class="board_table_position">
-                    <div class="board_container">
+                     <div class="board_container">
                     <table class="board_table">
                         <tr class="table_bg">
                             <td>글번호</td>
@@ -65,17 +77,7 @@
                                 <span class="board_disabled">다음  ></span>                                
                             </div>                            
                         </div>
-                    </div>
-                    <!-- 검색 폼 영역 -->
-                    <div class="board_search">
-                        <select id='board_search_select' name="board_type">
-                            <option class="board_search_option" value='board_all'>전체</option>
-                            <option class="board_search_option" value='board_title'>제목</option>
-                            <option class="board_search_option" value='emp_name'>작성자</option>
-                        </select>
-                        <input type="text" id="board_search_input" placeholder="검색 키워드를 입력하세요" name="keyword" value="${keyword}">
-                        <input type="button" id="board_search_btn" value="검색">
-                    </div>                  
+                    </div>                
                </div>
            </div>
         </div>

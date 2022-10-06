@@ -1,7 +1,6 @@
 package com.team3.groupware.eunji.controller;
 
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team3.groupware.eunji.model.BoardVO;
@@ -75,7 +73,6 @@ public class BoardNormalController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("search",boardService.board_search(map));
 		mv.setViewName("/eunji/board/board_search");
-		System.out.println(mv);
 		return mv;
 	}
 	
@@ -99,6 +96,10 @@ public class BoardNormalController {
 		// 게시글 조회수 증가
 		int board_num = boardVo.getBoard_num();
 		boardService.board_view_plus(board_num);
+
+		List<Map<String, Object>> board_comment = boardService.board_comment_select(board_num);
+		mv.addObject("board_comment", board_comment);
+		
 		
 		return mv;
 	}
@@ -107,7 +108,6 @@ public class BoardNormalController {
 	@GetMapping("/board_modify")
 	public ModelAndView board_modify(@RequestParam Map<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(map);
 		 Map<String, Object> detailMap = boardService.board_detail(map);
 		mv.addObject("detailMap", detailMap);
 		mv.setViewName("/eunji/board/board_modify");
@@ -118,11 +118,9 @@ public class BoardNormalController {
 	@PostMapping("/board_modify")
 	public ModelAndView board_modify(BoardVO boardVo) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("vo:"+boardVo);
 		boardService.board_modify(boardVo);
 		int board_num = boardVo.getBoard_num();
 		mv.setViewName("redirect:/board_detail?board_num=" + board_num);
-		System.out.println("num:"+board_num);
 		return mv;
 	}
 	
@@ -136,6 +134,28 @@ public class BoardNormalController {
 			return mv;
 		}
 		
+		// 게시판 댓글 입력
+		@PostMapping("/board_comment")
+		public ModelAndView board_comment(@RequestParam Map<String,Object> map) {
+			ModelAndView mv = new ModelAndView();		
+			String cast = (String)map.get("board_num");
+			int board_num = Integer.parseInt(cast);
+			boardService.board_comment_insert(map);
+			mv.setViewName("redirect:/board_detail?board_num=" + board_num);
+			return mv;
+		}
+		
+		@PostMapping("/comment_delete")
+		public ModelAndView comment_delete(@RequestParam Map<String, Object> map) {
+			ModelAndView mv = new ModelAndView();
+			System.out.println(map);
+			String cast = (String)map.get("board_num");
+			int board_num = Integer.parseInt(cast);
+			
+			boardService.comment_delete(map);
+			mv.setViewName("redirect:/board_detail?board_num=" + board_num);
+			return mv;
+		}
 		
 	}
 

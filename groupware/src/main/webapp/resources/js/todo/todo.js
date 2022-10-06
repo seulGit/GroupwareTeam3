@@ -30,6 +30,7 @@ let todo_write = document.querySelector(".my_board_list");     // todo가 들어
 // 아이콘
 let star = document.querySelectorAll(".xi-star-o"); 			// 별 아이콘
 let x_icon = document.querySelectorAll(".xi-close-min"); 		// x 아이콘
+let todoDelete = document.querySelectorAll(".todoDelete"); 
 
 // 수정 모달창
 let my_board_modal = document.querySelectorAll(".my_content_box");  // 모달창
@@ -78,8 +79,8 @@ star[i].addEventListener("click", function(){
   }
 });
 }
-// input hidden
-let todoDelete = document.querySelectorAll(".todoDelete");
+
+
 
 // x 아이콘 클릭 시 삭제할 것인지 물어보기
 for(let i=0; i<x_icon.length; i++){

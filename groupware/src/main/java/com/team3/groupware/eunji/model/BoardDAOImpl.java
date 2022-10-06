@@ -59,6 +59,26 @@ public class BoardDAOImpl implements BoardDAO {
 		return session.update("board.view_plus", board_num);
 	}
 
+	// 댓글 입력
+	@Override
+	public void board_comment_insert(Map<String, Object> comment) {
+		this.session.insert("board.board_comment_insert", comment);
+		
+	}
+
+	// 댓글 보이기
+	@Override
+	public List<Map<String, Object>> board_comment_select(int board_num) {
+		return session.selectList("board.board_comment_selectList", board_num);
+	}
+
+	// 댓글 삭제
+	@Override
+	public void comment_delete(Map<String, Object> map) {
+		this.session.delete("board.comment_delete", map);
+		
+	}
+
 
 
 }

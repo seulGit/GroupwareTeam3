@@ -52,7 +52,6 @@ public class TodoController {
 
 		// 새롭게 생성된 todo 가져오기
 		mv.addObject("data", todoService.todo_board_New(map));
-		System.out.println( todoService.todo_board_New(map));
 		mv.setViewName("/eunji/todo/todo_write");
 		return mv;
 	}
