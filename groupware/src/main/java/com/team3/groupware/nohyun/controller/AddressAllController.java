@@ -28,7 +28,6 @@ public class AddressAllController {
 	
 	@RequestMapping(value = "address_all")
 	public ModelAndView list(@RequestParam Map<String, Object> map) {
-		System.out.println(map.toString());
 		List<Map<String, Object>> list = this.addressAllService.list(map);
 		ModelAndView mv = new ModelAndView(); //
 		mv.addObject("data", list);
@@ -39,7 +38,6 @@ public class AddressAllController {
 	}
 	@RequestMapping(value="ajaxChosung")
 	public ModelAndView list_chosung(@RequestParam Map<String, Object> chosung) {
-		System.out.println(chosung.toString());
 		List<Map<String, Object>> list = this.addressAllService.list_chosung(chosung);
 		
 		ModelAndView mv = new ModelAndView();
@@ -50,7 +48,6 @@ public class AddressAllController {
 	}
 	@RequestMapping(value="ajaxChosungAll")
 	public ModelAndView list_whole(@RequestParam Map<String, Object> whole) {
-		System.out.println(whole.toString());
 		List<Map<String, Object>> list = this.addressAllService.list_whole(whole);
 		
 		ModelAndView mv = new ModelAndView();

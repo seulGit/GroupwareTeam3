@@ -68,6 +68,6 @@
 		crossorigin="anonymous"></script>
 		
 	<script src="<c:url value='resources/js/address/address_all_info.js'/>"></script>
-	<!-- <script src="../resources/js/scripts.js"></script> -->
+	<script src="<c:url value='resources/js/officemap.js'/>"></script>
 </body>
 </html>    
