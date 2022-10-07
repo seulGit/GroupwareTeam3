@@ -49,9 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         },
                         success: function (success_check) {
                             if(success_check == "success"){
-                                alert("예약 일시가 변경되었습니다")
+                                alert("예약 일시가 변경되었습니다");
                             } else if(success_check == "error"){
-                                alert("예약자 본인만 수정이 가능합니다.")
+                                alert("예약자 본인만 수정이 가능합니다.");
+                                location.reload();
                             }
                         }
                     })
@@ -172,12 +173,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             success: function(success_check){
                                 if(success_check == "success"){
                                     alert("수정이 완료되었습니다.")
-                                    info.event.setProp("title", booking_title.value);
-                                    info.event.setDates(booking_start_date.value, booking_end_date.value)
-                                    info.event.setExtendedProp("content", booking_memo.value);
-                                    info.event.setExtendedProp("meetingroom", booking_event_meetingroom.value);
-                                    info.event.setExtendedProp("fixtures", booking_event_fixtures.value);
-                                    info.event.setExtendedProp("attendees", attendees_emp_code_list);
                                     location.reload()
                                 } else if(success_check == "error"){
                                     alert("예약자 본인만 수정이 가능합니다.")
@@ -185,10 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }
                             }
                         })
-                        booking_modal.style.display = "none";
-                        booking_event_datetime_container.childNodes[0].data = "";
-                        booking_event_datetime_box.style.height = "0px";
-                        booking_event_title.classList.remove("empty_booking_event_title_color");
                     })
 
                     // 삭제 버튼 클릭 시
@@ -206,20 +197,11 @@ document.addEventListener('DOMContentLoaded', function () {
                                 if(success_check == "success"){
                                     alert("삭제가 완료되었습니다.");
 
-                                    // 이벤트 삭제
-                                    info.event.remove();
-
-                                    booking_modal.style.display = "none";
-                                    booking_event_datetime_container.childNodes[0].data = "";
-                                    booking_event_datetime_box.style.height = "0px";
-                                    booking_event_title.classList.remove("empty_booking_event_title_color");
+                                    location.reload();
                                 } else if(success_check == "error"){
                                     alert("예약자 본인만 삭제가 가능합니다.")
 
-                                    booking_modal.style.display = "none";
-                                    booking_event_datetime_container.childNodes[0].data = "";
-                                    booking_event_datetime_box.style.height = "0px";
-                                    booking_event_title.classList.remove("empty_booking_event_title_color");
+                                    location.reload();
                                 }
                             }
                         })
@@ -406,18 +388,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                             fixtures: booking_event_fixtures_code
                                         }
                                     });
-                                    booking_modal.style.display = "none";
-                                    booking_event_datetime_container.childNodes[0].data = "";
-                                    booking_event_datetime_box.style.height = "0px";
-                                    booking_event_title.classList.remove("empty_booking_event_title_color");
-                                    calendar.render();
-                                    calendar.unselect();
+
                                     location.reload()
                                     return;
                                 } else if (data == "error") {
                                     insert_check = data;
                                     alert("해당 시간에는 다른 이용자가 사용중입니다.");
-                                    calendar.unselect();
                                     location.reload()
                                     return;
                                 }
