@@ -22,122 +22,123 @@ import com.team3.groupware.nohyun.service.AddressAllService;
 
 @RestController
 public class AddressAllController {
-	
-	@Autowired
-	AddressAllService addressAllService;
-	
-	@RequestMapping(value = "address_all")
-	public ModelAndView list(@RequestParam Map<String, Object> map) {
-		List<Map<String, Object>> list = this.addressAllService.list(map);
-		ModelAndView mv = new ModelAndView(); //
-		mv.addObject("data", list);
+   
+   @Autowired
+   AddressAllService addressAllService;
+   
+   @RequestMapping(value = "address_all")
+   public ModelAndView list(@RequestParam Map<String, Object> map) {
+      List<Map<String, Object>> list = this.addressAllService.list(map);
+      ModelAndView mv = new ModelAndView(); //
+      mv.addObject("data", list);
 
-		mv.setViewName("nohyun/address/address_all");
-		return mv;
+      mv.setViewName("nohyun/address/address_all");
+      return mv;
 
-	}
-	@RequestMapping(value="ajaxChosung")
-	public ModelAndView list_chosung(@RequestParam Map<String, Object> chosung) {
-		List<Map<String, Object>> list = this.addressAllService.list_chosung(chosung);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("nohyun/address/address_all_list");
-		mv.addObject("data", list);
-		
-		return mv;
-	}
-	@RequestMapping(value="ajaxChosungAll")
-	public ModelAndView list_whole(@RequestParam Map<String, Object> whole) {
-		List<Map<String, Object>> list = this.addressAllService.list_whole(whole);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("nohyun/address/address_all_list");
-		mv.addObject("data", list);
-		
-		return mv;
-	}
-	
-	@RequestMapping(value="ajaxSearch")
-	public ModelAndView keyword_search(@RequestParam Map<String, Object> keyword) {
-		
-		List<Map<String, Object>> list = this.addressAllService.keyword_search(keyword);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("nohyun/address/address_all_list");
-		mv.addObject("data", list);
-		
-		return mv;
-	}
-	
-	@RequestMapping(value="address_all_info")
-	public ModelAndView address_info(@RequestParam Map<String, Object> AllInfo) {
+   }
+   @RequestMapping(value="ajaxChosung")
+   public ModelAndView list_chosung(@RequestParam Map<String, Object> chosung) {
+      List<Map<String, Object>> list = this.addressAllService.list_chosung(chosung);
+      
+      ModelAndView mv = new ModelAndView();
+      mv.setViewName("nohyun/address/address_all_list");
+      mv.addObject("data", list);
+      
+      return mv;
+   }
+   @RequestMapping(value="ajaxChosungAll")
+   public ModelAndView list_whole(@RequestParam Map<String, Object> whole) {
+      List<Map<String, Object>> list = this.addressAllService.list_whole(whole);
+      
+      ModelAndView mv = new ModelAndView();
+      mv.setViewName("nohyun/address/address_all_list");
+      mv.addObject("data", list);
+      
+      return mv;
+   }
+   
+   @RequestMapping(value="ajaxSearch")
+   public ModelAndView keyword_search(@RequestParam Map<String, Object> keyword) {
+      
+      List<Map<String, Object>> list = this.addressAllService.keyword_search(keyword);
+      
+      ModelAndView mv = new ModelAndView();
+      mv.setViewName("nohyun/address/address_all_list");
+      mv.addObject("data", list);
+      
+      return mv;
+   }
+   
+   @RequestMapping(value="address_all_info")
+   public ModelAndView address_info(@RequestParam Map<String, Object> AllInfo) {
 
-		List<Map<String, Object>> addressInfo = this.addressAllService.addressInfo(AllInfo);
-		ModelAndView mv = new ModelAndView(); //
-		mv.addObject("addressInfo", addressInfo);
+      List<Map<String, Object>> addressInfo = this.addressAllService.addressInfo(AllInfo);
+      ModelAndView mv = new ModelAndView(); //
+      mv.addObject("addressInfo", addressInfo);
 
-		mv.setViewName("nohyun/address/address_all_info");
-		return mv;
+      mv.setViewName("nohyun/address/address_all_info");
+      return mv;
 
-	}
-	
-	@RequestMapping("/address_all/excelDown")
-	public void excelDownload(HttpServletResponse response,@ModelAttribute("ExcelDown")AddressAllVO ExcelDown) throws IOException{
-		XSSFWorkbook wb=null;
-		Sheet sheet=null;
-		Row row=null;
-		Cell cell=null; 
-		wb = new XSSFWorkbook();
-		sheet = wb.createSheet("¿¸ªÁ¡÷º“∑œ");
-		
-		List<AddressAllVO> excelList = this.addressAllService.excelList(ExcelDown);
-		
-		//√π«‡   ø≠ ¿Ã∏ß «•±‚ 
-				int cellCount=0;
-				row = sheet.createRow(0); //0π¯¬∞ «‡
-				cell=row.createCell(cellCount++);
-				cell.setCellValue("¿Ã∏ß(«•Ω√∏Ì)");
-				cell=row.createCell(cellCount++);
-				cell.setCellValue("¡˜¿ß");
-				cell=row.createCell(cellCount++);
-				cell.setCellValue("»ﬁ¥Î∆˘");
-				cell=row.createCell(cellCount++);
-				cell.setCellValue("¿Ã∏ﬁ¿œ");
-				cell=row.createCell(cellCount++);
-				cell.setCellValue("∫Œº≠");
-				cell=row.createCell(cellCount++);
-				cell.setCellValue("»∏ªÁ¿¸»≠");
-				cell=row.createCell(cellCount++);
-				cell.setCellValue("¡÷º“");
-				
-				for(int i=0; i < excelList.size() ; i++  ) {
-					row=sheet.createRow(i+1);  // 'ø≠ ¿Ã∏ß «•±‚'∑Œ 0π¯¬∞ «‡ ∏∏µÈæ˙¿∏¥œ±Ó 1π¯¬∞«‡∫Œ≈Õ
-					cellCount=0; //ø≠ π¯»£ √ ±‚»≠
-					cell=row.createCell(cellCount++);
-					cell.setCellValue(excelList.get(i).getEmp_name());
-					cell=row.createCell(cellCount++);
-					cell.setCellValue(excelList.get(i).getPosition_grade());
-					cell=row.createCell(cellCount++);
-					cell.setCellValue(excelList.get(i).getEmp_phonenum());
-					cell=row.createCell(cellCount++);
-					cell.setCellValue(excelList.get(i).getEmp_email());
-					cell=row.createCell(cellCount++);
-					cell.setCellValue(excelList.get(i).getDept_name());
-					cell=row.createCell(cellCount++);
-					cell.setCellValue(excelList.get(i).getEmp_desk_num());
-					cell=row.createCell(cellCount++);
-					cell.setCellValue(excelList.get(i).getEmp_address());
-					cell=row.createCell(cellCount++);
-					
-				}
-		
-		// ƒ¡≈Ÿ√˜ ≈∏¿‘∞˙ ∆ƒ¿œ∏Ì ¡ˆ¡§
-		response.setContentType("ms-vnd/excel");
-		response.setHeader("Content-Disposition", "attachment;filename=addressAll.xlsx");  //∆ƒ¿œ¿Ã∏ß¡ˆ¡§.
-		//response OutputStreamø° ø¢ºø ¿€º∫
-		wb.write(response.getOutputStream());
-	}
-	
+   }
+   
+   @RequestMapping("/address_all/excelDown")
+   public void excelDownload(HttpServletResponse response,@ModelAttribute("ExcelDown")AddressAllVO ExcelDown) throws IOException{
+      XSSFWorkbook wb=null;
+      Sheet sheet=null;
+      Row row=null;
+      Cell cell=null; 
+      wb = new XSSFWorkbook();
+      sheet = wb.createSheet("Ï†ÑÏÇ¨Ï£ºÏÜåÎ°ù");
+      
+      
+      List<AddressAllVO> excelList = this.addressAllService.excelList(ExcelDown);
+      
+      //Ï≤´Ìñâ   Ïó¥ Ïù¥Î¶Ñ ÌëúÍ∏∞ 
+            int cellCount=0;
+            row = sheet.createRow(0); //0Î≤àÏß∏ Ìñâ
+            cell=row.createCell(cellCount++);
+            cell.setCellValue("Ïù¥Î¶Ñ(ÌëúÏãúÎ™Ö)");
+            cell=row.createCell(cellCount++);
+            cell.setCellValue("ÏßÅÏúÑ");
+            cell=row.createCell(cellCount++);
+            cell.setCellValue("Ìú¥ÎåÄÌè∞");
+            cell=row.createCell(cellCount++);
+            cell.setCellValue("Ïù¥Î©îÏùº");
+            cell=row.createCell(cellCount++);
+            cell.setCellValue("Î∂ÄÏÑú");
+            cell=row.createCell(cellCount++);
+            cell.setCellValue("ÌöåÏÇ¨Ï†ÑÌôî");
+            cell=row.createCell(cellCount++);
+            cell.setCellValue("Ï£ºÏÜå");
+            
+            for(int i=0; i < excelList.size() ; i++  ) {
+               row=sheet.createRow(i+1);  // 'Ïó¥ Ïù¥Î¶Ñ ÌëúÍ∏∞'Î°ú 0Î≤àÏß∏ Ìñâ ÎßåÎì§ÏóàÏúºÎãàÍπå 1Î≤àÏß∏ÌñâÎ∂ÄÌÑ∞
+               cellCount=0; //Ïó¥ Î≤àÌò∏ Ï¥àÍ∏∞Ìôî
+               cell=row.createCell(cellCount++);
+               cell.setCellValue(excelList.get(i).getEmp_name());
+               cell=row.createCell(cellCount++);
+               cell.setCellValue(excelList.get(i).getPosition_grade());
+               cell=row.createCell(cellCount++);
+               cell.setCellValue(excelList.get(i).getEmp_phonenum());
+               cell=row.createCell(cellCount++);
+               cell.setCellValue(excelList.get(i).getEmp_email());
+               cell=row.createCell(cellCount++);
+               cell.setCellValue(excelList.get(i).getDept_name());
+               cell=row.createCell(cellCount++);
+               cell.setCellValue(excelList.get(i).getEmp_desk_num());
+               cell=row.createCell(cellCount++);
+               cell.setCellValue(excelList.get(i).getEmp_address());
+               cell=row.createCell(cellCount++);
+               
+            }
+      
+      // Ïª®ÌÖêÏ∏† ÌÉÄÏûÖÍ≥º ÌååÏùºÎ™Ö ÏßÄÏ†ï
+      response.setContentType("ms-vnd/excel");
+      response.setHeader("Content-Disposition", "attachment;filename=addressAll.xlsx");  //ÌååÏùºÏù¥Î¶ÑÏßÄÏ†ï.
+      //response OutputStreamÏóê ÏóëÏÖÄ ÏûëÏÑ±
+      wb.write(response.getOutputStream());
+   }
+   
 
-	
+   
 }
