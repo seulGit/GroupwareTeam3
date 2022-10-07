@@ -64,27 +64,25 @@ public class EDMSController {
     @RequestMapping("general_add")
     public ModelAndView general_add(EDMS_new_generalVO edms_new_generalVO,
                                     MultipartHttpServletRequest mpRequest) throws Exception{
-        System.out.println(edms_new_generalVO.toString());
-        System.out.println(mpRequest.getFileNames());
 
         edmsService.insert_general(edms_new_generalVO, mpRequest);
 
         return new ModelAndView("redirect:EDMS/ing");
     }
     @RequestMapping("money_add")
-    public ModelAndView expence_add(EDMS_new_expenseVO edms_new_expenseVO){
-        System.out.println(edms_new_expenseVO.toString());
+    public ModelAndView expence_add(EDMS_new_expenseVO edms_new_expenseVO,
+                                    MultipartHttpServletRequest mpRequest) throws Exception{
 
-        int insert_expence = this.edmsService.insert_expense(edms_new_expenseVO);
+        int insert_expence = this.edmsService.insert_expense(edms_new_expenseVO, mpRequest);
 
         return new ModelAndView("redirect:EDMS/ing");
     }
 
     @RequestMapping("certificate_add")
-    public ModelAndView certificate_add(EDMS_new_certificateVO edms_new_certificateVO){
-        System.out.println(edms_new_certificateVO.toString());
+    public ModelAndView certificate_add(EDMS_new_certificateVO edms_new_certificateVO,
+                                        MultipartHttpServletRequest mpRequest) throws Exception{
 
-        int insert_certificate = this.edmsService.insert_certificate(edms_new_certificateVO);
+        int insert_certificate = this.edmsService.insert_certificate(edms_new_certificateVO, mpRequest);
 
         return new ModelAndView("redirect:EDMS/ing");
     }

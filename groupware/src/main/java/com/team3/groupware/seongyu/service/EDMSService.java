@@ -16,9 +16,11 @@ public interface EDMSService {
     void insert_general(EDMS_new_generalVO edms_new_generalVO,
                        MultipartHttpServletRequest mpRequest) throws Exception;
 
-    int insert_expense(EDMS_new_expenseVO edms_new_expenseVO);
+    int insert_expense(EDMS_new_expenseVO edms_new_expenseVO,
+                       MultipartHttpServletRequest mpRequest) throws Exception;
 
-    int insert_certificate(EDMS_new_certificateVO edms_new_certificateVO);
+    int insert_certificate(EDMS_new_certificateVO edms_new_certificateVO,
+                           MultipartHttpServletRequest mpRequest) throws Exception;
 
     List<Map<String, Object>> select_EDMS_docu_ing(Map<String, Object> map);
 }

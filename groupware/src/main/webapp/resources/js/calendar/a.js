@@ -8,21 +8,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 "emp_num" : parseInt(emp_num.value)
             },
             contentType: "application/json; charset=utf-8",
-            dataType: "JSON",
-            success: function(data){
-                for(let i = 0; i < data.length; i++){
-                    console.log(data[i])
-                }
-            },
-            error: function (data) {
-                console.log("에러");
-            }
+            dataType: "JSON"
         });
 
         var calendarEl = document.getElementById('calendar');
 
         request.done(function (data) {
-            console.log(data); // log 로 데이터 찍어주기.
 
             var calendarEl = document.getElementById('calendar');
 
@@ -32,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     center: 'title',
                     right: 'listMonth,timeGridDay,timeGridWeek,dayGridMonth'
                 },
-                initialDate: '2022-09-12',
+                initialDate: '2022-10-12',
                 navLinks: true, // can click day/week names to navigate views
                 businessHours: true, // display business hours
                 editable: true,
@@ -128,11 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     event_change_btn.addEventListener("click", function () {
 
-                        // if(info.event.title != event_add_title_input
-                        //     || info.event.backgroundColor != event_background_color.value){
-                        //     calendar.refetchEvents();
-                        // }
-
                         info.event.setProp("title", event_add_title_input.value);
                         info.event.setDates(month_calendar_start_datetime.value, month_calendar_end_datetime.value)
                         info.event.setExtendedProp("content", event_content.value);
@@ -150,6 +136,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 "calendar_end_date": month_calendar_end_datetime.value,
                                 "calendar_color": event_background_color.value,
                                 "calendar_memo": event_content.value
+                            },
+                            success: function(){
+                                location.reload();
                             }
                         })
                     })
@@ -162,19 +151,11 @@ document.addEventListener('DOMContentLoaded', function () {
                             dateType: "text",
                             data: {
                                 "calendar_num": info.event.id
+                            },
+                            success: function(){
+                                location.reload();
                             }
                         })
-
-                        // 이벤트 삭제
-                        info.event.remove();
-
-                        // 모달창 내리기
-                        event_add_container.style.display = "none";
-                        event_add_container.style.transform = "rotateX(90deg)";
-                        event_add_container.style.transition = "all 1s";
-                        event_add_modal.style.display = "none";
-                        event_add_title_input.value = "";
-                        event_background_color.value = "#0d6efd";
                     })
                 },
                 select: function (arg) {
@@ -237,8 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         " ~ " + user_end_select_month + "월 " + user_end_select_day + "일 " + user_end_select_hour + ":" + user_end_select_min;
 
                     // 이벤트 추가 버튼 클릭 시
-                    event_add_btn.addEventListener("click", function () {
-
+                    event_add_btn.addEventListener("click", function (e) {
                         // 이벤트의 제목이 없을 경우
                         if (event_add_title_input.value == "" || event_add_title_input.value == null) {
                             calendar.unselect();
@@ -282,17 +262,10 @@ document.addEventListener('DOMContentLoaded', function () {
                                 "calendar_color": obj.backgroundColor,
                                 "calendar_memo": obj.extendedProps.contant
                             },
-                            success: function (data){
-                                // window.location.reload();
+                            success: function (){
+                                location.reload();
                             }
                         });
-                        event_add_container.style.display = "none";
-                        event_add_container.style.transform = "rotateX(90deg)";
-                        event_add_container.style.transition = "all 1s";
-                        event_add_modal.style.display = "none";
-                        event_add_title_input.value = "";
-                        event_background_color.value = "#0d6efd";
-                        calendar.unselect();
                     });
                 },
                 events: data

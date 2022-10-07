@@ -33,7 +33,7 @@ public class EDMSServiceImpl implements EDMSService{
                               MultipartHttpServletRequest mpRequest) throws Exception {
         edmsdao.insert_general(edms_new_generalVO);
 
-        List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(edms_new_generalVO, mpRequest);
+        List<Map<String,Object>> list = fileUtils.parse_insert_file_info_general(edms_new_generalVO, mpRequest);
         int size = list.size();
         for(int i=0; i<size; i++){
             System.out.println(list.get(i));
@@ -42,13 +42,31 @@ public class EDMSServiceImpl implements EDMSService{
     }
 
     @Override
-    public int insert_expense(EDMS_new_expenseVO edms_new_expenseVO) {
-        return edmsdao.insert_expense(edms_new_expenseVO);
+    public int insert_expense(EDMS_new_expenseVO edms_new_expenseVO,
+                              MultipartHttpServletRequest mpRequest) throws Exception {
+        int result = edmsdao.insert_expense(edms_new_expenseVO);
+
+        List<Map<String,Object>> list = fileUtils.parse_insert_file_info_expense(edms_new_expenseVO, mpRequest);
+        int size = list.size();
+        for(int i=0; i<size; i++){
+            System.out.println(list.get(i));
+            edmsdao.insertFile(list.get(i));
+        }
+        return result;
     }
 
     @Override
-    public int insert_certificate(EDMS_new_certificateVO edms_new_certificateVO) {
-        return edmsdao.insert_certificate(edms_new_certificateVO);
+    public int insert_certificate(EDMS_new_certificateVO edms_new_certificateVO,
+                                  MultipartHttpServletRequest mpRequest) throws Exception {
+        int result = edmsdao.insert_certificate(edms_new_certificateVO);
+
+        List<Map<String,Object>> list = fileUtils.parse_insert_file_info_certificate(edms_new_certificateVO, mpRequest);
+        int size = list.size();
+        for(int i=0; i<size; i++){
+            System.out.println(list.get(i));
+            edmsdao.insertFile(list.get(i));
+        }
+        return result;
     }
 
     @Override
