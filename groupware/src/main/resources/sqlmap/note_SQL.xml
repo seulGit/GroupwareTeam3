@@ -31,9 +31,9 @@
 		where 
 		<choose>
 			<when test="search_option == 'all' " >
-				(emp_name like CONCAT('%', #{keyword},'%') or
+				emp_name like CONCAT('%', #{keyword},'%') or
 				emp_num like CONCAT('%', #{keyword},'%') or
-				dept_name like CONCAT('%', #{keyword},'%'))
+				dept_name like CONCAT('%', #{keyword},'%')
 			</when>
 			<when test="search_option == 'emp_name' " >
 				emp_name like CONCAT('%', #{keyword},'%')
@@ -45,7 +45,6 @@
 				emp_num
 			</otherwise>
 		</choose>
-		and E.auth_code = "normal"
 		order by emp_num desc;
 	</select>
 	
@@ -104,12 +103,12 @@
 	<!-- 페이징처리용 불러오기 -->
 	<select id="tempMessageList" parameterType="hashMap" resultType="com.team3.groupware.jeongchi.model.MessageVO">
 		<include refid="paging_header" />
-		select message_num, message_sender2, message_sender, message_title, message_datetime,
+		select message_num, message_receiver2, message_receiver, message_title, message_datetime,
 		message_read, message_type
 		from message 
-		where message_sender2 = #{emp_num}
+		where message_receiver2 = #{emp_num}
 		and message_type = "임시"
-		order by message_datetime desc, message_sender2 desc
+		order by message_datetime desc, message_receiver2 desc
 		<include refid="paging_footer" />
 	</select>
 	

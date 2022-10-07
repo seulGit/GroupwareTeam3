@@ -20,6 +20,20 @@ public class MainHomeController {
 	
 	@Autowired
 	MainService mainService;
+	
+	@GetMapping("/main_admin")
+	public ModelAndView main_admin() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/main_admin");
+		return mv;
+	}
+	
+	@GetMapping("/main")
+	public ModelAndView main() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/main");
+		return mv;
+	}
 
 	@GetMapping("/mainView")
 	public List<BoardVO> mainView(HttpServletRequest request) {

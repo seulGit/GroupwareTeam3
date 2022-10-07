@@ -40,7 +40,6 @@ window.onload = function(){
 		    } else if (checkAll2.checked==false){
     		    for(let i=0; i<chkBox2.length; i++){
         		chkBox2[i].checked = false;
-    	    	console.log("체크 제거");
 	    		}
     		}
 		});
@@ -54,26 +53,8 @@ window.onload = function(){
 	    			checkAll2.checked = false;
     			}
   			});
-		}; // 체크박스 전체 선택 / 해제 기능 끝    
-	
-		// 쪽지 주소록에서 확인 버튼 누를 시 받는 사람으로 관련 내용 in
-	/*	$("#write_address_selectCheck").click(function () {
-		    for(let i=0; i<chkBox.length; i++){
-	    		if(chkBox[i].checked==true){
-	    			let sendEmpNum = chkBox[i].parentNode.parentNode.childNodes[4].innerHTML;   // empNum 값 가져오기
-	    			let sendEmpName = chkBox[i].parentNode.parentNode.childNodes[3].innerHTML;  // empName 값 가져오기
-		    		SendEmpInfoObject[sendEmpNum] = sendEmpName;								// empNum : empName 객체화 시켜서 SendEmpInfoObject에 담기
-    	    		console.log(SendEmpInfoObject);
-        			arrNum = Object.keys(SendEmpInfoObject);
-        			arrSet = Object.values(SendEmpInfoObject);// 객체의 키값만 가져오기
-        			console.log(arrNum);
-		    	}
-    		}    	    
-			console.log(SendEmpInfoObject);
-	    	arrNumJoin = arrNum.join(", ");					// 조인으로 문자화 하기
-	    	messageReceiver.value = arrNumJoin;
-		    $(".message_modal").css("display", "none");		// 확인 버튼 클릭 시 모달 삭제
-		}); */
+		}; 
+		// 체크박스 전체 선택 / 해제 기능 끝    
 	}
 }
 
@@ -169,6 +150,6 @@ window.onload = function(){
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-<script src="<c:url value='resources/js/officemap.js'/>"></script>
+<script src="<c:url value='../resources/js/officemap.js'/>"></script>
 </body>
 </html>
