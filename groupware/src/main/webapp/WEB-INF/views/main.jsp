@@ -45,7 +45,7 @@ window.onload = function(){
 			mainBoardViewAjax(data);
 		},
 		error:function(request, status, error){
-			alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+			alert(error);
 		}
 		});
 	
@@ -66,7 +66,7 @@ window.onload = function(){
 			mainBoardViewAjax(data);
 		},
 		error:function(request, status, error){
-			alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+			alert(error);
 		}
 		});
 	});
@@ -108,7 +108,7 @@ window.onload = function(){
                         <div class="home_personal_text">
                             <p class="home_personal_company">(주)JaeHee</p>
                             <p class="home_personal_company">${sessionScope.dept_name}</p>
-                            <h1 class="home_personal_name">${sessionScope.emp_name} ${sessionScope.posion_grade}</h1>
+                            <h1 class="home_personal_name">${sessionScope.emp_name} ${sessionScope.position_grade}</h1>
                         </div>
 
                     </div>
@@ -173,7 +173,7 @@ window.onload = function(){
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-    <script src="<c:url value='resources/js/officemap.js'/>"></script>
+    <script src="<c:url value='../resources/js/officemap.js'/>"></script>
 </body>
 
 </html>

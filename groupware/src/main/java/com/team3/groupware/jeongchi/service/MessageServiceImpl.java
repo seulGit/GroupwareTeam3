@@ -18,13 +18,6 @@ public class MessageServiceImpl implements MessageService {
 	@Autowired
 	private MessageDAO messageDao;
 	
-	// 쪽지테이블에 첨부파일이 없는 쪽지 insert 하기
-//	@Override
-//	public void write(MessageVO messageVo) {
-//		// TODO Auto-generated method stub
-//		
-//		messageDao.write(messageVo);
-//	}
 
 	@Override
 	public List<EmployeeVO> writeAddressSearch(Map<String, Object> addSearchMap, String search_option, String keyword) {

@@ -55,13 +55,11 @@ window.onload = function(){
 			dataType:"json",  					// 데이터 받는 형식
             success: function(data) {  			// 데이터 가져온거 성공했으면 
             									// data = 위에서 가져올 데이터
-            	// console.log(fk_dept_no); .dept_ajax의  value값
 	            writeAddressTable(data);
 	            writeAddressChkBox();
 			},
 	        error: function(request, status, error){
-	        	alert("실패했어");
-			       // alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+	        	alert(error);
 			}
 		});
 	});
@@ -73,9 +71,6 @@ window.onload = function(){
         let keyword = $("input[name='keyword']").val();
         let search_option = $("#search_option").val();
         let params={"search_option":search_option, "keyword":keyword}
-        console.log(search_option);
-    	console.log(keyword);
-    	console.log(params);
         $.ajax({
         	type: "POST",						// 보낼거야
             url : "/message/writeAddressSearch",	
@@ -87,8 +82,7 @@ window.onload = function(){
 	            writeAddressChkBox();			// 체크박스 전체 선택 / 해제 기능  */
             },
 	        error: function(request, status, error){
-			    alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-	        	console.log(data);
+			    alert(error);
 			}
         });
 
@@ -133,7 +127,6 @@ window.onload = function(){
     	    } else if (checkAll.checked==false){
         	    for(let i=0; i<chkBox.length; i++){
             	chkBox[i].checked = false;
-        	    console.log("체크 제거");
         		}
         	}
     	});
@@ -156,13 +149,10 @@ window.onload = function(){
     	    		let sendEmpNum = chkBox[i].parentNode.parentNode.childNodes[4].innerHTML;   // empNum 값 가져오기
     	    		let sendEmpName = chkBox[i].parentNode.parentNode.childNodes[3].innerHTML;  // empName 값 가져오기
     	    		SendEmpInfoObject[sendEmpNum] = sendEmpName;								// empNum : empName 객체화 시켜서 SendEmpInfoObject에 담기
-            		console.log(SendEmpInfoObject);
             		arrNum = Object.keys(SendEmpInfoObject);
             		arrSet = Object.values(SendEmpInfoObject);// 객체의 키값만 가져오기
-            		console.log(arrNum);
     	    	}
         	}    	    
-    		console.log(SendEmpInfoObject);
     	    arrNumJoin = arrNum.join(", ");					// 조인으로 문자화 하기
 	    	messageReceiver.value = arrNumJoin;
     	    $(".message_modal").css("display", "none");		// 확인 버튼 클릭 시 모달 삭제
@@ -200,14 +190,6 @@ window.onload = function(){
 	    	return false;
 	    }   	
 
-	    
-	    // 중요! 체크박스가 선택되어있는지 아닌지 확인하자
-		//	    let note_important = 0;
-	    
-		//  if($("input[name=important]").prop("checked")) {
-		//   	// 중요 체크박스가 체크되어 있으면 
-	 	//   	note_importantVal = 1;
-	  	//  }
 		
 		// 보내기 버튼 눌렀을 때 DB테이블록 내용 전송
 		
@@ -218,14 +200,6 @@ window.onload = function(){
 	    let message_contents = $("#message_contents").val();					// textarea의 value에 적용됩니다.
 	    let message_important = document.querySelector('#important').checked;
 	    let emp_num = "${sessionScope.emp_num}";
-   
-	    console.log(message_title);
-	    console.log(message_sender2);
-	    console.log(message_sender);
-	    console.log(message_type);
-	    console.log(message_contents);
-	    console.log(message_important);
-	    console.log(emp_num);
 	    
 	    for(let i=0; i<arrNum.length; i++){
 	    	let message_receiver2 = arrNum[i];
@@ -240,7 +214,6 @@ window.onload = function(){
 	    			"message_contents" : message_contents,
 	    			"emp_num" : emp_num,
 	    			"message_important" : message_important};
-		    console.log(messageData);
 	    	$.ajax({
 	        	type: "POST",
 	            url : "/message/sendMessage",
@@ -251,13 +224,12 @@ window.onload = function(){
 	            	
 	            },
 		        error: function(request, status, error){
-				    alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-		        	//console.log(error);
+				    alert(error);
 				}
 	    	});	    
 	    };
     	alert("메세지 전송을 완료 하였습니다.");
-	    // arrNum = [];    	
+	    arrNum = []; 
     };
 };
 
@@ -333,8 +305,6 @@ window.onload = function(){
 				</ul>
 			</div>
 			<div id="modal_personal_info">
-			
-
 
 				<!-- 
 				<table class="dept_right">
@@ -371,7 +341,9 @@ window.onload = function(){
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                </tr> -->
+                                </tr> 
+                   </tbody>
+                </table>-->
 			</div>
 		</div>
 		<div>
@@ -388,7 +360,7 @@ window.onload = function(){
 	crossorigin="anonymous"></script>
 <!--     <script src="../resources/js/message_jquery.js"></script> -->
 <script src="../resources/js/message/message_write.js?ver=1"></script>
-<script src="<c:url value='resources/js/officemap.js'/>"></script>
+<script src="<c:url value='../resources/js/officemap.js'/>"></script>
 
 <script>
 		var oEditors = [];
@@ -406,10 +378,10 @@ window.onload = function(){
 				fCreator : "createSEditor2"
 			});
 		
-			// ====== 다시쓰기 버튼 이벤트 ====== // 
-			$("#writeReset").click(function() {
-				oEditors.getById["message_contents"].exec("SET_IR", [""]); //내용초기화
-			});
+		// ====== 다시쓰기 버튼 이벤트 ====== // 
+		$("#writeReset").click(function() {
+			oEditors.getById["message_contents"].exec("SET_IR", [""]);  // 내용초기화
+		});
 </script>
 
 </body>

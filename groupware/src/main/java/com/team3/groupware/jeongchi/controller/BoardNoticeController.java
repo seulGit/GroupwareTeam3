@@ -32,7 +32,6 @@ public class BoardNoticeController {
 			String change = String.valueOf(session.getAttribute("emp_num"));
 			List<BoardVO> boardNoticeList = boardService.board_selectNTList(boardVo);
 			mv.addObject("boardNoticeList", boardNoticeList);
-			System.out.println(boardNoticeList.toString());
 		}
 		mv.setViewName("/jeongchi/board/board_notice");
 		return mv;

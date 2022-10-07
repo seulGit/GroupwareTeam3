@@ -149,11 +149,8 @@
                                 <a class="nav-link" href="/address_personal">개인 주소록</a>
                             </nav>
                         </div>
-                        <a class="nav-link" href="" id="officeMapClick">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            	조직도
-                        </a>
-                        </c:if>
+						</c:if>
+
                         <c:if test="${sessionScope.auth_code eq 'admin'}">
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEDMS"
                            aria-expanded="false" aria-controls="collapseEDMS">
@@ -161,7 +158,7 @@
                             관리자메뉴
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <c class="collapse" id="collapseEDMS" aria-labelledby="headingOne"
+                        <div class="collapse" id="collapseEDMS" aria-labelledby="headingOne"
                              data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="/admin/admin_EDMS">전자결재관리</a>
@@ -172,7 +169,12 @@
                                 <a class="nav-link" href="/admin/admin_loginHistory">접속내역확인</a>
                                 <a class="nav-link" href="/admin/admin_authority">권한관리</a>
                             </nav>
+                          </div>
                             </c:if>
+                        <a class="nav-link" href="" id="officeMapClick">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            	조직도
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">

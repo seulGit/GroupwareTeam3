@@ -41,6 +41,7 @@ public class MessageController {
 		mv.setViewName("/jeongchi/message/message_write");
 		return mv;
 	}
+	
 //	=== 메시지 insert ===	
 	@PostMapping("/message/sendMessage")
 	public int sendMessage(MessageVO messageVO) {
@@ -53,7 +54,6 @@ public class MessageController {
 	public List<EmployeeVO> writeAddress(HttpServletRequest request) {
 //		public List<EmployeeDTO> writeAddress(@RequestParam List<EmployeeDTO> empMap) {
 		String dept_code = request.getParameter("dept_code");
-		// System.out.println("모달창에서 클릭한 부서 번호 ==> " + fk_dept_no);
 		Map<String, Object> empMap = new HashMap<>();
 		empMap.put("dept_code", dept_code);
 		// 부서에 따른 사원조회
@@ -68,10 +68,8 @@ public class MessageController {
 			@RequestParam(defaultValue = "" ) String keyword) {
 		
 		Map<String, Object> addSearchMap = new HashMap<>();
-		System.out.println(addSearchMap);
 		addSearchMap.put("search_option", search_option);
 		addSearchMap.put("keyword", keyword);
-		System.out.println(addSearchMap);
 		// 부서에 따른 사원조회
 		List<EmployeeVO> addSearchList = messageService.writeAddressSearch(addSearchMap, search_option, keyword);
 		return addSearchList;
@@ -88,9 +86,7 @@ public class MessageController {
 		HttpSession session = request.getSession();
 		String change = String.valueOf(session.getAttribute("emp_num"));
 	    int emp_num = Integer.parseInt(change);
-		
 		int count = messageService.count(messageVO);
-		System.out.println(count);
 		
 		PageUtil page_info = new PageUtil(count, curPage);
 		int start = page_info.getPageBegin();
@@ -104,7 +100,6 @@ public class MessageController {
 		messageMap.put("sendMessageList", sendMessageList);
 		messageMap.put("count", count);
 		messageMap.put("page_info", page_info);
-		System.out.println(messageMap.toString());
 		mv.addObject("messageMap", messageMap);
 		//mv.addObject("list", list);
 		return mv;
@@ -120,9 +115,7 @@ public class MessageController {
 		HttpSession session = request.getSession();
 		String change = String.valueOf(session.getAttribute("emp_num"));
 	    int emp_num = Integer.parseInt(change);
-	    
 		int count = messageService.count(messageVO);
-		System.out.println(count);
 		
 		PageUtil page_info = new PageUtil(count, curPage);
 		int start = page_info.getPageBegin();
@@ -136,7 +129,6 @@ public class MessageController {
 		messageMap2.put("receiveMessageList", receiveMessageList);
 		messageMap2.put("count", count);
 		messageMap2.put("page_info", page_info);
-		System.out.println(messageMap2.toString());
 		mv.addObject("messageMap", messageMap2);
 		//mv.addObject("list", list);
 		return mv;
@@ -153,9 +145,7 @@ public class MessageController {
 		HttpSession session = request.getSession();
 		String change = String.valueOf(session.getAttribute("emp_num"));
 		int emp_num = Integer.parseInt(change);
-		
 		int count = messageService.count(messageVO);
-		System.out.println(count);
 		
 		PageUtil page_info = new PageUtil(count, curPage);
 		int start = page_info.getPageBegin();
@@ -169,7 +159,6 @@ public class MessageController {
 		messageMap3.put("importantMessageList", importantMessageList);
 		messageMap3.put("count", count);
 		messageMap3.put("page_info", page_info);
-		System.out.println(messageMap3.toString());
 		mv.addObject("messageMap", messageMap3);
 		//mv.addObject("list", list);
 		return mv;
@@ -186,9 +175,7 @@ public class MessageController {
 		HttpSession session = request.getSession();
 		String change = String.valueOf(session.getAttribute("emp_num"));
 		int emp_num = Integer.parseInt(change);
-		
 		int count = messageService.count(messageVO);
-		System.out.println(count);
 		
 		PageUtil page_info = new PageUtil(count, curPage);
 		int start = page_info.getPageBegin();
@@ -202,7 +189,6 @@ public class MessageController {
 		messageMap4.put("tempMessageList", tempMessageList);
 		messageMap4.put("count", count);
 		messageMap4.put("page_info", page_info);
-		System.out.println(messageMap4.toString());
 		mv.addObject("messageMap", messageMap4);
 		//mv.addObject("list", list);
 		return mv;
