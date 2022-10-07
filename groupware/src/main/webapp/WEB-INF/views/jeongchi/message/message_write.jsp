@@ -268,9 +268,6 @@ window.onload = function(){
 		<div class="message_write_textarea">
 			<textarea name="message_contents" id="message_contents" rows="1" cols="1" style="width: 100%;"></textarea>
 		</div>
-		<div class="bottom_btn">
-			<button>예약발송</button>
-		</div>
 	</div>
 </div>
 </div>
