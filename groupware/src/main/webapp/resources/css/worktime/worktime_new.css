@@ -145,6 +145,11 @@
     float: left;
     margin-left: 5px;   
 }
+#file_text_align, .vacation_date{
+	float: left;
+	padding-left: 5px;	
+}
+
 
 
 .worktime_new_api{

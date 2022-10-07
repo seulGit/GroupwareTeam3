@@ -99,7 +99,9 @@
                     <div id=board_comments_con>
             			<div class="board_comment_box">
             				<div class="board_comment_name">${board_comment.dept_name} ${board_comment.emp_name}</div>
-            				<div class="board_comment_date">${board_comment.comment_date}</div>
+            				<div class="board_comment_date">
+            					<fmt:parseDate value="${board_comment.comment_date}" pattern="yyyy-MM-dd'T'HH:mm" var="comment_date" type="both" />
+            					<fmt:formatDate value="${comment_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></div>
             				<div class="board_contents">${board_comment.comment_contents}</div>
             				<c:if test="${emp_name eq board_comment.emp_name}"> 
             					<div class="board_comment_btn_box">

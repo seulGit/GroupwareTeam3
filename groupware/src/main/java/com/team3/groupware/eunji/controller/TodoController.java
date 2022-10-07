@@ -1,6 +1,5 @@
 package com.team3.groupware.eunji.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.team3.groupware.eunji.model.TodoVO;
@@ -66,11 +64,11 @@ public class TodoController {
 		return mv;
 	}
 	
-	   // todo 수정
-	   @PostMapping("/todo_modify")
-	   @ResponseBody
-	   // 수정 삭제같은 리턴이 필요없을 경우 responsebody를 사용해서 응답받을 수 있음
-	   public void todoModify(@RequestBody Map<String,Object> map) {
-		   todoService.todo_modify(map);
+	// todo 수정
+	@PostMapping("/todo_modify")
+	@ResponseBody
+	// 수정 삭제같은 리턴이 필요없을 경우 responsebody를 사용해서 응답받을 수 있음
+	public void todoModify(@RequestBody Map<String,Object> map) {
+		 todoService.todo_modify(map);
 	   }
 }

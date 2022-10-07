@@ -53,7 +53,6 @@ public class WorktimeController {
 	// worktime 메인에서 출퇴근 현황 버튼 클릭 시 데이터가 출퇴근 현황 페이지에 출력될 수 있도록 
 	@PostMapping("/worktime")
 	public ModelAndView worktimeVies(WorktimeVO worktimeVo) {
-		System.out.println(worktimeVo);
 		Map<String, Object> worktimeMap = new HashMap<>();
 		
 		worktimeMap.put("worktime_go", worktimeVo.getWorktime_go());
@@ -93,7 +92,6 @@ public class WorktimeController {
 		
 		String change = String.valueOf(session.getAttribute("emp_num"));
 		int emp_num = Integer.parseInt(change);
-		
 		
 		Map<String, Object> WorktimeNameMap = worktimeService.select_worktime_new_name(emp_num);
 		ModelAndView mv = new ModelAndView();

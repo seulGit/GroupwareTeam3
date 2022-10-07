@@ -81,7 +81,6 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
-
 	
 	// 공지게시글 리스트 불러오기 -정치-
 	@Override

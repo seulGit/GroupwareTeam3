@@ -33,8 +33,7 @@ public class BoardNormalController {
 		HttpSession session = request.getSession();
 		ModelAndView mv = new ModelAndView();
 		int emp_num = 0;
-		
-		
+			
 		if(session.getAttribute("emp_num") != null) {
 			String change = String.valueOf(session.getAttribute("emp_num"));
 			List<BoardVO> boardNormalList = boardService.board_selectList(boardVo);
@@ -100,7 +99,6 @@ public class BoardNormalController {
 		List<Map<String, Object>> board_comment = boardService.board_comment_select(board_num);
 		mv.addObject("board_comment", board_comment);
 		
-		
 		return mv;
 	}
 	
@@ -125,36 +123,36 @@ public class BoardNormalController {
 	}
 	
 	// 게시글 삭제
-		@PostMapping("/board_delete")
-		public ModelAndView board_delete(BoardVO boardVo) {
-			ModelAndView mv = new ModelAndView();
-			int board_num = boardVo.getBoard_num();
-			boardService.board_delete(boardVo);
-			mv.setViewName("redirect:/board_normal");
-			return mv;
+	@PostMapping("/board_delete")
+	public ModelAndView board_delete(BoardVO boardVo) {
+		ModelAndView mv = new ModelAndView();
+		int board_num = boardVo.getBoard_num();
+		boardService.board_delete(boardVo);
+		mv.setViewName("redirect:/board_normal");
+		return mv;
 		}
 		
-		// 게시판 댓글 입력
-		@PostMapping("/board_comment")
-		public ModelAndView board_comment(@RequestParam Map<String,Object> map) {
-			ModelAndView mv = new ModelAndView();		
-			String cast = (String)map.get("board_num");
-			int board_num = Integer.parseInt(cast);
-			boardService.board_comment_insert(map);
-			mv.setViewName("redirect:/board_detail?board_num=" + board_num);
-			return mv;
+	// 게시판 댓글 입력
+	@PostMapping("/board_comment")
+	public ModelAndView board_comment(@RequestParam Map<String,Object> map) {
+		ModelAndView mv = new ModelAndView();		
+		String cast = (String)map.get("board_num");
+		int board_num = Integer.parseInt(cast);
+		boardService.board_comment_insert(map);
+		mv.setViewName("redirect:/board_detail?board_num=" + board_num);
+		return mv;
 		}
-		
-		@PostMapping("/comment_delete")
-		public ModelAndView comment_delete(@RequestParam Map<String, Object> map) {
-			ModelAndView mv = new ModelAndView();
-			System.out.println(map);
-			String cast = (String)map.get("board_num");
-			int board_num = Integer.parseInt(cast);
+	
+	// 댓글 삭제
+	@PostMapping("/comment_delete")
+	public ModelAndView comment_delete(@RequestParam Map<String, Object> map) {
+		ModelAndView mv = new ModelAndView();
+		String cast = (String)map.get("board_num");
+		int board_num = Integer.parseInt(cast);
 			
-			boardService.comment_delete(map);
-			mv.setViewName("redirect:/board_detail?board_num=" + board_num);
-			return mv;
+		boardService.comment_delete(map);
+		mv.setViewName("redirect:/board_detail?board_num=" + board_num);
+		return mv;
 		}
 		
 	}

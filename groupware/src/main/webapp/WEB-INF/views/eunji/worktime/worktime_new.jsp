@@ -115,13 +115,13 @@
                             <td class="table_size">${WorktimeNameMap.dept_name}</td>
                             <td>기안일</td>
                             <td class="table_size worktime_new_date"></td>
-                            <td class="docu_num_width">문서번호</td>
-                            <td class="table_size">자동설정</td>
+                            <td class="docu_num_width">부서번호</td>
+                            <td class="table_size">${WorktimeNameMap.dept_code}</td>
                         </tr>
 
                   		<tr>
                      		<td>휴가 기간</td>
-                            <td colspan="2" class="date_width"><input type="date"> ~ <input type="date"></td>
+                            <td colspan="2" class="date_width"><div class="vacation_date"><input type="date" class=""> ~ <input type="date"></div></td>
                     		<td>행선지</td>
                             <td colspan="2"><input type="text"></td>
                   		</tr>   

@@ -51,27 +51,27 @@
 	select E.emp_name, E.position_grade, D.dept_name, E.emp_num
 	from employee E join department D
 	on E.dept_code = D.dept_code
-
+	where 
 	<if test="search_option == 'all' ">
-		where emp_name like CONCAT('%',#{keyword},'%')
-		or dept_name like CONCAT('%',#{keyword},'%')
+		(emp_name like CONCAT('%',#{keyword},'%')
+		or dept_name like CONCAT('%',#{keyword},'%'))
 
 	</if>
 	<if test="search_option == 'emp_name'">
-		where emp_name like CONCAT('%',#{keyword},'%')
+		emp_name like CONCAT('%',#{keyword},'%')
 	</if>
 
 	<if test="search_option == 'dept_name'">
-		where dept_name like CONCAT('%',#{keyword},'%')
+		dept_name like CONCAT('%',#{keyword},'%')
 	</if>
 	
-	and auth_code ='normal'
+	and E.auth_code ='normal'
 	order by emp_name desc, emp_num desc
 </select>
 
 <!-- 휴가계 폼에 부서 이름 출력하기 -->
 <select id="worktime_emp_dept_name" parameterType="com.team3.groupware.common.model.EmployeeVO" resultType="HashMap">
-	select E.emp_name, E.emp_num, D.dept_name
+	select E.emp_name, E.emp_num, D.dept_name, D.dept_code
 	from employee E join department D 
 	on E.dept_code = D.dept_code
 	where E.emp_num = #{emp_num};

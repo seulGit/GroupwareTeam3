@@ -58,7 +58,7 @@
                             	 <input type="hidden" name="board_num"></a></td>
                             <td>${board_normal.dept_name} ${board_normal.emp_name}</td>
                              <fmt:parseDate value="${board_normal.board_write_date}" pattern="yyyy-MM-dd'T'HH:mm" var="board_normal_date" type="both" />
-                            <td><fmt:formatDate value="${board_normal_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
+                            <td><fmt:formatDate value="${board_normal_date}" pattern="yyyy-MM-dd" /></td>
                             <td>${board_normal.board_view_count}</td>
                         </tr> 
                         </c:forEach> 
