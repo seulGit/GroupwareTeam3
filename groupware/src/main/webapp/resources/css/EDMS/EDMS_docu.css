@@ -251,23 +251,6 @@
     font-weight: normal;
 }
 
-/* 결재자의견작성란 */
-.EDMS_result_write{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.EDMS_result_write div:nth-child(1){
-    margin-top : 20px;
-    width: 90%;
-}
-#EDMS_result{
-    width: 90%;
-    margin-top : 10px;
-    border: 2px solid black;
-}
-
 /* 상신/취소 버튼 */
 .EDMS_btn {
     display:flex;

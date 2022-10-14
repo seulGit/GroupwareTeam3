@@ -11,9 +11,6 @@
     <meta name="author" content=""/>
     <title>JaeHee Group</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
-    <!-- <link href="<c:url value="/resources/css/EDMS/EDMS_new.css"/>" rel="stylesheet" /> -->
-    <!-- <link rel="stylesheet" href="<c:url value="/resources/css/EDMS/EDMS_new.css"/>"> -->
-    <link rel="stylesheet" href="../../../../resources/css/EDMS/EDMS_new.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
@@ -32,8 +29,34 @@
                 <td colspan="4">일반품의서</td>
                 <td colspan="2">
                     <div class="Approval_container">
-                        <div></div>
-                        <div></div>
+                        <div class="approval_1_container">
+                            <div>
+                                중간결재자
+                            </div>
+                            <div class="approval_1_check">
+                                
+                            </div>
+                            <div class="approval_1_name">
+
+                            </div>
+                            <div class="approval_1_check_date">
+
+                            </div>
+                        </div>
+                        <div class="approval_2_container">
+                            <div>
+                                최종결재자
+                            </div>
+                            <div class="approval_2_check">
+
+                            </div>
+                            <div class="approval_2_name">
+
+                            </div>
+                            <div class="approval_2_check_date">
+
+                            </div>
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -64,6 +87,15 @@
     </div>
     <div class="EDMS_new_api">
         <textarea name="approval_request_docu_contents" id="editor"></textarea>
+    </div>
+    <%--  파일 첨부  --%>
+    <div class="EDMS_docu_file_container">
+        <div class="file_upload_container">
+            <input type="text" class="upload_name" value="파일을 업로드하세요"
+                   placeholder="파일을 업로드하세요" disabled>
+            <label for="upload_file">파일 선택</label>
+            <input name="file" type="file" id="upload_file">
+        </div>
     </div>
     <div class="EDMS_result_write">
         <div>최종결재자 의견</div>
