@@ -2,7 +2,7 @@
 <!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="EDMS">
 
-
+    <!--  결재 기본 정보 입력  -->
     <insert id="insert_docu" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO"
             useGeneratedKeys="true" keyProperty="EDMS_docu_num">
         INSERT INTO
@@ -24,6 +24,7 @@
                 );
     </insert>
 
+    <!--  새 결재 진행 시 결재자 입력  -->
     <insert id="insert_approval" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
         INSERT INTO
             groupwareteam3.EDMS_approval (
@@ -37,6 +38,7 @@
                 #{EDMS_docu_num});
     </insert>
 
+    <!--  일반품의서  -->
     <insert id="insert_general" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
         INSERT INTO
             groupwareteam3.EDMS_approval_request (
@@ -50,6 +52,7 @@
                 #{EDMS_docu_num});
     </insert>
 
+    <!--  증명서신청  -->
     <insert id="insert_certificate" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
         INSERT INTO
             groupwareteam3.EDMS_certificate (
@@ -70,6 +73,7 @@
                 );
     </insert>
 
+    <!--  비용품의서  -->
     <insert id="insert_expense" parameterType="com.team3.groupware.seongyu.model.EDMS_new_generalVO">
         INSERT INTO
             groupwareteam3.EDMS_expense (
@@ -90,7 +94,7 @@
                 );
     </insert>
 
-
+    <!--  진행중 문서 리스트 받아오기  -->
     <select id="select_EDMS_docu_ing" parameterType="hashmap" resultType="hashmap">
         SELECT
             EDMS_docu.EDMS_docu_num,
@@ -126,87 +130,22 @@
         WHERE
             EDMS_docu.emp_num = #{emp_num}
         ORDER BY
-            EDMS_docu_num DESC;
+            EDMS_docu_num DESC
+        LIMIT
+            #{crt_start_page}, #{crt_end_page};
     </select>
 
+    <!--  진행중문서 리스트 길이 구하기  -->
+    <select id="select_EDMS_docu_ing_length" resultType="int" parameterType="hashmap">
+        SELECT
+            count(EDMS_docu_num)
+        FROM
+            EDMS_docu
+        WHERE
+            emp_num = #{emp_num};
+    </select>
 
-
-<!--    <insert id="insert" parameterType="kr.co.vo.BoardVO" useGeneratedKeys="true" keyProperty="bno">-->
-<!--        <selectKey keyProperty="bno" resultType="int" order="BEFORE">-->
-<!--            SELECT MP_BOARD_SEQ.NEXTVAL FROM DUAL-->
-<!--        </selectKey>-->
-<!--        INSERT INTO MP_BOARD(    BNO-->
-<!--        , TITLE-->
-<!--        , CONTENT-->
-<!--        , WRITER  )-->
-<!--        VALUES(    #{bno}-->
-<!--        , #{title}-->
-<!--        , #{content}-->
-<!--        , #{writer}  )-->
-
-<!--    </insert>-->
-
-<!--    <select id="listPage" resultType="kr.co.vo.BoardVO" parameterType="kr.co.vo.SearchCriteria">-->
-<!--        SELECT  BNO,-->
-<!--        TITLE,-->
-<!--        CONTENT,-->
-<!--        WRITER,-->
-<!--        REGDATE-->
-<!--        FROM (-->
-<!--        SELECT BNO,-->
-<!--        TITLE,-->
-<!--        CONTENT,-->
-<!--        WRITER,-->
-<!--        REGDATE,-->
-<!--        ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM-->
-<!--        FROM MP_BOARD-->
-<!--        WHERE 1=1-->
-<!--        <include refid="search"></include>-->
-<!--        ) MP-->
-<!--        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}-->
-<!--        ORDER BY BNO DESC-->
-<!--    </select>-->
-
-<!--    <select id="listCount" parameterType="kr.co.vo.SearchCriteria" resultType="int">-->
-<!--        SELECT COUNT(BNO)-->
-<!--        FROM MP_BOARD-->
-<!--        WHERE 1=1-->
-<!--        <include refid="search"></include>-->
-<!--        AND BNO > 0-->
-<!--    </select>-->
-
-<!--    <sql id="search">-->
-<!--        <if test="searchType != null">-->
-<!--            <if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>-->
-<!--            <if test="searchType == 'c'.toString()">AND CONTENT LIKE '%' || #{keyword} || '%'</if>-->
-<!--            <if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyword} || '%'</if>-->
-<!--            <if test="searchType == 'tc'.toString()">AND (TITLE LIKE '%' || #{keyword} || '%') or (CONTENT LIKE '%' || #{keyword} || '%')</if>-->
-<!--        </if>-->
-<!--    </sql>-->
-
-<!--    <select id="read" parameterType="int" resultType="kr.co.vo.BoardVO">-->
-<!--        SELECT   BNO-->
-<!--             , TITLE-->
-<!--             , CONTENT-->
-<!--             , WRITER-->
-<!--             , REGDATE-->
-<!--        FROM MP_BOARD-->
-<!--        WHERE BNO = #{bno}-->
-<!--    </select>-->
-
-<!--    <update id="update" parameterType="kr.co.vo.BoardVO">-->
-<!--        UPDATE MP_BOARD-->
-<!--        SET TITLE    =   #{title},-->
-<!--            CONTENT  =   #{content}-->
-<!--        WHERE BNO = #{bno}-->
-<!--    </update>-->
-
-<!--    <delete id="delete" parameterType="int">-->
-<!--        DELETE-->
-<!--        FROM MP_BOARD-->
-<!--        WHERE BNO = #{bno}-->
-<!--    </delete>-->
-
+    <!--  파일 업로드  -->
     <insert id="insertFile" parameterType="hashMap">
         INSERT INTO
             EDMS_file(
@@ -222,7 +161,8 @@
                #{File_size}
                )
     </insert>
-    
+
+    <!--  EDMS_docu에 들어갈 파일 넘버 받아오기  -->
     <select id="select_file_no" parameterType="hashmap" resultType="hashmap">
         SELECT
             file_no,
@@ -232,7 +172,8 @@
         WHERE
             EDMS_docu_num = #{EDMS_docu_num}
     </select>
-    
+
+    <!--  파일 업로드 시 EDMS_docu 테이블에 파일번호 입력  -->
     <update id="update_file_no" parameterType="hashmap">
         UPDATE
             EDMS_docu t
@@ -241,4 +182,115 @@
         WHERE
             t.EDMS_docu_num = #{EDMS_docu_num};
     </update>
+
+    <!--  결재 문서에 들어갈 정보  -->
+    <select id="select_EDMS_docu_certificate" parameterType="hashmap" resultType="hashmap">
+        select
+            EDMS_docu.EDMS_docu_num,
+            EDMS_docu_category,
+            EDMS_docu.emp_num,
+            EDMS_docu_urgent,
+            EDMS_docu.file_no,
+            EDMS_docu_date,
+            file_size,
+            org_file_name,
+            stored_file_name,
+            EDMS_certificate.certificate_docu_title,
+            EDMS_certificate.certificate_name,
+            EDMS_certificate.certificate_docu_contents,
+            EDMS_certificate.certificate_purpose,
+            EDMS_certificate.certificate_submit_to,
+            dept.dept_code,
+            dept.dept_name,
+            dept.emp_name,
+            position_grade,
+            EDMS_approval_emp_1_name,
+            EDMS_approval_emp_2_name,
+            EDMS_approval_emp_1_position_grade,
+            EDMS_approval_emp_2_position_grade
+        from
+            EDMS_docu left join
+            EDMS_file on EDMS_docu.EDMS_docu_num = EDMS_file.EDMS_docu_num join
+            EDMS_certificate on EDMS_docu.EDMS_docu_num = EDMS_certificate.EDMS_docu_num join
+            (select
+                 dept_name,
+                 employee.dept_code,
+                 emp_name,
+                 emp_num,
+                 position_grade
+             from
+                 department join employee on department.dept_code = employee.dept_code
+            ) as dept on EDMS_docu.emp_num = dept.emp_num
+                      join EDMS_approval Ea on EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
+                      join (
+                select
+                    EDMS_approval.EDMS_approval_emp_1,
+                    e1.emp_name EDMS_approval_emp_1_name,
+                    e1.position_grade EDMS_approval_emp_1_position_grade,
+                    EDMS_approval.EDMS_approval_emp_2,
+                    e2.emp_name EDMS_approval_emp_2_name,
+                    EDMS_approval.EDMS_docu_num,
+                    e2.position_grade EDMS_approval_emp_2_position_grade
+                from
+                    EDMS_approval join employee e1 on EDMS_approval_emp_1 = e1.emp_num
+                                  join employee e2 on EDMS_approval_emp_2 = e2.emp_num
+            ) as approval_emp_name on approval_emp_name.EDMS_docu_num = EDMS_docu.EDMS_docu_num
+        where Ea.EDMS_docu_num = ${EDMS_docu_num};
+    </select>
+
+    <!--  결재 대기중 리스트  -->
+    <select id="select_EDMS_docu_wait" parameterType="hashmap" resultType="hashmap">
+        SELECT
+            EDMS_docu.EDMS_docu_num,
+            EDMS_docu.EDMS_docu_date,
+            CASE EDMS_docu.EDMS_docu_category
+                when 'general' then '일반품의서'
+                when 'money' then '비용품의서'
+                when 'certificate' then '증명서신청'
+                end as EDMS_docu_category,
+            e.emp_name,
+            approval_request_docu_title,
+            EDMS_docu.file_no,
+            EDMS_docu.EDMS_docu_urgent,
+            Ea.EDMS_approval_emp_1,
+            Ea.EDMS_approval_emp_2
+        FROM EDMS_docu JOIN (
+            SELECT
+                Ear.EDMS_docu_num,
+                approval_request_docu_title
+            FROM
+                EDMS_approval_request AS Ear
+            UNION
+            SELECT
+                Ee.EDMS_docu_num,
+                expense_docu_title
+            FROM
+                EDMS_expense AS Ee
+            UNION
+            SELECT
+                Ex.EDMS_docu_num,
+                certificate_docu_title
+            FROM
+                EDMS_certificate AS Ex) a ON EDMS_docu.EDMS_docu_num = a.EDMS_docu_num
+                       join employee e on EDMS_docu.emp_num = e.emp_num
+                       join EDMS_approval Ea on EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
+        WHERE
+            Ea.EDMS_approval_emp_1 = #{emp_num} or Ea.EDMS_approval_emp_2 = #{emp_num}
+        ORDER BY
+            EDMS_docu_num DESC
+        LIMIT
+            #{crt_start_page}, #{crt_end_page};
+    </select>
+
+    <!--  결재 대기중 페이징처리를 위한 리스트 길이 구하기  -->
+    <select id="select_EDMS_docu_wait_length" parameterType="hashmap" resultType="int">
+        select
+            count(*)
+        from
+            EDMS_approval
+        where
+            EDMS_approval_emp_1 = #{emp_num}
+           or EDMS_approval_emp_2 = #{emp_num};
+    </select>
+
 </mapper>

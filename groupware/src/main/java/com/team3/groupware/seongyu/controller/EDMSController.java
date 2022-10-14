@@ -8,6 +8,7 @@ import com.team3.groupware.seongyu.model.EDMS_new_generalVO;
 import com.team3.groupware.seongyu.service.EDMSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -91,10 +92,59 @@ public class EDMSController {
     @GetMapping("/ing")
     public ModelAndView EDMS_home_view(@RequestParam Map<String, Object> map){
         ModelAndView mv = new ModelAndView();
-        System.out.println(map);
+
+        String start = (String) map.get("crt_page");
+
+        int crt_start_page = Integer.parseInt(start);
+        int crt_end_page = Integer.parseInt(start);
+
+        System.out.println(crt_start_page);
+        map.put("crt_start_page", crt_start_page * 10 - 10);
+        map.put("crt_end_page", crt_end_page * 10);
         List<Map<String, Object>> list = this.edmsService.select_EDMS_docu_ing(map);
+        int list_length = this.edmsService.select_EDMS_docu_ing_length(map);
+
+        mv.addObject("EDMS_length", list_length);
         mv.addObject("EDMS_list", list);
         mv.setViewName("/seongyu/EDMS/EDMS_ing");
+        return mv;
+    }
+
+    @GetMapping("/docu")
+    public ModelAndView EDMS_docu(@RequestParam Map<String, Object> map){
+        Map<String, Object> edms_new_certificateVO = this.edmsService.select_EDMS_docu_certificate(map);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("docu", edms_new_certificateVO);
+        mv.setViewName("/seongyu/EDMS/EDMS_docu");
+        return mv;
+    }
+
+    @GetMapping("/end")
+    public ModelAndView EDMS_home(@RequestParam Map<String, Object> map){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/seongyu/EDMS/EDMS_end");
+        return mv;
+    }
+
+    @GetMapping("/wait")
+    public ModelAndView EDMS_wait(@RequestParam Map<String, Object> map){
+        ModelAndView mv = new ModelAndView();
+
+        String start = (String) map.get("crt_page");
+
+        int crt_start_page = Integer.parseInt(start);
+        int crt_end_page = Integer.parseInt(start);
+
+        map.put("crt_start_page", crt_start_page * 10 - 10);
+        map.put("crt_end_page", crt_end_page * 10);
+        int list_length = this.edmsService.select_EDMS_docu_wait_length(map);
+
+        List<Map<String, Object>> list = this.edmsService.select_EDMS_docu_wait(map);
+
+        mv.addObject("EDMS_length", list_length);
+        mv.addObject("EDMS_list", list);
+
+        mv.setViewName("/seongyu/EDMS/EDMS_wait");
         return mv;
     }
 

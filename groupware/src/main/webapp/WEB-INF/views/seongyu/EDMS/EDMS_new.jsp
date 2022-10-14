@@ -99,7 +99,6 @@
                 <input type="button" value="결재선 초기화" id="approver_reset_btn">
             </div>
         </div>
-        <input type="file" name="file">
 
         <div class="EDMS_docu"></div>
     </form>

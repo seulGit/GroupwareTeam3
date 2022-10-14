@@ -56,4 +56,20 @@ public class EDMSDAO {
         Map<String, Object> file_no = sqlSessionTemplate.selectOne("EDMS.select_file_no", map);
         sqlSessionTemplate.update("EDMS.update_file_no", file_no);
     }
+
+    public Map<String, Object> select_EDMS_docu_certificate(Map<String, Object> map) {
+        return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_certificate", map);
+    }
+
+    public int select_EDMS_docu_ing_length(Map<String, Object> map) {
+        return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_ing_length", map);
+    }
+
+    public List<Map<String, Object>> select_EDMS_docu_wait(Map<String, Object> map) {
+        return sqlSessionTemplate.selectList("EDMS.select_EDMS_docu_wait", map);
+    }
+
+    public int select_EDMS_docu_wait_length(Map<String, Object> map) {
+        return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_wait_length", map);
+    }
 }

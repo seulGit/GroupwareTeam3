@@ -34,8 +34,39 @@
     <div class="table_box_thr">
         <table class="input_table">
             <tr class="input_table_size">
-                <td>비용품의서</td>
-                <td colspan="5"></td>
+                <td colspan="4">비용품의서</td>
+                <td colspan="2">
+                    <div class="Approval_container">
+                        <div class="approval_1_container">
+                            <div>
+                                중간결재자
+                            </div>
+                            <div class="approval_1_check">
+                                
+                            </div>
+                            <div class="approval_1_name">
+
+                            </div>
+                            <div class="approval_1_check_date">
+
+                            </div>
+                        </div>
+                        <div class="approval_2_container">
+                            <div>
+                                최종결재자
+                            </div>
+                            <div class="approval_2_check">
+
+                            </div>
+                            <div class="approval_2_name">
+
+                            </div>
+                            <div class="approval_2_check_date">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>기안부서</td>
@@ -75,6 +106,15 @@
     </div>
     <div class="EDMS_new_api">
         <textarea name="expense_docu_contents" id="editor"></textarea>
+    </div>
+    <%--  파일 첨부  --%>
+    <div class="EDMS_docu_file_container">
+        <div class="file_upload_container">
+            <input type="text" class="upload_name" value="파일을 업로드하세요"
+                   placeholder="파일을 업로드하세요" disabled>
+            <label for="upload_file">파일 선택</label>
+            <input name="file" type="file" id="upload_file">
+        </div>
     </div>
     <div class="EDMS_result_write">
         <div>최종결재자 의견</div>

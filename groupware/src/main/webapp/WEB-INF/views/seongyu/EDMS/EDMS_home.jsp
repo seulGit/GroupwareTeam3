@@ -12,6 +12,7 @@
     <link href="/src/main/webapp/resources/css/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="/src/main/webapp/resources/css/EDMS/EDMS_home.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="../../../../resources/css/EDMS/EDMS_home.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 

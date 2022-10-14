@@ -85,9 +85,9 @@
                                 <a class="nav-link" href="../EDMS/home?emp_num=${sessionScope.emp_num}">전자결재홈</a>
                                 <a class="nav-link" href="../EDMS/new">새결재진행</a>
                                 <a class="nav-link" href="../EDMS/Temporary_box?emp_num=${sessionScope.emp_num}">임시보관함</a>
-                                <a class="nav-link" href="../EDMS/wait?emp_num=${sessionScope.emp_num}">결재대기중</a>
-                                <a class="nav-link" href="../EDMS/ing?emp_num=${sessionScope.emp_num}">진행중문서</a>
-                                <a class="nav-link" href="../EDMS/end?emp_num=${sessionScope.emp_num}">완료문서</a>
+                                <a class="nav-link" href="../EDMS/wait?emp_num=${sessionScope.emp_num}&crt_page=1&crt_block=0">결재대기중</a>
+                                <a class="nav-link" href="../EDMS/ing?emp_num=${sessionScope.emp_num}&crt_page=1&crt_block=0">진행중문서</a>
+                                <a class="nav-link" href="../EDMS/end?emp_num=${sessionScope.emp_num}&crt_page=1&crt_block=0">완료문서</a>
                             </nav>
                         </div>
 

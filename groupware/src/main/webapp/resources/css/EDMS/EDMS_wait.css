@@ -60,6 +60,9 @@
     background-color: azure;
     cursor: pointer;
 }
+.xi-error{
+    color: crimson;
+}
 
 
 

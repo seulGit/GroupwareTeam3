@@ -30,6 +30,15 @@ function draft_ajax(docu_category) {
                 document.EDMS_docu.submit();
             })
 
+            // 파일 이름
+            const upload_file = document.querySelector("#upload_file");
+            const upload_name = document.querySelector(".upload_name");
+
+            upload_file.addEventListener("change", function(){
+                upload_name.value = upload_file.value.slice(12);
+                console.dir(upload_file)
+            })
+
 
             // EDMS_approval.addEventListener("click", function () {
             //     // 문서 제목
@@ -167,3 +176,5 @@ function select_count_check() {
         select_count = 0;
     }
 }
+
+

@@ -23,4 +23,12 @@ public interface EDMSService {
                            MultipartHttpServletRequest mpRequest) throws Exception;
 
     List<Map<String, Object>> select_EDMS_docu_ing(Map<String, Object> map);
+
+    Map<String, Object> select_EDMS_docu_certificate(Map<String, Object> map);
+
+    int select_EDMS_docu_ing_length(Map<String, Object> map);
+
+    List<Map<String, Object>> select_EDMS_docu_wait(Map<String, Object> map);
+
+    int select_EDMS_docu_wait_length(Map<String, Object> map);
 }
