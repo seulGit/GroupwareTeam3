@@ -145,6 +145,7 @@ detail_initPW_btn.addEventListener('click', function () {
         alert("사원을 선택해주세요.");
     } else {
         detail_pw.value = "Zz1!";
+        document.querySelector("#details_initCheck").value=0;
         alert("초기화 완료. 수정 버튼을 눌러야 반영됩니다.")
     }
 });
@@ -171,13 +172,13 @@ $(function () {
         let detail_joindate = document.querySelector("#detail_joindate").value;
         let detail_leavedate = document.querySelector("#detail_leavedate").value;
         let detail_pw = document.querySelector("#details_initPW").value;
-
         let search_name = document.querySelector("#search_name").value;
         let search_department = document.querySelector("#search_department").value;
         let search_num = document.querySelector("#search_num").value;
         let search_joindate = document.querySelector("#search_joindate").value;
         let search_phone = document.querySelector("#search_phone").value;
         let search_mail = document.querySelector("#search_mail").value;
+        let init_check = document.querySelector("#details_initCheck").value;
 
         let result_details = {
             emp_name: detail_name,
@@ -201,7 +202,8 @@ $(function () {
             s_emp_num: search_num,
             s_join_date: search_joindate,
             s_emp_phonenum: search_phone,
-            s_emp_email: search_mail
+            s_emp_email: search_mail,
+            init_check: init_check
         };
 
         $.ajax({
@@ -272,7 +274,7 @@ $(function () {
                             details_active_false.selected = true;
                         }
                         document.querySelector("#detail_position").value = this.children[15].value;
-                        document.querySelector("#details_initPW").value = this.children[16].value;
+                        document.querySelector("#details_initCheck").value = 1;
                     })
                 }
 

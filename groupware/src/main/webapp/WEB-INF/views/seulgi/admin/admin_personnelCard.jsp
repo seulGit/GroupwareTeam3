@@ -170,11 +170,12 @@
                             </div>
                             <div class="details_leavedate box">
                                 <div>퇴사일</div>
-                                <input type="text" id="detail_leavedate" name="leave_date">
+                                <input type="text" id="detail_leavedate" value="" name="leave_date">
                             </div>
                             <div class="details_initPW box">
                                 <div>비밀번호</div>
                                 <input type="hidden" id="details_initPW" name="emp_pw">
+                                <input type="hidden" id="details_initCheck" value=1 name="initCheck">
                                 <button id="detail_initPW_btn" name="emp_pw">초기화</button>
                                 <p style="color: red; font-size: 5px;">&nbsp;&nbsp;* 하단의 수정버튼 클릭 시 반영됩니다.</p>
                             </div>

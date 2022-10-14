@@ -40,7 +40,6 @@
         <input type="hidden" value="${row.dept_code}">
         <input type="hidden" value="${row.emp_pw}">
 
-
     </tr>
 </c:forEach>
 

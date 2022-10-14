@@ -161,13 +161,27 @@
                         <div class="collapse" id="collapseEDMS" aria-labelledby="headingOne"
                              data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
+                                <c:if test="${sessionScope.authority_EDMS eq 1}">
                                 <a class="nav-link" href="/admin/admin_EDMS">전자결재관리</a>
+                                </c:if>
+                                <c:if test="${sessionScope.authority_worktime eq 1}">
                                 <a class="nav-link" href="/admin/admin_worktime">근태관리</a>
+                                </c:if>
+                                <c:if test="${sessionScope.authority_booking eq 1}">
                                 <a class="nav-link" href="/admin/admin_booking">예약관리</a>
+                                </c:if>
+                                <c:if test="${sessionScope.authority_board eq 1}">
                                 <a class="nav-link" href="/admin/admin_board">게시글관리</a>
+                                </c:if>
+                                <c:if test="${sessionScope.authority_personnelCard eq 1}">
                                 <a class="nav-link" href="/admin/admin_personnelCard">인사기록카드</a>
+                                </c:if>
+                                <c:if test="${sessionScope.authority_loginHistory eq 1}">
                                 <a class="nav-link" href="/admin/admin_loginHistory">접속내역확인</a>
+                                </c:if>
+                                <c:if test="${sessionScope.authority_authority eq 1}">
                                 <a class="nav-link" href="/admin/admin_authority">권한관리</a>
+                                </c:if>
                             </nav>
                           </div>
                             </c:if>

@@ -53,6 +53,9 @@
             <i class="xi-search"></i>
         </div>
         <div class="history_list">
+            <div class="excel_print">
+                <a href="excelDown.do">엑셀파일 출력</a>
+            </div>
             <table>
                 <thead>
                 <td><input type="checkbox" class="all_check_btn" checkd="false"></td>
