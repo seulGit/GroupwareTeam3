@@ -2,8 +2,8 @@
 let delete_btn = document.querySelectorAll(".delete_btn");		    		// 게시글 삭제 버튼
 let board_comment_submit = document.querySelector("#board_comment_submit"); // 답글 버튼	 
 let board_comment_input = document.querySelector("#board_comment_input");	// 답글 text 박스
-let comment_modify_btn = document.querySelectorAll(".comment_modify_btn:hover"); // 댓글 수정 버튼
-let comment_delete_btn = document.querySelectorAll(".comment_delete_btn:hover"); // 댓글 삭제 버튼
+let comment_modify_btn = document.querySelectorAll(".comment_modify_btn"); // 댓글 수정 버튼
+let comment_delete_btn = document.querySelectorAll(".comment_delete_btn"); // 댓글 삭제 버튼
 
 
 // 221006 김정치 등록 ---------------------------------------------------------------------
@@ -25,7 +25,7 @@ board_list_btn.addEventListener("click", function(){
 // 이은지 -------------------------------------------------------------------------------
 //게시글 삭제 버튼 클릭했을 때
 for(let i=0; i<delete_btn.length; i++){
-delete_btn[i].addEventListener("click", function(){
+	delete_btn[i].addEventListener("click", function(){
 	  if(confirm("삭제하시겠습니까?")==true){
 		this.parentNode.submit();
 	  } else {
@@ -34,9 +34,27 @@ delete_btn[i].addEventListener("click", function(){
 });
 }
 
+// 댓글 삭제 버튼 클릭했을 때 
+for(let i=0; i<comment_delete_btn.length; i++){
+	comment_delete_btn[i].addEventListener("click", function(){
+	  if(confirm("삭제하시겠습니까?")==true){
+		this.parentNode.submit();
+	  } else {
+		 return false;
+	  }
+});
+}
 
-
-// 댓글 수정버튼 클릭 시 어떻게 해야하나
+// 댓글 수정버튼 클릭 했을 때
+for(let i=0; i<comment_modify_btn.length; i++){
+	comment_modify_btn[i].addEventListener("click", function(){
+		if(confirm("댓글을 수정하겠습니까?")==true){
+			this.parentNode.submit();
+		}else {
+			return false;
+		}
+	});
+}
 
 // 댓글 유효성 검사
 board_comment_submit.addEventListener("click",function(){
@@ -46,6 +64,7 @@ board_comment_submit.addEventListener("click",function(){
 		return true;
 	} else {
 		alert("댓글을 입력해주세요");
+		 e.preventDefault();
 		return false;
 	}
 });

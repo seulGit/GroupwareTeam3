@@ -3,18 +3,19 @@
 <mapper namespace="todo">
 
 <!-- todo 추가  -->
+<!-- useGeneratedKeys="true" keyProperty="todo_num" 방금 insert한 결과값을 가져옴 -->
 <insert id="todo_write" parameterType="hashMap" useGeneratedKeys="true" keyProperty="todo_num">
-insert into todo (todo_title, todo_contents, todo_favorite, emp_num)
-values (#{todo_title}, #{todo_contents}, false, #{emp_num});
+	insert into todo (todo_title, todo_contents, todo_favorite, emp_num)
+	values (#{todo_title}, #{todo_contents}, false, #{emp_num});
 </insert>
 
 <!-- todo 가져오기  -->
 <select id="todo_board_list" parameterType="hashMap" resultType="com.team3.groupware.eunji.model.TodoVO">
-select T.todo_num, T.todo_title, T.todo_contents
-from employee E join todo T
-on E.emp_num = T.emp_num
-where E.emp_num = #{emp_num}
-order by T.todo_num desc;
+	select T.todo_num, T.todo_title, T.todo_contents
+	from employee E join todo T
+	on E.emp_num = T.emp_num
+	where E.emp_num = #{emp_num}
+	order by T.todo_num desc;
 </select>
 
 <!-- 새로 생성된 todo 가져오기  -->

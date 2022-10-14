@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +13,9 @@
     <title>JaeHee Group</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="../../resources/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="../../resources/css/board/board_detail.css">
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <!-- 상단/왼쪽 메뉴 include -->
@@ -29,15 +30,17 @@
                       
                      <div class="board_bottom_btn">
                 	 <!-- 게시글 작성자 외에 다른 사람이 수정/삭제하지 못함 -->
-                	 <c:if test="${emp_name eq detailMap.emp_name}">
+                	 <c:if test="${emp_num eq detailMap.emp_num}">
                 	 <form action="/board_modify" method="get">
                     		<input type="submit" class="board_btn board_submit_btn" value="수정">
                     			<input type="hidden" name="board_num" value="${detailMap.board_num}">
+                    			<input type="hidden" name="emp_num" value="${detailMap.emp_num}">
                     		</form>
                     		
                     		<form action="/board_delete" method="post">
                     			<input type="button" class="board_btn delete_btn" value="삭제">
                     			<input type="hidden" name="board_num" value="${detailMap.board_num}">
+                    			<input type="hidden" name="emp_num" value="${detailMap.emp_num}">
                     		</form>
                     </c:if>
                     </div>
@@ -62,12 +65,11 @@
                         </tr>
                         <tr>
                             <td class="board_td1">작성일</td>
-                             <fmt:parseDate value="${detailMap.board_write_date}" pattern="yyyy-MM-dd'T'HH:mm" var="board_normal_date" type="both" />
-                            <td class="board_td2"><fmt:formatDate value="${board_normal_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
+                            <td class="board_td2">${detailMap.board_write_date}</td>
                         </tr>
                         <tr>
                         	<td class="board_td1">첨부파일</td>
-                        	<td class="board_te2">${detailMap.board_file_route}</td>
+                        	<td class="board_te2">${detailMap.board_file_name}</td>
                         </tr>
                     </table>
                     
@@ -96,22 +98,28 @@
                     
                 	<!-- 댓글 생성 -->
                 	<c:forEach var="board_comment" items="${board_comment}">
-                    <div id=board_comments_con>
+                    <div id="board_comments_con">
             			<div class="board_comment_box">
             				<div class="board_comment_name">${board_comment.dept_name} ${board_comment.emp_name}</div>
-            				<div class="board_comment_date">
-            					<fmt:parseDate value="${board_comment.comment_date}" pattern="yyyy-MM-dd'T'HH:mm" var="comment_date" type="both" />
-            					<fmt:formatDate value="${comment_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></div>
+            				<div class="board_comment_date">${board_comment.comment_date}</div>
             				<div class="board_contents">${board_comment.comment_contents}</div>
-            				<c:if test="${emp_name eq board_comment.emp_name}"> 
+            				
+            				<c:if test="${emp_num eq board_comment.emp_num}"> 
             					<div class="board_comment_btn_box">
             						<form action="/comment_delete" method="post">
-            							<input type="submit" value="삭제" class="board_comment_btn comment_delete_btn">
+            							<i class="xi-close-min comment_delete_btn" title="삭제"></i>
             							<input type="hidden" name="comment_num" value="${board_comment.comment_num}">
             							<input type="hidden" name="board_num" value="${detailMap.board_num}">
             						</form>
-            				</div>
-            				</c:if> 
+            						
+            						<form action="/comment_modify" method="post">
+            							<i class="xi-border-color comment_modify_btn" title="수정"></i>
+            							<input type="hidden" name="comment_num" value="${board_comment.comment_num}">
+            							<input type="hidden" name="board_num" value="${detailMap.board_num}">
+            						</form>
+            					</div>
+            				</c:if>
+            				 
             			</div>
                     </div>
                     </c:forEach>

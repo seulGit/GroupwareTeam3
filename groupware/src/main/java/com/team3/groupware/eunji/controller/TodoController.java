@@ -23,7 +23,7 @@ public class TodoController {
 	
 	// todo
 	@GetMapping("/todo")
-	public ModelAndView todo(TodoVO todoVo, Map<String,Object> map, HttpServletRequest request) {
+	public ModelAndView todo(Map<String,Object> map, HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -40,7 +40,7 @@ public class TodoController {
 		mv.setViewName("/eunji/todo/todo");
 		return mv;
 	}
-		
+
 	// todo 목록 가져오기
 	@PostMapping("/todo_list")
 	public ModelAndView todoList(@RequestBody Map<String,Object> map) {

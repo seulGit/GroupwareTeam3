@@ -11,9 +11,7 @@ let board_title_view_count= document.querySelector(".board_title_view_count"); /
 //게시글 검색
 board_search_btn.addEventListener("click", function(){
 	 let keyword = board_search_input.value;
-	 console.log(keyword);
 	 let board_search_option = board_search.value;
-	 console.log(board_search_option);
 	 let board_keyword = {
 			 keyword : keyword,
 			 board_search : board_search_option

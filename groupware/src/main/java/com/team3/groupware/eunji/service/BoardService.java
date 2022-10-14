@@ -41,6 +41,10 @@ public interface BoardService {
 	// 댓글 삭제
 	void comment_delete(Map<String, Object> map);
 
+	// 댓글 수정
+	void comment_modify(Map<String, Object> map);
+
+
 
 
 

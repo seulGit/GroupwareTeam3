@@ -1,5 +1,6 @@
 package com.team3.groupware.eunji.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +18,7 @@ public class BoardDAOImpl implements BoardDAO {
 	// 게시글 작성
 	@Override
 	public void board_write_insert(BoardVO boardVo) {
-		this.session.insert("board.board_write_insert", boardVo);
-		
+		this.session.insert("board.board_write_insert", boardVo);	
 	}
 
 	// 게시글 리스트 불러오기
@@ -84,6 +84,13 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public void comment_delete(Map<String, Object> map) {
 		this.session.delete("board.comment_delete", map);
+		
+	}
+
+	// 댓글 수정
+	@Override
+	public void comment_modify(Map<String, Object> map) {
+		this.session.update("board.comment_modify", map);
 		
 	}
 

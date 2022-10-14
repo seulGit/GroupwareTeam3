@@ -31,7 +31,7 @@ let board_select = document.querySelector("#board_select");	   		// 게시판 �
 let board_title = document.querySelector("#board_title");	   		// 게시판 제목
 let board_text = document.querySelector("#ckeditor"); 		   		// 게시판 내용
 let board_submit_btn = document.querySelector(".board_submit_btn"); // 게시판 작성 완료 버튼
-let delete_btn = document.querySelector(".delete_btn"); 		// 게시판 삭제 취소 버튼
+let delete_btn = document.querySelector(".delete_btn"); 			// 게시판 삭제 취소 버튼
 
 //글로벌로 뺏음. 값을 저장하기 위해서.
 let idOrVoteCountList=[];

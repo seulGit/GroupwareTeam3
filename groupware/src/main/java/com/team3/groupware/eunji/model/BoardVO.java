@@ -5,6 +5,9 @@ import java.util.Date;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.apache.ibatis.javassist.bytecode.analysis.MultiArrayType;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class BoardVO {
@@ -20,7 +23,6 @@ public class BoardVO {
 	private int board_view_count;    	  // 조회수
 	private boolean board_fix_check; 	  // 수정하기
 	private boolean board_delete_check;   // 삭제하기
-	private String board_file_route;      // 게시판 첨부파일경로
 	
 	// board_category(게시판 항목) 테이블
 	private int board_category_num;       // 게시판 항목 번호
@@ -37,8 +39,12 @@ public class BoardVO {
 	// 메인 게시판 셀렉용
 	private String emp_name;           	  // 사원이름
 	
+	// 첨부파일 
+	private String board_file_name;       // 게시판 첨부파일 이름
+	private String board_file_route;      // 게시판 첨부파일경로
+	private MultipartFile file;
 	
-	// getter, setter
+	
 	public int getBoard_num() {
 		return board_num;
 	}
@@ -80,12 +86,6 @@ public class BoardVO {
 	}
 	public void setBoard_delete_check(boolean board_delete_check) {
 		this.board_delete_check = board_delete_check;
-	}
-	public String getBoard_file_route() {
-		return board_file_route;
-	}
-	public void setBoard_file_route(String board_file_route) {
-		this.board_file_route = board_file_route;
 	}
 	public int getBoard_category_num() {
 		return board_category_num;
@@ -135,24 +135,49 @@ public class BoardVO {
 	public void setComment_delete_check(boolean comment_delete_check) {
 		this.comment_delete_check = comment_delete_check;
 	}
-	
 	public String getEmp_name() {
 		return emp_name;
 	}
 	public void setEmp_name(String emp_name) {
 		this.emp_name = emp_name;
 	}
-	// board toString()
+	public String getBoard_file_name() {
+		return board_file_name;
+	}
+	public void setBoard_file_name(String board_file_name) {
+		this.board_file_name = board_file_name;
+	}
+	public String getBoard_file_route() {
+		return board_file_route;
+	}
+	public void setBoard_file_route(String board_file_route) {
+		this.board_file_route = board_file_route;
+	}
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "BoardVO [board_num=" + board_num + ", board_title=" + board_title + ", board_contents=" + board_contents
 				+ ", board_write_date=" + board_write_date + ", board_view_count=" + board_view_count
 				+ ", board_fix_check=" + board_fix_check + ", board_delete_check=" + board_delete_check
-				+ ", board_file_route=" + board_file_route + ", board_category_num=" + board_category_num
-				+ ", board_catgory_subject=" + board_catgory_subject + ", comment_num=" + comment_num + ", emp_num="
-				+ emp_num + ", comment_date=" + comment_date + ", comment_contents=" + comment_contents
-				+ ", comment_fix_check=" + comment_fix_check + ", comment_delete_check=" + comment_delete_check + "]";
+				+ ", board_category_num=" + board_category_num + ", board_catgory_subject=" + board_catgory_subject
+				+ ", comment_num=" + comment_num + ", emp_num=" + emp_num + ", comment_date=" + comment_date
+				+ ", comment_contents=" + comment_contents + ", comment_fix_check=" + comment_fix_check
+				+ ", comment_delete_check=" + comment_delete_check + ", emp_name=" + emp_name + ", board_file_name="
+				+ board_file_name + ", board_file_route=" + board_file_route + ", file=" + file + "]";
 	}
+	
+	
+
+	
+
+	
 	
 	
 	

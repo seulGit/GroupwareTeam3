@@ -67,7 +67,7 @@
                     </div>
                     
                     <!-- 페이징 영역 -->
-                    <div class="board_list_number">
+                    <!-- <div class="board_list_number">
                         <div>
                             <div class="board_list_n_menu">
                                 <span class="board_disabled"><  이전</span>
@@ -77,7 +77,7 @@
                                 <span class="board_disabled">다음  ></span>                                
                             </div>                            
                         </div>
-                    </div>                
+                    </div>         -->        
                </div>
            </div>
         </div>

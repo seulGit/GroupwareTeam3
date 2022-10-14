@@ -80,8 +80,6 @@ star[i].addEventListener("click", function(){
 });
 }
 
-
-
 // x 아이콘 클릭 시 삭제할 것인지 물어보기
 for(let i=0; i<x_icon.length; i++){
 	x_icon[i].addEventListener("click", function(){

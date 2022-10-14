@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
-
 import com.team3.groupware.eunji.model.BoardDAO;
 import com.team3.groupware.eunji.model.BoardVO;
 
@@ -85,8 +84,13 @@ public class BoardServiceImpl implements BoardService {
 	// 공지게시글 리스트 불러오기 -정치-
 	@Override
 	public List<BoardVO> board_selectNTList(BoardVO boardVo) {
-		// TODO Auto-generated method stub
 		return boardDao.board_selectNTList(boardVo);
+	}
+
+	// 댓글 수정
+	@Override
+	public void comment_modify(Map<String, Object> map) {
+		this.boardDao.comment_modify(map);
 	}
 
 }

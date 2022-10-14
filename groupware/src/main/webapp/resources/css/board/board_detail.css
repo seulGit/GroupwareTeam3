@@ -190,7 +190,8 @@
 .board_comment_box{
 	border: 1px solid gray;
 	margin: 10px;
-	
+	border: 1px solid black;
+	position: relative;
 }
 .board_comment_date{
 	margin: 10px 10px 0 10px;
@@ -217,12 +218,17 @@
 	margin-left: 10px;
 	cursor: pointer;
 }
-.comment_modify_btn:hover{
-	border: 2px solid rgb(13, 110, 253);
-	color: rgb(13, 110, 253);
+.comment_delete_btn{
+	cursor: pointer;
+	font-size: 2rem;
+	position: absolute;
+	top : 1px;
+	right: 7px;
 }
-.comment_delete_btn:hover{
-	border: 2px solid gray;	
-	color: gray;
+.comment_modify_btn{
+	cursor: pointer;
+	font-size: 1.2rem;
+	position: absolute;
+	top : 6px;
+	right: 45px;
 }
-

@@ -52,7 +52,7 @@
                         </tr>
                         <tr>
                             <td class="board_td1">작성일</td>
-                             <fmt:parseDate value="${detailMap.board_write_date}" pattern="yyyy-MM-dd'T'HH:mm" var="board_normal_date" type="both" />
+                             <fmt:parseDate value="${detailMap.board_write_date}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="board_normal_date" type="both" />
                             <td class="board_td2"><fmt:formatDate value="${board_normal_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
                         </tr>
                         <tr>

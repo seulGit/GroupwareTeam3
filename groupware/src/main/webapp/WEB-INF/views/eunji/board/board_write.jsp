@@ -25,7 +25,8 @@
 
             <!-- 전체 감싸는 container -->
             <div id="board_write_container">
-                <form action="/board_write" method="post">
+            <!--form enctype 안적을 시 파일은 올라가지 않고 경로만 올라감  -->
+                <form action="/board_write" method="post" enctype="multipart/form-data">
               
                 <!-- 게시글작성 테이블 -->
                 <div class="board_write_insert_info">
@@ -53,7 +54,8 @@
                             </tr>
                             <tr>
                             	<td class="board_td1">첨부파일</td>
-                            	<td class="board_td2"><input type="file" name="board_file_route"></td>
+                            	<%-- <td class="board_td2"><input type="file" name="board_file_route"></td>--%>
+                            	<td class="board_td2"><input type="file" name="file"></td>
                             </tr>
                         </table>
                 </div>
