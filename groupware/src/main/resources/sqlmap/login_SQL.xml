@@ -15,8 +15,17 @@
             login_history lh on e.emp_num = lh.emp_num
         where
             e.emp_num = ${emp_num} and BINARY e.emp_pw = '${emp_pw}'
-        order by
-            lh.recent_datetime desc limit 1;
+
+        <choose>
+            <when test="recent_datetime != null or recent_datetime != ''">
+                order by
+                lh.recent_datetime desc limit 1
+            </when>
+            <otherwise>
+                and 1=1
+            </otherwise>
+        </choose>
+        ;
     </select>
 
     <insert id="saveLog">

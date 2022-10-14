@@ -72,8 +72,20 @@
             emp_address = #{emp_address},
             emp_address2 = #{emp_address2},
             emp_active = #{emp_active},
-            join_date = #{join_date},
-            leave_date = #{leave_date}
+            join_date = #{join_date}
+            <!--<if test="leave_date != null or leave_date != ''">
+                , leave_date = #{leave_date}
+            </if>-->
+            <choose>
+                <when test="leave_date == null or leave_date == ''">
+
+                    , leave_date = null
+                </when>
+                <otherwise>
+                    , leave_date = #{leave_date}
+
+                </otherwise>
+            </choose>
         WHERE emp_num = #{emp_num};
     </update>
 
