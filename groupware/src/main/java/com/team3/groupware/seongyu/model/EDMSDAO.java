@@ -61,6 +61,14 @@ public class EDMSDAO {
         return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_certificate", map);
     }
 
+    public Map<String, Object> select_EDMS_docu_general(Map<String, Object> map) {
+        return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_general", map);
+    }
+
+    public Map<String, Object> select_EDMS_docu_money(Map<String, Object> map) {
+        return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_money", map);
+    }
+
     public int select_EDMS_docu_ing_length(Map<String, Object> map) {
         return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_ing_length", map);
     }
@@ -72,4 +80,5 @@ public class EDMSDAO {
     public int select_EDMS_docu_wait_length(Map<String, Object> map) {
         return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_wait_length", map);
     }
+
 }

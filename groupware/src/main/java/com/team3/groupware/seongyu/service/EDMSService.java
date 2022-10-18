@@ -31,4 +31,8 @@ public interface EDMSService {
     List<Map<String, Object>> select_EDMS_docu_wait(Map<String, Object> map);
 
     int select_EDMS_docu_wait_length(Map<String, Object> map);
+
+    Map<String, Object> select_EDMS_docu_general(Map<String, Object> map);
+
+    Map<String, Object> select_EDMS_docu_money(Map<String, Object> map);
 }

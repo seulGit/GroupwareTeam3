@@ -238,6 +238,113 @@
         where Ea.EDMS_docu_num = ${EDMS_docu_num};
     </select>
 
+    <!--  결재 문서에 들어갈 정보  -->
+    <select id="select_EDMS_docu_general" parameterType="hashmap" resultType="hashmap">
+        select
+            EDMS_docu.EDMS_docu_num,
+            EDMS_docu_category,
+            EDMS_docu.emp_num,
+            EDMS_docu_urgent,
+            EDMS_docu.file_no,
+            EDMS_docu_date,
+            file_size,
+            org_file_name,
+            stored_file_name,
+            EDMS_approval_request.approval_request_docu_title,
+            EDMS_approval_request.approval_request_docu_contents,
+            dept.dept_code,
+            dept.dept_name,
+            dept.emp_name,
+            position_grade,
+            EDMS_approval_emp_1_name,
+            EDMS_approval_emp_2_name,
+            EDMS_approval_emp_1_position_grade,
+            EDMS_approval_emp_2_position_grade
+        from
+            EDMS_docu left join
+            EDMS_file on EDMS_docu.EDMS_docu_num = EDMS_file.EDMS_docu_num join
+            EDMS_approval_request on EDMS_docu.EDMS_docu_num = EDMS_approval_request.EDMS_docu_num join
+            (select
+                 dept_name,
+                 employee.dept_code,
+                 emp_name,
+                 emp_num,
+                 position_grade
+             from
+                 department join employee on department.dept_code = employee.dept_code
+            ) as dept on EDMS_docu.emp_num = dept.emp_num
+                      join EDMS_approval Ea on EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
+                      join (
+                select
+                    EDMS_approval.EDMS_approval_emp_1,
+                    e1.emp_name EDMS_approval_emp_1_name,
+                    e1.position_grade EDMS_approval_emp_1_position_grade,
+                    EDMS_approval.EDMS_approval_emp_2,
+                    e2.emp_name EDMS_approval_emp_2_name,
+                    EDMS_approval.EDMS_docu_num,
+                    e2.position_grade EDMS_approval_emp_2_position_grade
+                from
+                    EDMS_approval join employee e1 on EDMS_approval_emp_1 = e1.emp_num
+                                  join employee e2 on EDMS_approval_emp_2 = e2.emp_num
+            ) as approval_emp_name on approval_emp_name.EDMS_docu_num = EDMS_docu.EDMS_docu_num
+        where Ea.EDMS_docu_num = #{EDMS_docu_num};
+    </select>
+
+    <!--  결재 문서에 들어갈 정보  -->
+    <select id="select_EDMS_docu_money" parameterType="hashmap" resultType="hashmap">
+        select
+            EDMS_docu.EDMS_docu_num,
+            EDMS_docu_category,
+            EDMS_docu.emp_num,
+            EDMS_docu_urgent,
+            EDMS_docu.file_no,
+            EDMS_docu_date,
+            file_size,
+            org_file_name,
+            stored_file_name,
+            EDMS_expense.expense_docu_title,
+            EDMS_expense.expense_docu_contents,
+            EDMS_expense.expense_payment,
+            EDMS_expense.expense_purpose,
+            EDMS_expense.expense_total_expense,
+            dept.dept_code,
+            dept.dept_name,
+            dept.emp_name,
+            position_grade,
+            EDMS_approval_emp_1_name,
+            EDMS_approval_emp_2_name,
+            EDMS_approval_emp_1_position_grade,
+            EDMS_approval_emp_2_position_grade
+        from
+            EDMS_docu left join
+            EDMS_file on EDMS_docu.EDMS_docu_num = EDMS_file.EDMS_docu_num join
+            EDMS_expense on EDMS_docu.EDMS_docu_num = EDMS_expense.EDMS_docu_num join
+            (select
+                 dept_name,
+                 employee.dept_code,
+                 emp_name,
+                 emp_num,
+                 position_grade
+             from
+                 department join employee on department.dept_code = employee.dept_code
+            ) as dept on EDMS_docu.emp_num = dept.emp_num
+                      join EDMS_approval Ea on EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
+                      join (
+                select
+                    EDMS_approval.EDMS_approval_emp_1,
+                    e1.emp_name EDMS_approval_emp_1_name,
+                    e1.position_grade EDMS_approval_emp_1_position_grade,
+                    EDMS_approval.EDMS_approval_emp_2,
+                    e2.emp_name EDMS_approval_emp_2_name,
+                    EDMS_approval.EDMS_docu_num,
+                    e2.position_grade EDMS_approval_emp_2_position_grade
+                from
+                    EDMS_approval join employee e1 on EDMS_approval_emp_1 = e1.emp_num
+                                  join employee e2 on EDMS_approval_emp_2 = e2.emp_num
+            ) as approval_emp_name on approval_emp_name.EDMS_docu_num = EDMS_docu.EDMS_docu_num
+        where Ea.EDMS_docu_num = #{EDMS_docu_num};
+    </select>
+
     <!--  결재 대기중 리스트  -->
     <select id="select_EDMS_docu_wait" parameterType="hashmap" resultType="hashmap">
         SELECT

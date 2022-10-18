@@ -40,7 +40,7 @@
                     <td>첨부</td>
                 </tr>
                 <c:forEach var="list" items="${EDMS_list}">
-                    <tr class="EDMS_ing_table_hover" onclick="location.href = '/EDMS/docu?EDMS_docu_num=${list.EDMS_docu_num}'">
+                    <tr class="EDMS_ing_table_hover" onclick="location.href = '/EDMS/docu?EDMS_docu_num=${list.EDMS_docu_num}&EDMS_docu_category=${list.EDMS_docu_category}'">
                         <c:if test="${sessionScope.emp_name != list.emp_name}">
                             <script>
                                 location.href = "/";
