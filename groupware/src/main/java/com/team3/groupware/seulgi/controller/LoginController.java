@@ -22,13 +22,16 @@ public class LoginController {
 
 
     @RequestMapping(value="/", method=RequestMethod.GET)
-    public String login() {
+    public String login(HttpSession session) {
+        if(session.getAttribute("emp_num")!=null || session.getAttribute("emp_num")!=""){
+            session.invalidate();
+        }
         return "login";
     }
 
     @RequestMapping(value="/login_check", method= RequestMethod.POST)
     public ModelAndView loginPost(EmployeeVO vo, AdminVO vo2, HttpSession session, ModelAndView mv) throws Exception {
-
+    	
         EmployeeVO emp_info = loginDao.login_check(vo);
         AdminVO emp_info2 = adminDao.authority_info(vo2);
 
@@ -41,10 +44,11 @@ public class LoginController {
             session.setAttribute("emp_num", emp_info.getEmp_num());
             session.setAttribute("auth_code", emp_info.getAuth_code()); //권한별 사이드메뉴바 항목 구분을 위해 auth_code 받아놓음
             session.setAttribute("emp_name", emp_info.getEmp_name());
-            session.setAttribute("recent_datetime", emp_info.getRecent_datetime());
             session.setAttribute("dept_code", emp_info.getDept_code());
             session.setAttribute("dept_name", emp_info.getDept_name());
             session.setAttribute("position_grade", emp_info.getPosition_grade());
+
+            session.setMaxInactiveInterval(1800);
 
             mv.addObject("emp_num", emp_info.getEmp_num());
             mv.addObject("auth_code", emp_info.getAuth_code());

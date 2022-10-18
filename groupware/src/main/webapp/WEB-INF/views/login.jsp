@@ -3,6 +3,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+<%
+    //[뒤로가기]버튼으로 보지 못하도록, no-cache로 설정
+    response.setDateHeader("Expires", 0);
+    response.setHeader("Pragma", "no-cache");
+    if (request.getProtocol().equals("HTTP/1.1")) {
+        response.setHeader("Cache-Control", "no-cache");
+    }
+    //※ 이 기능은 전송방식이 POST인 경우에만 사용할 수 있다.
+    //GET방식으로 전송한 경우에는 아무 효력 없이 모든 페이지가 노출된다.
+%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

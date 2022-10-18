@@ -47,6 +47,19 @@ public class TodoDAOImpl implements TodoDAO {
 		this.session.selectOne("todo.todo_modify", map);	
 	}
 
+	// 즐겨찾기 todo
+	@Override
+	public void todo_favorite(Map<String, Object> map) {
+		this.session.selectList("todo.todo_favorite", map);
+	}
+
+	// 즐겨찾기 해제
+	@Override
+	public void todo_favorite_R(Map<String, Object> map) {
+		this.session.update("todo.todo_favorite_R", map);
+		
+	}
+
 	
 
 

@@ -71,4 +71,20 @@ public class TodoController {
 	public void todoModify(@RequestBody Map<String,Object> map) {
 		 todoService.todo_modify(map);
 	   }
+	
+	// todo 즐겨찾기
+	@PostMapping("/todo_favorite")
+	@ResponseBody
+	public void todo_favorite(@RequestBody Map<String, Object> map) {
+		String todo_favorite = (String) map.get("todo_favorite");
+		// 즐겨찾기 되어있다면
+		if(todo_favorite.equals("true")) {
+			// 즐겨찾기 해제
+			todoService.todo_favorite_R(map);
+		// 즐겨찾기 아니라면 
+		} else {
+			// 즐겨찾기 추가
+			todoService.todo_favorite(map);
+		}
+	}
 }

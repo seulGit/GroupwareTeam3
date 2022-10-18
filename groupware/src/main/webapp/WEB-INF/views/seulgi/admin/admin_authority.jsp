@@ -41,7 +41,6 @@
     <!-- 기본정보_본문 -->
     <div class="admin_login_authority">
         <div class="search">
-            <span class="office_map_btn"><a href="">조직도 조회</a></span>
             <span>권한ID</span>
             <input type="text" id="search_num">
             <span>사용자명</span>

@@ -11,15 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36ad9cb3-1a6c-4ef4-8d9e-d889d80813b1" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/EDMSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/EDMSController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMSDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMSDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/service/EDMSService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/service/EDMSService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/service/EDMSServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/service/EDMSServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlmap/EDMS_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlmap/EDMS_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_docu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_docu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_ing.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_ing.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_wait.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_wait.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/booking/booking.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/booking/booking.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,24 +43,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Groupware_Team3/groupware/src/main&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;8d0feaa163a8a67b44683c4ef63a019f&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/oseulki/Desktop/groupware_team3/groupware/src/main/webapp/WEB-INF/views",
+    "spring.configuration.checksum": "8d0feaa163a8a67b44683c4ef63a019f"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Groupware_Team3\groupware\src\main" />
-      <recent name="C:\Groupware_Team3\groupware\src\main\java" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi" />
       <recent name="$PROJECT_DIR$/src/main/webapp/resources/js/admin" />
       <recent name="$PROJECT_DIR$/src/main/webapp/resources/css/admin" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
+      <recent name="$PROJECT_DIR$/src/main/resources/sqlmap" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi" />
+      <recent name="C:\Groupware_Team3\groupware\src\main" />
+      <recent name="C:\Groupware_Team3\groupware\src\main\java" />
       <recent name="$PROJECT_DIR$/src/main/webapp/resources/js" />
     </key>
   </component>
@@ -176,7 +169,7 @@
       <workItem from="1664877678845" duration="1109000" />
       <workItem from="1664879179238" duration="370000" />
       <workItem from="1664955525702" duration="711000" />
-      <workItem from="1665900113006" duration="722000" />
+      <workItem from="1665715424693" duration="384000" />
     </task>
     <servers />
   </component>

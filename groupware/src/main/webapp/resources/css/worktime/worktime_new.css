@@ -170,14 +170,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'BBTreeGR';
+    font-weight: bold;
     flex-direction: column;
 }
 .worktime_result_write div:nth-child(1){
     margin-top : 20px;
-    width: 90%;
+    width: 88%;
 }
 #worktime_result{
-    width: 90%;
+    width: 88%;
     margin-top : 10px;
     border: 2px solid black;
 }

@@ -28,7 +28,7 @@ let todo_text = document.querySelector("#todo_modal_text");    // todo 내용
 let todo_write = document.querySelector(".my_board_list");     // todo가 들어갈 공간
 
 // 아이콘
-let star = document.querySelectorAll(".xi-star-o"); 			// 별 아이콘
+let star = document.querySelectorAll(".favorite_icon"); 			// 별 아이콘
 let x_icon = document.querySelectorAll(".xi-close-min"); 		// x 아이콘
 let todoDelete = document.querySelectorAll(".todoDelete"); 
 
@@ -64,19 +64,34 @@ todo_save.addEventListener("click", function(e){
 // 별 아이콘 클릭 시 색깔 별로 바뀜
 for(let i=0; i<star.length; i++){
     let y_star = true; // 토글
+    star[i].addEventListener("click", function(){
+    	event.stopImmediatePropagation();
+    	
+    let todo_num=this.nextElementSibling.value;
+    let todo_favor=this.nextElementSibling.nextElementSibling.value;
+    let todo_favorite = {
+			todo_num : todo_num,
+			todo_favorite : todo_favor
+	}; 
 
-star[i].addEventListener("click", function(){
-    if(y_star == true){
-    star[i].className="xi-star";
-    y_star = !y_star;
-    event.stopImmediatePropagation(); 
-    // 별 아이콘 클릭 시 수정모달창도 함께 나와 상위 이벤트 전파 방지
-
-    } else if(y_star == false){
-        star[i].className="xi-star-o";
-        y_star = !y_star;
-        event.stopImmediatePropagation();
-  }
+    $.ajax({
+		type : "POST",
+		url : "/todo_favorite",
+		dataType : "text",
+		contentType : "application/json",
+		data : JSON.stringify(todo_favorite),
+		success : function(data){
+			location.reload();
+		},
+		error : function(data){
+			// 코드 수정 후 새로고침 후 무한로딩 걸려서 방지하는 코드 추가
+			if(data.readyState == 0 || data.status==0){
+				return;
+			}
+			
+			
+		}
+	});
 });
 }
 

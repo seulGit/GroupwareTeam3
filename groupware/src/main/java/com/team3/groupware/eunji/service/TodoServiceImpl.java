@@ -48,6 +48,19 @@ public class TodoServiceImpl implements TodoService {
 		this.todoDao.todo_modify(map);
 	}
 
+	// 즐겨찾기 todo
+	@Override
+	public void todo_favorite(Map<String, Object> map) {
+		 this.todoDao.todo_favorite(map);
+	}
+
+	// 즐겨찾기 해제
+	@Override
+	public void todo_favorite_R(Map<String, Object> map) {
+	    this.todoDao.todo_favorite_R(map);
+		
+	}
+
 
 
 

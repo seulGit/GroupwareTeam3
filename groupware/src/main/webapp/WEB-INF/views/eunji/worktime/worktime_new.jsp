@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../../resources/css/worktime/worktime_new.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+	<script src = "resources/api/ckeditor4_standard/ckeditor.js"></script>
 	<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 	
 
@@ -40,7 +41,6 @@
                         <tr>
                             <td class="table_bg">휴가계종류</td>
                             <td><select name="type" id="type_select">
-                                <option value="choice">구분선택</option>
                                 <option value="vacation">연차</option>
                                 <option value="halfway">반차</option>
                                 <option value="sick_leave">병가</option>
@@ -107,7 +107,7 @@
              
                      <table class="input_table">
                         <tr class="input_table_size">
-                            <td>휴가계</td>
+                            <td>연차신청서</td>
                             <td colspan="6"></td>
                         </tr>
                         <tr>
@@ -122,27 +122,27 @@
                   		<tr>
                      		<td>휴가 기간</td>
                             <td colspan="2" class="date_width"><div class="vacation_date"><input type="date" class=""> ~ <input type="date"></div></td>
-                    		<td>행선지</td>
-                            <td colspan="2"><input type="text"></td>
+                    		<td>사유</td>
+                            <td colspan="2"><input type="text" id="worktime_docu_reason"></td>
                   		</tr>   
-                       <tr>
+                        <tr>
                            <td>제목</td>
                            <td colspan="6"><input type="text" id="worktime_docu_title"></td>
                         </tr>
 
                         <tr>
-                            <td>사유</td>
-                            <td colspan="6"><input type="text"  id="worktime_docu_reason"></td>
-                        </tr>
-                        <tr>
                         	<td>첨부 파일</td>
                         	<td colspan="6"><input type="file" id="file_text_align"></td>
                         </tr>
-                    </table> 
+                    </table>
                     
                 </div>
                 <div class="worktime_new_api">
-                    <div id="ckeditor" name="ckeditor"></div>
+                    <textarea id="ckeditor" name="ckeditor"></textarea>
+                    <script type="text/javascript">
+              			 CKEDITOR.replace('ckeditor', {
+               				});
+            </script>
                 </div>
                    
                    <!-- 최종결재자 의견  -->
@@ -223,7 +223,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
         <script src="../../resources/js/worktime/worktime_new.js"></script>
- 		<script src = "resources/api/ckeditor4_standard/ckeditor.js"></script>
  		<script src="<c:url value='resources/js/officemap.js'/>"></script>
 
 </body>

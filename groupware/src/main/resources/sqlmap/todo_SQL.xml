@@ -11,7 +11,7 @@
 
 <!-- todo 가져오기  -->
 <select id="todo_board_list" parameterType="hashMap" resultType="com.team3.groupware.eunji.model.TodoVO">
-	select T.todo_num, T.todo_title, T.todo_contents
+	select T.todo_num, T.todo_title, T.todo_contents, T.todo_favorite
 	from employee E join todo T
 	on E.emp_num = T.emp_num
 	where E.emp_num = #{emp_num}
@@ -39,5 +39,20 @@
 	set todo_title = #{todo_title}, todo_contents = #{todo_contents}
 	where todo_num = #{todo_num};
 </update>
+
+<!-- todo 즐겨찾기 추가 -->
+<update id="todo_favorite" parameterType="hashMap">
+	update todo 
+	set todo_favorite =1
+	where todo_num = #{todo_num};
+</update>
+
+<!-- todo 즐겨찾기 해제 -->
+<update id="todo_favorite_R" parameterType="hashMap">
+	update todo 
+	set todo_favorite =0
+	where todo_num = #{todo_num};
+</update>
+
 
 </mapper>
