@@ -93,14 +93,15 @@ public class EDMSController {
     public ModelAndView EDMS_home_view(@RequestParam Map<String, Object> map){
         ModelAndView mv = new ModelAndView();
 
+        // 페이징 처리
         String start = (String) map.get("crt_page");
 
         int crt_start_page = Integer.parseInt(start);
         int crt_end_page = Integer.parseInt(start);
 
-        System.out.println(crt_start_page);
         map.put("crt_start_page", crt_start_page * 10 - 10);
         map.put("crt_end_page", crt_end_page * 10);
+
         List<Map<String, Object>> list = this.edmsService.select_EDMS_docu_ing(map);
         int list_length = this.edmsService.select_EDMS_docu_ing_length(map);
 
@@ -112,9 +113,18 @@ public class EDMSController {
 
     @GetMapping("/docu")
     public ModelAndView EDMS_docu(@RequestParam Map<String, Object> map){
-        Map<String, Object> edms_new_certificateVO = this.edmsService.select_EDMS_docu_certificate(map);
         ModelAndView mv = new ModelAndView();
-        mv.addObject("docu", edms_new_certificateVO);
+        if(map.get("EDMS_docu_category").equals("일반품의서")){
+            Map<String, Object> edms_new_generalVO = this.edmsService.select_EDMS_docu_general(map);
+            mv.addObject("docu", edms_new_generalVO);
+        } else if(map.get("EDMS_docu_category").equals("비용품의서")){
+            Map<String, Object> edms_new_moneyVO = this.edmsService.select_EDMS_docu_money(map);
+            mv.addObject("docu", edms_new_moneyVO);
+        } else if(map.get("EDMS_docu_category").equals("증명서신청")){
+            Map<String, Object> edms_new_certificateVO = this.edmsService.select_EDMS_docu_certificate(map);
+            mv.addObject("docu", edms_new_certificateVO);
+        }
+
         mv.setViewName("/seongyu/EDMS/EDMS_docu");
         return mv;
     }
@@ -130,6 +140,7 @@ public class EDMSController {
     public ModelAndView EDMS_wait(@RequestParam Map<String, Object> map){
         ModelAndView mv = new ModelAndView();
 
+        // 페이징 처리
         String start = (String) map.get("crt_page");
 
         int crt_start_page = Integer.parseInt(start);

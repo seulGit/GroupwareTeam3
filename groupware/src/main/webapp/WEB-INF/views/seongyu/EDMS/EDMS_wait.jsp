@@ -40,7 +40,7 @@
                     <td>첨부</td>
                 </tr>
                 <c:forEach var="list" items="${EDMS_list}">
-                    <tr class="EDMS_wait_table_hover" onclick="location.href = '/EDMS/docu?EDMS_docu_num=${list.EDMS_docu_num}'">
+                    <tr class="EDMS_wait_table_hover" onclick="location.href = '/EDMS/docu?EDMS_docu_num=${list.EDMS_docu_num}&EDMS_docu_category=${list.EDMS_docu_category}'">
 <%--                        <c:if test="${sessionScope.emp_num != list.EDMS_approval_emp_1 or sessionScope.emp_num != list.EDMS_approval_emp_2}">--%>
 <%--                            <script>--%>
 <%--                                location.href = "/";--%>

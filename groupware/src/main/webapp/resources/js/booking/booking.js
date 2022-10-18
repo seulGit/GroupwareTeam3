@@ -58,17 +58,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                 },
                 eventClick: function (info) {
-
-                    if (info.event.extendedProps.meetingroom != null) {
-                        booking_event_meetingroom.value = "meetingroom_" + info.event.extendedProps.meetingroom;
+                    booking_event_meetingroom.value = "meetingroom_" + info.event.extendedProps.meetingroom;
+                    booking_event_fixtures.value = "fixtures_" + info.event.extendedProps.fixtures_num;
+                    if (info.event.extendedProps.meetingroom != 0) {
                         booking_event_fixtures_box.style.height = "0px";
                         booking_event_fixtures_box.style.opacity = "0";
                         booking_event_fixtures_box.style.visibility = "hidden";
-                    } else if (info.event.extendedProps.fixtures != null) {
-                        booking_event_fixtures.value = "fixtures_" + info.event.extendedProps.fixtures;
+                        booking_event_meetingroom_box.style.height = "30px";
+                        booking_event_meetingroom_box.style.opacity = "1";
+                        booking_event_meetingroom_box.style.visibility = "visible";
+
+                    } else if (info.event.extendedProps.fixtures_num != 0) {
                         booking_event_meetingroom_box.style.height = "0px";
                         booking_event_meetingroom_box.style.opacity = "0";
                         booking_event_meetingroom_box.style.visibility = "hidden";
+                        booking_event_fixtures_box.style.height = "30px";
+                        booking_event_fixtures_box.style.opacity = "1";
+                        booking_event_fixtures_box.style.visibility = "visible";
                     }
 
                     // 추가 버튼
@@ -511,6 +517,8 @@ booking_attendees_check.addEventListener("click", function (e) {
 
 booking_modal.addEventListener("click", function (event) {
     if (event.target.classList == "booking_modal") {
+        booking_event_meetingroom.value = 'null';
+        booking_event_fixtures.value = 'null';
         booking_modal.style.display = "none";
         booking_event_datetime_container.childNodes[0].data = "";
         booking_event_datetime_box.style.height = "0px";

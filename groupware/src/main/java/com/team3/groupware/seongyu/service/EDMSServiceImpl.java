@@ -93,4 +93,14 @@ public class EDMSServiceImpl implements EDMSService{
     public int select_EDMS_docu_wait_length(Map<String, Object> map) {
         return this.edmsdao.select_EDMS_docu_wait_length(map);
     }
+
+    @Override
+    public Map<String, Object> select_EDMS_docu_general(Map<String, Object> map) {
+        return this.edmsdao.select_EDMS_docu_general(map);
+    }
+
+    @Override
+    public Map<String, Object> select_EDMS_docu_money(Map<String, Object> map) {
+        return this.edmsdao.select_EDMS_docu_money(map);
+    }
 }
