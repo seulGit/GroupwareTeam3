@@ -32,22 +32,6 @@
 
 
 
-
-.admin_login_authority .office_map_btn {
-    width: 80px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.125);
-}
-.admin_login_authority .office_map_btn a{
-    text-decoration: none;
-    color: black;
-}
-
-
-
 .admin_login_authority .search span {
     margin: 0 5px 0 5px;
     font-size: .8rem;

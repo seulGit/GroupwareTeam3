@@ -44,7 +44,6 @@
         </div>
         <div class="admin_worktime">
             <div class="search">
-                <span class="office_map_btn"><a href="">조직도 조회</a></span>
                 <span>사원번호</span>
                 <input type="text">
                 <span>사원명</span>
