@@ -24,6 +24,12 @@ public interface TodoService {
 	// todo 수정
 	void todo_modify(Map<String, Object> map);
 
+	// 즐겨찾기 todo
+	void todo_favorite(Map<String, Object> map);
+
+	// 즐겨찾기 해제
+	void todo_favorite_R(Map<String, Object> map);
+
 
 
 

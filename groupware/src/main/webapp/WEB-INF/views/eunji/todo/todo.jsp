@@ -40,14 +40,32 @@
 			<div class="content_box_two">
 				<p>즐겨찾는 보드</p>
 				<div class="box_position">
-				<!--	<div class="favorite_borad_box">
-						 <div class="favorite_content_box">
-							<p></p>
-							<i class="xi-star-o" title="즐겨찾기"></i>
+				
+					<c:forEach var="todo" items="${todoMapList}">
+						<!-- 즐겨찾기가 true일 경우 표시되도록  -->
+						<c:if test="${todo.todo_favorite eq true}">
+					<div class="my_borad_box">
+						<div class="my_content_box" id="my_board_modal">
+						<form action="/todo" method="post">
+								<input type="hidden" name="todo_emp_num" value="${emp_num}">
+								<p class="todo_title" id="todo_title">${todo.todo_title}</p>
+								<p class="my_borad_box_font todo_contents" id="todo_contents">${todo.todo_contents}</p>
+						</form>
+						<form action="/todo_favorite" method="post">
+							<i class="xi-star favorite_icon" title="즐겨찾기" style="color:darkorange"></i>
+							<input type="hidden" name="todo_num" value="${todo.todo_num}">
+							<input type="hidden" name="todo_favorite" value="${todo.todo_favorite}">
+						</form>
+						<form action="/todo_delete" method="post">
 							<i class="xi-close-min" title="삭제"></i>
-							<p class="favorite_borad_box_font"></p>
-						</div> 
-					</div>-->
+							<!-- name은 항상 컬럼명과 일치시키기 -->
+							<input type="hidden" name="todo_num" id="todoDelete" class="todoDelete" value="${todo.todo_num}">
+						</form>
+						</div>
+					</div>
+						</c:if>
+					</c:forEach>
+				
 				</div>
 			</div>
 			
@@ -67,8 +85,14 @@
 								<p class="my_borad_box_font todo_contents" id="todo_contents">${todo.todo_contents}</p>
 						</form>
 						<form action="/todo_favorite" method="post">
-							<i class="xi-star-o" title="즐겨찾기"></i>
+							<c:if test="${todo.todo_favorite eq false}">
+							<i class="xi-star-o favorite_icon" title="즐겨찾기"></i>
+							</c:if>
+							<c:if test="${todo.todo_favorite eq true}">
+							<i class="xi-star favorite_icon" title="즐겨찾기"></i>
+							</c:if>
 							<input type="hidden" name="todo_num" id="todoFavo" value="${todo.todo_num}">
+							<input type="hidden" name="todo_favorite" value="${todo.todo_favorite}">
 						</form>
 						<form action="/todo_delete" method="post">
 							<i class="xi-close-min" title="삭제"></i>
@@ -88,7 +112,6 @@
 	<script> 
 	// script 사용 이유 : js파일에서는 string으로 인식되어 jsp파일에서 작성해야 함 
 		let emp_num=${sessionScope.emp_num};
-		//let todo_num=${todo_num};
 	</script>  
 	<div class="todo_modal_back">
 		<div id="todo_modal" class="tdo_modal">

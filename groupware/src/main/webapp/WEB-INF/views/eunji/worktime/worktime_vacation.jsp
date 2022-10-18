@@ -38,6 +38,5 @@
                         	<td colspan="6"><input type="file" id="file_text_align"></td>
                         </tr>
                     </table>
-                    <script src="../../resources/js/worktime/worktime_new.js"></script>
 
 </html>
