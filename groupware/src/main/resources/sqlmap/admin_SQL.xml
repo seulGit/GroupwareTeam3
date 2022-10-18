@@ -188,16 +188,17 @@
                 emp_name like CONCAT('%','','%')
             </otherwise>
         </choose>
-                <if test="start_date != null and start_date != ''">
-                    <choose>
-                        <when test="end_date != null and end_date != ''">
-                            and l.recent_datetime between DATE('${start_date}') and DATE('${end_date}')
-                        </when>
-                        <otherwise>
-                            and l.recent_datetime like CONCAT('%', '${start_date}', '%')
-                        </otherwise>
-                    </choose>
-                </if>
+        <if test="start_date != null and start_date != ''">
+            <choose>
+                <when test="end_date != null and end_date != ''">
+                    and l.recent_datetime between DATE('${start_date}') and DATE('${end_date}')
+                </when>
+                <otherwise>
+                    and l.recent_datetime like CONCAT('%', '${start_date}', '%')
+                </otherwise>
+            </choose>
+        </if>
+        order by l.recent_datetime desc;
         ;
     </select>
 

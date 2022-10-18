@@ -41,7 +41,6 @@
     <!-- 기본정보_본문 -->
     <div class="admin_login_history">
         <div class="search">
-            <span class="office_map_btn"><a href="">조직도 조회</a></span>
             <span>사원번호</span>
             <input type="text" value="" id="search_num">
             <span>사원명</span>
@@ -58,7 +57,7 @@
             </div>
             <table>
                 <thead>
-                <td><input type="checkbox" class="all_check_btn" checkd="false"></td>
+                <td><input type="checkbox" class="all_check_btn"></td>
                 <td>사원번호</td>
                 <td>사원명</td>
                 <td>접속일시</td>

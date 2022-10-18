@@ -56,7 +56,6 @@ public class AdminController {
         return mv;
     }
 
-
     //사원정보 수정
     @PostMapping("/admin/admin_personnelCard/modify")
     @ResponseBody

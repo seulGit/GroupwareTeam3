@@ -47,7 +47,6 @@
         <div class="admin_personnel_body">
             <div class="contents">
                 <div class="search">
-                    <span class="office_map_btn"><a href="">조직도 조회</a></span>
                     <span>사원이름</span>
                     <input type="text" value="" id="search_name">
                     <span>부서</span>
