@@ -132,21 +132,17 @@
     transition: .2s;
 }
 
-.login_option {
-    width: 200px;
+.login_save_id {
+    width: 280px;
     height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    line-height: 50px;
+    text-align: right;
 }
 
-.login_option input{
+.login_save_id input{
     width: 10px;
 }
 
-.login_option span {
+.login_save_id span {
     font-size: .8rem;
     color: gray;
     cursor: pointer;

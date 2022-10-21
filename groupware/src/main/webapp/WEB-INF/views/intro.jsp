@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -171,7 +170,7 @@
                                 <a class="nav-link" href="/admin/admin_booking">예약관리</a>
                                 </c:if>
                                 <c:if test="${sessionScope.authority_board eq 1}">
-                                <a class="nav-link" href="/admin/admin_board">게시글관리</a>
+                                <a class="nav-link" href="/board_notice">게시글관리</a>
                                 </c:if>
                                 <c:if test="${sessionScope.authority_personnelCard eq 1}">
                                 <a class="nav-link" href="/admin/admin_personnelCard">인사기록카드</a>
@@ -193,7 +192,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    ${sessionScope.emp_name} ${sessionScope.position_grade}
                 </div>
             </nav>
         </div>

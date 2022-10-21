@@ -24,7 +24,7 @@
 /* 조회/등록 사이드바 부분 시작 */
 .admin_personnel_sidebar {
     width: 10%;
-    height: 805px;
+    height: 100vh;
     background-color: rgba(128, 128, 128, 0.171);
 }
 

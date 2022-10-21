@@ -31,12 +31,9 @@ public class LoginController {
 
     @RequestMapping(value="/login_check", method= RequestMethod.POST)
     public ModelAndView loginPost(EmployeeVO vo, AdminVO vo2, HttpSession session, ModelAndView mv) throws Exception {
-    	
+
         EmployeeVO emp_info = loginDao.login_check(vo);
         AdminVO emp_info2 = adminDao.authority_info(vo2);
-
-        System.out.println(emp_info);
-        System.out.println(emp_info2);
 
         //로그인 정보가 DB와 일치하는지 확인
         if(emp_info != null) { //일치할 시}

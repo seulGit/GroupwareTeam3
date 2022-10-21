@@ -26,4 +26,6 @@ public interface AdminService {
     List<Map<String, Object>> authoritySearch(Map<String, Object> map);
 
     void adminAuthorityModify(Map<String, Object> map);
+
+    List<EmployeeVO> excelList(EmployeeVO excelDown);
 }

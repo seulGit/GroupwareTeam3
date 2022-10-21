@@ -49,21 +49,22 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/oseulki/Desktop/groupware_team3/groupware/src/main/webapp/WEB-INF/views",
+    "last_opened_file_path": "/Users/oseulki/Desktop/groupware_team3/groupware/src/main/webapp/resources/js/admin",
     "spring.configuration.checksum": "8d0feaa163a8a67b44683c4ef63a019f"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/js/admin" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seulgi" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/resources/js/admin" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/resources/css/admin" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/js" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/css" />
       <recent name="$PROJECT_DIR$/src/main/resources/sqlmap" />
       <recent name="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/resources/css/admin" />
       <recent name="C:\Groupware_Team3\groupware\src\main" />
       <recent name="C:\Groupware_Team3\groupware\src\main\java" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/resources/js" />
     </key>
   </component>
   <component name="RunManager">
@@ -170,6 +171,7 @@
       <workItem from="1664879179238" duration="370000" />
       <workItem from="1664955525702" duration="711000" />
       <workItem from="1665715424693" duration="384000" />
+      <workItem from="1666085543841" duration="579000" />
     </task>
     <servers />
   </component>
