@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -11,9 +13,9 @@
     <meta name="author" content=""/>
     <title>JaeHee Group</title>
     <%-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />--%>
-    <link href="/resources/css/styles.css" rel="stylesheet"/>
-    <link href="/resources/css/main.css" rel="stylesheet"/>
-    <script src="../resources/js/jquery-3.6.0.min.js"></script>
+    <link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet"/>
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
+    <script src="<c:url value="/resources/js/jquery-3.6.0.min.js"/>"></script>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
@@ -151,8 +153,8 @@ window.onload = function(){
         <div class="home_content homebox3">
             <div class="home_recent_login">
                 <h1 class="home_content_title">최근 로그인 정보</h1>
-                <div class="home_todo_content">2022년 09월 26일(월)</div>
-                <div class="home_todo_content">2022년 09월 26일(월)</div>
+                <div class="home_todo_content">2022-10-20 15:12:39</div>
+                <div class="home_todo_content">2022-10-20 18:35:21</div>
             </div>
         </div>
     </div>

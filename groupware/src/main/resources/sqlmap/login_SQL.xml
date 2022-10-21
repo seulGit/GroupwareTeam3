@@ -17,7 +17,7 @@
 
     <insert id="saveLog">
         insert into login_history(emp_num, recent_datetime)
-        values (#{emp_num}, now());
+        values (${emp_num}, now());
     </insert>
 
     <select id="adminAuthorityInfo" resultType="com.team3.groupware.seulgi.model.AdminVO">

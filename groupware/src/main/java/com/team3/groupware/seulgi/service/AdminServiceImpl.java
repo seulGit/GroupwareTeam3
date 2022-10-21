@@ -61,6 +61,11 @@ public class AdminServiceImpl implements AdminService{
         adminDAO.adminAuthorityModify(map);
     }
 
+    @Override
+    public List<EmployeeVO> excelList(EmployeeVO excelDown) {
+        return adminDAO.excelList(excelDown);
+    }
+
 
 }
 
