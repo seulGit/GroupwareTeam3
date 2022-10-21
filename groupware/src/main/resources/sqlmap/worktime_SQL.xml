@@ -6,18 +6,42 @@
 <!-- worktime 메인 페이지  -->
 <!-- 출퇴근시간 입력 -->
 <insert id="worktime_view_insert" parameterType="com.team3.groupware.eunji.model.WorktimeVO">
-	insert into worktime (emp_num, workdate, worktime_go, worktime_out, worktime_hours)
-	values (#{emp_num}, now(), #{worktime_go}, #{worktime_out}, #{worktime_hours});
+	INSERT INTO 
+		worktime (
+				  emp_num, 
+				  workdate, 
+				  worktime_go, 
+				  worktime_out, 
+				  worktime_hours
+				  )
+	VALUES (
+		   #{emp_num}, 
+		   now(), 
+		   #{worktime_go}, 
+		   #{worktime_out}, 
+		   #{worktime_hours}
+		   );
 </insert>
 
 <!-- 나의 연차 보이기 -->
 <select id="worktime_vacation_days" parameterType="com.team3.groupware.eunji.model.WorktimeVO" resultType="HashMap">
-	select E.emp_num, E.emp_name, E.position_grade, D.dept_name, V.used_count, V.available_count
-	from employee E join vacation_days V
-	on E.emp_num = V.emp_num
-	join department D 
-	on E.dept_code = D.dept_code
-	where E.emp_num = #{emp_num};
+	SELECT 
+		E.emp_num, 
+		E.emp_name, 
+		E.position_grade, 
+		D.dept_name, 
+		V.used_count, 
+		V.available_count
+	FROM 
+		employee E JOIN vacation_days V
+	ON 
+		E.emp_num = V.emp_num
+	JOIN 
+		department D 
+	ON 
+	 	E.dept_code = D.dept_code
+	WHERE 
+		E.emp_num = #{emp_num};
 </select>
 
 
@@ -26,11 +50,19 @@
 <!-- worktime 출퇴근현황 페이지 -->
 <!-- 출퇴근시간 보이기 -->
 <select id="worktime_view_select" resultType="com.team3.groupware.eunji.model.WorktimeVO">
-	select W.workdate, W.worktime_go, W.worktime_out, W.worktime_hours
-	from worktime W join employee E
-	on W.emp_num = E.emp_num
- 	where E.emp_num = #{emp_num}
- 	order by W.workdate desc;
+	SELECT 
+		W.workdate, 
+		W.worktime_go, 
+		W.worktime_out, 
+		W.worktime_hours
+	FROM 
+		worktime W JOIN employee E
+	ON 
+		W.emp_num = E.emp_num
+ 	WHERE 
+ 		E.emp_num = #{emp_num}
+ 	ORDER BY 
+ 		W.workdate desc;
 </select>
 
 
@@ -39,45 +71,235 @@
 <!-- worktime 휴가계 작성 페이지 -->
 <!-- 조직도 버튼 모달 창에 부서 정보 출력하기 -->
 <select id="worktime_dept_info" parameterType="hashMap" resultType="com.team3.groupware.common.model.EmployeeVO">
-	select E.emp_name, E.position_grade, D.dept_name, E.emp_num
-	from employee E join department D
-	on E.dept_code = D.dept_code where D.dept_name = #{dept_name}
-	and auth_code='normal';
+	SELECT 
+		E.emp_name, 
+		E.position_grade, 
+		D.dept_name, 
+		E.emp_num
+	FROM 
+		employee E JOIN department D
+	ON 
+		E.dept_code = D.dept_code 
+	WHERE 
+		D.dept_name = #{dept_name}
+	AND 
+		auth_code='normal';
 </select>
 
 <!-- 조직도 검색 모달 창의 검색 -->
 <select id="list_dept" parameterType="hashMap"
 	resultType="com.team3.groupware.common.model.EmployeeVO">
-	select E.emp_name, E.position_grade, D.dept_name, E.emp_num
-	from employee E join department D
-	on E.dept_code = D.dept_code
-	where 
+	SELECT 
+		E.emp_name, 
+		E.position_grade, 
+		D.dept_name, 
+		E.emp_num
+	FROM 
+		employee E JOIN department D
+	ON 
+		E.dept_code = D.dept_code
+	WHERE 
 	<if test="search_option == 'all' ">
-		(emp_name like CONCAT('%',#{keyword},'%')
-		or dept_name like CONCAT('%',#{keyword},'%'))
+		(emp_name LIKE CONCAT('%',#{keyword},'%')
+	  OR
+		 dept_name LIKE CONCAT('%',#{keyword},'%'))
 
 	</if>
 	<if test="search_option == 'emp_name'">
-		emp_name like CONCAT('%',#{keyword},'%')
+		emp_name LIKE CONCAT('%',#{keyword},'%')
 	</if>
 
 	<if test="search_option == 'dept_name'">
-		dept_name like CONCAT('%',#{keyword},'%')
+		dept_name LIKE CONCAT('%',#{keyword},'%')
 	</if>
 	
-	and E.auth_code ='normal'
-	order by emp_name desc, emp_num desc
+	AND 
+		E.auth_code ='normal'
+	ORDER BY 
+		emp_name desc, 
+		emp_num desc
 </select>
 
 <!-- 휴가계 폼에 부서 이름 출력하기 -->
 <select id="worktime_emp_dept_name" parameterType="com.team3.groupware.common.model.EmployeeVO" resultType="HashMap">
-	select E.emp_name, E.emp_num, D.dept_name, D.dept_code
-	from employee E join department D 
-	on E.dept_code = D.dept_code
-	where E.emp_num = #{emp_num};
+	SELECT 
+		E.emp_name, 
+		E.emp_num, 
+		D.dept_name, 
+		D.dept_code
+	FROM 
+		employee E JOIN department D 
+	ON 
+		E.dept_code = D.dept_code
+	WHERE 
+		E.emp_num = #{emp_num};
 </select>
 
-	
+<!-- 결재 기본 정보 입력 -->
+<insert id="vacation_docu">
+	INSERT INTO 
+		vacation_docu (
+					  vacation_docu_category,
+					  emp_num,
+					  vacation_docu_date,
+				
+					  vacation_day_count,
+					  vacation_docu_cancel
+					  )
+	VALUES (
+			#{vacation_docu_category},
+			#{emp_num},
+			now(),
+		
+			10,
+			false
+			)
+</insert>
+
+<!-- 결재선 입력 -->
+<insert id="approval_insert">
+	INSERT INTO 
+		vacation_approval (
+							vacation_approval_emp_1,
+							vacation_approval_date_1,
+							vacation_approval_1,
+							vacation_approval_emp_2,
+							vacation_approval_date_2,
+							vacation_approval_2
+							)
+	VALUES (
+			#{vacation_approval_emp_1},
+			#{vacation_approval_date_1},
+			#{vacation_approval_1},
+			#{vacation_approval_emp_2},
+			#{vacation_approval_date_2},
+			#{vacation_approval_2}
+			)
+</insert>
+
+<!-- 파일 추가 -->
+<insert id="file_insert">
+	INSERT INTO 
+		vacation_file (
+					  vacation_file_name,
+					  vacation_changefile_name,
+					  vacation_file_day,
+					  vacation_file_delete
+					  )
+    VALUES (
+    		#{vacation_file_name},
+    		#{vacation_changefile_name},
+    		now(),
+    		false
+    		)
+</insert>
+
+<!-- 연차 신청서 입력 -->
+<insert id="annual_insert" parameterType="com.team3.groupware.eunji.model.Vacation_annualVO">
+	INSERT INTO 
+			vacation_annual (
+							vacation_start,
+							vacation_last,
+                            vacation_reason,
+                            vacation_title,
+                            vacation_contents)
+	VALUES (#{vacation_start},
+			#{vacation_last},
+			#{vacation_reason},
+			#{vacation_title},
+			#{vacation_contents}
+			);
+</insert>
+
+<!-- 반차 신청서 입력 -->
+<insert id="halfway_insert">
+	INSERT INTO 
+			vacation_halfway (
+							halfway_date,
+							halfway_morning_aftermoon,
+							halfway_reason,
+							halfway_title,
+							halfway_contents
+							)
+	VALUES (
+			#{halfway_date},
+			#{halfway_morning_aftermoon},
+			#{halfway_reason},
+			#{halfway_title},
+			#{halfway_contents}
+			)	
+</insert>
+
+<!-- 병가 신청서 입력 -->
+<insert id="sick_leave_insert">
+	INSERT INTO
+			vacation_sick_leave (
+								sick_leave_start,
+								sick_leave_last,
+								sick_leave_reason,
+								sick_leave_title,
+								sick_leave_contents
+								)
+	VALUES (
+			#{sick_leave_start},
+			#{sick_leave_last},
+			#{sick_leave_reason},
+			#{sick_leave_title},
+			#{sick_leave_contents}
+			)
+</insert>
+
+<!-- 조퇴 신쳥서 입력 -->
+<insert id="early_departure_insert">
+	INSERT INTO 
+		 	vacation_early_departure (
+		 							 early_departure_reason,
+		 							 early_daparture_title,
+		 							 early_departure_contents
+		 							 )
+	VALUES (
+			#{early_departure_reason},
+			#{early_daparture_title},
+			#{early_departure_contents}
+			)
+</insert>
+
+<!-- 외출 신청서 입력 -->
+<insert id="outing_insert">
+	INSERT INTO 
+			outing (
+					outing_place,
+					outing_reason,
+					outing_title,
+					outing_contents
+					)
+	VALUES (
+			#{outing_place},
+			#{outing_reason},
+			#{outing_title},
+			#{outing_contents}
+			)
+</insert>
+
+
+
+<!-- ================================================================================================ -->
+<!-- worktime 승인대기중 페이지 -->
+<!-- 승인대기중 문서 -->
+
+
+
+
+<!-- ================================================================================================ -->
+<!-- worktime 진행중문서 페이지 -->
+<!-- 진행중문서  -->
+
+
+
+
+<!-- ================================================================================================ -->
+<!-- worktime 완료문서 페이지 -->
+<!-- 완료문서 문서 -->
 
 
 </mapper>

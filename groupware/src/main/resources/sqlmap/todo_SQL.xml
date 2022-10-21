@@ -5,53 +5,90 @@
 <!-- todo 추가  -->
 <!-- useGeneratedKeys="true" keyProperty="todo_num" 방금 insert한 결과값을 가져옴 -->
 <insert id="todo_write" parameterType="hashMap" useGeneratedKeys="true" keyProperty="todo_num">
-	insert into todo (todo_title, todo_contents, todo_favorite, emp_num)
-	values (#{todo_title}, #{todo_contents}, false, #{emp_num});
+	INSERT INTO 
+		todo (
+			 todo_title, 
+			 todo_contents, 
+			 todo_favorite, 
+			 emp_num
+			 )
+	VALUES (
+			#{todo_title}, 
+			#{todo_contents}, 
+			false, 
+			#{emp_num});
 </insert>
 
 <!-- todo 가져오기  -->
 <select id="todo_board_list" parameterType="hashMap" resultType="com.team3.groupware.eunji.model.TodoVO">
-	select T.todo_num, T.todo_title, T.todo_contents, T.todo_favorite
-	from employee E join todo T
-	on E.emp_num = T.emp_num
-	where E.emp_num = #{emp_num}
-	order by T.todo_num desc;
+	SELECT 
+		T.todo_num, 
+		T.todo_title, 
+		T.todo_contents, 
+		T.todo_favorite
+	FROM 
+		employee E JOIN todo T
+	ON 
+		E.emp_num = T.emp_num
+	WHERE 
+		E.emp_num = #{emp_num}
+	ORDER BY 
+		T.todo_num desc;
 </select>
 
 <!-- 새로 생성된 todo 가져오기  -->
 <select id="todo_New_select" parameterType="hashMap" resultType="com.team3.groupware.eunji.model.TodoVO">
-	select T.todo_num, T.todo_title, T.todo_contents
-	from employee E join todo T
-	on E.emp_num = T.emp_num
-	where todo_num = #{todo_num}
-	order by T.todo_num desc;
+	SELECT 
+		T.todo_num, 
+		T.todo_title, 
+		T.todo_contents
+	FROM 
+		employee E JOIN todo T
+	ON 
+		E.emp_num = T.emp_num
+	WHERE
+		todo_num = #{todo_num}
+	ORDER BY 
+		T.todo_num desc;
 </select>
 
 <!-- todo 삭제 -->
 <delete id="todo_delete" parameterType="hashMap">
-	delete from todo 
-	where todo_num = #{todo_num};
+	DELETE 
+		FROM todo 
+	WHERE 
+		todo_num = #{todo_num};
 </delete>
 
 <!-- todo 수정 -->
 <update id="todo_modify" parameterType="hashMap" >
-	update todo 
-	set todo_title = #{todo_title}, todo_contents = #{todo_contents}
-	where todo_num = #{todo_num};
+	UPDATE 
+		todo 
+	SET 
+		todo_title = #{todo_title}, 
+		todo_contents = #{todo_contents}
+	WHERE 
+		todo_num = #{todo_num};
 </update>
 
 <!-- todo 즐겨찾기 추가 -->
 <update id="todo_favorite" parameterType="hashMap">
-	update todo 
-	set todo_favorite =1
-	where todo_num = #{todo_num};
+	UPDATE 
+		todo 
+	SET 
+		todo_favorite =1
+	WHERE 
+		todo_num = #{todo_num};
 </update>
 
 <!-- todo 즐겨찾기 해제 -->
 <update id="todo_favorite_R" parameterType="hashMap">
-	update todo 
-	set todo_favorite =0
-	where todo_num = #{todo_num};
+	UPDATE 
+		todo 
+	SET 
+		todo_favorite =0
+	WHERE 
+		todo_num = #{todo_num};
 </update>
 
 

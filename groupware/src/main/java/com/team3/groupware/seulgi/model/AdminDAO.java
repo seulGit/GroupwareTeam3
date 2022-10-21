@@ -28,4 +28,6 @@ public interface AdminDAO {
     void adminAuthorityModify(Map<String, Object> map);
 
     AdminVO authority_info(AdminVO vo);
+
+    List<EmployeeVO> excelList(EmployeeVO excelDown);
 }

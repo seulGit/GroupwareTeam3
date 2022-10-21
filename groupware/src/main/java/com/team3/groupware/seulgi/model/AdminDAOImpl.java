@@ -64,5 +64,10 @@ public class AdminDAOImpl implements AdminDAO{
         return sqlSessionTemplate.selectOne("login.adminAuthorityInfo", vo);
     }
 
+    @Override
+    public List<EmployeeVO> excelList(EmployeeVO excelDown) {
+        return sqlSessionTemplate.selectList("admin.loginHistoryExcelDown",excelDown);
+    }
+
 
 }

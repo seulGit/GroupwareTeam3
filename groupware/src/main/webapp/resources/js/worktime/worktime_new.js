@@ -18,7 +18,8 @@ worktime_date.append(year+'년 '+month+'월 '+day+'일');
 
 // 서류 빈 칸 확인
 let worktime_approval = document.querySelector(".table_approval_info");  // 결재선 지정
-let vacation_date = document.querySelector("#worktime_vacation_date");   // 휴가 기간	
+let vacation_days1 = document.querySelector(".vacation_days1");   		 // 휴가 기간1
+let vacation_days2 = document.querySelector(".vacation_days2");   		 // 휴가 기간2	
 let half = document.querySelector("#worktime_docu_half");				 // 휴가계 오전/오후
 let place = document.querySelector("#worktime_docu_place");				 // 휴가계 행선지
 let title = document.querySelector("#worktime_docu_title");              // 휴가계 서류 제목
@@ -64,33 +65,51 @@ let dept_type_select = document.querySelector("#dept_type_select");		// 검색 �
 
 // 서류 작성
 // 상신 버튼 클릭 시 빈 값 체크
-// 조건을 주기 위해 전역변수 선언
-let worktime = 0;
+// ajax에 각 조건을 주기 위해 전역변수 선언
+let vacation_docu = 0;
 
 //연차일경우
-let vacation = function(){
+let annual = function(){
 approval_btn.addEventListener("click", function(e){
-	
-	
+		
+	let vacation_days1 = document.querySelector(".vacation_days1");   		 // 휴가 기간1
+	let vacation_days2 = document.querySelector(".vacation_days2");   		 // 휴가 기간2
+	let title = document.querySelector("#worktime_docu_title");              // 휴가계 서류 제목
+	let reason = document.querySelector("#worktime_docu_reason");		     // 휴가계 서류 사유
+	let ckeditor = document.querySelector("#ckeditor");						 // 에디터
 	
 	if(middle_name.innerText == "" || middle_name.innerText == null){
-		alert("결재자를 선택해주세요");
+		alert("결재선을 지정해주세요");
 		e.preventDefault();
-		middle_name.focus();
-	  
-    } else if(vacation_date.value == "" || vacation_date.value == null){
+		event.stopImmediatePropagation();
+  
+    } else if(vacation_days1.value == "" || vacation_days1.value == null){
+    	// 상위 이벤트 방지
+    	event.stopImmediatePropagation();
+    	alert("휴가기간을 선택해주세요");
+    	e.preventDefault();
+    	
+    } else if(vacation_days2.value == "" || vacation_days2.value == null){
+    	event.stopImmediatePropagation();
     	alert("휴가기간을 선택해주세요");
     	e.preventDefault();
     	
 	}else if(reason.value == "" || reason.value == null){
+		event.stopImmediatePropagation();
         alert("사유를 작성해주세요");
         e.preventDefault();
         reason.focus();
     	      
-    }else if(CKEDITOR.instances.ckeditor.getData() == '' || CKEDITOR.instances.ckeditor.getData()==''){
+    }else if(title.value == "" || title.value == null){
+        alert("제목을 작성해주세요");
+        event.stopImmediatePropagation();
+        e.preventDefault();
+        title.focus();
+        
+	}else if(CKEDITOR.instances.ckeditor.getData() == '' || CKEDITOR.instances.ckeditor.getData()==''){
     	alert("내용을 작성해주세요");
+    	event.stopImmediatePropagation();
     	e.preventDefault();
-    	CKEDITOR.instances.ckeditor.getData().focus();
     	
     } else {
         alert("상신 전송되었습니다.");
@@ -100,42 +119,55 @@ approval_btn.addEventListener("click", function(e){
 });
 }
 
+// 기본 연차 페이지의 경우 함수 실행
+annual();
+
 // 반차일경우
 let halfway = function(){
 	approval_btn.addEventListener("click", function(e){
+		
+		let vacation_days1 = document.querySelector(".vacation_days1");   		 // 휴가 기간1
+		let title = document.querySelector("#worktime_docu_title");              // 휴가계 서류 제목
+		let reason = document.querySelector("#worktime_docu_reason");		     // 휴가계 서류 사유
+		let ckeditor = document.querySelector("#ckeditor");						 // 에디터
+		let half = document.getElementsByName("halfway");				 		 // 휴가계 오전/오후
 
 		if(middle_name.innerText == "" || middle_name.innerText == null){
-			alert("결재자를 선택해주세요");
+			alert("결재선을 지정해주세요");
 			e.preventDefault();
-			middle_name.focus();
+			event.stopImmediatePropagation();
+		
+		} else if(vacation_days1.value == "" || vacation_days1.value == null){
+	    	alert("휴가기간을 선택해주세요");
+	    	event.stopImmediatePropagation();
+	    	e.preventDefault();	
 		  
-	   }  else if(reason.value == "" || reason.value == null){
+	   } else if(half.length == 0){
+	    	alert("오전/오후 반차를 선택해주세요");
+	    	event.stopImmediatePropagation();
+	    	e.preventDefault();
+	    	half.focus();
+	    	
+	   } else if(reason.value == "" || reason.value == null){
 	        alert("사유를 작성해주세요");
+	        event.stopImmediatePropagation();
 	        e.preventDefault();
 	        reason.focus();
 	    
 		} else if(title.value == "" || title.value == null){
 	        alert("제목을 작성해주세요");
+	        event.stopImmediatePropagation();
 	        e.preventDefault();
 	        title.focus();
 	        
-		} else if(half.value == "" || half.value == null){
-	    	alert("오전/오후 반차를 작성해주세요");
-	    	e.preventDefault();
-	    	half.focus();
-	    	
-	    } else if(place.value == "" || place.value == null){
-	    	alert("행선지를 작성해주세요");
-	    	e.preventDefault();
-	    	place.focus();
-	    	      
-	    }else if(CKEDITOR.instances.ckeditor.getData() == '' || CKEDITOR.instances.ckeditor.getData()==''){
+		} else if(CKEDITOR.instances.ckeditor.getData() == '' || CKEDITOR.instances.ckeditor.getData()==''){
 	    	alert("내용을 작성해주세요");
+	    	event.stopImmediatePropagation();
 	    	e.preventDefault();
-	    	CKEDITOR.instances.ckeditor.getData().focus();
 	    	
 	    } else {
 	        alert("상신 전송되었습니다.");
+	        event.stopImmediatePropagation();
 	        e.preventDefault();
 	        return true;
 	    }
@@ -143,13 +175,151 @@ let halfway = function(){
 	});
 }
 
+// 병가일경우
+let sick_leave = function(){
+	approval_btn.addEventListener("click", function(e){
+			
+		let vacation_days1 = document.querySelector(".vacation_days1");   		 // 휴가 기간1
+		let vacation_days2 = document.querySelector(".vacation_days2");   		 // 휴가 기간2
+		let title = document.querySelector("#worktime_docu_title");              // 휴가계 서류 제목
+		let reason = document.querySelector("#worktime_docu_reason");		     // 휴가계 서류 사유
+		let ckeditor = document.querySelector("#ckeditor");						 // 에디터
+		
+		if(middle_name.innerText == "" || middle_name.innerText == null){
+			alert("결재선을 지정해주세요");
+			e.preventDefault();
+			event.stopImmediatePropagation();
+	  
+	    } else if(vacation_days1.value == "" || vacation_days1.value == null){
+	    	event.stopImmediatePropagation();
+	    	alert("휴가기간을 선택해주세요");
+	    	e.preventDefault();
+	    	
+	    } else if(vacation_days2.value == "" || vacation_days2.value == null){
+	    	event.stopImmediatePropagation();
+	    	alert("휴가기간을 선택해주세요");
+	    	e.preventDefault();
+	    	
+		}else if(reason.value == "" || reason.value == null){
+			event.stopImmediatePropagation();
+	        alert("사유를 작성해주세요");
+	        e.preventDefault();
+	        reason.focus();
+	    	      
+	    } else if(title.value == "" || title.value == null){
+	        alert("제목을 작성해주세요");
+	        event.stopImmediatePropagation();
+	        e.preventDefault();
+	        title.focus();
+	        
+		} else if(CKEDITOR.instances.ckeditor.getData() == '' || CKEDITOR.instances.ckeditor.getData()==''){
+	    	alert("내용을 작성해주세요");
+	    	event.stopImmediatePropagation();
+	    	e.preventDefault();
+	    	
+	    } else {
+	        alert("상신 전송되었습니다.");
+	        return true;
+	    }
+
+	});
+	}
+
+// 조퇴일경우
+let early_departure = function(){
+	approval_btn.addEventListener("click", function(e){
+
+		let title = document.querySelector("#worktime_docu_title");              // 휴가계 서류 제목
+		let reason = document.querySelector("#worktime_docu_reason");		     // 휴가계 서류 사유
+		let ckeditor = document.querySelector("#ckeditor");						 // 에디터
+		
+		if(middle_name.innerText == "" || middle_name.innerText == null){
+			alert("결재선을 지정해주세요");
+			event.stopImmediatePropagation();
+			e.preventDefault();
+	  
+	    }else if(reason.value == "" || reason.value == null){
+			event.stopImmediatePropagation();
+	        alert("사유를 작성해주세요");
+	        e.preventDefault();
+	        reason.focus();
+	    	      
+	    } else if(title.value == "" || title.value == null){
+	        alert("제목을 작성해주세요");
+	        event.stopImmediatePropagation();
+	        e.preventDefault();
+	        title.focus();
+	        
+		} else if(CKEDITOR.instances.ckeditor.getData() == '' || CKEDITOR.instances.ckeditor.getData()==''){
+	    	alert("내용을 작성해주세요");
+	    	event.stopImmediatePropagation();
+	    	e.preventDefault();
+	    	
+	    } else {
+	        alert("상신 전송되었습니다.");
+	        return true;
+	    }
+
+	});
+	}
+
+// 외출일경우
+let outing = function(){
+	approval_btn.addEventListener("click", function(e){
+			
+		let place = document.querySelector("#worktime_docu_place");				 // 휴가계 행선지
+		let title = document.querySelector("#worktime_docu_title");              // 휴가계 서류 제목
+		let reason = document.querySelector("#worktime_docu_reason");		     // 휴가계 서류 사유
+		let ckeditor = document.querySelector("#ckeditor");						 // 에디터
+		
+		if(middle_name.innerText == "" || middle_name.innerText == null){
+			alert("결재선을 지정해주세요");
+			event.stopImmediatePropagation();
+			e.preventDefault();
+	  
+	    } else if(place.value == "" || place.value == null){
+	    	alert("행선지를 작성해주세요");
+	    	event.stopImmediatePropagation();
+	    	e.preventDefault();
+	    	place.focus();
+	    	
+		}else if(reason.value == "" || reason.value == null){
+			event.stopImmediatePropagation();
+	        alert("사유를 작성해주세요");
+	        e.preventDefault();
+	        reason.focus();
+	    	      
+	    } else if(title.value == "" || title.value == null){
+	        alert("제목을 작성해주세요");
+	        event.stopImmediatePropagation();
+	        e.preventDefault();
+	        title.focus();
+	        
+		} else if(CKEDITOR.instances.ckeditor.getData() == '' || CKEDITOR.instances.ckeditor.getData()==''){
+	    	alert("내용을 작성해주세요");
+	    	event.stopImmediatePropagation();
+	    	e.preventDefault();
+	    	
+	    } else {
+	        alert("상신 전송되었습니다.");
+	        return true;
+	    }
+
+	});
+	}
+
 
 //휴가계 종류 선택할 때마다 form 변경
-function worktime_docu_ajax(docu){
+function vacation_docu_ajax(vacation_docu_category){
+	let vacation = {
+			vacation : vacation_docu_category
+	}
 	$.ajax({
 		type:"POST",
-		url:"/worktime_" + docu,
+		url:"/vacation_annual",
 		dataType:"text",
+		contentType: "application/json",
+		data : JSON.stringify(vacation),
 		success: function(data){
 			$(table_box_thr).html(data); // 기존 html이 사라지고 그 위에 생김
 			
@@ -163,10 +333,17 @@ function worktime_docu_ajax(docu){
 			let month = date.getMonth()+1;   // 해당 월
 			let day = date.getDate();        // 해당 일
 			worktime_new_date.append(year+'년 '+month+'월 '+day+'일');
-			if(worktime==1){
-				vacation();
-			} else if (worktime==2){
+			
+			if(vacation_docu == 1){
+				annual();
+			} else if (vacation_docu == 2){
 				halfway();
+			} else if(vacation_docu == 3){
+				sick_leave();
+			} else if(vacation_docu == 4){
+				early_departure();
+			} else if(vacation_docu == 5){
+				outing();
 			}
 		},
 		error : function(data){
@@ -177,21 +354,25 @@ function worktime_docu_ajax(docu){
 
 	// 휴가계 종류 선택할 때마다 ajax 변경
     type_select.addEventListener("change", function(){
-			if(type_select.value == 'vacation'){
-				worktime_docu_ajax("vacation");	
-				worktime=1;
+			if(type_select.value == 'annual'){
+				vacation_docu_ajax("annual");	
+				vacation_docu=1;
+				
 			} else if(type_select.value == 'halfway'){
-				worktime_docu_ajax("halfway");
-				worktime=2;
+				vacation_docu_ajax("halfway");
+				vacation_docu=2;
+				
 			} else if(type_select.value == 'sick_leave'){
-				worktime_docu_ajax("sick_leave");
-				worktime=3;
+				vacation_docu_ajax("sick_leave");
+				vacation_docu=3;
+				
 			} else if(type_select.value == 'early_departure'){
-				worktime_docu_ajax("early_departure");
-				worktime=4;
-			} else if(type_select.value == 'business_trip'){
-				worktime_docu_ajax("business_trip");
-				worktime=5;
+				vacation_docu_ajax("early_departure");
+				vacation_docu=4;
+				
+			} else if(type_select.value == 'outing'){
+				vacation_docu_ajax("outing");
+				vacation_docu=5;
 			} 
 	});
 

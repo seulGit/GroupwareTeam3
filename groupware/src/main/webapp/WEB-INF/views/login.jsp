@@ -4,18 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<%
-    //[뒤로가기]버튼으로 보지 못하도록, no-cache로 설정
-    response.setDateHeader("Expires", 0);
-    response.setHeader("Pragma", "no-cache");
-    if (request.getProtocol().equals("HTTP/1.1")) {
-        response.setHeader("Cache-Control", "no-cache");
-    }
-    //※ 이 기능은 전송방식이 POST인 경우에만 사용할 수 있다.
-    //GET방식으로 전송한 경우에는 아무 효력 없이 모든 페이지가 노출된다.
-%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>재희그룹</title>
-    <link rel="stylesheet" href="/resources/css/login.css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/login.css"/>">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>
 <body>
@@ -61,25 +49,18 @@
                     아이디와 비밀번호를 확인하세요.
                 </div>
             </c:if>
-
-            <div class="login_option">
-                <div class="login_save_id">
-                    <%-- 사원번호 저장 체크박스 --%>
-                    <input type="checkbox" id="login_save_id_checkbox" name="login_save_id_checkbox"
-                           value="login_id_input?.length>0 : login_id_input : '' ">
-                    <label for="login_save_id_checkbox">
-                        <span>사원번호 저장</span>
-                    </label>
-                </div>
-                <div class="login_save_pw">
-                    <%-- 비밀번호 초기화 버튼 --%>
-                    <span>비밀번호 초기화</span>
-                </div>
+            <div class="login_save_id">
+                <%-- 사원번호 저장 체크박스 --%>
+                <input type="checkbox" id="login_save_id_checkbox" name="login_save_id_checkbox"
+                       value="login_id_input?.length>0 : login_id_input : '' ">
+                <label for="login_save_id_checkbox">
+                    <span>사원번호 저장</span>
+                </label>
             </div>
         </div>
     </div>
 </form>
-<script src="/resources/js/login.js"></script>
+<script src="<c:url value="/resources/js/login.js"/>"></script>
 
 </body>
 </html>

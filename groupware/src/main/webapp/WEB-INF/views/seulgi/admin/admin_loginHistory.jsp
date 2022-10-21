@@ -53,7 +53,7 @@
         </div>
         <div class="history_list">
             <div class="excel_print">
-                <a href="excelDown.do">엑셀파일 출력</a>
+                <a href="<c:url value='/excelDown.do' />">엑셀파일로 내보내기</a>
             </div>
             <table>
                 <thead>

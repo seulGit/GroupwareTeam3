@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -102,10 +101,10 @@
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="/worktime">근태관리홈</a>
-                                <a class="nav-link" href="/worktime_new">연차신청하기</a>
-                                <a class="nav-link" href="/worktime_wait">승인대기중</a>
-                                <a class="nav-link" href="/worktime_ing">진행중문서</a>
-                                <a class="nav-link" href="/worktime_end">완료문서</a>
+                                <a class="nav-link" href="/vacation_new">연차신청하기</a>
+                                <a class="nav-link" href="/vacation_wait">승인대기중</a>
+                                <a class="nav-link" href="/vacation_ing">진행중문서</a>
+                                <a class="nav-link" href="/vacation_end">완료문서</a>
                                 <a class="nav-link" href="/worktime_view">출퇴근현황</a>
                             </nav>
                         </div>
@@ -171,7 +170,7 @@
                                 <a class="nav-link" href="/admin/admin_booking">예약관리</a>
                                 </c:if>
                                 <c:if test="${sessionScope.authority_board eq 1}">
-                                <a class="nav-link" href="/admin/admin_board">게시글관리</a>
+                                <a class="nav-link" href="/board_notice">게시글관리</a>
                                 </c:if>
                                 <c:if test="${sessionScope.authority_personnelCard eq 1}">
                                 <a class="nav-link" href="/admin/admin_personnelCard">인사기록카드</a>
@@ -193,7 +192,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    ${sessionScope.emp_name} ${sessionScope.position_grade}
                 </div>
             </nav>
         </div>

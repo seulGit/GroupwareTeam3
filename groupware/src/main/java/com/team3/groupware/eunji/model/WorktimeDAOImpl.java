@@ -56,6 +56,14 @@ public class WorktimeDAOImpl implements WorktimeDAO {
 		return session.selectList("worktime.list_dept", map);
 	}
 
+	// 연차 신청서 입력
+	@Override
+	public void vacation_annual_insert(Map<String, Object> map) {
+		this.session.insert("worktime.vacation_docu", map);
+		this.session.insert("worktime.approval_insert", map);
+		this.session.insert("worktime.annual_insert", map);
+	}
+
 
 
 

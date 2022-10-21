@@ -4,9 +4,29 @@
 
 <!-- 게시글 작성  -->
 <insert id="board_write_insert">
-	insert into board 
-	(board_title, board_contents, board_write_date, board_fix_check, board_delete_check, emp_num, board_category_num, board_file_name, board_file_route)
-	value (#{board_title}, #{board_contents}, now(), #{board_fix_check}, #{board_delete_check}, #{emp_num}, #{board_category_num}, #{board_file_name}, #{board_file_route});
+	INSERT INTO 
+		board (
+			   board_title, 
+			   board_contents, 
+			   board_write_date, 
+			   board_fix_check, 
+			   board_delete_check, 
+			   emp_num, 
+			   board_category_num, 
+			   board_file_name, 
+			   board_file_route
+			   )
+	VALUES 
+		    (
+		    #{board_title}, 
+		    #{board_contents}, 
+		    now(), 
+		    #{board_fix_check}, 
+		    #{board_delete_check}, 
+		    #{emp_num}, 
+		    #{board_category_num}, 
+		    #{board_file_name}, 
+		    #{board_file_route});
 </insert>
 
 
@@ -15,25 +35,50 @@
 <!-- 일반게시판 -->
 <!-- 일반 게시판 글 보이기 -->
 <select id="board_normal_selectList" parameterType="com.team3.groupware.eunji.model.BoardVO" resultType="hashMap">
-	select B.board_num, B.board_title, E.emp_name, E.emp_num, B.board_write_date, B.board_view_count, D.dept_name 
-	from board B join employee E 
-	on B.emp_num = E.emp_num
-	join department D 
-	on D.dept_code = E.dept_code
-	where B.board_category_num = 600
-	order by B.board_num desc;
+	SELECT 
+		B.board_num, 
+		B.board_title, 
+		E.emp_name, 
+		E.emp_num, 
+		B.board_write_date, 
+		B.board_view_count, 
+		D.dept_name 
+	FROM 
+		board B JOIN employee E 
+	ON 
+		B.emp_num = E.emp_num 
+	JOIN 
+		department D 
+	ON 
+		D.dept_code = E.dept_code
+	WHERE 
+	 	B.board_category_num = 600
+	ORDER BY 
+		B.board_num desc;
 </select>
 
 <!-- 공지게시판 -->
 <!-- 공지 게시판 글 보이기 -->
 <select id="board_notice_selectList" parameterType="com.team3.groupware.eunji.model.BoardVO" resultType="hashMap">
-	select B.board_num, B.board_title, E.emp_name,E.emp_num, B.board_write_date, B.board_view_count, D.dept_name 
-	from board B join employee E 
-	on B.emp_num = E.emp_num
-	join department D 
-	on D.dept_code = E.dept_code
-	where B.board_category_num = 500
-	order by B.board_num desc;
+	SELECT 
+		B.board_num, 
+		B.board_title, 
+		E.emp_name,
+		E.emp_num, 
+		B.board_write_date, 
+		B.board_view_count, 
+		D.dept_name 
+	FROM 
+		board B JOIN employee E 
+	ON 
+		B.emp_num = E.emp_num
+	JOIN department D 
+	ON 
+		D.dept_code = E.dept_code
+	WHERE 
+		B.board_category_num = 500
+	ORDER BY 
+		B.board_num desc;
 </select>
 
 
@@ -41,15 +86,31 @@
 <!-- ================================================================================================================================ -->
 <!-- 디테일 페이지 보기 -->
 <select id="board_detail" parameterType="hashMap" resultType="hashMap">
-	select B.board_num, B2.board_category_subject, B.board_title, 
-	B.board_contents, E.emp_name, E.emp_num, D.dept_name, B.board_write_date, B.board_file_route, B.board_file_name
-	from board B join employee E 
-	on B.emp_num = E.emp_num
-	join board_category B2
-	on B.board_category_num = B2.board_category_num
-	join department D
-	on D.dept_code = E.dept_code
-	where B.board_num = #{board_num};
+	SELECT 
+		B.board_num, 
+		B2.board_category_subject, 
+		B.board_title, 
+		B.board_contents, 
+		E.emp_name, 
+		E.emp_num, 
+		D.dept_name, 
+		B.board_write_date, 
+		B.board_file_route, 
+		B.board_file_name
+	FROM 
+		board B JOIN employee E 
+	ON 
+		B.emp_num = E.emp_num
+	JOIN 
+		board_category B2
+	ON 
+		B.board_category_num = B2.board_category_num
+	JOIN 
+		department D
+	ON 
+		D.dept_code = E.dept_code
+	WHERE 
+		B.board_num = #{board_num};
 </select>
 
 
@@ -57,51 +118,71 @@
 <!-- ================================================================================================================================ -->
 <!-- 게시글 수정하기 -->
 <update id="board_modify">
-	update board set 
-	board_title=#{board_title}, 
-	board_contents=#{board_contents},
-	board_write_date=now(),
-	board_fix_check=#{board_fix_check},
-	board_file_route=#{board_file_route}
-	where board_num=#{board_num};
+	UPDATE 
+		board 
+	SET 
+		board_title=#{board_title}, 
+		board_contents=#{board_contents},
+		board_write_date=now(),
+		board_fix_check=#{board_fix_check},
+		board_file_route=#{board_file_route}
+	WHERE 
+		board_num=#{board_num};
 </update>
 
 <!-- 게시글 삭제하기 -->
 <delete id="board_delete">
-	delete from board 
-	where board_num =#{board_num};
+	DELETE FROM 
+		board 
+	WHERE 
+		board_num =#{board_num};
 </delete>
 
 <!-- 게시글 검색하기 -->
 <select id="board_search" parameterType="hashMap" 
 resultType="hashMap">
-	select B.board_num, B.board_title, E.emp_name, B.board_write_date, B.board_view_count 
-	from board B join employee E 
-	on B.emp_num = E.emp_num
-	join department D 
-	on D.dept_code = E.dept_code
-	where
+	SELECT 
+		B.board_num, 
+		B.board_title, 
+		E.emp_name, 
+		B.board_write_date, 
+		B.board_view_count 
+	FROM 
+		board B JOIN employee E 
+	ON 
+		B.emp_num = E.emp_num
+	JOIN 
+		department D 
+	ON 
+		D.dept_code = E.dept_code
+	WHERE
 	
 	<choose>
 		<when test="board_search == 'board_all'">
 			
-			board_title like CONCAT('%',#{keyword},'%')
-			or emp_name like CONCAT('%',#{keyword},'%')
+				board_title LIKE CONCAT('%',#{keyword},'%')
+			OR 
+				emp_name LIKE CONCAT('%',#{keyword},'%')
 		</when>
 		<otherwise>
-			${board_search} like CONCAT('%',#{keyword},'%')
+			${board_search} LIKE CONCAT('%',#{keyword},'%')
 		</otherwise>
 	</choose>
 		
-	and B.board_category_num = 600
-	order by B.board_num desc;
+	AND 
+		B.board_category_num = 600
+	ORDER BY 
+		B.board_num desc;
 </select>
 
 <!-- 조회수 증가하기 -->
 <update id="view_plus">
-	update board 
-	set board_view_count = board_view_count + 1
-	where board_num=#{board_num};
+	UPDATE 
+		board 
+	SET 
+		board_view_count = board_view_count + 1
+	WHERE 
+		board_num=#{board_num};
 </update>
 
 
@@ -110,34 +191,64 @@ resultType="hashMap">
 <!-- 댓글 -->
 <!-- 댓글 입력 -->
 <insert id="board_comment_insert" parameterType="hashMap">
-   	insert into board_comment
-    (board_num, emp_num, comment_date, comment_contents)
-    value (#{board_num},#{emp_num}, now(), #{comment_contents});
+   	INSERT INTO 
+   		board_comment (
+   					  board_num, 
+   					  emp_num, 
+   					  comment_date, 
+   					  comment_contents
+   					  )
+    VALUE (
+    	   #{board_num},
+    	   #{emp_num}, 
+    	   now(), 
+    	   #{comment_contents}
+    	   );
 </insert>
 
 <!-- 댓글 보이기 -->
 <select id="board_comment_selectList" resultType="hashMap" >
-	select E.emp_name, E.emp_num, D.dept_name, B.comment_num,
-	B.board_num, B.comment_date,B.comment_contents, B.comment_fix_check, B.comment_delete_check
-    from board_comment B join employee E
-    on B.emp_num = E.emp_num
-    join department D 
-    on D.dept_code = E.dept_code
-    where B.board_num = #{board_num}
-    order by comment_num desc; 
+	SELECT 
+		E.emp_name, 
+		E.emp_num, 
+		D.dept_name, 
+		B.comment_num,
+		B.board_num, 
+		B.comment_date,
+		B.comment_contents, 
+		B.comment_fix_check, 
+		B.comment_delete_check
+    FROM 
+    	board_comment B JOIN employee E
+    ON 
+    	B.emp_num = E.emp_num
+    JOIN 
+    	department D 
+    ON 
+    	D.dept_code = E.dept_code
+    WHERE 
+    	B.board_num = #{board_num}
+    ORDER BY
+    	comment_num desc; 
 </select>
 
 <!-- 댓글 삭제하기 -->
 <delete id="comment_delete">
-	delete from board_comment 
-	where comment_num =#{comment_num};
+	DELETE FROM 
+		board_comment 
+	WHERE 
+		comment_num =#{comment_num};
 </delete>
 
 <!-- 댓글 수정하기 -->
 <update id="comment_modify" parameterType="hashMap">
-	update board_comment
-	set  comment_date = now(), comment_contents = #{comment_contents}
-	where comment_num =#{comment_num};
+ 	UPDATE 
+ 		board_comment
+	SET 
+		comment_date = now(), 
+		comment_contents = #{comment_contents}
+	WHERE 
+		comment_num =#{comment_num};
 </update>
 
 

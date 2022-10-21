@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.team3.groupware.common.model.EmployeeVO;
+import com.team3.groupware.eunji.model.Vacation_annualVO;
 import com.team3.groupware.eunji.model.WorktimeVO;
-import com.team3.groupware.eunji.service.TodoService;
 import com.team3.groupware.eunji.service.WorktimeService;
 
 @RestController
@@ -85,7 +84,7 @@ public class WorktimeController {
 	}
 	
 	// 휴가계 신청
-	@GetMapping("/worktime_new")
+	@GetMapping("/vacation_new")
 	public ModelAndView worktimeNew(HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
@@ -96,32 +95,32 @@ public class WorktimeController {
 		Map<String, Object> WorktimeNameMap = worktimeService.select_worktime_new_name(emp_num);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("WorktimeNameMap", WorktimeNameMap);
-		mv.setViewName("/eunji/worktime/worktime_new");
+		mv.setViewName("/eunji/worktime/vacation_new");
 		return mv;
 	}
 	
 	
 	// 승인 대기중
-	@GetMapping("/worktime_wait")
+	@GetMapping("/vacation_wait")
 	public ModelAndView worktimeWait() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/eunji/worktime/worktime_wait");
+		mv.setViewName("/eunji/worktime/vacation_wait");
 		return mv;
 	}
 	
 	// 진행준 문서
-	@GetMapping("/worktime_ing")
+	@GetMapping("/vacation_ing")
 	public ModelAndView worktimeIng() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/eunji/worktime/worktime_ing");
+		mv.setViewName("/eunji/worktime/vacation_ing");
 		return mv;
 	}
 	
 	// 완료문서
-	@GetMapping("/worktime_end")
+	@GetMapping("/vacation_end")
 	public ModelAndView worktimeEnd() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/eunji/worktime/worktime_end");
+		mv.setViewName("/eunji/worktime/vacation_end");
 		return mv;
 	}
 	
@@ -145,9 +144,9 @@ public class WorktimeController {
 	
 	// 휴가계 종류 선택 시 휴가신청서 폼 변경
 	// 연차
-	@PostMapping("/worktime_vacation")
-	public ModelAndView worktime_vacation(HttpServletRequest request) {
-		
+	@PostMapping("/vacation_annual")
+	public ModelAndView worktime_vacation(HttpServletRequest request, @RequestBody Map<String,Object> map) {
+		System.out.println(map);
 		HttpSession session = request.getSession();
 		
 		String change = String.valueOf(session.getAttribute("emp_num"));
@@ -156,72 +155,53 @@ public class WorktimeController {
 		Map<String, Object> WorktimeNameMap = worktimeService.select_worktime_new_name(emp_num);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("WorktimeNameMap", WorktimeNameMap);
-		mv.setViewName("eunji/worktime/worktime_vacation");
+	
+		if(map.get("vacation").equals("annual")) {
+			mv.setViewName("eunji/worktime/vacation_annual");		
+		
+		} else if(map.get("vacation").equals("halfway")) {
+			mv.setViewName("eunji/worktime/vacation_halfway");
+		
+		} else if(map.get("vacation").equals("sick_leave")) {
+			mv.setViewName("eunji/worktime/vacation_sick_leave");
+		
+		} else if(map.get("vacation").equals("early_departure")) {
+			mv.setViewName("eunji/worktime/vacation_early_departure");
+		
+		} else if(map.get("vacation").equals("outing")) {
+			mv.setViewName("eunji/worktime/vacation_outing");
+		}
 		return mv;
 	}
 	
-	// 반차
-	@PostMapping("/worktime_halfway")
-	public ModelAndView worktime_halfway(HttpServletRequest request) {
+	// 연차 데이터 넣기
+	@PostMapping("/vacation_insert")
+	public ModelAndView vacation_annaul_insert(@RequestParam Map<String,Object> map) {
+		System.out.println(map);
+		/* worktimeService.vacation_annual_insert(map); */
 		
-		HttpSession session = request.getSession();
-		
-		String change = String.valueOf(session.getAttribute("emp_num"));
-		int emp_num = Integer.parseInt(change);
-		
-		Map<String, Object> WorktimeNameMap = worktimeService.select_worktime_new_name(emp_num);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("WorktimeNameMap", WorktimeNameMap);
-		mv.setViewName("eunji/worktime/worktime_halfway");
-		return mv;
+		/*
+		 * if(map.get("vacation").equals("annual")) {
+		 * worktimeService.vacation_annual_insert(annualVo);
+		 * 
+		 * } else if(map.get("vacation").equals("halfway")) {
+		 * 
+		 * 
+		 * } else if(map.get("vacation").equals("sick_leave")) {
+		 * 
+		 * 
+		 * } else if(map.get("vacation").equals("early_departure")) {
+		 * 
+		 * 
+		 * } else if(map.get("vacation").equals("outing")) {
+		 * 
+		 * }
+		 */
+		return new ModelAndView("redirect:/vacation_ing");
 	}
 	
-	// 병가
-	@PostMapping("/worktime_sick_leave")
-	public ModelAndView worktime_sick_leave(HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		
-		String change = String.valueOf(session.getAttribute("emp_num"));
-		int emp_num = Integer.parseInt(change);
-		
-		Map<String, Object> WorktimeNameMap = worktimeService.select_worktime_new_name(emp_num);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("WorktimeNameMap", WorktimeNameMap);
-		mv.setViewName("eunji/worktime/worktime_sick_leave");
-		return mv;
-	}
 	
-	// 조퇴
-	@PostMapping("/worktime_early_departure")
-	public ModelAndView worktime_early_departure(HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		
-		String change = String.valueOf(session.getAttribute("emp_num"));
-		int emp_num = Integer.parseInt(change);
-		
-		Map<String, Object> WorktimeNameMap = worktimeService.select_worktime_new_name(emp_num);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("WorktimeNameMap", WorktimeNameMap);
-		mv.setViewName("eunji/worktime/worktime_early_departure");
-		return mv;
-	}
 	
-	// 외출
-	@PostMapping("/worktime_business_trip")
-	public ModelAndView worktime_business_trip(HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		
-		String change = String.valueOf(session.getAttribute("emp_num"));
-		int emp_num = Integer.parseInt(change);
-		
-		Map<String, Object> WorktimeNameMap = worktimeService.select_worktime_new_name(emp_num);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("WorktimeNameMap", WorktimeNameMap);
-		mv.setViewName("eunji/worktime/worktime_business_trip");
-		return mv;
-	}
+	
 	
 }
