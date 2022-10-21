@@ -40,7 +40,7 @@
 
 			<!-- 나의 연차 기록  -->
             <div class="my_annual_leave">
-                <div>내 연차 내역 <a href="/worktime_new"><input type="button" value="휴가계신청" id="annual_leave_btn"></div></a>
+                <div>내 연차 내역 <a href="/vacation_new"><input type="button" value="휴가계신청" id="annual_leave_btn"></a></div>
                 <div class="my_annual_leave_list">
                     <div class="my_annual_name">
                     <p>${worktimeMap.emp_name} ${worktimeMap.position_grade}<br>

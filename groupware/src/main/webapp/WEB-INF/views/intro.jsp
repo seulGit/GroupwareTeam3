@@ -102,10 +102,10 @@
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="/worktime">근태관리홈</a>
-                                <a class="nav-link" href="/worktime_new">연차신청하기</a>
-                                <a class="nav-link" href="/worktime_wait">승인대기중</a>
-                                <a class="nav-link" href="/worktime_ing">진행중문서</a>
-                                <a class="nav-link" href="/worktime_end">완료문서</a>
+                                <a class="nav-link" href="/vacation_new">연차신청하기</a>
+                                <a class="nav-link" href="/vacation_wait">승인대기중</a>
+                                <a class="nav-link" href="/vacation_ing">진행중문서</a>
+                                <a class="nav-link" href="/vacation_end">완료문서</a>
                                 <a class="nav-link" href="/worktime_view">출퇴근현황</a>
                             </nav>
                         </div>

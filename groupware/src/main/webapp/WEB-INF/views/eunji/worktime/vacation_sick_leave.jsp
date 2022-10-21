@@ -6,11 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../../resources/css/worktime/worktime_new.css">
-
 </head>
 <table class="input_table">
                         <tr class="input_table_size">
-                            <td>반차신청서</td>
+                            <td>병가신청서</td>
                             <td colspan="6"></td>
                         </tr>
                         <tr>
@@ -24,18 +23,15 @@
 
                   		<tr>
                      		<td>휴가 기간</td>
-                            <td colspan="2" class="date_width"><div class="vacation_date"><input type="date" class=""> ~ <input type="date"></div></td>
-                    		<td>오전/오후</td>
-                            <td colspan="2"><input type="text" id="worktime_docu_half"></td>
+                            <td colspan="2" class="date_width">
+                            	<div class="vacation_date"><input type="date" class="vacation_days1"> ~ <input type="date" class="vacation_days2"></div>
+                            </td>
+                    		<td>사유</td>
+                            <td colspan="2"><input type="text" id="worktime_docu_reason"></td>
                   		</tr>   
-                      <tr>
+                        <tr>
                            <td>제목</td>
                            <td colspan="6"><input type="text" id="worktime_docu_title"></td>
-                        </tr>
-
-                        <tr>
-                            <td>사유</td>
-                            <td colspan="6"><input type="text"  id="worktime_docu_reason"></td>
                         </tr>
                         <tr>
                         	<td>첨부 파일</td>

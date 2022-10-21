@@ -30,7 +30,7 @@
             <div class="content_box">
                 휴가계신청
             </div>
-
+			 <form action="/vacation_insert" method="post">
 			<!-- 휴가계 선택  -->
             <div class="worktime_new_container">
                 <div class="basic_setting">
@@ -40,12 +40,12 @@
                       <table>
                         <tr>
                             <td class="table_bg">휴가계종류</td>
-                            <td><select name="type" id="type_select">
-                                <option value="vacation">연차</option>
+                            <td><select name="vacation_docu_category" id="type_select">
+                                <option value="annual">연차</option>
                                 <option value="halfway">반차</option>
                                 <option value="sick_leave">병가</option>
                                 <option value="early_departure">조퇴</option>
-                                 <option value="business_trip">외출</option>
+                                <option value="outing">외출</option>
                             </select>
                             </td>
                         </tr>
@@ -57,7 +57,9 @@
                        <table>
                         <tr>
                             <td class="table_bg">기안작성자</td>
-                            <td>${WorktimeNameMap.emp_name}</td>
+                            <td>${WorktimeNameMap.emp_name}
+                           		<input type="hidden" value="${WorktimeNameMap.emp_num}" name="emp_num"> 
+                           </td>
                         </tr>
                        </table>
                    </div>
@@ -71,8 +73,12 @@
                         <table id="approval_info">
                             <tr>
                                 <td class="table_bg table_size">구분</td>
-                                <td class="table_bg">중간결재자</td>
-                                <td class="table_bg">최종결재자</td>
+                                <td class="table_bg">중간결재자
+                                	<input type="hidden" name="vacation_approval_emp_1" id="vacation_approval_emp_1">
+                                </td>
+                                <td class="table_bg">최종결재자
+                                	<input type="hidden" name="vacation_approval_emp_2" id="vacation_approval_emp_2">
+                                </td>
                             </tr>
                             <tr>
                                 <td class="table_bg table_size">이름</td>
@@ -94,7 +100,6 @@
                 </div>
                 
                 <!-- 상세입력  -->
-                  <form method="post">
                   <div class="worktime_docu_input_box">
                     <p>상세입력</p>
                     <div class="worktime_docu_input_icon">
@@ -121,13 +126,16 @@
 
                   		<tr>
                      		<td>휴가 기간</td>
-                            <td colspan="2" class="date_width"><div class="vacation_date"><input type="date" class=""> ~ <input type="date"></div></td>
+                            <td colspan="2" class="date_width">
+                            	<div class="vacation_date">
+                            	<input type="date" class="vacation_days1" name="vacation_start"> ~ <input type="date" class="vacation_days2" name="vacation_last"></div>
+                            </td>
                     		<td>사유</td>
-                            <td colspan="2"><input type="text" id="worktime_docu_reason"></td>
+                            <td colspan="2"><input type="text" id="worktime_docu_reason" name="vacation_reason"></td>
                   		</tr>   
                         <tr>
                            <td>제목</td>
-                           <td colspan="6"><input type="text" id="worktime_docu_title"></td>
+                           <td colspan="6"><input type="text" id="worktime_docu_title" name="vacation_title"></td>
                         </tr>
 
                         <tr>
@@ -138,7 +146,7 @@
                     
                 </div>
                 <div class="worktime_new_api">
-                    <textarea id="ckeditor" name="ckeditor"></textarea>
+                    <textarea id="ckeditor" name="vacation_contents"></textarea>
                     <script type="text/javascript">
               			 CKEDITOR.replace('ckeditor', {
                				});
@@ -155,10 +163,10 @@
                     <input type="submit" value="상신" class="worktime_input_btn worktime_approval">
                     <input type="button" value="취소" class="worktime_input_btn worktime_cancel">
                  </div>
-                 </form>
                 </div>
+       		 </form>
          </div>
-        
+       
          
          
 			 <!-- 모달 창  -->

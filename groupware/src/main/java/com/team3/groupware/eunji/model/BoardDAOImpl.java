@@ -1,6 +1,5 @@
 package com.team3.groupware.eunji.model;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

@@ -27,6 +27,9 @@ public interface WorktimeDAO {
 	// 검색
 	List<EmployeeVO> deptListSearch(Map<String, Object> map);
 
+	// 연차 신청서 입력
+	void vacation_annual_insert(Map<String, Object> map);
+
 	
 
 

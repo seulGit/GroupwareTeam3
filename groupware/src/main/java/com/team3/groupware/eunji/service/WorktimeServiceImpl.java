@@ -7,8 +7,10 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.team3.groupware.common.model.EmployeeVO;
+import com.team3.groupware.eunji.model.Vacation_annualVO;
 import com.team3.groupware.eunji.model.WorktimeDAO;
 import com.team3.groupware.eunji.model.WorktimeVO;
 
@@ -53,6 +55,12 @@ public class WorktimeServiceImpl implements WorktimeService {
 	@Override
 	public List<EmployeeVO> deptListSearch(Map<String, Object> map) {
 		return worktimeDao.deptListSearch(map);
+	}
+
+	// 연차 신청서 입력
+	@Override
+	public void vacation_annual_insert(Map<String, Object> map) {
+		this.worktimeDao.vacation_annual_insert(map);	
 	}
 
 
