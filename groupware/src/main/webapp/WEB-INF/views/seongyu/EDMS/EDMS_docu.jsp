@@ -27,7 +27,9 @@
     <div class="EDMS_new_container">
         <div class="docu_input_box">
             <div class="docu_input_icon">
-                <i class="xi-file-download" title="EXCEL파일 다운로드"></i>
+                <a href="/EDMS/docu/exel_down">
+                    <i class="xi-file-download" title="EXCEL파일 다운로드"></i>
+                </a>
                 <i class="xi-print" title="프린트"></i>
             </div>
             <c:if test="${docu.EDMS_docu_category == 'certificate'}">

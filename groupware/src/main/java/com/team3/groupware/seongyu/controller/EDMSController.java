@@ -68,7 +68,7 @@ public class EDMSController {
 
         edmsService.insert_general(edms_new_generalVO, mpRequest);
 
-        return new ModelAndView("redirect:EDMS/ing");
+        return new ModelAndView("redirect:ing?emp_num=" + edms_new_generalVO.getEmp_num() + "&crt_page=1&crt_block=0");
     }
     @RequestMapping("money_add")
     public ModelAndView expence_add(EDMS_new_expenseVO edms_new_expenseVO,
@@ -76,7 +76,7 @@ public class EDMSController {
 
         int insert_expence = this.edmsService.insert_expense(edms_new_expenseVO, mpRequest);
 
-        return new ModelAndView("redirect:EDMS/ing");
+        return new ModelAndView("redirect:ing?emp_num=" + edms_new_expenseVO.getEmp_num() + "&crt_page=1&crt_block=0");
     }
 
     @RequestMapping("certificate_add")
@@ -85,12 +85,12 @@ public class EDMSController {
 
         int insert_certificate = this.edmsService.insert_certificate(edms_new_certificateVO, mpRequest);
 
-        return new ModelAndView("redirect:EDMS/ing");
+        return new ModelAndView("redirect:ing?emp_num=" + edms_new_certificateVO.getEmp_num() + "&crt_page=1&crt_block=0");
     }
 
 
     @GetMapping("/ing")
-    public ModelAndView EDMS_home_view(@RequestParam Map<String, Object> map){
+    public ModelAndView EDMS_ing_view(@RequestParam Map<String, Object> map){
         ModelAndView mv = new ModelAndView();
 
         // 페이징 처리
@@ -158,5 +158,10 @@ public class EDMSController {
         mv.setViewName("/seongyu/EDMS/EDMS_wait");
         return mv;
     }
+
+//    @PostMapping("/docu/exel_down")
+//    public ModelAndView EDMS_docu_exel(){
+//        SXSSFworkbook
+//    }
 
 }
