@@ -278,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     booking_add_event.addEventListener("click", function () {
                         // 이벤트 제목이 없을 시
                         if (booking_event_title.value == "" || booking_event_title.value == null) {
-                            console.dir(booking_event_title)
                             booking_event_title.style.animation = "empty_booking_event_title 0.5s";
                             booking_event_title.classList.add("empty_booking_event_title_color");
                             setTimeout(function () {
@@ -302,7 +301,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             return;
                             // 참석자 및 사용자를 아무도 선택하지 않을 시
                         } else if (booking_attendees_list_box.childNodes[3] == null) {
-                            console.dir(booking_attendees_list_box);
                             booking_attendees_list.style.color = "red";
                             booking_attendees_list.style.animation = "empty_booking_event_title 0.3s";
                             setTimeout(function () {
@@ -508,7 +506,7 @@ booking_attendees_check.addEventListener("click", function (e) {
             const user = document.querySelector(`.user_${e.target.id.slice(4)}`);
             user.remove();
             // 참석자를 선택하지 않았을때
-            if (booking_attendees_list_box.childNodes[3] == null) {
+            if (booking_attendees_list_box.childNodes[1] == null) {
                 booking_attendees_list_box.childNodes[0].textContent = "참석자 및 사용자를 선택해주세요"
             }
         }
