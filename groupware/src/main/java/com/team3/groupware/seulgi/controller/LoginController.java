@@ -21,6 +21,7 @@ public class LoginController {
     AdminDAO adminDao;
 
 
+    //로그아웃
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String login(HttpSession session) {
         if(session.getAttribute("emp_num")!=null || session.getAttribute("emp_num")!=""){
@@ -29,6 +30,7 @@ public class LoginController {
         return "login";
     }
 
+    //로그인
     @RequestMapping(value="/login_check", method= RequestMethod.POST)
     public ModelAndView loginPost(EmployeeVO vo, AdminVO vo2, HttpSession session, ModelAndView mv) throws Exception {
 
@@ -59,7 +61,8 @@ public class LoginController {
                 mv.setViewName("/main");
                 return mv;
             }
-            else if(emp_info.getAuth_code().equals("admin")) {
+            else if(emp_info.getAuth_code().equals("admin")) { // 관리자 계정일 시
+                //메뉴 별 권한에 대한 정보를 세션에 담아둠
                 session.setAttribute("authority_EDMS", emp_info2.getAuthority_EDMS());
                 session.setAttribute("authority_worktime", emp_info2.getAuthority_worktime());
                 session.setAttribute("authority_booking", emp_info2.getAuthority_booking());

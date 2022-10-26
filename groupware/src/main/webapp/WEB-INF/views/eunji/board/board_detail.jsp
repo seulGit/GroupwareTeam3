@@ -30,7 +30,7 @@
                       
                      <div class="board_bottom_btn">
                 	 <!-- 게시글 작성자 외에 다른 사람이 수정/삭제하지 못함 -->
-                	 <c:if test="${emp_num eq detailMap.emp_num}">
+                	 <c:if test="${emp_num eq detailMap.emp_num || sessionScope.auth_code eq 'admin'}">
                 	 <form action="/board_modify" method="get">
                     		<input type="submit" class="board_btn board_submit_btn" value="수정">
                     			<input type="hidden" name="board_num" value="${detailMap.board_num}">
