@@ -5,11 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60bd71a4-24fb-43a8-97f4-a9f2c79ff755" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/worktime/worktime_business_trip.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/worktime/worktime_early_departure.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/worktime/worktime_end.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/worktime/worktime_halfway.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/worktime/worktime_ing.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/worktime/worktime_new.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/worktime/worktime_sick_leave.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/worktime/worktime_vacation.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/worktime/worktime_wait.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seulgi/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/board/board_detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/board/board_detail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin/admin_authority.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin/admin_authority.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin/admin_personnelCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin/admin_personnelCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/EDMSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/EDMSController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMSDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/EDMSDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/service/EDMSService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/service/EDMSService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/service/EDMSServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/service/EDMSServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlmap/EDMS_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlmap/EDMS_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_docu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_docu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_ing.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_ing.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_wait.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/seongyu/EDMS/EDMS_wait.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/EDMS/EDMS_docu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/EDMS/EDMS_docu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/EDMS/EDMS_docu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/EDMS/EDMS_docu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/booking/booking.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/booking/booking.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/calendar/a.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/calendar/a.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +36,16 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="2GRGflW4ewH0SNzXQboBRMLeQyM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -30,16 +58,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/oseulki/Desktop/groupware_team3/groupware/src/main/webapp/WEB-INF/views/eunji/board"
+    "last_opened_file_path": "C:/Groupware_Team3/groupware/src/main"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/eunji/board" />
-      <recent name="$PROJECT_DIR$/src/main/webapp/resources/js/admin" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.team3.groupware.seulgi.controller" />
+      <recent name="C:\Groupware_Team3\groupware\src\main" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
@@ -50,8 +74,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666344091895</updated>
+      <workItem from="1666344093422" duration="2475000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

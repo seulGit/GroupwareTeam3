@@ -81,4 +81,15 @@ public class EDMSDAO {
         return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_wait_length", map);
     }
 
+    public List<Map<String, Object>> select_EDMS_docu_end(Map<String, Object> map) {
+        return sqlSessionTemplate.selectList("EDMS.select_EDMS_end", map);
+    }
+
+    public int select_EDMS_docu_end_length(Map<String, Object> map) {
+        return sqlSessionTemplate.selectOne("EDMS.select_EDMS_docu_end_length", map);
+    }
+
+    public void EDMS_docu_active_change(Map<String, Object> map) {
+        sqlSessionTemplate.update("EDMS.docu_active_change", map);
+    }
 }

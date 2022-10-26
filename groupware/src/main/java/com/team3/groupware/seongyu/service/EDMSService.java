@@ -35,4 +35,10 @@ public interface EDMSService {
     Map<String, Object> select_EDMS_docu_general(Map<String, Object> map);
 
     Map<String, Object> select_EDMS_docu_money(Map<String, Object> map);
+
+    List<Map<String, Object>> select_EDMS_docu_end(Map<String, Object> map);
+
+    int select_EDMS_docu_end_length(Map<String, Object> map);
+
+    void EDMS_docu_active_change(Map<String, Object> map);
 }

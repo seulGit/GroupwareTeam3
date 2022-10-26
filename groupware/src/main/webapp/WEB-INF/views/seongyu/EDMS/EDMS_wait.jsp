@@ -27,7 +27,7 @@
 
     <!-- 결재대기중 리스트 테이블 -->
     <div class="EDMS_wait_docu_list">
-        <div id="EDMS_wait_docu_font">결재할 문서가 <strong>5</strong>건 있습니다.</div>
+        <div id="EDMS_wait_docu_font">결재할 문서가 <strong>${EDMS_length}</strong>건 있습니다.</div>
         <div class="EDMS_wait_docu_table_list">
             <table class="EDMS_wait_docu_table">
                 <tr class="EDMS_wait_table_bg">
@@ -41,11 +41,6 @@
                 </tr>
                 <c:forEach var="list" items="${EDMS_list}">
                     <tr class="EDMS_wait_table_hover" onclick="location.href = '/EDMS/docu?EDMS_docu_num=${list.EDMS_docu_num}&EDMS_docu_category=${list.EDMS_docu_category}'">
-<%--                        <c:if test="${sessionScope.emp_num != list.EDMS_approval_emp_1 or sessionScope.emp_num != list.EDMS_approval_emp_2}">--%>
-<%--                            <script>--%>
-<%--                                location.href = "/";--%>
-<%--                            </script>--%>
-<%--                        </c:if>--%>
                         <td>${list.EDMS_docu_num}</td>
                         <td>${fn:substring(list.EDMS_docu_date, 0, 10)}</td>
                         <td>${list.EDMS_docu_category}</td>

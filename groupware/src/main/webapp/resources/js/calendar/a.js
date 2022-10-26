@@ -66,12 +66,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     // 이벤트 메모
                     const event_content = document.querySelector(".arrow_memo > textarea");
 
-                    console.log('title: ' + info.event.title);
-                    console.log('start: ' + info.event.startStr);
-                    console.log('end: ' + info.event.endStr);
-                    console.log('color: ' + info.event.backgroundColor);
-                    console.log('id: ' + info.event.id);
-                    console.log('content: ' + info.event.extendedProps.content);
+                    // console.log('title: ' + info.event.title);
+                    // console.log('start: ' + info.event.startStr);
+                    // console.log('end: ' + info.event.endStr);
+                    // console.log('color: ' + info.event.backgroundColor);
+                    // console.log('id: ' + info.event.id);
+                    // console.log('content: ' + info.event.extendedProps.content);
 
                     event_content.value = info.event.extendedProps.content;
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     event_add_title_input.value = info.event.title;
                     month_calendar_start_datetime.value = user_start_select;
-                    month_calendar_end_datetime.value = user_start_select;
+                    month_calendar_end_datetime.value = user_end_select;
                     event_background_color.value = info.event.backgroundColor;
 
                     // 이벤트 시작 월
@@ -113,8 +113,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     event_add_container.style.transform = "rotateX(0deg)";
                     event_add_modal.style.display = "block";
 
-                    event_add_datetime_container.childNodes[2].textContent = user_start_select_month + "월 " + user_start_select_day + "일 " +
-                        user_start_select_hour + ":" + user_start_select_min + " ~ " + user_end_select_month + "월 " + user_end_select_day +
+                    event_add_datetime_container.childNodes[2].textContent =
+                        user_start_select_month + "월 " + user_start_select_day + "일 " +
+                        user_start_select_hour + ":" + user_start_select_min + " ~ "
+                        + user_end_select_month + "월 " + user_end_select_day +
                         "일 " + user_end_select_hour + ":" + user_end_select_min;
 
                     event_change_btn.addEventListener("click", function () {
