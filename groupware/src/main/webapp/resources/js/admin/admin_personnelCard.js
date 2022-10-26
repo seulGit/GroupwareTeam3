@@ -258,14 +258,8 @@ $(function () {
                         document.querySelector("#detail_address_one").value = this.children[7].value;
                         document.querySelector("#detail_address_two").value = this.children[8].value;
                         document.querySelector("#detail_auth").value = this.children[9].value;
-                        // detail_emp_pw.value = this.children[8].value;
                         document.querySelector("#detail_deskTel").value = this.children[11].value;
                         document.querySelector("#detail_birth").value = this.children[12].value;
-                        // if (document.querySelector("#detail_leavedate").value < document.querySelector("#detail_joindate").value){
-                        //     alert("퇴사일은 입사일보다 늦어야 합니다.")
-                        // } else{
-                        //     document.querySelector("#detail_leavedate").value = this.children[13].value;
-                        // }
                         document.querySelector("#detail_leavedate").value = this.children[13].value;
 
                         if (this.children[14].value !== "0") {
@@ -287,12 +281,6 @@ $(function () {
     });
 });
 
-
-//
-// const dept_name = document.querySelector('.dept_name_select');
-// dept_name.addEventListener('change', function (){
-//     console.log(dept_name.value);
-// });
 
 
 //내용 삭제

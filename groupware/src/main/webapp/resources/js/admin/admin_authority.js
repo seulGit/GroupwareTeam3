@@ -110,17 +110,6 @@ $(function () {
                 })
 
 
-                // let search_list_contents = document.querySelectorAll('.search_list_contents');
-
-                //
-                // console.log(authority_EDMS.value);
-                //
-                // for (let i = 0; i < search_list_contents.length; i++) {
-                //     if(search_list_contents[i].document.querySelector(".authority_EDMS").value == '1'){
-                //         search_list_contents[i].children[6].checked = true;
-                //     }
-                // }
-
             },
             error: function (error) {
                 alert("오류가 발생했습니다. 페이지를 새로고침해주세요")
@@ -151,11 +140,4 @@ all_check_btn.addEventListener('click', function () { //최상단 체크박스
         }
     }
 });
-
-
-//수정버튼클릭
-//로컬스토리지에 id에 해당하는 체크여부 저장되고
-//search_list_contents[i] 에 있는 checkbox[0]이 눌려있으면
-//해당하는 id로 접속시
-//intro jsp 에 관리자메뉴-전자결재관리 display none
 
