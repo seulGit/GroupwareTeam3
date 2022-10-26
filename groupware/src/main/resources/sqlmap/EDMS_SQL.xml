@@ -100,10 +100,10 @@
             EDMS_docu.EDMS_docu_num,
             EDMS_docu.EDMS_docu_date,
             CASE EDMS_docu.EDMS_docu_category
-                when 'general' then '일반품의서'
-                when 'money' then '비용품의서'
-                when 'certificate' then '증명서신청'
-                end as EDMS_docu_category,
+                WHEN 'general' THEN '일반품의서'
+                WHEN 'money' THEN '비용품의서'
+                WHEN 'certificate' THEN '증명서신청'
+                END AS EDMS_docu_category,
             e.emp_name,
             approval_request_docu_title,
             EDMS_docu.file_no,
@@ -126,9 +126,9 @@
                 certificate_docu_title
             FROM
                 EDMS_certificate AS Ex) a ON EDMS_docu.EDMS_docu_num = a.EDMS_docu_num
-                       join employee e on EDMS_docu.emp_num = e.emp_num
+                       JOIN employee e ON EDMS_docu.emp_num = e.emp_num
         WHERE
-            EDMS_docu.emp_num = #{emp_num}
+            EDMS_docu.emp_num = #{emp_num} and EDMS_docu.EDMS_docu_cancel = 0
         ORDER BY
             EDMS_docu_num DESC
         LIMIT
@@ -142,7 +142,7 @@
         FROM
             EDMS_docu
         WHERE
-            emp_num = #{emp_num};
+            emp_num = #{emp_num} and EDMS_docu_cancel = 0;
     </select>
 
     <!--  파일 업로드  -->
@@ -185,7 +185,7 @@
 
     <!--  결재 문서에 들어갈 정보  -->
     <select id="select_EDMS_docu_certificate" parameterType="hashmap" resultType="hashmap">
-        select
+        SELECT
             EDMS_docu.EDMS_docu_num,
             EDMS_docu_category,
             EDMS_docu.emp_num,
@@ -207,40 +207,48 @@
             EDMS_approval_emp_1_name,
             EDMS_approval_emp_2_name,
             EDMS_approval_emp_1_position_grade,
-            EDMS_approval_emp_2_position_grade
-        from
+            EDMS_approval_emp_2_position_grade,
+            approval_EDMS_approval_1,
+            approval_EDMS_approval_date_1,
+            approval_EDMS_approval_2,
+            approval_EDMS_approval_date_2
+        FROM
             EDMS_docu left join
-            EDMS_file on EDMS_docu.EDMS_docu_num = EDMS_file.EDMS_docu_num join
-            EDMS_certificate on EDMS_docu.EDMS_docu_num = EDMS_certificate.EDMS_docu_num join
-            (select
+            EDMS_file ON EDMS_docu.EDMS_docu_num = EDMS_file.EDMS_docu_num JOIN
+            EDMS_certificate ON EDMS_docu.EDMS_docu_num = EDMS_certificate.EDMS_docu_num JOIN
+            (SELECT
                  dept_name,
                  employee.dept_code,
                  emp_name,
                  emp_num,
                  position_grade
-             from
-                 department join employee on department.dept_code = employee.dept_code
-            ) as dept on EDMS_docu.emp_num = dept.emp_num
-                      join EDMS_approval Ea on EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
-                      join (
-                select
+             FROM
+                 department JOIN employee ON department.dept_code = employee.dept_code
+            ) AS dept ON EDMS_docu.emp_num = dept.emp_num
+                      JOIN EDMS_approval Ea ON EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
+                      JOIN (
+                SELECT
+                    EDMS_approval.EDMS_approval_1 as approval_EDMS_approval_1,
+                    EDMS_approval.EDMS_approval_date_1 as approval_EDMS_approval_date_1,
                     EDMS_approval.EDMS_approval_emp_1,
                     e1.emp_name EDMS_approval_emp_1_name,
                     e1.position_grade EDMS_approval_emp_1_position_grade,
+                    EDMS_approval.EDMS_approval_2 as approval_EDMS_approval_2,
+                    EDMS_approval.EDMS_approval_date_2 as approval_EDMS_approval_date_2,
                     EDMS_approval.EDMS_approval_emp_2,
                     e2.emp_name EDMS_approval_emp_2_name,
                     EDMS_approval.EDMS_docu_num,
                     e2.position_grade EDMS_approval_emp_2_position_grade
-                from
-                    EDMS_approval join employee e1 on EDMS_approval_emp_1 = e1.emp_num
-                                  join employee e2 on EDMS_approval_emp_2 = e2.emp_num
-            ) as approval_emp_name on approval_emp_name.EDMS_docu_num = EDMS_docu.EDMS_docu_num
-        where Ea.EDMS_docu_num = ${EDMS_docu_num};
+                FROM
+                    EDMS_approval JOIN employee e1 ON EDMS_approval_emp_1 = e1.emp_num
+                                  JOIN employee e2 ON EDMS_approval_emp_2 = e2.emp_num
+            ) AS approval_emp_name ON approval_emp_name.EDMS_docu_num = EDMS_docu.EDMS_docu_num
+        WHERE Ea.EDMS_docu_num = ${EDMS_docu_num} AND EDMS_docu.EDMS_docu_cancel = 0;
     </select>
 
     <!--  결재 문서에 들어갈 정보  -->
     <select id="select_EDMS_docu_general" parameterType="hashmap" resultType="hashmap">
-        select
+        SELECT
             EDMS_docu.EDMS_docu_num,
             EDMS_docu_category,
             EDMS_docu.emp_num,
@@ -259,40 +267,48 @@
             EDMS_approval_emp_1_name,
             EDMS_approval_emp_2_name,
             EDMS_approval_emp_1_position_grade,
-            EDMS_approval_emp_2_position_grade
-        from
-            EDMS_docu left join
-            EDMS_file on EDMS_docu.EDMS_docu_num = EDMS_file.EDMS_docu_num join
-            EDMS_approval_request on EDMS_docu.EDMS_docu_num = EDMS_approval_request.EDMS_docu_num join
-            (select
+            EDMS_approval_emp_2_position_grade,
+            approval_EDMS_approval_1,
+            approval_EDMS_approval_date_1,
+            approval_EDMS_approval_2,
+            approval_EDMS_approval_date_2
+        FROM
+            EDMS_docu LEFT JOIN
+            EDMS_file ON EDMS_docu.EDMS_docu_num = EDMS_file.EDMS_docu_num JOIN
+            EDMS_approval_request ON EDMS_docu.EDMS_docu_num = EDMS_approval_request.EDMS_docu_num JOIN
+            (SELECT
                  dept_name,
                  employee.dept_code,
                  emp_name,
                  emp_num,
                  position_grade
-             from
-                 department join employee on department.dept_code = employee.dept_code
-            ) as dept on EDMS_docu.emp_num = dept.emp_num
-                      join EDMS_approval Ea on EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
-                      join (
-                select
+             FROM
+                 department JOIN employee ON department.dept_code = employee.dept_code
+            ) AS dept ON EDMS_docu.emp_num = dept.emp_num
+                      JOIN EDMS_approval Ea ON EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
+                      JOIN (
+                SELECT
+                    EDMS_approval.EDMS_approval_1 as approval_EDMS_approval_1,
+                    EDMS_approval.EDMS_approval_date_1 as approval_EDMS_approval_date_1,
                     EDMS_approval.EDMS_approval_emp_1,
                     e1.emp_name EDMS_approval_emp_1_name,
                     e1.position_grade EDMS_approval_emp_1_position_grade,
+                    EDMS_approval.EDMS_approval_2 as approval_EDMS_approval_2,
+                    EDMS_approval.EDMS_approval_date_2 as approval_EDMS_approval_date_2,
                     EDMS_approval.EDMS_approval_emp_2,
                     e2.emp_name EDMS_approval_emp_2_name,
                     EDMS_approval.EDMS_docu_num,
                     e2.position_grade EDMS_approval_emp_2_position_grade
-                from
-                    EDMS_approval join employee e1 on EDMS_approval_emp_1 = e1.emp_num
-                                  join employee e2 on EDMS_approval_emp_2 = e2.emp_num
-            ) as approval_emp_name on approval_emp_name.EDMS_docu_num = EDMS_docu.EDMS_docu_num
-        where Ea.EDMS_docu_num = #{EDMS_docu_num};
+                FROM
+                    EDMS_approval JOIN employee e1 ON EDMS_approval_emp_1 = e1.emp_num
+                                  JOIN employee e2 ON EDMS_approval_emp_2 = e2.emp_num
+            ) AS approval_emp_name ON approval_emp_name.EDMS_docu_num = EDMS_docu.EDMS_docu_num
+        WHERE Ea.EDMS_docu_num = #{EDMS_docu_num} AND EDMS_docu.EDMS_docu_cancel = 0;
     </select>
 
     <!--  결재 문서에 들어갈 정보  -->
     <select id="select_EDMS_docu_money" parameterType="hashmap" resultType="hashmap">
-        select
+        SELECT
             EDMS_docu.EDMS_docu_num,
             EDMS_docu_category,
             EDMS_docu.emp_num,
@@ -314,35 +330,43 @@
             EDMS_approval_emp_1_name,
             EDMS_approval_emp_2_name,
             EDMS_approval_emp_1_position_grade,
-            EDMS_approval_emp_2_position_grade
-        from
-            EDMS_docu left join
-            EDMS_file on EDMS_docu.EDMS_docu_num = EDMS_file.EDMS_docu_num join
-            EDMS_expense on EDMS_docu.EDMS_docu_num = EDMS_expense.EDMS_docu_num join
-            (select
+            EDMS_approval_emp_2_position_grade,
+            approval_EDMS_approval_1,
+            approval_EDMS_approval_date_1,
+            approval_EDMS_approval_2,
+            approval_EDMS_approval_date_2
+        FROM
+            EDMS_docu LEFT JOIN
+            EDMS_file ON EDMS_docu.EDMS_docu_num = EDMS_file.EDMS_docu_num JOIN
+            EDMS_expense ON EDMS_docu.EDMS_docu_num = EDMS_expense.EDMS_docu_num JOIN
+            (SELECT
                  dept_name,
                  employee.dept_code,
                  emp_name,
                  emp_num,
                  position_grade
-             from
-                 department join employee on department.dept_code = employee.dept_code
-            ) as dept on EDMS_docu.emp_num = dept.emp_num
-                      join EDMS_approval Ea on EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
-                      join (
-                select
+             FROM
+                 department JOIN employee ON department.dept_code = employee.dept_code
+            ) AS dept ON EDMS_docu.emp_num = dept.emp_num
+                      JOIN EDMS_approval Ea ON EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
+                      JOIN (
+                SELECT
+                    EDMS_approval.EDMS_approval_1 as approval_EDMS_approval_1,
+                    EDMS_approval.EDMS_approval_date_1 as approval_EDMS_approval_date_1,
                     EDMS_approval.EDMS_approval_emp_1,
                     e1.emp_name EDMS_approval_emp_1_name,
                     e1.position_grade EDMS_approval_emp_1_position_grade,
+                    EDMS_approval.EDMS_approval_2 as approval_EDMS_approval_2,
+                    EDMS_approval.EDMS_approval_date_2 as approval_EDMS_approval_date_2,
                     EDMS_approval.EDMS_approval_emp_2,
                     e2.emp_name EDMS_approval_emp_2_name,
                     EDMS_approval.EDMS_docu_num,
                     e2.position_grade EDMS_approval_emp_2_position_grade
-                from
-                    EDMS_approval join employee e1 on EDMS_approval_emp_1 = e1.emp_num
-                                  join employee e2 on EDMS_approval_emp_2 = e2.emp_num
-            ) as approval_emp_name on approval_emp_name.EDMS_docu_num = EDMS_docu.EDMS_docu_num
-        where Ea.EDMS_docu_num = #{EDMS_docu_num};
+                FROM
+                    EDMS_approval JOIN employee e1 ON EDMS_approval_emp_1 = e1.emp_num
+                                  JOIN employee e2 ON EDMS_approval_emp_2 = e2.emp_num
+            ) AS approval_emp_name ON approval_emp_name.EDMS_docu_num = EDMS_docu.EDMS_docu_num
+        WHERE Ea.EDMS_docu_num = #{EDMS_docu_num} AND EDMS_docu.EDMS_docu_cancel = 0;
     </select>
 
     <!--  결재 대기중 리스트  -->
@@ -351,10 +375,10 @@
             EDMS_docu.EDMS_docu_num,
             EDMS_docu.EDMS_docu_date,
             CASE EDMS_docu.EDMS_docu_category
-                when 'general' then '일반품의서'
-                when 'money' then '비용품의서'
-                when 'certificate' then '증명서신청'
-                end as EDMS_docu_category,
+                WHEN 'general' THEN '일반품의서'
+                WHEN 'money' THEN '비용품의서'
+                WHEN 'certificate' THEN '증명서신청'
+                END AS EDMS_docu_category,
             e.emp_name,
             approval_request_docu_title,
             EDMS_docu.file_no,
@@ -379,10 +403,11 @@
                 certificate_docu_title
             FROM
                 EDMS_certificate AS Ex) a ON EDMS_docu.EDMS_docu_num = a.EDMS_docu_num
-                       join employee e on EDMS_docu.emp_num = e.emp_num
-                       join EDMS_approval Ea on EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
+                       JOIN employee e ON EDMS_docu.emp_num = e.emp_num
+                       JOIN EDMS_approval Ea ON EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
         WHERE
-            Ea.EDMS_approval_emp_1 = #{emp_num} or Ea.EDMS_approval_emp_2 = #{emp_num}
+            Ea.EDMS_approval_emp_1 = #{emp_num} OR Ea.EDMS_approval_emp_2 = #{emp_num}
+                                                       AND EDMS_docu.EDMS_docu_cancel = 0
         ORDER BY
             EDMS_docu_num DESC
         LIMIT
@@ -391,13 +416,79 @@
 
     <!--  결재 대기중 페이징처리를 위한 리스트 길이 구하기  -->
     <select id="select_EDMS_docu_wait_length" parameterType="hashmap" resultType="int">
-        select
+        SELECT
             count(*)
-        from
-            EDMS_approval
-        where
-            EDMS_approval_emp_1 = #{emp_num}
-           or EDMS_approval_emp_2 = #{emp_num};
+        FROM
+            EDMS_approval JOIN EDMS_docu Ed ON Ed.EDMS_docu_num = EDMS_approval.EDMS_docu_num
+        WHERE
+            (EDMS_approval_emp_1 = #{emp_num}
+                OR EDMS_approval_emp_2 = #{emp_num})
+          AND Ed.EDMS_docu_cancel = 0;
     </select>
+
+    <select id="select_EDMS_end" parameterType="hashmap" resultType="hashmap">
+        SELECT
+            EDMS_docu.EDMS_docu_num,
+            EDMS_docu.EDMS_docu_date,
+            CASE EDMS_docu.EDMS_docu_category
+                WHEN 'general' THEN '일반품의서'
+                WHEN 'money' THEN '비용품의서'
+                WHEN 'certificate' THEN '증명서신청'
+                END AS EDMS_docu_category,
+            e.emp_name,
+            approval_request_docu_title,
+            EDMS_docu.file_no,
+            EDMS_docu.EDMS_docu_urgent,
+            Ea.EDMS_approval_emp_1,
+            Ea.EDMS_approval_emp_2
+        FROM EDMS_docu JOIN (
+            SELECT
+                Ear.EDMS_docu_num,
+                approval_request_docu_title
+            FROM
+                EDMS_approval_request AS Ear
+            UNION
+            SELECT
+                Ee.EDMS_docu_num,
+                expense_docu_title
+            FROM
+                EDMS_expense AS Ee
+            UNION
+            SELECT
+                Ex.EDMS_docu_num,
+                certificate_docu_title
+            FROM
+                EDMS_certificate AS Ex) a ON EDMS_docu.EDMS_docu_num = a.EDMS_docu_num
+                       JOIN employee e ON EDMS_docu.emp_num = e.emp_num
+                       JOIN EDMS_approval Ea ON EDMS_docu.EDMS_docu_num = Ea.EDMS_docu_num
+        WHERE
+            (Ea.EDMS_approval_emp_1 = #{emp_num} OR Ea.EDMS_approval_emp_2 = #{emp_num})
+          AND Ea.EDMS_approval_1 = 1 AND Ea.EDMS_approval_2 = 1
+        ORDER BY
+            EDMS_docu_num DESC
+        LIMIT
+            #{crt_start_page}, #{crt_end_page};
+    </select>
+
+    <select id="select_EDMS_docu_end_length" resultType="int" parameterType="hashmap">
+        SELECT
+            count(*)
+        FROM
+            EDMS_approval
+        WHERE
+            EDMS_approval_1 = 1 AND EDMS_approval_2 = 1
+            AND (EDMS_approval_emp_1 = #{emp_num} OR EDMS_approval_emp_2 = #{emp_num});
+    </select>
+
+    <update id="docu_active_change" parameterType="hashmap">
+        UPDATE
+            groupwareteam3.EDMS_docu t
+        SET
+            t.EDMS_docu_cancel = 1
+        WHERE
+            t.EDMS_docu_num = #{EDMS_docu_num}
+        AND
+            t.emp_num = #{emp_num};
+    </update>
 
 </mapper>

@@ -20,7 +20,6 @@
 
 <body class="sb-nav-fixed">
 <%@ include file="/WEB-INF/views/intro.jsp" %>
-
 <div id="layoutSidenav_content">
     <div class="content_box">
         진행중문서
@@ -41,11 +40,6 @@
                 </tr>
                 <c:forEach var="list" items="${EDMS_list}">
                     <tr class="EDMS_ing_table_hover" onclick="location.href = '/EDMS/docu?EDMS_docu_num=${list.EDMS_docu_num}&EDMS_docu_category=${list.EDMS_docu_category}'">
-                        <c:if test="${sessionScope.emp_name != list.emp_name}">
-                            <script>
-                                location.href = "/";
-                            </script>
-                        </c:if>
                         <td>${list.EDMS_docu_num}</td>
                         <td>${fn:substring(list.EDMS_docu_date, 0, 10)}</td>
                         <td>${list.EDMS_docu_category}</td>

@@ -8,15 +8,10 @@ import com.team3.groupware.seongyu.model.EDMS_new_generalVO;
 import com.team3.groupware.seongyu.service.EDMSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +24,34 @@ public class EDMSController {
 
     @Autowired
     DepartmentService departmentService;
+
+    @RequestMapping("/home")
+    public ModelAndView EDMS_home(@RequestParam Map<String, Object> map){
+        ModelAndView mv = new ModelAndView();
+
+        map.put("crt_start_page", 0);
+        map.put("crt_end_page", 3);
+
+        List<Map<String, Object>> EDMS_wait = this.edmsService.select_EDMS_docu_wait(map);
+        List<Map<String, Object>> EDMS_ing = this.edmsService.select_EDMS_docu_ing(map);
+        List<Map<String, Object>> EDMS_end = this.edmsService.select_EDMS_docu_end(map);
+
+        int ing_list_length = this.edmsService.select_EDMS_docu_ing_length(map);
+        int wait_list_length = this.edmsService.select_EDMS_docu_wait_length(map);
+        int end_list_length = this.edmsService.select_EDMS_docu_end_length(map);
+
+        mv.addObject("EDMS_wait", EDMS_wait);
+        mv.addObject("EDMS_ing", EDMS_ing);
+        mv.addObject("EDMS_end", EDMS_end);
+
+        mv.addObject("ing_list_length", ing_list_length);
+        mv.addObject("wait_list_length", wait_list_length);
+        mv.addObject("end_list_length", end_list_length);
+
+
+        mv.setViewName("/seongyu/EDMS/EDMS_home");
+        return mv;
+    }
 
     @RequestMapping("/new")
     public ModelAndView EDMS_new(){
@@ -130,7 +153,7 @@ public class EDMSController {
     }
 
     @GetMapping("/end")
-    public ModelAndView EDMS_home(@RequestParam Map<String, Object> map){
+    public ModelAndView EDMS_end(@RequestParam Map<String, Object> map){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/seongyu/EDMS/EDMS_end");
         return mv;
@@ -159,9 +182,14 @@ public class EDMSController {
         return mv;
     }
 
-//    @PostMapping("/docu/exel_down")
-//    public ModelAndView EDMS_docu_exel(){
-//        SXSSFworkbook
-//    }
+    @PostMapping("/EDMS_docu_remove")
+    public ModelAndView EDMS_docu_remove(@RequestParam Map<String, Object> map){
+        ModelAndView mv = new ModelAndView();
+
+        this.edmsService.EDMS_docu_active_change(map);
+
+        mv.setViewName("redirect:home?emp_num=" + map.get("emp_num"));
+        return mv;
+    }
 
 }
